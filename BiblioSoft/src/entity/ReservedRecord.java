@@ -3,7 +3,7 @@
  */
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author ¿Ó—Û
@@ -19,6 +19,12 @@ public class ReservedRecord {
 	
 	
 	
+	/**
+	 * 
+	 */
+	public ReservedRecord() {
+		super();
+	}
 	/**
 	 * @param time
 	 * @param readerAccount

@@ -15,7 +15,7 @@ import java.sql.Statement;
  */
 public class DBhelper {
 
-	public String url = "jdbc:mysql://localhost:3306/dreamnight?useUnicode=true&characterEncoding=UTF-8";
+	public String url = "jdbc:mysql://localhost:3306/BiblioSoft?useUnicode=true&characterEncoding=UTF-8";
 	public String username = "root";
 	public String password = "root";
 	public static DBhelper instance = null;

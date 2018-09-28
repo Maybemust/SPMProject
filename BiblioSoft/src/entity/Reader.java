@@ -20,6 +20,12 @@ public class Reader {
 	
 	
 	/**
+	 * 
+	 */
+	public Reader() {
+		super();
+	}
+	/**
 	 * @param account
 	 * @param password
 	 */

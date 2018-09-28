@@ -4,7 +4,7 @@
 package entity;
 
 import java.sql.Blob;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author ¿Ó—Û
@@ -30,6 +30,12 @@ public class Book {
 	
 	
 	
+	/**
+	 * 
+	 */
+	public Book() {
+		super();
+	}
 	/**
 	 * @param barCode
 	 * @param iSBN

@@ -7,7 +7,7 @@ package entity;
  * @author ¿Ó—Û
  *
  */
-public class System {
+public class Admin {
 
 	private long account;
 	private String password;
@@ -19,6 +19,12 @@ public class System {
 	
 	
 	/**
+	 * 
+	 */
+	public Admin() {
+		super();
+	}
+	/**
 	 * @param account
 	 * @param password
 	 * @param fine
@@ -27,7 +33,7 @@ public class System {
 	 * @param resercedTime
 	 * @param fineTime
 	 */
-	public System(long account, String password, double fine, int borrowedMaxinum, int reservedMaxinum,
+	public Admin(long account, String password, double fine, int borrowedMaxinum, int reservedMaxinum,
 			int resercedTime, int fineTime) {
 		super();
 		this.account = account;

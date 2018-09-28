@@ -16,6 +16,12 @@ public class Librarian {
 	
 	
 	/**
+	 * 
+	 */
+	public Librarian() {
+		super();
+	}
+	/**
 	 * @param account
 	 * @param password
 	 * @param tag

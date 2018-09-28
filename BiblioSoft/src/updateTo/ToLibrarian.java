@@ -1,0 +1,184 @@
+/**
+ * 
+ */
+package updateTo;
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
+
+import entity.Book;
+import entity.BorrowedRecord;
+import entity.Post;
+import entity.Librarian;
+import entity.Reader;
+import entity.ReservedRecord;
+import entity.Admin;
+import utils.DBhelper;
+/**
+ * @author ¿Ó—Û
+ *
+ */
+public class ToLibrarian {
+
+
+	public static int getTotal() {
+		int total = 0;
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select count(*) from librarian";
+
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				total = rs.getInt(1);
+			}
+
+			System.out.println("total:" + total);
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return total;
+	}
+	
+	
+
+
+	public static void add(Librarian librarian) {
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "insert into librarian(account,password,tag) values(?,?,?)";
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setLong(1, librarian.getAccount());
+			ps.setString(2, librarian.getPassword());
+			ps.setInt(3, librarian.getTag());
+			
+			ps.execute();
+
+			ResultSet rs = ps.getGeneratedKeys();
+
+			DBhelper.closeConnection(c, ps, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public static void update(Librarian librarian) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update librarian set password = ? , tag = ?  where account = ?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setLong(3, librarian.getAccount());
+			ps.setString(1, librarian.getPassword());
+			ps.setInt(3,librarian.getTag());
+
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void delete(String account) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "delete from librarian where account = " +"'"+account+"';";
+
+			s.execute(sql);
+
+			DBhelper.closeConnection(c, s, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static Librarian get(String account) {
+		Librarian librarian = new Librarian();
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from librarian where account = " + "'"+account+"';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			if (rs.next()) {
+				librarian.setAccount(rs.getLong("account"));
+				librarian.setPassword(rs.getString("password"));
+				librarian.setTag(rs.getInt("tag"));
+				
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return librarian;
+	}
+
+	public static List<Librarian> list() {
+		return list(0, Short.MAX_VALUE);
+	}
+	
+	public static List<Librarian> list(int start, int count) {
+		List<Librarian> librarians = new ArrayList<Librarian>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from librarian order by barCode desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Librarian librarian = new Librarian();
+				librarian.setAccount(rs.getLong("account"));
+				librarian.setPassword(rs.getString("password"));
+				librarian.setTag(rs.getInt("tag"));
+				librarians.add(librarian);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return librarians;
+	}
+	
+}

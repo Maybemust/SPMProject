@@ -3,7 +3,7 @@
  */
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author ¿Ó—Û
@@ -18,6 +18,12 @@ public class Post {
 	
 	
 	
+	/**
+	 * 
+	 */
+	public Post() {
+		super();
+	}
 	/**
 	 * @param author
 	 * @param time

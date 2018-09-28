@@ -3,7 +3,7 @@
  */
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author ¿Ó—Û
@@ -22,6 +22,12 @@ public class BorrowedRecord {
 	
 	
 	
+	/**
+	 * 
+	 */
+	public BorrowedRecord() {
+		super();
+	}
 	/**
 	 * @param bRID
 	 * @param barCode
