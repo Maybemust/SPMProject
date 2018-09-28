@@ -25,7 +25,9 @@ import utils.DBhelper;
  *
  */
 public class ToPost {
-
+	/*
+	 * 获得某人所发布通知的总数
+	 */
 	public static int getTotalAuthor(String author) {
 		int total = 0;
 		try {
@@ -49,7 +51,9 @@ public class ToPost {
 		}
 		return total;
 	}
-
+	/*
+	 * 获取通知的总数
+	 */
 	public static int getTotal() {
 		int total = 0;
 		try {
@@ -77,7 +81,9 @@ public class ToPost {
 	
 	
 
-
+	/*
+	 * 添加一条通知
+	 */
 	public static void add(Post post) {
 
 		try {
@@ -103,7 +109,9 @@ public class ToPost {
 		}
 	}
 
-
+	/*
+	 * 更新一条通知
+	 */
 	public static void update(Post post) {
 		try {
 
@@ -127,7 +135,9 @@ public class ToPost {
 		}
 
 	}
-
+	/*
+	 * 通过通知编号删除一条通知
+	 */
 	public static void delete(String postID) {
 		try {
 
@@ -145,6 +155,9 @@ public class ToPost {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * 通过编号获取通知
+	 */
 	public static Post getByPostID(String postID) {
 		Post post = new Post();
 		try {
@@ -173,11 +186,15 @@ public class ToPost {
 		}
 		return post;
 	}
-
+	/*
+	 * 列出所有通知
+	 */
 	public static List<Post> list() {
 		return list(0, Short.MAX_VALUE);
 	}
-	
+	/*
+	 * 列出部分通知
+	 */
 	public static List<Post> list(int start, int count) {
 		List<Post> posts = new ArrayList<Post>();
 
@@ -207,7 +224,9 @@ public class ToPost {
 		}
 		return posts;
 	}
-	
+	/*
+	 * 列出某人发布的通知
+	 */
 	public static List<Post> list(int start, int count,String author) {
 		List<Post> posts = new ArrayList<Post>();
 

@@ -25,7 +25,9 @@ import utils.DBhelper;
  *
  */
 public class ToReservedRecord {
-
+	/*
+	 * 找到某人预约书的总数
+	 */
 	public static int getTotalByAccount(String readerAccount) {
 		int total = 0;
 		try {
@@ -49,7 +51,9 @@ public class ToReservedRecord {
 		}
 		return total;
 	}
-
+	/*
+	 * 获取被预约书的总数
+	 */
 	public static int getTotal() {
 		int total = 0;
 		try {
@@ -77,7 +81,9 @@ public class ToReservedRecord {
 	
 	
 
-
+	/*
+	 * 添加一条预约记录
+	 */
 	public static void add(ReservedRecord record) {
 
 		try {
@@ -103,7 +109,9 @@ public class ToReservedRecord {
 		}
 	}
 
-
+	/*
+	 * 更新一条预约记录
+	 */
 	public static void update(ReservedRecord record) {
 		try {
 
@@ -127,7 +135,9 @@ public class ToReservedRecord {
 		}
 
 	}
-
+	/*
+	 * 根据rRID删除一条记录
+	 */
 	public static void deleteByrRID(String rRID) {
 		try {
 
@@ -145,6 +155,9 @@ public class ToReservedRecord {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * 根据rRID找到一条记录
+	 */
 	public static ReservedRecord getByrRID(String rRID) {
 		ReservedRecord record = new ReservedRecord();
 		try {
@@ -172,11 +185,15 @@ public class ToReservedRecord {
 		}
 		return record;
 	}
-
+/*
+ * 找到所有的记录
+ */
 	public static List<ReservedRecord> list() {
 		return list(0, Short.MAX_VALUE);
 	}
-	
+	/*
+	 * 列出部分记录
+	 */
 	public static List<ReservedRecord> list(int start, int count) {
 		List<ReservedRecord> records = new ArrayList<ReservedRecord>();
 
@@ -206,7 +223,9 @@ public class ToReservedRecord {
 		}
 		return records;
 	}
-	
+	/*
+	 * 列出某人预约的部分记录
+	 */
 	public static List<ReservedRecord> listByReaderAccount(int start, int count,String readerAccount) {
 		List<ReservedRecord> records = new ArrayList<ReservedRecord>();
 

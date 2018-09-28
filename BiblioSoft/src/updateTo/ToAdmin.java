@@ -27,6 +27,9 @@ import utils.DBhelper;
  */
 public class ToAdmin {
 
+	/*
+	 * 获得admin账号总数
+	 */
 	public static int getTotal() {
 		int total = 0;
 		try {
@@ -54,7 +57,9 @@ public class ToAdmin {
 	
 	
 
-
+	/*
+	 * 添加一个admin，虽然感觉用不到
+	 */
 	public static void add(Admin admin) {
 
 		try {
@@ -83,7 +88,9 @@ public class ToAdmin {
 		}
 	}
 
-
+	/*
+	 * 更新admin信息，也是借更新admin信息来更新全局信息，例如罚款金额，借书上限
+	 */
 	public static void update(Admin admin) {
 		try {
 
@@ -110,7 +117,124 @@ public class ToAdmin {
 		}
 
 	}
+	/*
+	 * 单独更新罚款信息
+	 */
+	public static void updateFine(double fine) {
+		try {
 
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set fine=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setDouble(1, fine);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/*
+	 * 单独更新借书上限
+	 */
+	public static void updateBorrowedMax(int num) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set borrowedMaxinum=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setDouble(1, num);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/*
+	 * 单独更新预约上限
+	 */
+	public static void updateReservedMax(int num) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set reservedMaxinum=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setDouble(1, num);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/*
+	 * 单独更新预约时间
+	 */
+	public static void updateReservedTime(int num) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set reservedTime=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setDouble(1, num);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/*
+	 * 单独更新罚款时间
+	 */
+	public static void updateFineTime(int num) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set fineTime=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setDouble(1, num);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/*
+	 * 删除某一账号，虽然感觉用不到
+	 */
 	public static void delete(String account) {
 		try {
 
@@ -128,7 +252,10 @@ public class ToAdmin {
 			e.printStackTrace();
 		}
 	}
-	public static Admin getByBarCode(String account) {
+	/*
+	 * 根据账号获得admin信息
+	 */
+	public static Admin getByAccount(String account) {
 		Admin admin = new Admin();
 		try {
 
@@ -158,11 +285,15 @@ public class ToAdmin {
 		}
 		return admin;
 	}
-
+	/*
+	 * 获得列表
+	 */
 	public static List<Admin> list() {
 		return list(0, Short.MAX_VALUE);
 	}
-	
+	/*
+	 * 获得admin列表
+	 */
 	public static List<Admin> list(int start, int count) {
 		List<Admin> admins = new ArrayList<Admin>();
 

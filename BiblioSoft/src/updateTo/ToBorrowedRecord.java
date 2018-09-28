@@ -25,7 +25,9 @@ import utils.DBhelper;
  *
  */
 public class ToBorrowedRecord {
-
+	/*
+	 * 通过账号获得某一个人借书的数目
+	 */
 	public static int getTotalByAccount(String readerAccount) {
 		int total = 0;
 		try {
@@ -49,7 +51,9 @@ public class ToBorrowedRecord {
 		}
 		return total;
 	}
-
+	/*
+	 * 获取所有借书记录的总数目
+	 */
 	public static int getTotal() {
 		int total = 0;
 		try {
@@ -77,7 +81,9 @@ public class ToBorrowedRecord {
 	
 	
 
-
+	/*
+	 * 添加一条借书记录
+	 */
 	public static void add(BorrowedRecord record) {
 
 		try {
@@ -105,7 +111,9 @@ public class ToBorrowedRecord {
 		}
 	}
 
-
+	/*
+	 * 更新一条借书记录
+	 */
 	public static void update(BorrowedRecord record) {
 		try {
 
@@ -131,7 +139,9 @@ public class ToBorrowedRecord {
 		}
 
 	}
-
+	/*
+	 * 删除一条借书记录
+	 */
 	public static void deleteBybRID(String bRID) {
 		try {
 
@@ -149,6 +159,9 @@ public class ToBorrowedRecord {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * 通过bRID找到一条借书记录
+	 */
 	public static BorrowedRecord getBybRID(String bRID) {
 		BorrowedRecord record = new BorrowedRecord();
 		try {
@@ -178,11 +191,15 @@ public class ToBorrowedRecord {
 		}
 		return record;
 	}
-
+	/*
+	 * 列出所有记录
+	 */
 	public List<BorrowedRecord> list() {
 		return list(0, Short.MAX_VALUE);
 	}
-	
+	/*
+	 * 列出部分借书记录
+	 */
 	public static List<BorrowedRecord> list(int start, int count) {
 		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
 
@@ -214,7 +231,9 @@ public class ToBorrowedRecord {
 		}
 		return records;
 	}
-	
+	/*
+	 * 列出某一账号的借书记录
+	 */
 	public static List<BorrowedRecord> listByReaderAccount(int start, int count,String readerAccount) {
 		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
 

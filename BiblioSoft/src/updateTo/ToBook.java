@@ -54,7 +54,9 @@ public class ToBook {
 		}
 		return total;
 	}
-
+	/*
+	 * 获得所有书的数量
+	 */
 	public static int getTotal() {
 		int total = 0;
 		try {
@@ -82,7 +84,9 @@ public class ToBook {
 	
 	
 
-
+	/*
+	 * 向数据库中添加一本书
+	 */
 	public static void add(Book book) {
 
 		try {
@@ -108,7 +112,9 @@ public class ToBook {
 		}
 	}
 
-
+	/*
+	 * 向数据库中更新一本书
+	 */
 	public static void update(Book book) {
 		try {
 
@@ -139,7 +145,9 @@ public class ToBook {
 		}
 
 	}
-
+	/*
+	 * 根据barcode删除指定的书
+	 */
 	public static void deleteByBarCode(String barCode) {
 		try {
 
@@ -157,6 +165,9 @@ public class ToBook {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * 通过barcode找到指定的书
+	 */
 	public static Book getByBarCode(String barCode) {
 		Book book = new Book();
 		try {
@@ -191,11 +202,15 @@ public class ToBook {
 		}
 		return book;
 	}
-
+	/*
+	 * 列出所有的书
+	 */
 	public static List<Book> list() {
 		return list(0, Short.MAX_VALUE);
 	}
-	
+	/*
+	 * 按照顺序显示一些书
+	 */
 	public static List<Book> list(int start, int count) {
 		List<Book> books = new ArrayList<Book>();
 

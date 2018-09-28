@@ -26,7 +26,9 @@ import utils.DBhelper;
  */
 public class ToLibrarian {
 
-
+	/*
+	 * 获取图书馆工作人员的数目
+	 */
 	public static int getTotal() {
 		int total = 0;
 		try {
@@ -54,7 +56,9 @@ public class ToLibrarian {
 	
 	
 
-
+	/*
+	 * 添加图书馆工作人员
+	 */
 	public static void add(Librarian librarian) {
 
 		try {
@@ -79,7 +83,9 @@ public class ToLibrarian {
 		}
 	}
 
-
+	/*
+	 * 更新工作人员
+	 */
 	public static void update(Librarian librarian) {
 		try {
 
@@ -102,7 +108,9 @@ public class ToLibrarian {
 		}
 
 	}
-
+	/*
+	 * 根据账号删除
+	 */
 	public static void delete(String account) {
 		try {
 
@@ -120,6 +128,9 @@ public class ToLibrarian {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * 根据账号获取
+	 */
 	public static Librarian get(String account) {
 		Librarian librarian = new Librarian();
 		try {
@@ -147,11 +158,15 @@ public class ToLibrarian {
 		}
 		return librarian;
 	}
-
+	/*
+	 * 列出所有的数据
+	 */
 	public static List<Librarian> list() {
 		return list(0, Short.MAX_VALUE);
 	}
-	
+	/*
+	 * 列出部分图书馆工作人员
+	 */
 	public static List<Librarian> list(int start, int count) {
 		List<Librarian> librarians = new ArrayList<Librarian>();
 
