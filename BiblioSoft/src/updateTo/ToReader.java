@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Date;
 
 import entity.Book;
@@ -61,20 +62,24 @@ public class ToReader {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into reader(account,passsword,email,phone,cashPledge) values(?,?,?,?,?)";
+			String sql = "insert into reader(account,password,email,phone,fine,borrowedNum,cashPledge,tag) values(?,?,?,?,0,0,?,0)";
+			
 			PreparedStatement ps = c.prepareStatement(sql);
+			System.out.println("pk");
+			System.out.println(reader.toString());
 			ps.setString(1, reader.getAccount());
 			ps.setString(2, reader.getPassword());
 			ps.setString(3, reader.getEmail());
 			ps.setLong(4, reader.getPhone());
 			ps.setDouble(5, reader.getCashPledge());
 			
+			System.out.println(sql);
 			ps.execute();
 
 			ResultSet rs = ps.getGeneratedKeys();
 
 			DBhelper.closeConnection(c, ps, rs);
-
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -171,7 +176,8 @@ public class ToReader {
 		return list(0, Short.MAX_VALUE);
 	}
 	
-	public static List<Reader> list(int start, int count) {
+	public static  List<Reader> list(int start, int count) {
+		
 		List<Reader> readers = new ArrayList<Reader>();
 
 		try {
@@ -204,4 +210,8 @@ public class ToReader {
 		}
 		return readers;
 	}
+
+	
+	
+	
 }

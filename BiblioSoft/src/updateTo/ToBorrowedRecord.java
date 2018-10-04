@@ -207,7 +207,7 @@ public class ToBorrowedRecord {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "select * from borrowedrecord where readerAccount=? order by barCode desc limit ?,? ";
+			String sql = "select * from borrowedrecord order by barCode desc limit ?,? ";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, start);

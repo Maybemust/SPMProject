@@ -174,7 +174,7 @@ public class ToLibrarian {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "select * from librarian order by barCode desc limit ?,? ";
+			String sql = "select * from librarian order by account desc limit ?,? ";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, start);
