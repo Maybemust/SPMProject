@@ -16,6 +16,7 @@ public class Admin {
 	private int reservedMaxinum;
 	private int resercedTime;
 	private int fineTime;
+	private double cash;
 	
 	
 	/**
@@ -34,7 +35,7 @@ public class Admin {
 	 * @param fineTime
 	 */
 	public Admin(long account, String password, double fine, int borrowedMaxinum, int reservedMaxinum,
-			int resercedTime, int fineTime) {
+			int resercedTime, int fineTime, double cash) {
 		super();
 		this.account = account;
 		this.password = password;
@@ -43,6 +44,7 @@ public class Admin {
 		this.reservedMaxinum = reservedMaxinum;
 		this.resercedTime = resercedTime;
 		this.fineTime = fineTime;
+		this.cash = cash;
 	}
 	/**
 	 * @return the account
@@ -86,6 +88,12 @@ public class Admin {
 	public int getBorrowedMaxinum() {
 		return borrowedMaxinum;
 	}
+	public double getCash(){
+		return cash;
+	}
+	public void setCash(double c){
+		this.cash = c;
+	}
 	/**
 	 * @param borrowedMaxinum the borrowedMaxinum to set
 	 */
@@ -128,6 +136,7 @@ public class Admin {
 	public void setFineTime(int fineTime) {
 		this.fineTime = fineTime;
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

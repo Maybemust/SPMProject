@@ -74,9 +74,9 @@ public class ToLibrarian {
 			
 			ps.execute();
 
-			ResultSet rs = ps.getGeneratedKeys();
+			//ResultSet rs = ps.getGeneratedKeys();
 
-			DBhelper.closeConnection(c, ps, rs);
+			DBhelper.closeConnection(c, ps, null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +97,7 @@ public class ToLibrarian {
 			
 			ps.setLong(3, librarian.getAccount());
 			ps.setString(1, librarian.getPassword());
-			ps.setInt(3,librarian.getTag());
+			ps.setInt(2,librarian.getTag());
 
 			ps.execute();
 
@@ -147,8 +147,8 @@ public class ToLibrarian {
 				librarian.setAccount(rs.getLong("account"));
 				librarian.setPassword(rs.getString("password"));
 				librarian.setTag(rs.getInt("tag"));
-				
-				
+			}else{
+				return null;
 			}
 
 			DBhelper.closeConnection(c, s, rs);
