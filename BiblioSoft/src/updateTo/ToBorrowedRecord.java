@@ -266,4 +266,35 @@ public class ToBorrowedRecord {
 		}
 		return records;
 	}
+	/*
+	 * by �Ԫ
+	 */
+	public static List<Long> reducelist(int start, int count, String readerAccount) {
+		List<Long> dates = new ArrayList<Long>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from borrowedrecord where readerAccount=? order by barCode desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setString(1, readerAccount);
+			ps.setInt(2, start);
+			ps.setInt(3, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				long date=0;
+				date=(rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())
+						/(24*60*60*1000);
+				dates.add(date);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dates;
+	}
 }

@@ -28,17 +28,17 @@ public class ReaderServlet  extends HttpServlet{
 		}
 		
 		count=ToReservedRecord.getTotalByAccount(account);
-		List<ReservedRecord> myorders =new ToReservedRecord().listByReaderAccount(start, count, account);
+		List<ReservedRecord> myorders =ToReservedRecord.listByReaderAccount(start, count, account);
 		System.out.println(myorders);
 		request.setAttribute("myorders", myorders);
 		
-		Reader reader = new ToReader().getByAccount(account,"123");
-		Book book = new ToBook().getByBarCode("123");
+		Reader reader = ToReader.getByAccount(account,"123");
+		Book book = ToBook.getByBarCode("123");
 		request.setAttribute("reader", reader);
 		
 		count=ToBorrowedRecord.getTotal();
 		List<BorrowedRecord> borrowedRecord = ToBorrowedRecord.listByReaderAccount(start, count, account);
-		List<Long> date=new ToBorrowedRecord().reducelist(start, count, account);
+		List<Long> date=ToBorrowedRecord.reducelist(start, count, account);
 
 		
 		List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
