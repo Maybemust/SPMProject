@@ -184,8 +184,8 @@ public class ToBook {
 				book.setBarCode(barCode);
 				book.setAuthor(rs.getString("author"));
 				book.setISBN(rs.getString("ISBN"));
-				book.setPublishing("publishing");
-				book.setLocation("location");
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
 				book.setCover(rs.getBlob("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
@@ -231,8 +231,8 @@ public class ToBook {
 				book.setBarCode(rs.getString("barCode"));
 				book.setAuthor(rs.getString("author"));
 				book.setISBN(rs.getString("ISBN"));
-				book.setPublishing("publishing");
-				book.setLocation("location");
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
 				book.setCover(rs.getBlob("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
