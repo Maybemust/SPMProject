@@ -93,13 +93,14 @@ public class ToBook {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into book(barCode,ISBN,author,publishing,location,status) values(?,?,?,?,?,0)";
+			String sql = "insert into book(barCode,bookName,ISBN,author,publishing,location,status) values(?,?,?,?,?,?,0)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, book.getBarCode());
-			ps.setString(2, book.getISBN());
-			ps.setString(3, book.getAuthor());
-			ps.setString(4, book.getPublishing());
-			ps.setString(5, book.getLocation());
+			ps.setString(2,book.getBookName());
+			ps.setString(3, book.getISBN());
+			ps.setString(4, book.getAuthor());
+			ps.setString(5, book.getPublishing());
+			ps.setString(6, book.getLocation());
 			
 			ps.execute();
 
@@ -120,21 +121,23 @@ public class ToBook {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "update book set ISBN= ?, author = ? , publishing = ? , location=?,cover=?,introduction=?, status=?, dateOfStorage=?, tag1=?, tag2=? where barCode = ?";
+			String sql = "update book set bookName=?, ISBN= ?, author = ? , publishing = ? , location=?,cover=?,introduction=?, status=?, dateOfStorage=?, tag1=?, tag2=?, price=? where barCode = ?";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(11, book.getBarCode());
-			ps.setString(1, book.getISBN());
-			ps.setString(2, book.getAuthor());
-			ps.setString(3, book.getPublishing());
-			ps.setString(4, book.getLocation());
-			ps.setBlob(5,book.getCover());
-			ps.setString(6, book.getIntroduction());
-			ps.setInt(7, book.getStatus());
-			ps.setDate(8, book.getDateOfStorage());
-			ps.setString(9, book.getTag1());
-			ps.setString(10, book.getTag2());
+			ps.setString(13, book.getBarCode());
+			ps.setString(1,book.getBookName());
+			ps.setString(2, book.getISBN());
+			ps.setString(3, book.getAuthor());
+			ps.setString(4, book.getPublishing());
+			ps.setString(5, book.getLocation());
+			ps.setBlob(6,book.getCover());
+			ps.setString(7, book.getIntroduction());
+			ps.setInt(8, book.getStatus());
+			ps.setDate(9, book.getDateOfStorage());
+			ps.setString(10, book.getTag1());
+			ps.setString(11, book.getTag2());
+			ps.setDouble(12, book.getPrice());
 
 			ps.execute();
 
@@ -182,6 +185,7 @@ public class ToBook {
 
 			if (rs.next()) {
 				book.setBarCode(barCode);
+				book.setBookName(rs.getString("bookName"));
 				book.setAuthor(rs.getString("author"));
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
@@ -192,6 +196,7 @@ public class ToBook {
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
 				book.setTag1(rs.getString("tag1"));
 				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
 				
 			}
 
@@ -229,6 +234,7 @@ public class ToBook {
 			while (rs.next()) {
 				Book book = new Book();
 				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
 				book.setAuthor(rs.getString("author"));
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
@@ -239,6 +245,7 @@ public class ToBook {
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
 				book.setTag1(rs.getString("tag1"));
 				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
 				books.add(book);
 			}
 			DBhelper.closeConnection(c, ps, rs);

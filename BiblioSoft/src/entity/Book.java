@@ -15,6 +15,7 @@ public class Book {
 
 	
 	private String barCode;
+	private String bookName;
 	private String ISBN;
 	private String author;
 	private String publishing;
@@ -25,7 +26,7 @@ public class Book {
 	private Date dateOfStorage;
 	private String tag1;
 	private String tag2;
-	
+	private double price;
 	
 	
 	
@@ -52,6 +53,22 @@ public class Book {
 	/**
 	 * @param barCode
 	 * @param iSBN
+	 * @param bookName
+	 * @param author
+	 * @param publishing
+	 */
+	public Book(String barCode,String bookname, String iSBN, String author, String publishing) {
+		super();
+		this.barCode = barCode;
+		this.bookName=bookname;
+		ISBN = iSBN;
+		this.author = author;
+		this.publishing = publishing;
+	}
+	/**
+	 * @param barCode
+	 * @param bookName
+	 * @param iSBN
 	 * @param author
 	 * @param publishing
 	 * @param location
@@ -61,11 +78,13 @@ public class Book {
 	 * @param dateOfStorage
 	 * @param tag1
 	 * @param tag2
+	 * @param price
 	 */
-	public Book(String barCode, String iSBN, String author, String publishing, String location, Blob cover,
-			String introduction, int status, Date dateOfStorage, String tag1, String tag2) {
+	public Book(String barCode, String bookName,String iSBN, String author, String publishing, String location, Blob cover,
+			String introduction, int status, Date dateOfStorage, String tag1, String tag2,double price) {
 		super();
 		this.barCode = barCode;
+		this.bookName=bookName;
 		ISBN = iSBN;
 		this.author = author;
 		this.publishing = publishing;
@@ -76,6 +95,7 @@ public class Book {
 		this.dateOfStorage = dateOfStorage;
 		this.tag1 = tag1;
 		this.tag2 = tag2;
+		this.price=price;
 	}
 	/**
 	 * @return the barCode
@@ -209,15 +229,44 @@ public class Book {
 	public void setTag2(String tag2) {
 		this.tag2 = tag2;
 	}
+	
+	/**
+	 * @return the bookName
+	 */
+	public String getBookName() {
+		return bookName;
+	}
+	/**
+	 * @param bookName the bookName to set
+	 */
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	
+	/**
+	 * @return the price
+	 */
+	public double getPrice() {
+		return price;
+	}
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Book [barCode=" + barCode + ", ISBN=" + ISBN + ", author=" + author + ", publishing=" + publishing
-				+ ", location=" + location + ", cover=" + cover + ", introduction=" + introduction + ", status="
-				+ status + ", dateOfStorage=" + dateOfStorage + ", tag1=" + tag1 + ", tag2=" + tag2 + "]";
+		return "Book [barCode=" + barCode + ", bookName=" + bookName + ", ISBN=" + ISBN + ", author=" + author
+				+ ", publishing=" + publishing + ", location=" + location + ", cover=" + cover + ", introduction="
+				+ introduction + ", status=" + status + ", dateOfStorage=" + dateOfStorage + ", tag1=" + tag1
+				+ ", tag2=" + tag2 + ", price=" + price + "]";
 	}
+	
+	
 	
 	
 	

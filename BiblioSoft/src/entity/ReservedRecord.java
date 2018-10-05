@@ -12,6 +12,7 @@ import java.sql.Date;
 public class ReservedRecord {
 
 	private String rRID;
+	private String bookName;
 	private Date time;
 	private String readerAccount;
 	private String barCode;
@@ -32,6 +33,19 @@ public class ReservedRecord {
 	 */
 	public ReservedRecord(Date time, String readerAccount, String barCode) {
 		super();
+		this.time = time;
+		this.readerAccount = readerAccount;
+		this.barCode = barCode;
+	}
+	/**
+	 * @param bookName
+	 * @param time
+	 * @param readerAccount
+	 * @param barCode
+	 */
+	public ReservedRecord(String bookName,Date time, String readerAccount, String barCode) {
+		super();
+		this.bookName=bookName;
 		this.time = time;
 		this.readerAccount = readerAccount;
 		this.barCode = barCode;
@@ -84,14 +98,28 @@ public class ReservedRecord {
 	public void setBarCode(String barCode) {
 		this.barCode = barCode;
 	}
+	
+	/**
+	 * @return the bookName
+	 */
+	public String getBookName() {
+		return bookName;
+	}
+	/**
+	 * @param bookName the bookName to set
+	 */
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "ReservedRecord [rRID=" + rRID + ", time=" + time + ", readerAccount=" + readerAccount + ", barCode="
-				+ barCode + "]";
+		return "ReservedRecord [rRID=" + rRID + ", bookName=" + bookName + ", time=" + time + ", readerAccount="
+				+ readerAccount + ", barCode=" + barCode + "]";
 	}
+	
 	
 	
 	
