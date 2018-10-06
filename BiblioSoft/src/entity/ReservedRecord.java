@@ -11,7 +11,7 @@ import java.sql.Date;
  */
 public class ReservedRecord {
 
-	private String rRID;
+	private long rRID;
 	private String bookName;
 	private Date time;
 	private String readerAccount;
@@ -53,13 +53,13 @@ public class ReservedRecord {
 	/**
 	 * @return the rRID
 	 */
-	public String getrRID() {
+	public long getrRID() {
 		return rRID;
 	}
 	/**
 	 * @param rRID the rRID to set
 	 */
-	public void setrRID(String rRID) {
+	public void setrRID(long rRID) {
 		this.rRID = rRID;
 	}
 	/**

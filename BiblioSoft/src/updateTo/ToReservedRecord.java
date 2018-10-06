@@ -93,7 +93,7 @@ public class ToReservedRecord {
 			String sql = "insert into reservedrecord(bRID,bookName,time,readerAccount,barCode) values(?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(1, record.getrRID());
+			ps.setLong(1, record.getrRID());
 			ps.setString(2, record.getBookName());
 			ps.setDate(3, record.getTime());
 			ps.setString(4, record.getReaderAccount());
@@ -122,7 +122,7 @@ public class ToReservedRecord {
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(5, record.getrRID());
+			ps.setLong(5, record.getrRID());
 			ps.setString(1, record.getBookName());
 			ps.setDate(2, record.getTime());
 			ps.setString(3, record.getReaderAccount());
@@ -175,7 +175,7 @@ public class ToReservedRecord {
 			if (rs.next()) {
 				
 				record.setBarCode(rs.getString("barCode"));
-				record.setrRID(rs.getString("rRID"));
+				record.setrRID(rs.getLong("rRID"));
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setTime(rs.getDate("time"));
@@ -215,7 +215,7 @@ public class ToReservedRecord {
 			while (rs.next()) {
 				ReservedRecord record = new ReservedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setrRID(rs.getString("rRID"));
+				record.setrRID(rs.getLong("rRID"));
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setTime(rs.getDate("time"));
@@ -249,7 +249,7 @@ public class ToReservedRecord {
 			while (rs.next()) {
 				ReservedRecord record = new ReservedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setrRID(rs.getString("rRID"));
+				record.setrRID(rs.getLong("rRID"));
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setTime(rs.getDate("time"));

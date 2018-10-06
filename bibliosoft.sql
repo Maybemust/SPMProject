@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-06 00:44:30
+Date: 2018-10-06 09:53:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,7 +66,7 @@ CREATE TABLE `book` (
 -- ----------------------------
 DROP TABLE IF EXISTS `borrowedrecord`;
 CREATE TABLE `borrowedrecord` (
-  `bRID` varchar(14) NOT NULL,
+  `bRID` int(14) NOT NULL,
   `barCode` varchar(20) NOT NULL,
   `bookName` varchar(20) NOT NULL,
   `readerAccount` varchar(15) NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE `reader` (
 -- ----------------------------
 DROP TABLE IF EXISTS `reservedrecord`;
 CREATE TABLE `reservedrecord` (
-  `rRID` varchar(14) NOT NULL,
+  `rRID` int(14) NOT NULL,
   `bookName` varchar(20) NOT NULL,
   `time` date NOT NULL,
   `readerAccount` varchar(15) NOT NULL,

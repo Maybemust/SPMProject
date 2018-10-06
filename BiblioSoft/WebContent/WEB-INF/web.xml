@@ -42,4 +42,12 @@
     <servlet-name>admin2</servlet-name>
     <url-pattern>/admin2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>borrowBook</servlet-name>
+    <servlet-class>servlet.borrowBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>borrowBook</servlet-name>
+    <url-pattern>/borrowBook</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -11,7 +11,7 @@ import java.sql.Date;
  */
 public class BorrowedRecord {
 	
-	private String bRID;
+	private long bRID;
 	private String barCode;
 	private String bookName;
 	private String readerAccount;
@@ -36,7 +36,7 @@ public class BorrowedRecord {
 	 * @param readerAccount
 	 * @param fine
 	 */
-	public BorrowedRecord(String bRID, String barCode, String readerAccount, double fine) {
+	public BorrowedRecord(long bRID, String barCode, String readerAccount, double fine) {
 		super();
 		this.bRID = bRID;
 		this.barCode = barCode;
@@ -50,7 +50,7 @@ public class BorrowedRecord {
 	 * @param readerAccount
 	 * @param fine
 	 */
-	public BorrowedRecord(String bRID, String bookName, String barCode, String readerAccount, double fine) {
+	public BorrowedRecord(long bRID, String bookName, String barCode, String readerAccount, double fine) {
 		super();
 		this.bRID = bRID;
 		this.barCode = barCode;
@@ -67,7 +67,7 @@ public class BorrowedRecord {
 	 * @param returnedDate
 	 * @param fine
 	 */
-	public BorrowedRecord(String bRID, String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
+	public BorrowedRecord(long bRID, String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
 			double fine) {
 		super();
 		this.bRID = bRID;
@@ -81,13 +81,13 @@ public class BorrowedRecord {
 	/**
 	 * @return the bRID
 	 */
-	public String getbRID() {
+	public long getbRID() {
 		return bRID;
 	}
 	/**
 	 * @param bRID the bRID to set
 	 */
-	public void setbRID(String bRID) {
+	public void setbRID(long bRID) {
 		this.bRID = bRID;
 	}
 	/**

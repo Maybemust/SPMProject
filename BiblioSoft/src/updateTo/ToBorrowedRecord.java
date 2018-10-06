@@ -93,7 +93,7 @@ public class ToBorrowedRecord {
 			String sql = "insert into borrowedrecord(bRID,barCode,bookName,readerAccount,boeeowedDate,returnedDate,fine) values(?,?,?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(1, record.getbRID());
+			ps.setLong(1, record.getbRID());
 			ps.setString(2, record.getBarCode());
 			ps.setString(3, record.getBookName());
 			ps.setString(4, record.getReaderAccount());
@@ -124,7 +124,7 @@ public class ToBorrowedRecord {
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(7, record.getbRID());
+			ps.setLong(7, record.getbRID());
 			ps.setString(1, record.getBarCode());
 			ps.setString(2, record.getBookName());
 			ps.setString(3, record.getReaderAccount());
@@ -179,7 +179,7 @@ public class ToBorrowedRecord {
 			if (rs.next()) {
 				
 				record.setBarCode(rs.getString("barCode"));
-				record.setbRID(rs.getString("bRID"));
+				record.setbRID(rs.getLong("bRID"));
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
@@ -221,7 +221,7 @@ public class ToBorrowedRecord {
 			while (rs.next()) {
 				BorrowedRecord record = new BorrowedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setbRID(rs.getString("bRID"));
+				record.setbRID(rs.getLong("bRID"));
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
@@ -257,7 +257,7 @@ public class ToBorrowedRecord {
 			while (rs.next()) {
 				BorrowedRecord record = new BorrowedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setbRID(rs.getString("bRID"));
+				record.setbRID(rs.getLong("bRID"));
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
