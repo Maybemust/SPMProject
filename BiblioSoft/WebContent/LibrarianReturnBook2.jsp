@@ -12,7 +12,7 @@
 	  <script src="js/jquery.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
-    <title>Biblio -borrow books </title>
+    <title>Biblio -return books </title>
     <!-- Bootstrap -->
     <link href="./css/bootstrap-4.0.0.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
 	  	  <div class="row" style="padding-left: 1%">
 		  
 		  	<!--div class="col-md-2 "  style="background:#06246B;color:aliceblue"-->
-		  <div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
+		 <div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
 		<div class="panel panel-default">
   <div class="panel-heading">
 	  <br>
@@ -160,7 +160,7 @@
 		  
 	 <div class="panel panel-primary">
 		  <div class="panel-heading">
-	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Borrow Book</a></h3>
+	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Return Book</a></h3>
 		 </div>
 	  <div align="center" style="background-color: aliceblue">
 		  		      
@@ -176,91 +176,21 @@
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
 	<span class="glyphicon glyphicon-menu-right" ></span>
 </div-->
-
-			  <div>
-				  <row>
-				  <form method="post" action="borrowBook" id="borrowbook">
-
-					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Book ID :</div>
-					  <input  name="barCode" type="text" class="form-control" placeholder="Input Book Id" aria-describedby="sizing-addon1">
-					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Borrower ID :</div>
-					  <input  name="useraccount" type="text" class="form-control" placeholder="Input UserAccount" aria-describedby="sizing-addon1">
-
-				  	<br>
-					    <button type="button" class=" btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >OK</button>
-
-					  <hr>
-					  	</form>
-					  	
-								</a>
-								
-									<script>
-		function borrowbook2(){
-			print("aegwgrg==============================================");
+	<script>
+		function borrowbook(){
 			document.getElementById("borrowbook").submit();
 		}
 	</script>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
-      </div>
-      
-      <div class="modal-body">
-      Are you sure you want to submmit and save?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="borrowbook2()">Save now</button>
-      </div>
-    </div>
-  </div>
-</div>
- <c:if test="${borrowBook.getStatus() == 2}">
-      <div class="modal-body">
-        <h4 style = "color:#002A5A">This book has already been borrowed!!</h4>
-        
-        
-      </div>
-</c:if>
-		
-		        
-       <c:if test="${ifExist == 0}">
-             <div class="modal-body">
-        <h4 style = "color:#002A5A">Cannot find this book!</h4>
-        
-      </div>
-        </c:if>
-        
-		 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
-      </div>
-      
-      <div class="modal-body">
-      <c:if test="${borrowBook.getStatus() == 2}">
-        Submmit Successfully!
-        </c:if>
-
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="borrowbook()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-			  
-				  </row>
+			  <br>
+			  <br>
+			  <div>
+				  <h4 class="panel-title" align="center" style = "font-size: 20px;color:#191D30;padpadding-left: 20px">
+					  Submmit successfully!</h4>
 			  </div>
-			  
+			  <row>
+			  	<a href="./LibrarianReturnBook.jsp" style="color:#EFA445;float:right;font-size: 24;padding-right:2%" >return</a>
+			  </row>
+
 	  </div>
 		  <!--img src="./imgs/bg1.JPG" style =" width:95%;"-->
 	  <hr>
@@ -284,10 +214,10 @@
           </div>
        </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/popper.min.js"></script>
-    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/bootstrap-4.0.0.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.0.0.js"></script>
   </body>
 </html>

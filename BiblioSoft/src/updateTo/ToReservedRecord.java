@@ -90,14 +90,13 @@ public class ToReservedRecord {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into reservedrecord(bRID,bookName,time,readerAccount,barCode) values(?,?,?,?,?)";
+			String sql = "insert into reservedrecord(bRID,time,readerAccount,barCode) values(?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setLong(1, record.getrRID());
-			ps.setString(2, record.getBookName());
-			ps.setDate(3, record.getTime());
-			ps.setString(4, record.getReaderAccount());
-			ps.setString(5, record.getBarCode());
+			ps.setString(1, record.getrRID());
+			ps.setDate(2, record.getTime());
+			ps.setString(3, record.getReaderAccount());
+			ps.setString(4, record.getBarCode());
 			
 			ps.execute();
 
@@ -118,15 +117,14 @@ public class ToReservedRecord {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "update book set bookName=?, time= ?, readerAccount = ? ,barCode=? where rRID = ?";
+			String sql = "update book set time= ?, readerAccount = ? ,barCode=? where rRID = ?";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setLong(5, record.getrRID());
-			ps.setString(1, record.getBookName());
-			ps.setDate(2, record.getTime());
-			ps.setString(3, record.getReaderAccount());
-			ps.setString(4, record.getBarCode());
+			ps.setString(4, record.getrRID());
+			ps.setDate(1, record.getTime());
+			ps.setString(2, record.getReaderAccount());
+			ps.setString(3, record.getBarCode());
 
 			ps.execute();
 
@@ -175,8 +173,7 @@ public class ToReservedRecord {
 			if (rs.next()) {
 				
 				record.setBarCode(rs.getString("barCode"));
-				record.setrRID(rs.getLong("rRID"));
-				record.setBookName(rs.getString("bookName"));
+				record.setrRID(rs.getString("rRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setTime(rs.getDate("time"));
 			}
@@ -215,8 +212,7 @@ public class ToReservedRecord {
 			while (rs.next()) {
 				ReservedRecord record = new ReservedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setrRID(rs.getLong("rRID"));
-				record.setBookName(rs.getString("bookName"));
+				record.setrRID(rs.getString("rRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setTime(rs.getDate("time"));
 				records.add(record);
@@ -249,8 +245,7 @@ public class ToReservedRecord {
 			while (rs.next()) {
 				ReservedRecord record = new ReservedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setrRID(rs.getLong("rRID"));
-				record.setBookName(rs.getString("bookName"));
+				record.setrRID(rs.getString("rRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setTime(rs.getDate("time"));
 				records.add(record);

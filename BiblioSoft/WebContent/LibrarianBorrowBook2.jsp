@@ -23,7 +23,7 @@
 	  	  <div class="row" style="padding-left: 1%">
 		  
 		  	<!--div class="col-md-2 "  style="background:#06246B;color:aliceblue"-->
-		  <div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
+		<div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
 		<div class="panel panel-default">
   <div class="panel-heading">
 	  <br>
@@ -44,10 +44,12 @@
 </div>
 				<hr>
 <div id="left" class="left">
-                    <div class="menu-title">Book Management</div>
-                    <div class="menu-item" href="#one" data-toggle="tab"> 
-                         <a href="#one" style = "">－Add Book</a>
-                    </div> 
+                    <div class="menu-title"><a href="bookList" target="mainFrame" style = "color:#F0F8FF" >Book Management</a></div>
+                    
+                    <div class="menu-item" href="#one" > 
+                 <a href="bookadd.jsp" target="mainFrame"  style = "color:#F0F8FF">－Add Book</a>
+                    </div>
+                    
                     <div class="menu-item" href="#two" data-toggle="tab">
                          －Delete Book
                     </div>
@@ -55,10 +57,12 @@
                          －Modify Book
                     </div>
 	<hr>
-                    <div class="menu-title">Reader Management</div>
-                    <div class="menu-item" href="#three" data-toggle="tab">
-                         －Add Reader
+                    <div class="menu-title"><a href="readerList" target="mainFrame" style = "color:#F0F8FF" >Reader Management</a></div>
+                    
+                    <div class="menu-item" href="#three" >
+      <a href="readeradd.jsp" target="mainFrame" style = "color:#F0F8FF">－Add Reader</a>
                     </div>
+                    
                     <div class="menu-item" href="#four" data-toggle="tab">
                          －Delete Reader
                     </div> 
@@ -74,11 +78,12 @@
                 </div>
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
-                    <div class="menu-item" href="#three" data-toggle="tab">
-                         －Borrow Book
+                    <div class="menu-item" href="#three" >
+                         <a href="LibrarianBorrowBook.jsp" style = "color:#F0F8FF">－Borrow Book</a>
                     </div>
-                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Return Book
+                    
+                    <div class="menu-item" href="#four" >
+                        <a href="LibrarianReturnBook.jsp" style = "color:#F0F8FF">－Return Book</a>
                     </div> 
 				<br>
 </div>

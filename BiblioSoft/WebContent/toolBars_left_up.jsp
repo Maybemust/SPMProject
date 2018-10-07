@@ -18,78 +18,86 @@
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script>
+	
+	  
+	  
 	  
 	  
 	  	  <div class="row" style="padding-left: 1%">
-		  
-		  	<!--div class="col-md-2 "  style="background:#06246B;color:aliceblue"-->
-		  <div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
-		<div class="panel panel-default">
-  <div class="panel-heading">
-	  <br>
-	  <div align="center" style="background-color: aliceblue">
+			  
+<!--------------------------------------------下方是左边导航条代码-------------------------------------------------------->
+	  <div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
 		  <br>
+		<div class="panel panel-default">
+  <div class="panel-heading" style="background-color: aliceblue">
+	  	  <div align="center" style="background-color: aliceblue">
+			  
 		  <img src="./imgs/libraianProfile1.JPG"  height="100px" style ="float: inherit">
+			    </div>
+
 	  <hr>
 		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>User_Name</a></h3>
 
-	  
 	  <br>
 	  <p align="center" style = "font-size: 16px;color:#191D30">Biblo's librarian in Company</p></div>
-  </div>
-  <!--div class="panel-body">
-        <a href="#" style="font-weight:bold; color:#BCBCBC; float:right;padding-right: 10px">发帖数目</a>
-		<a href="#" style="color:#C8C8C8;padding-right: 10px" ></a>
-  </div-->
+
 </div>
 				<hr>
 <div id="left" class="left">
-                    <div class="menu-title"><a href="bookList" target="mainFrame" style = "color:#F0F8FF" >Book Management</a></div>
-                    
-                    <div class="menu-item" href="#one" > 
-                 <a href="bookadd.jsp" target="mainFrame"  style = "color:#F0F8FF">－Add Book</a>
-                    </div>
-                    
+                    <div class="menu-title">Book Management</div>
+                    <div class="menu-item" href="#one" data-toggle="tab"> 
+                         <a href="#one" style = "color:#F0F8FF">－Add Book</a>
+                    </div> 
                     <div class="menu-item" href="#two" data-toggle="tab">
-                         －Delete Book
+                         <a href="#one" style = "color:#F0F8FF">－Delete Book</a>
                     </div>
 					<div class="menu-item" href="#test" data-toggle="tab">
-                         －Modify Book
+                         <a href="#one" style = "color:#F0F8FF">－Modify Book</a>
                     </div>
 	<hr>
-                    <div class="menu-title"><a href="readerList" target="mainFrame" style = "color:#F0F8FF" >Reader Management</a></div>
-                    
-                    <div class="menu-item" href="#three" >
-      <a href="readeradd.jsp" target="mainFrame" style = "color:#F0F8FF">－Add Reader</a>
+                    <div class="menu-title">Reader Management</div>
+                    <div class="menu-item" href="#three" data-toggle="tab">
+                         <a href="#one" style = "color:#F0F8FF">－Add Reader</a>
                     </div>
-                    
                     <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                         <a href="#one" style = "color:#F0F8FF">－Delete Reader</a>
                     </div> 
 					<div class="menu-item" href="#four" data-toggle="tab">
-                         －Modify Reader
+                         <a href="#one" style = "color:#F0F8FF">－Modify Reader</a>
                     </div>
 	                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                         <a href="#one" style = "color:#F0F8FF">－Delete Reader</a>
                     </div>
 	                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                         <a href="#one" style = "color:#F0F8FF">－Delete Reader</a>
                     </div>
                 </div>
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
-                    <div class="menu-item" href="#three" >
-                         <a href="LibrarianBorrowBook.jsp" style = "color:#F0F8FF">－Borrow Book</a>
+                    <div class="menu-item" href="#three" data-toggle="tab">
+                         <a href="#one" style = "color:#F0F8FF">－Borrow Book</a>
                     </div>
-                    
-                    <div class="menu-item" href="#four" >
-                        <a href="LibrarianReturnBook.jsp" style = "color:#F0F8FF">－Return Book</a>
+                    <div class="menu-item" href="#four" data-toggle="tab">
+                         <a href="#one" style = "color:#F0F8FF">－Return Book</a>
                     </div> 
 				<br>
-</div>
+			  </div>
+<!----------------------------------------------------------------------------------------------------------------->
+			  
+			  
+			  
+			  
+			  
 		  
-		  
+			  
+<!-----------------------------------------------下方是右边栏目的代码------------------------------------------------->
     <div class="text-center col-md-10" style= "background-color: aliceblue">
+		
+<!---------------------------------------------------上方导航条代码开始---------------------------------------------->
 		<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: #002A5A;height: 10%">
        <a class="navbar-brand" href="#">Biblo</a>
 		     <ul class="nav navbar-nav">
@@ -140,42 +148,19 @@
       </ul>
        </div>
     </nav>
-      <!--div class="well" style= "width:700;background-color: aliceblue"><strong--> 
+		
+<!----------------------------------------------------------------------------------------------------------------->
+		
 
-		  <!--div class="panel panel-default">
-  <div class="panel-heading">Panel heading without title</div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div-->
-
-<!--div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
-  </div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div-->
-		  
+<!------------------------------------------这里是一个面板放比如说你这个功能是借书，就放borrow book的模块进去---------->
 	 <div class="panel panel-primary">
 		  <div class="panel-heading">
 	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Borrow Book</a></h3>
 		 </div>
 	  <div align="center" style="background-color: aliceblue">
 		  		      
-		  <div class="panel-body" style="">
-			  
-			  <!--div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon1">Book ID</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-	<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-</div>
-			  <div class="input-group">
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-	<span class="glyphicon glyphicon-menu-right" ></span>
-</div-->
+		  <div class="panel-body" style="">	  
+<!---------------------------------------------------------------------------------------------------------->
 
 			  <div>
 				  <row>
@@ -194,12 +179,9 @@
 					  	
 								</a>
 								
-									<script>
-		function borrowbook2(){
-			print("aegwgrg==============================================");
-			document.getElementById("borrowbook").submit();
-		}
-	</script>
+				  
+				  
+<!-------------------------下方是一个弹窗--点击ok按钮就会蹦出来可以自己修改弹窗上面的字------------------------->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -213,68 +195,98 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="borrowbook2()">Save now</button>
+        <button type="button" class="btn btn-primary" onclick="borrowbook()">Save now</button>
       </div>
     </div>
   </div>
 </div>
- <c:if test="${borrowBook.getStatus() == 2}">
-      <div class="modal-body">
-        <h4 style = "color:#002A5A">This book has already been borrowed!!</h4>
-        
-        
-      </div>
-</c:if>
-		
-		        
-       <c:if test="${ifExist == 0}">
-             <div class="modal-body">
-        <h4 style = "color:#002A5A">Cannot find this book!</h4>
-        
-      </div>
-        </c:if>
+<!----------------------------------------------------------------------------------------------->
         
 		 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
-      </div>
-      
-      <div class="modal-body">
-      <c:if test="${borrowBook.getStatus() == 2}">
-        Submmit Successfully!
-        </c:if>
+		 
+		 		
+      <div class="well" style= "width:700;background-color: aliceblue"> 
 
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="borrowbook()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-			  
+<!------------------------------这里放入自己的代码----------------------------------------------->
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  				  代码段1
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+<!------------------------------------------------------------------------------------------------------->		
+</div>			  
 				  </row>
 			  </div>
 			  
+			  
 	  </div>
-		  <!--img src="./imgs/bg1.JPG" style =" width:95%;"-->
 	  <hr>
 	  <br>
 	 </div>
-  </div>		  
-		  <script src="js/jquery-1.11.3.min.js"></script>
 
+
+  </div>		  
+ <div class="well" style= "width:700;background-color: aliceblue"> 
+
+<!------------------------------这里也可以放入自己的代码--会出现在面板外面--------------------------------------------->
+				  
+				  
+				  代码段2
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+<!------------------------------------------------------------------------------------------------------->		
+</div>				  
+		  
+<!---------------------------------右边栏目结束---------------------------------------------------------------------->			  
+ <script src="js/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
 	
     </div>
 		  </div>
 		  
+	
+	
+	
+<!---------------------------------------------下方是页脚---------------------------------------------------------->			  
+
    <br>
        <hr>
        <div class="row">
@@ -283,11 +295,7 @@
              <p>Our website is willing to provide help for book management for users.<br><a href="#" >SPM A3's Website</a></p>
           </div>
        </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/jquery-3.2.1.min.js"></script>
+<!-------------------------------------------------------------------------------------------------------------->			  
 
-    <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/popper.min.js"></script>
-    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/bootstrap-4.0.0.js"></script>
   </body>
 </html>

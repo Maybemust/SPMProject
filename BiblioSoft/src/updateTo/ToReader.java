@@ -65,8 +65,7 @@ public class ToReader {
 			String sql = "insert into reader(account,password,email,phone,fine,borrowedNum,cashPledge,tag) values(?,?,?,?,0,0,?,0)";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
-			System.out.println("pk");
-			System.out.println(reader.toString());
+
 			ps.setString(1, reader.getAccount());
 			ps.setString(2, reader.getPassword());
 			ps.setString(3, reader.getEmail());
@@ -88,6 +87,7 @@ public class ToReader {
 	/*
 	 * 更新reader的信息
 	 */
+	
 	public static void update(Reader reader) {
 		try {
 
@@ -137,7 +137,7 @@ public class ToReader {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*
 	 * 通过account以及password查找reader
 	 */

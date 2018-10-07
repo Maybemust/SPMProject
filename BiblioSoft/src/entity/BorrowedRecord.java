@@ -11,14 +11,13 @@ import java.sql.Date;
  */
 public class BorrowedRecord {
 	
-	private long bRID;
+	private int bRID;
 	private String barCode;
-	private String bookName;
 	private String readerAccount;
 	private Date borrowedDate;
 	private Date returnedDate;
 	private double fine;
-	
+	private String bookName;
 	
 	
 	
@@ -36,7 +35,7 @@ public class BorrowedRecord {
 	 * @param readerAccount
 	 * @param fine
 	 */
-	public BorrowedRecord(long bRID, String barCode, String readerAccount, double fine) {
+	public BorrowedRecord(int bRID, String barCode, String readerAccount, double fine) {
 		super();
 		this.bRID = bRID;
 		this.barCode = barCode;
@@ -46,33 +45,27 @@ public class BorrowedRecord {
 	/**
 	 * @param bRID
 	 * @param barCode
-	 * @param bookName
-	 * @param readerAccount
-	 * @param fine
-	 */
-	public BorrowedRecord(long bRID, String bookName, String barCode, String readerAccount, double fine) {
-		super();
-		this.bRID = bRID;
-		this.barCode = barCode;
-		this.bookName=bookName;
-		this.readerAccount = readerAccount;
-		this.fine = fine;
-	}
-	/**
-	 * @param bRID
-	 * @param barCode
-	 * @param bookName
 	 * @param readerAccount
 	 * @param borrowedDate
 	 * @param returnedDate
 	 * @param fine
 	 */
-	public BorrowedRecord(long bRID, String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
+	public BorrowedRecord(int bRID, String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
 			double fine) {
 		super();
 		this.bRID = bRID;
 		this.barCode = barCode;
-		this.bookName=bookName;
+		this.bookName = bookName;
+		this.readerAccount = readerAccount;
+		this.borrowedDate = borrowedDate;
+		this.returnedDate = returnedDate;
+		this.fine = fine;
+	}
+	public BorrowedRecord(String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
+			double fine) {
+		super();
+		this.barCode = barCode;
+		this.bookName = bookName;
 		this.readerAccount = readerAccount;
 		this.borrowedDate = borrowedDate;
 		this.returnedDate = returnedDate;
@@ -81,13 +74,13 @@ public class BorrowedRecord {
 	/**
 	 * @return the bRID
 	 */
-	public long getbRID() {
+	public int getbRID() {
 		return bRID;
 	}
 	/**
 	 * @param bRID the bRID to set
 	 */
-	public void setbRID(long bRID) {
+	public void setbRID(int bRID) {
 		this.bRID = bRID;
 	}
 	/**
@@ -150,29 +143,18 @@ public class BorrowedRecord {
 	public void setFine(double fine) {
 		this.fine = fine;
 	}
-	
-	/**
-	 * @return the bookName
-	 */
-	public String getBookName() {
-		return bookName;
-	}
-	/**
-	 * @param bookName the bookName to set
-	 */
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
-	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "BorrowedRecord [bRID=" + bRID + ", barCode=" + barCode + ", bookName=" + bookName + ", readerAccount="
-				+ readerAccount + ", borrowedDate=" + borrowedDate + ", returnedDate=" + returnedDate + ", fine=" + fine
-				+ "]";
+		return "BorrowedRecord [bRID=" + bRID + ", barCode=" + barCode + ", readerAccount=" + readerAccount
+				+ ", borrowedDate=" + borrowedDate + ", returnedDate=" + returnedDate + ", fine=" + fine + "]";
 	}
-	
+	public String getBookName() {
+		// TODO Auto-generated method stub
+		return bookName;
+	}
 	
 	
 }

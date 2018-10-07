@@ -12,7 +12,7 @@
 	  <script src="js/jquery.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
-    <title>Biblio -borrow books </title>
+    <title>Biblio -return books </title>
     <!-- Bootstrap -->
     <link href="./css/bootstrap-4.0.0.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -86,8 +86,7 @@
                         <a href="LibrarianReturnBook.jsp" style = "color:#F0F8FF">－Return Book</a>
                     </div> 
 				<br>
-</div>
-		  
+</div>		  
 		  
     <div class="text-center col-md-10" style= "background-color: aliceblue">
 		<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: #002A5A;height: 10%">
@@ -160,7 +159,7 @@
 		  
 	 <div class="panel panel-primary">
 		  <div class="panel-heading">
-	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Borrow Book</a></h3>
+	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Return Book</a></h3>
 		 </div>
 	  <div align="center" style="background-color: aliceblue">
 		  		      
@@ -179,12 +178,10 @@
 
 			  <div>
 				  <row>
-				  <form method="post" action="borrowBook" id="borrowbook">
+				  <form method="post" action="ReturnBooks" id="ReturnBooks">
 
 					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Book ID :</div>
 					  <input  name="barCode" type="text" class="form-control" placeholder="Input Book Id" aria-describedby="sizing-addon1">
-					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Borrower ID :</div>
-					  <input  name="useraccount" type="text" class="form-control" placeholder="Input UserAccount" aria-describedby="sizing-addon1">
 
 				  	<br>
 					    <button type="button" class=" btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >OK</button>
@@ -195,9 +192,9 @@
 								</a>
 								
 									<script>
-		function borrowbook2(){
+		function returnbook(){
 			print("aegwgrg==============================================");
-			document.getElementById("borrowbook").submit();
+			document.getElementById("ReturnBooks").submit();
 		}
 	</script>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
@@ -213,7 +210,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="borrowbook2()">Save now</button>
+        <button type="button" class="btn btn-primary" onclick="returnbook()">Save now</button>
       </div>
     </div>
   </div>

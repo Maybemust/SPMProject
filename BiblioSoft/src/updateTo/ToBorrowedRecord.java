@@ -90,12 +90,13 @@ public class ToBorrowedRecord {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into borrowedrecord(bRID,barCode,bookName,readerAccount,boeeowedDate,returnedDate,fine) values(?,?,?,?,?,?,?)";
+			String sql = "insert into borrowedrecord(bRID,barCode,bookName,readerAccount,borrowedDate,returnedDate,fine) values(?,?,?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
 			ps.setLong(1, record.getbRID());
 			ps.setString(2, record.getBarCode());
 			ps.setString(3, record.getBookName());
+
 			ps.setString(4, record.getReaderAccount());
 			ps.setDate(5, record.getBorrowedDate());
 			ps.setDate(6, record.getReturnedDate());
@@ -120,17 +121,16 @@ public class ToBorrowedRecord {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "update book set barCode= ?,bookName=?, readerAccount = ? , borrowedDate = ? , returnedDate=?, fine=? where bRID = ?";
+			String sql = "update borrowedrecord set barCode= ?, readerAccount = ? , borrowedDate = ? , returnedDate=?, fine=? where bRID = ?";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setLong(7, record.getbRID());
+			ps.setLong(6, record.getbRID());
 			ps.setString(1, record.getBarCode());
-			ps.setString(2, record.getBookName());
-			ps.setString(3, record.getReaderAccount());
-			ps.setDate(4, record.getBorrowedDate());
-			ps.setDate(5, record.getReturnedDate());
-			ps.setDouble(6, record.getFine());
+			ps.setString(2, record.getReaderAccount());
+			ps.setDate(3, record.getBorrowedDate());
+			ps.setDate(4, record.getReturnedDate());
+			ps.setDouble(5, record.getFine());
 
 			ps.execute();
 
@@ -164,7 +164,7 @@ public class ToBorrowedRecord {
 	/*
 	 * 通过bRID找到一条借书记录
 	 */
-	public static BorrowedRecord getBybRID(String bRID) {
+	public static BorrowedRecord getBybRID(int bRID) {
 		BorrowedRecord record = new BorrowedRecord();
 		try {
 
@@ -179,8 +179,7 @@ public class ToBorrowedRecord {
 			if (rs.next()) {
 				
 				record.setBarCode(rs.getString("barCode"));
-				record.setbRID(rs.getLong("bRID"));
-				record.setBookName(rs.getString("bookName"));
+				record.setbRID(rs.getInt("bRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
@@ -194,6 +193,41 @@ public class ToBorrowedRecord {
 		}
 		return record;
 	}
+	
+	/*
+	 * 通过barcode找到最近一条借书记录
+	 */
+	public static BorrowedRecord getByBarCode(String barcode) {
+		BorrowedRecord record = new BorrowedRecord();
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from borrowedrecord where barCode = " + "'"+barcode+"' and returnedDate is null;";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			if (rs.next()) {
+				
+				record.setBarCode(rs.getString("barCode"));
+				record.setbRID(rs.getInt("bRID"));
+				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBorrowedDate(rs.getDate("borrowedDate"));
+				record.setReturnedDate(rs.getDate("returnedDate"));
+				record.setFine(rs.getDouble("fine"));
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return record;
+	}
+	
+	
 	/*
 	 * 列出所有记录
 	 */
@@ -221,8 +255,7 @@ public class ToBorrowedRecord {
 			while (rs.next()) {
 				BorrowedRecord record = new BorrowedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setbRID(rs.getLong("bRID"));
-				record.setBookName(rs.getString("bookName"));
+				record.setbRID(rs.getInt("bRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
@@ -257,8 +290,7 @@ public class ToBorrowedRecord {
 			while (rs.next()) {
 				BorrowedRecord record = new BorrowedRecord();
 				record.setBarCode(rs.getString("barCode"));
-				record.setbRID(rs.getLong("bRID"));
-				record.setBookName(rs.getString("bookName"));
+				record.setbRID(rs.getInt("bRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));

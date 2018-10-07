@@ -210,6 +210,24 @@ public class ToBook {
 	/*
 	 * 列出所有的书
 	 */
+	public static void setStatus(String id,int i) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "update book set status= " +"'"+i+"' where barcode = '"+id+"';";
+
+			s.execute(sql);
+
+			DBhelper.closeConnection(c, s, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static List<Book> list() {
 		return list(0, Short.MAX_VALUE);
 	}
