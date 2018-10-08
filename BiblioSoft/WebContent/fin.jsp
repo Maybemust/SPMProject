@@ -53,18 +53,18 @@ body {
 	<div
 		style="width: 1000px; position: relative; left: 22.5%; bottom: 80px;">
 		<img src="images/pattern.png" style="width: 1000px; height: 150px" />
-		<img src="images/logo1.png"
+		<img src="images/logo.png"
 			style="width: 60%; height: 60%; position: relative; left: 230px; top: 40px;" />
 	</div>
 	<div
 		style="width: 1000px; height: 300px; position: relative; left: 25%;">
 		<button type="button" class="mybutton"
 			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='LibrarianFirstPage.jsp'">Librarian</button>
+			onmouseout="this.style.backgroundColor='#1a1a1a';">Librarian</button>
 		<button type="button" class="mybutton"
 			style="position: relative; left: 90px"
 			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='reader.jsp'">Reader</button>
+			onmouseout="this.style.backgroundColor='#1a1a1a';">Reader</button>
 		<button type="button" class="mybutton"
 			style="position: relative; left: 180px"
 			onmouseover="this.style.backgroundColor='#d19503';"
