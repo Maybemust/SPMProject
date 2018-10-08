@@ -32,6 +32,9 @@
 .myhr {
 	position: relative;
 	left: -40px;
+	width: 300px;
+	position: relative;
+	bottom: 20px;
 }
 
 body {
@@ -46,13 +49,26 @@ body {
 		style="width: 700px; height: 300px; position: relative; left: 35%; top: 200px">
 		<p class="myp1">Welcome to library !</p>
 		<hr class="myhr">
+	</div>
+	<div
+		style="width: 1000px; position: relative; left: 22.5%; bottom: 80px;">
+		<img src="images/pattern.png" style="width: 1000px; height: 150px" />
+		<img src="images/logo1.png"
+			style="width: 60%; height: 60%; position: relative; left: 230px; top: 40px;" />
+	</div>
+	<div
+		style="width: 1000px; height: 300px; position: relative; left: 25%;">
 		<button type="button" class="mybutton"
 			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';" onClick="location='LibrarianFirstPage.jsp'">Librarian</button>
+			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='LibrarianFirstPage.jsp'">Librarian</button>
 		<button type="button" class="mybutton"
 			style="position: relative; left: 90px"
 			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';  " onClick="location='getreader?account=diao'"    >Reader</button>
+			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='reader.jsp'">Reader</button>
+		<button type="button" class="mybutton"
+			style="position: relative; left: 180px"
+			onmouseover="this.style.backgroundColor='#d19503';"
+			onmouseout="this.style.backgroundColor='#1a1a1a';">Admin</button>
 	</div>
 </body>
 </html>

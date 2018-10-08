@@ -1,2 +1,0 @@
-# SPMProject
-library management system
