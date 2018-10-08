@@ -32,6 +32,15 @@ public class borrowBook  extends HttpServlet{
 		}catch(NumberFormatException e){
 			
 		}
+		Reader reader = new ToReader().getByAccount(account, "");
+		System.out.print("==============sssssssssssssssssssssssssssssssssssssss====================>");
+		System.out.print(reader.toString());
+		if(reader.getEmail()==null){
+			request.setAttribute("ifAccountExists",0);		
+			request.getRequestDispatcher("LibrarianBorrowBook4.jsp").forward(request, response);
+			return;
+		}
+				
 		Book book = new ToBook().getByBarCode(barcode);
 		System.out.print(book.toString());
 
@@ -43,7 +52,6 @@ public class borrowBook  extends HttpServlet{
 		}
 		System.out.print(book.toString());
 		System.out.print('\n');
-		Reader reader = new ToReader().getByAccount(account, "");
 		Date date = new Date(System.currentTimeMillis());//不同于java.util.Date
 		
 //		Date date2 = new Date(System.currentTimeMillis());//不同于java.util.Date
@@ -70,9 +78,13 @@ public class borrowBook  extends HttpServlet{
 			if(book.getStatus() == 0){//判断该书是否被预约或者借出
 				BorrowedRecord record = new BorrowedRecord(barcode,bookName,account,date,null,0.0);
 				//bRID和两个日期请自行按规则进行处理，我个人觉得数据库挺迷的，不知道该怎么写，就先这么写了
+				System.out.print("======================================================================>");
+				System.out.print(record.toString());
 				new ToBorrowedRecord().add(record);
 				new ToBook().setStatus(barcode, 2);
 				request.getRequestDispatcher("LibrarianBorrowBook3.jsp").forward(request, response);
+				System.out.print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>");
+				return;
 			}
 
 			else{
@@ -82,6 +94,6 @@ public class borrowBook  extends HttpServlet{
 		else{
 			System.out.println("用户借书超出上限，请自行处理");
 		}
-		request.getRequestDispatcher("LibrarianBorrowBook.jsp").forward(request, response);
+		request.getRequestDispatcher("LibrarianBorrowBook4.jsp").forward(request, response);
 	}
 }

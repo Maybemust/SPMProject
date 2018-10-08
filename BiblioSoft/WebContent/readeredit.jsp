@@ -148,7 +148,7 @@
 		
 		<TR>
 			<TD colspan="2" align="center" height="50px">
-			<input type="submit"  value="save" class="button" />　 
+			<input type="submit"  value="save" class="button"   />　 
 			
 			<input type="button"  value="back" class="button" onclick="window.location.href='readerList'" /></TD>
 		</TR>
@@ -179,8 +179,17 @@
     var errory1='<%=request.getParameter("error")%>';
     if(errory1=='yes')
     	{
-    	alert("未找到该读者");
+    	alert("not find reader");
     	}
+    	else
+        	if(errory=='no')
+        	{
+        	alert("successfully edit");
+        	}
+    
+    
+    
+    
     </script>
     
 </body>

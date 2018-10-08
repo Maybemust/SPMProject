@@ -109,7 +109,7 @@ function unselectAll(){
 				   <form action="readersearch" method="post" >
 				 
 				   <input name="searchaccount" type="text" size="12" />	
-				   <input  type="submit" class="right-button02" value="查 询" />
+				   <input  type="submit" class="right-button02" value="search" />
 				  </form>
 	
 		           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 

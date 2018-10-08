@@ -79,7 +79,7 @@
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
                     <div class="menu-item" href="#three" >
-                         <a href="LibrarianBorrowBook.jsp" style = "color:#F0F8FF">－Borrow Book</a>
+                         <a href="LibrarianBorrowBook4.jsp" style = "color:#F0F8FF">－Borrow Book</a>
                     </div>
                     
                     <div class="menu-item" href="#four" >
@@ -188,7 +188,7 @@
 					  Submmit successfully!</h4>
 			  </div>
 			  <row>
-			  	<a href="./LibrarianBorrowBook.jsp" style="color:#EFA445;float:right;font-size: 24;padding-right:2%" >return</a>
+			  	<a href="./LibrarianBorrowBook4.jsp" style="color:#EFA445;float:right;font-size: 24;padding-right:2%" >return</a>
 			  </row>
 
 	  </div>

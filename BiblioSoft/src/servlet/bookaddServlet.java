@@ -80,7 +80,12 @@ public class bookaddServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");	
 		request.setCharacterEncoding("utf-8"); 
 		
-	/*	private String barCode;
+	
+		
+		
+
+/*		private String barCode;
+		private String bookName;
 		private String ISBN;
 		private String author;
 		private String publishing;
@@ -90,13 +95,16 @@ public class bookaddServlet extends HttpServlet {
 		private int status;
 		private Date dateOfStorage;
 		private String tag1;
-		private String tag2;*/
+		private String tag2;
+		private double price;*/
 		
          String barCode=request.getParameter("barCode");  
+         String bookName=request.getParameter("bookName");
          String ISBN=request.getParameter("ISBN");  
          String author=request.getParameter("author"); 
          String publishing=request.getParameter("publishing"); 
          String location=request.getParameter("location"); 
+         
          
         
         
@@ -115,16 +123,20 @@ public class bookaddServlet extends HttpServlet {
          book.setAuthor(author);     
          book.setPublishing(publishing);           
          book.setLocation(location);
+         book.setBookName(bookName);
          /*reader.setTag(tag);*/
        
          
          ToBook.add(book);
      
-         /*response.sendRedirect("readerList?tishi=yes");*/
-         RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
-         dispatcher.forward(request, response); 
          
          
+         
+         /*RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
+         dispatcher.forward(request, response); */
+        response.sendRedirect("bookadd?error=no");
+         
+   
          }
        
         else {

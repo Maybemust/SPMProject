@@ -146,6 +146,44 @@
    </servlet-mapping>
 
 
+<servlet>
+  	<servlet-name>admin1</servlet-name>
+  	<servlet-class>servlet.Admin1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>admin1</servlet-name>
+  	<url-pattern>/admin1</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+  	<servlet-name>adminop</servlet-name>
+  	<servlet-class>servlet.AdminOp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>adminop</servlet-name>
+  	<url-pattern>/adminop</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>admin2</servlet-name>
+  	<servlet-class>servlet.Admin2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>admin2</servlet-name>
+  	<url-pattern>/admin2</url-pattern>
+  </servlet-mapping>
+    <servlet>
+  	<servlet-name>ReaderServlet</servlet-name>
+  	<servlet-class>servlet.ReaderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ReaderServlet</servlet-name>
+  	<url-pattern>/getreader</url-pattern>
+  </servlet-mapping>
+
+  
+
+
 </web-app>
      
       

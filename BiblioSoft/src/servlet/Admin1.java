@@ -56,7 +56,7 @@ public class Admin1 extends HttpServlet{
 			String c = request.getParameter("cash");
 			if(c != null){
 				double cash = Double.parseDouble(c);
-				toad.updateCash(cash);
+				toad.updateFine(cash);
 			}
 		} catch (NumberFormatException e) {
 			

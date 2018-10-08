@@ -12,7 +12,7 @@
 	  <script src="js/jquery.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
-    <title>Biblio -return books </title>
+    <title>Biblio -borrow books </title>
     <!-- Bootstrap -->
     <link href="./css/bootstrap-4.0.0.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -92,10 +92,10 @@
     <div class="text-center col-md-10" style= "background-color: aliceblue">
 		<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: #002A5A;height: 10%">
        <a class="navbar-brand" href="#">Biblo</a>
-		     <ul class="nav navbar-nav">
-		  <img src="./images/logo.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
+		     
+		  <img src="./imgs/bg1.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
         <span class="sr-only">(current)</span>
-      </ul>
+        
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon" style="background-color: #002A5A"></span>
        </button>
@@ -160,7 +160,7 @@
 		  
 	 <div class="panel panel-primary">
 		  <div class="panel-heading">
-	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Return Book</a></h3>
+	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Borrow Book</a></h3>
 		 </div>
 	  <div align="center" style="background-color: aliceblue">
 		  		      
@@ -177,18 +177,18 @@
 	<span class="glyphicon glyphicon-menu-right" ></span>
 </div-->
 	<script>
-		function returnbook(){
-			document.getElementById("ReturnBookss").submit();
+		function borrowbook(){
+			document.getElementById("borrowbooks").submit();
 		}
 	</script>
 			  <div>
 				  <row>
-				  <form method="post" action="ReturnBooks" id="ReturnBookss">
+				  <form method="post" action="borrowBook" id="borrowbooks">
 
 					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Book ID :</div>
 					  <input  name="barCode" type="text" class="form-control" placeholder="Input Book Id" aria-describedby="sizing-addon1">
-					  <!--div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Borrower ID :</div>
-					  <input  name="useraccount" type="text" class="form-control" placeholder="Input UserAccount" aria-describedby="sizing-addon1"-->
+					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Borrower ID :</div>
+					  <input  name="useraccount" type="text" class="form-control" placeholder="Input UserAccount" aria-describedby="sizing-addon1">
 
 				  	<br>
 					    <button type="button" class=" btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >OK</button>
@@ -212,21 +212,29 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" onclick="returnbook()">Save changes</button>
+        <button type="submit" class="btn btn-primary" onclick="borrowbook()">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 			
 			
- <c:if test="${returnedbook.getStatus() == 0}">
+ <c:if test="${borrowBook.getStatus() == 2}">
       <div class="modal-body">
-        <h4 style = "color:#002A5A">This book has already been returned!!</h4>
+        <h4 style = "color:#002A5A">This book has already been borrowed!!</h4>
         
         
       </div>
 </c:if>
+		
 
+ <c:if test="${ifAccountExists == 0}">
+      <div class="modal-body">
+        <h4 style = "color:#002A5A">The account doesn't exist!!</h4>
+        
+        
+      </div>
+</c:if>
 		        
        <c:if test="${ifExist == 0}">
              <div class="modal-body">

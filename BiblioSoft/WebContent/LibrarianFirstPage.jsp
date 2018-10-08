@@ -84,7 +84,7 @@
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
                     <div class="menu-item" href="#three" >
-                         <a href="LibrarianBorrowBook.jsp" style = "color:#F0F8FF">－Borrow Book</a>
+                         <a href="LibrarianBorrowBook4.jsp" style = "color:#F0F8FF">－Borrow Book</a>
                     </div>
                     
                     <div class="menu-item" href="#four" >
@@ -96,9 +96,9 @@
 		  
     <div class="text-center col-md-10" style= "background-color: aliceblue">
 		<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: #002A5A;height: 10%">
-       <a class="navbar-brand" href="#">Biblo</a>
-		     <ul class="nav navbar-nav">
-		  <img src="./images/logo.JPG" style="padding-top:2px;padding-left: 5px; height:50px">
+       <a class="navbar-brand" href="#">BibloSoft</a>
+		     <ul class="nav navba+-*r-nav">
+		  <img src="./images/logo.png" style="padding-top:2px;padding-left: 5px; height:50px">
         <span class="sr-only">(current)</span>
       </ul>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,12 +135,13 @@
           </form>
 		   </ul>
 		   
-          
+	
 		    <ul class="nav navbar-nav navbar-right">
-				<li>"  "</li>
-        <!--li><a href="#" style="font-weight:bold; color: #FECD00">登  陆</a></li>
-								<li>"  "</li>
-		<li><a href="#" style="color:#C8C8C8" >注  册</a></li-->
+				<li><a class="nav-link" href="fin.jsp">Back </a></li>
+				
+				<li> <a class="nav-link" href="admin1">Admin </a></li>
+ 
+ 
 		<li><a href="#" style="color:#C8C8C8" >Log out</a></li>
       </ul>
        </div>
@@ -149,8 +150,9 @@
     
     
     
-    <iframe style="width:90% ; height:80%"  name="mainFrame" id="mainFrame" title="mainFrame"> 
+    <iframe style="width:90% ; height:80%"   src="images/123.png"  scrolling=no frameborder=0 name="mainFrame" id="mainFrame" title="mainFrame"> 
     
+  
    
     </iframe>
     

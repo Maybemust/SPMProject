@@ -112,7 +112,8 @@ public class ToBorrowedRecord {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
 	/*
 	 * 更新一条借书记录
 	 */

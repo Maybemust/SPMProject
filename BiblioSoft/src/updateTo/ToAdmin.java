@@ -96,10 +96,11 @@ public class ToAdmin {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "update admin set password= ?, fine = ? , borrowedMaxinum = ? , reservedMaxinum=?,reservedTime=?,fineTime=? where account = ?";
+			String sql = "update admin set password= ?, fine = ? , borrowedMaxinum = ? , reservedMaxinum=?,reservedTime=?,fineTime=?, cash=? where account = ?";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
+			ps.setDouble(8, admin.getCash());
 			ps.setLong(7, admin.getAccount());
 			ps.setString(1, admin.getPassword());
 			ps.setDouble(2, admin.getFine());
@@ -209,6 +210,28 @@ public class ToAdmin {
 		}
 
 	}
+	
+	public static void updateCash(double num) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set cash=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setDouble(1, num);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 	/*
 	 * 单独更新罚款时间
 	 */
@@ -318,6 +341,7 @@ public class ToAdmin {
 				admin.setReservedMaxinum(rs.getInt("reservedMaxinum"));
 				admin.setResercedTime(rs.getInt("reservedTime"));
 				admin.setFineTime(rs.getInt("fineTime"));
+				admin.setCash(rs.getDouble("cash"));
 				admins.add(admin);
 			}
 			DBhelper.closeConnection(c, ps, rs);

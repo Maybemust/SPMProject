@@ -33,6 +33,22 @@ public class ReturnBooks extends HttpServlet {
 		Book book = new ToBook().getByBarCode(barcode);
 		Reader reader = new ToReader().getByAccount(account, "");
 		Date date = new Date(System.currentTimeMillis());
+		
+		if(book.getBarCode() == null){//判断该书是否存在
+			request.setAttribute("ifExist", 0);
+			System.out.println("该书不存在");
+			request.getRequestDispatcher("LibrarianReturnBook.jsp").forward(request, response);
+			return;
+		}
+		
+		request.setAttribute("returnedbook",book);
+
+		if(book.getStatus()==0){
+			System.out.println("该书已被借阅");
+			request.setAttribute("ifReturned",1);
+			request.getRequestDispatcher("LibrarianReturnBook.jsp").forward(request, response);
+			return;
+		}
 		String bookName = book.getBookName();
 		Date returnDate = new Date(System.currentTimeMillis());//不同于java.util.Date
 
@@ -58,9 +74,15 @@ public class ReturnBooks extends HttpServlet {
 		System.out.println("===========================================yinggaihuanshu>"+date2.toString());
 		System.out.println("===========================================shijihuanshu>"+returnDate.toString());
 
+		request.setAttribute("returnBook", book);
+
+		
+
 		if(result<0)
 		{
 			System.out.println("该书已超出还书日期，请缴纳滞纳金后再进行还书");
+			request.getRequestDispatcher("LibrarianReturnBook.jsp").forward(request, response);
+
 		}
 		else{
 			new ToBorrowedRecord().update(record);
@@ -69,7 +91,7 @@ public class ReturnBooks extends HttpServlet {
 
 			new ToBook().setStatus(barcode, 0);
 			request.getRequestDispatcher("LibrarianReturnBook2.jsp").forward(request, response);
-			
+			return ;
 //			BorrowedRecord.setBook(book,null);
 //			BorrowedRecord.setReader(reader,null);
 //			BorrowedRecord.setDate(date,null);

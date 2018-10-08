@@ -75,9 +75,9 @@ public class ToReader {
 			System.out.println(sql);
 			ps.execute();
 
-			ResultSet rs = ps.getGeneratedKeys();
+			//ResultSet rs = ps.getGeneratedKeys();
 
-			DBhelper.closeConnection(c, ps, rs);
+			DBhelper.closeConnection(c, ps, null);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -209,6 +209,37 @@ public class ToReader {
 			e.printStackTrace();
 		}
 		return readers;
+	}
+
+	public Reader getByAccount(String account) {
+		Reader reader = new Reader(account);
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from reader where account = " + "'"+account+"';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			if (rs.next()) {
+				reader.setAccount(rs.getString("account"));
+				reader.setPassword(rs.getString("password"));
+				reader.setEmail(rs.getString("email"));
+				reader.setPhone(rs.getLong("phone"));
+				reader.setFine(rs.getDouble("fine"));
+				reader.setBorrowedNum(rs.getInt("borrowedNum"));
+				reader.setCashPledge(rs.getDouble("cashPledge"));
+				reader.setTag(rs.getInt("tag"));				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reader;
 	}
 
 	

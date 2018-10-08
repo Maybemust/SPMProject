@@ -56,6 +56,16 @@ public class Reader {
 		this.cashPledge = cashPledge;
 		this.tag = tag;
 	}
+	public Reader(String account2) {
+		super();
+		this.account = account2;
+		this.password = "0";
+		this.email = "0";
+		this.phone = 0;
+		this.fine = 0.0;
+		this.borrowedNum = 0;
+		this.cashPledge = 0.0;
+		this.tag = 0;	}
 	/**
 	 * @return the account
 	 */

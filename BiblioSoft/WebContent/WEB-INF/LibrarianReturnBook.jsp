@@ -44,47 +44,42 @@
 </div>
 				<hr>
 <div id="left" class="left">
-                    <div class="menu-title"><a href="bookList" target="mainFrame" style = "color:#F0F8FF" >Book Management</a></div>
-                    <div class="menu-item" href="#one" > 
-                 <a href="bookadd.jsp" target="mainFrame"  style = "color:#F0F8FF">－Add Book</a>
-                    </div>
-                    
+                    <div class="menu-title">Book Management</div>
+                    <div class="menu-item" href="#one" data-toggle="tab"> 
+                         <a href="#one" style = "color:#F0F8FF">－Add Book</a>
+                    </div> 
                     <div class="menu-item" href="#two" data-toggle="tab">
-                         －Delete Book
+                         <a href="#one" style = "color:#F0F8FF">－Delete Book</a>
                     </div>
 					<div class="menu-item" href="#test" data-toggle="tab">
-                         －Modify Book
+                         <a href="#one" style = "color:#F0F8FF">－Modify Book</a>
                     </div>
 	<hr>
-                    <div class="menu-title"><a href="readerList" target="mainFrame" style = "color:#F0F8FF" >Reader Management</a></div>
-                    
-                    <div class="menu-item" href="#three" >
-      <a href="readeradd.jsp" target="mainFrame" style = "color:#F0F8FF">－Add Reader</a>
+                    <div class="menu-title">Reader Management</div>
+                    <div class="menu-item" href="#three" data-toggle="tab">
+                         <a href="#one" style = "color:#F0F8FF">－Add Reader</a>
                     </div>
-                    
                     <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                         <a href="#one" style = "color:#F0F8FF">－Delete Reader</a>
                     </div> 
 					<div class="menu-item" href="#four" data-toggle="tab">
-                         －Modify Reader
+                         <a href="#one" style = "color:#F0F8FF">－Modify Reader</a>
                     </div>
 	                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                         <a href="#one" style = "color:#F0F8FF">－Delete Reader</a>
                     </div>
 	                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                         <a href="#one" style = "color:#F0F8FF">－Delete Reader</a>
                     </div>
+                </div>
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
-                    <div class="menu-item" href="#three" >
-                         <a href="LibrarianBorrowBook4.jsp" style = "color:#F0F8FF">－Borrow Book</a>
+                    <div class="menu-item" href="#three" data-toggle="tab">
+                         <a href="#one" style = "color:#F0F8FF">－Borrow Book</a>
                     </div>
-                    
-                    <div class="menu-item" href="#four" >
-                        <a href="LibrarianReturnBook.jsp" style = "color:#F0F8FF">－Return Book</a>
+                    <div class="menu-item" href="#four" data-toggle="tab">
+                         <a href="#one" style = "color:#F0F8FF">－Return Book</a>
                     </div> 
-				<br>
-</div>
 				<br>
 </div>
 		  
@@ -176,19 +171,13 @@
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
 	<span class="glyphicon glyphicon-menu-right" ></span>
 </div-->
-	<script>
-		function returnbook(){
-			document.getElementById("ReturnBookss").submit();
-		}
-	</script>
+
 			  <div>
 				  <row>
-				  <form method="post" action="ReturnBooks" id="ReturnBookss">
+				  <form method="post" action="ReturnBooks" id="ReturnBooks">
 
 					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Book ID :</div>
 					  <input  name="barCode" type="text" class="form-control" placeholder="Input Book Id" aria-describedby="sizing-addon1">
-					  <!--div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Borrower ID :</div>
-					  <input  name="useraccount" type="text" class="form-control" placeholder="Input UserAccount" aria-describedby="sizing-addon1"-->
 
 				  	<br>
 					    <button type="button" class=" btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >OK</button>
@@ -197,9 +186,14 @@
 					  	</form>
 					  	
 								</a>
-
-
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
+								
+									<script>
+		function returnbook(){
+			print("aegwgrg==============================================");
+			document.getElementById("ReturnBooks").submit();
+		}
+	</script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -208,25 +202,23 @@
       </div>
       
       <div class="modal-body">
-        Are you sure you want to submmit?
+      Are you sure you want to submmit and save?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" onclick="returnbook()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="returnbook()">Save now</button>
       </div>
     </div>
   </div>
 </div>
-			
-			
- <c:if test="${returnedbook.getStatus() == 0}">
+ <c:if test="${returnBook.getStatus() == 0}">
       <div class="modal-body">
         <h4 style = "color:#002A5A">This book has already been returned!!</h4>
         
         
       </div>
 </c:if>
-
+		
 		        
        <c:if test="${ifExist == 0}">
              <div class="modal-body">
@@ -235,8 +227,30 @@
       </div>
         </c:if>
         
+		 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      
+      <div class="modal-body">
+      <c:if test="${borrowBook.getStatus() == 2}">
+        Submmit Successfully!
+        </c:if>
+
         
-        		  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="borrowbook()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+			  
 				  </row>
 			  </div>
 			  
@@ -258,7 +272,7 @@
        <hr>
        <div class="row">
           <div class="text-center col-lg-6 offset-lg-3">
-             <h4>BiblioSoft </h4>
+             <h4>Biblio </h4>
              <p>Our website is willing to provide help for book management for users.<br><a href="#" >SPM A3's Website</a></p>
           </div>
        </div>

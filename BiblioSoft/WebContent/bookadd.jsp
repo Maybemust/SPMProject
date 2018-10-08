@@ -32,6 +32,7 @@ document.getElementById("aa").style.display="";
 <body class="ContentBody">
 
 
+
   
 <form action="bookadd" method="post"  name="form" target="sypost" >
   
@@ -60,7 +61,7 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">barCode:</td>
 						  
-					    <td width="35%"><input name="barCode"  type="text" style="width:154px" /> 
+					    <td width="35%"><input name="barCode"  type="text" style="width:154px" required/> 
 							
 				        <span class="red">*</span></td>
 						  
@@ -118,8 +119,14 @@ document.getElementById("aa").style.display="";
 					  <tr>
 					    <td align="right">cover:</td>
 					    <td><input  type="button"  name="cover" style="width:154px" value="upload"/></td>
-
+                         
+                          
+					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
+						  
+					    <td width="34%"><input type="text" name="bookName" style="width:154px"></td> 
 					  </tr>
+					  
+					  
 		
 					  <tr>
 					    <td align="right">introduction:</td>
@@ -139,7 +146,7 @@ document.getElementById("aa").style.display="";
 			<TD colspan="2" align="center" height="50px">
 			
 			
-			<input type="submit"  value="save" class="button" />　 
+			<input type="submit"  value="save" class="button"  />　 
 			
 			<input type="button"  value="back" class="button" onclick="window.location.href='bookList'" /></TD>
 		                                                          
@@ -156,10 +163,13 @@ document.getElementById("aa").style.display="";
     var errory='<%=request.getParameter("error")%>';
     if(errory=='yes')
     	{
-    	alert("已有图书存在");
+    	alert("book has existed");
     	}
-    
-    
+    else
+    	if(errory=='no')
+    	{alert("successfully add");
+    	}
+  
     </script>
      
 

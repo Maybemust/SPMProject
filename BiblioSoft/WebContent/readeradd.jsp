@@ -33,7 +33,7 @@ document.getElementById("aa").style.display="";
 
 
   
-  <form action="readeradd" method="post"  name="form" target="sypost" >
+  <form action="readeradd" method="post"  name="form"  >
   
 <div class="MainDiv">
 
@@ -62,7 +62,7 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">account:</td>
 						  
-					    <td width="35%"><input name="account"  type="text" style="width:154px" /> 
+					    <td width="35%"><input name="account"  type="text" style="width:154px" required/> 
 							
 				        <span class="red">*</span></td>
 						  
@@ -80,7 +80,7 @@ document.getElementById("aa").style.display="";
 						  
 					    <td width="16%" align="right" nowrap="nowrap">confirm password:</td>
 						  
-					    <td width="34%"><input type="password" name="password2" id="password2" style="width:154px" value="" onkeyup="validate()" required></td>
+					    <td width="34%"><input type="password" name="password2" id="password2" style="width:154px" value="" onkeyup="validate()" ></td>
 					    
 					   <span id="jianyan" style="display:block;padding-left:66% " ></span> 
 					  
@@ -167,8 +167,15 @@ document.getElementById("aa").style.display="";
     var errory='<%=request.getParameter("error")%>';
     if(errory=='yes')
     	{
-    	alert("已有账号存在");
+    	alert("account has existed");
     	}
+    else
+    	if(errory=='no')
+    	{
+    	alert("successfully add");
+    	}
+   
+    
     
     function validate()
     {

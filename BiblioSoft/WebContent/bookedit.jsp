@@ -124,6 +124,17 @@ document.getElementById("aa").style.display="";
 					    <td width="34%"><input type="text" name="status" style="width:154px"></td>
 					  </tr>
 		
+		  <tr>
+					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
+						  
+					    <td width="34%"><input type="text" name="bookName" style="width:154px"></td>
+                        
+                        <td width="16%" align="right" nowrap="nowrap">price:</td>
+						  
+					    <td width="34%"><input type="text" name="price" style="width:154px"></td>
+					  </tr>
+					  
+					  
 					  <tr>
 					    <td align="right">introduction:</td>
 					    <td colspan="3"><textarea name="introduction" cols="100" rows="8"></textarea></td>
@@ -159,7 +170,11 @@ document.getElementById("aa").style.display="";
     var errory='<%=request.getParameter("error")%>';
     if(errory=='yes')
     	{
-    	alert("已有图书存在");
+    	alert("no found book");
+    	}
+    else
+    	if(errory=='no')
+    	{alert("successfully edit");
     	}
     </script>
      

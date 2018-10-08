@@ -109,7 +109,7 @@ function unselectAll(){
 				   <form action="booksearch" method="post" >
 				 
 				   <input name="searchbarCode" type="text" size="12" />	
-				   <input  type="submit" class="right-button02" value="查 询" />
+				   <input  type="submit" class="right-button02" value="search" />
 				  </form>
 				   
 				   
@@ -134,13 +134,15 @@ function unselectAll(){
 				    <td width="6%" align="center" bgcolor="#EEEEEE">select</td>
 					 <td width="9%" height="20" align="center" bgcolor="#EEEEEE">barCode</td>
                     <td width="9%" align="center" bgcolor="#EEEEEE">ISBN</td>
-                    <td width="9%" align="center" bgcolor="#EEEEEE">author</td>
-					<td width="14%" align="center" bgcolor="#EEEEEE">publishing</td>
-					<td width="10%" align="center" bgcolor="#EEEEEE">location</td>
-					<td width="9%" align="center" bgcolor="#EEEEEE">status</td>
+                    <td width="8%" align="center" bgcolor="#EEEEEE">author</td>
+					<td width="9%" align="center" bgcolor="#EEEEEE">publishing</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">bookName</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">location</td>
+					<td width="5%" align="center" bgcolor="#EEEEEE">status</td>
+					<td width="5%" align="center" bgcolor="#EEEEEE">price</td>
 					<td width="4%" align="center" bgcolor="#EEEEEE">tag1</td>
-					<td width="11%" align="center" bgcolor="#EEEEEE">tag2</td>
-					<td width="11%" align="center" bgcolor="#EEEEEE">date</td>
+					<td width="4%" align="center" bgcolor="#EEEEEE">tag2</td>
+					<td width="9%" align="center" bgcolor="#EEEEEE">date</td>
                     <td width="19%" align="center" bgcolor="#EEEEEE">edit</td>
                   </tr>
                   
@@ -156,8 +158,10 @@ function unselectAll(){
             <td bgcolor="#FFFFFF">${book.ISBN}</td>
             <td bgcolor="#FFFFFF">${book.author}</td>
             <td bgcolor="#FFFFFF">${book.publishing}</td>
+            <td bgcolor="#FFFFFF">${book.bookName}</td>
             <td bgcolor="#FFFFFF">${book.location}</td>
 		    <td height="20" bgcolor="#FFFFFF">${book.status}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book.price}</td>
 		    <td height="20" bgcolor="#FFFFFF">${book.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.dateOfStorage}</td>
@@ -171,8 +175,10 @@ function unselectAll(){
             <td bgcolor="#FFFFFF">${book1.ISBN}</td>
             <td bgcolor="#FFFFFF">${book1.author}</td>
             <td bgcolor="#FFFFFF">${book1.publishing}</td>
+            <td bgcolor="#FFFFFF">${book.bookName}</td>
             <td bgcolor="#FFFFFF">${book1.location}</td>
 		    <td height="20" bgcolor="#FFFFFF">${book1.status}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book.price}</td>
 		    <td height="20" bgcolor="#FFFFFF">${book1.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book1.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book1.dateOfStorage}</td>

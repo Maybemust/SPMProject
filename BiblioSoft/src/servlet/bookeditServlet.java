@@ -82,7 +82,9 @@ public class bookeditServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");	
 		request.setCharacterEncoding("utf-8"); 
 		
-		/*	private String barCode;
+
+/*		private String barCode;
+		private String bookName;
 		private String ISBN;
 		private String author;
 		private String publishing;
@@ -92,13 +94,14 @@ public class bookeditServlet extends HttpServlet {
 		private int status;
 		private Date dateOfStorage;
 		private String tag1;
-		private String tag2;*/
-		
+		private String tag2;
+		private double price;*/
 
 
 		
 		
-		   String barCode=request.getParameter("barCode");  
+		   String barCode=request.getParameter("barCode"); 
+		   String bookName=request.getParameter("bookName"); 
 	       String ISBN=request.getParameter("ISBN");  
 	       String author=request.getParameter("author"); 
 	       String publishing=request.getParameter("publishing"); 
@@ -107,6 +110,7 @@ public class bookeditServlet extends HttpServlet {
 	       String tag1=request.getParameter("tag1");
 	       String tag2=request.getParameter("tag2");
 	       int status=Integer.parseInt(request.getParameter("status"));
+	       double price=Double.parseDouble(request.getParameter("price"));
 	       
 	       
 
@@ -130,6 +134,7 @@ public class bookeditServlet extends HttpServlet {
          Book book=new Book();
          
          book.setBarCode(barCode);
+         book.setBookName(bookName);
          book.setISBN(ISBN);
          book.setAuthor(author);     
          book.setPublishing(publishing);           
@@ -140,18 +145,19 @@ public class bookeditServlet extends HttpServlet {
          book.setTag2(tag2);
          book.setIntroduction(introduction);
          book.setDateOfStorage(dateOfStorage);
+         book.setPrice(price);
          ToBook.update(book);
          
     
-         RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
-         dispatcher.forward(request, response); 
-       /*  response.sendRedirect("http://localhost:8080/BiblioSoft/bookList");*/
+         /*RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
+         dispatcher.forward(request, response); */
+        response.sendRedirect("bookedit.jsp?error=no");
        
          }
        
         else {
         	 /*System.out.println("error1");*/
-        	 response.sendRedirect("bookadd.jsp?error=yes");
+        	 response.sendRedirect("bookedit.jsp?error=yes");
         	 /*System.out.println("error2");*/
         	 
         	 }

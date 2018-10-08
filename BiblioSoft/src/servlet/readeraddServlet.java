@@ -122,9 +122,9 @@ public class readeraddServlet extends HttpServlet {
          
          ToReader.add(reader);
      
-         /*response.sendRedirect("readerList?tishi=yes");*/
-         RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
-         dispatcher.forward(request, response); 
+         response.sendRedirect("readeradd.jsp?error=no");
+        /* RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
+         dispatcher.forward(request, response); */
          
          
          }

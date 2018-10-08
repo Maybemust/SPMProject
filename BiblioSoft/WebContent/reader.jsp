@@ -302,10 +302,10 @@
 <body>
 	<div id="userdefine">
 		<div id="picture">
-			<h5>这个地方用来给用用户放个假头像</h5>
+			<h5>A Demo</h5>
 		</div>
 		<div id="information">
-			<h5>这个地方用来读取个人信息然后展示</h5>
+			<h5>For show.Will change it next version</h5>
 		</div>
 	</div>
 	<nav class="navbar navbar-default" role="navigation" id="daohang">
@@ -321,12 +321,12 @@
     	</div>
    		<div class="collapse navbar-collapse" id="example-navbar-collapse">
         	<ul class="nav navbar-nav">
-            	<li class="active"><a href="#home" data-toggle="tab">我的借阅</a></li>
-            	<li><a href="#myborrowhistory" data-toggle="tab">历史借阅</a></li>
-				<li><a href="#myorder" data-toggle="tab">我的预约</a></li>
-				<li><a href="#zhinajin" data-toggle="tab">滞纳金</a></li>
-				<li><a href="#changeinf" data-toggle="tab">修改个人资料</a></li>
-           		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">备用菜单<b class="caret"></b></a>
+            	<li class="active"><a href="#home" data-toggle="tab">My BorrowList</a></li>
+            	<li><a href="#myborrowhistory" data-toggle="tab">History BorrowList</a></li>
+				<li><a href="#myorder" data-toggle="tab">My Reservation</a></li>
+				<li><a href="#zhinajin" data-toggle="tab">Fine</a></li>
+				<li><a href="#changeinf" data-toggle="tab">Personal Information</a></li>
+           		<!--li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">ps<b class="caret"></b></a>
                 	<ul class="dropdown-menu">
                     	<li><a href="#" data-toggle="tab">看情况</a></li>
                     	<li><a href="#">如果不用</a></li>
@@ -336,7 +336,7 @@
                     	<li class="divider"></li>
                     	<li><a href="#">不要的话定稿再删</a></li>
                 	</ul>
-            	</li>
+            	</li-->
         	</ul>
     	</div>
     	</div>
@@ -348,16 +348,16 @@
         	<div class="tab-pane fade in active" id="home" style="position: relative">
             	<div id=wodejieyue class="table_wrap" style="text-align:center;">
 				<table id="myborrow" border="1" class="table" cellpadding="5" style="margin:0 auto">
-				<caption style="text-align:center"><font size="5">欢迎您，${readeraccount}</caption>
-				<caption style="text-align:center"><font size="4">借阅列表</caption>
+				<caption style="text-align:center"><font size="5">Welcome，${readeraccount}</caption>
+				<caption style="text-align:center"><font size="4">BorrowList</caption>
 				<tr>
-				  <th style="text-align:center;"><font size="4">序号</th>				
-				  <th style="text-align:center;"><font size="4">图书ID</th>
-				  <th style="text-align:center;"><font size="4">借阅者</th>
-				  <th style="text-align:center;"><font size="4">借阅日期</th>
-				  <th style="text-align:center;"><font size="4">应归还时间</th>
-				  <th style="text-align:center;"><font size="4">借阅时间</th>
-				  <th style="text-align:center;"><font size="4">所欠滞纳金</th>
+				  <th style="text-align:center;"><font size="4">No</th>				
+				  <th style="text-align:center;"><font size="4">BookID</th>
+				  <th style="text-align:center;"><font size="4">ReaderAccount</th>
+				  <th style="text-align:center;"><font size="4">BorrowDate</th>
+				  <th style="text-align:center;"><font size="4">ReturnDate</th>
+				  <th style="text-align:center;"><font size="4">Days</th>
+				  <th style="text-align:center;"><font size="4">Fine</th>
 				</tr>
 				<c:set var="userSum" value="0"/>
 				<c:forEach items="${borrowedRecords}" var="borrowedRecord" varStatus="loop">
@@ -375,7 +375,7 @@
 				</c:forEach>
 				</table>
 				<c:if test="${borrowedRecords!=NULL}">
-        			<h3 style="text-align:right;">欠费总额：${userSum }元</h3>
+        			<h3 style="text-align:right;">FineSum：${userSum }元</h3>
       			</c:if>
 				
 			</div>
@@ -386,12 +386,12 @@
 				<div id="show" class="table_wrap">
 				<table id="myborrow" border="1" class="table" style="margin:0 auto">
 				<tr>
-				  <th style="text-align:center;">序号</th>
-				  <th style="text-align:center;">图书ID</th>
-				  <th style="text-align:center;">借阅日期</th>
-				  <th style="text-align:center;">应归还时间</th>
-				  <th style="text-align:center;">借阅时间</th>
-				  <th style="text-align:center;">所欠滞纳金</th>
+				  <th style="text-align:center;">No</th>
+				  <th style="text-align:center;">BookID</th>
+				  <th style="text-align:center;">BorrowDate</th>
+				  <th style="text-align:center;">RetrunDate</th>
+				  <th style="text-align:center;">Days</th>
+				  <th style="text-align:center;">Fine</th>
 				</tr>
 				<c:set var="zhinasum" value="0"/>
 				<c:forEach items="${borrowedRecords}" var="borrowedRecord" varStatus="loop">
@@ -407,7 +407,7 @@
 							</tr>
 				</c:forEach>
 				<tr>
-				  <td align="center">合计</td>
+				  <td align="center">Sum</td>
 				  <td align="center"> </td>
 				  <td align="center"> </td>
 				  <td align="center"> </td>
@@ -420,12 +420,12 @@
 				<div id="show2" style="display:none">
 				<table border="1" style="margin:0 auto">
 				<tr>
-				  <th style="text-align:center;">图书ID</th>
-				  <th style="text-align:center;">图书名</th>
-				  <th style="text-align:center;">借阅日期</th>
-				  <th style="text-align:center;">应归还时间</th>
-				  <th style="text-align:center;">超出时间</th>
-				  <th style="text-align:center;">所欠滞纳金</th>
+				  <th style="text-align:center;">BookID</th>
+				  <th style="text-align:center;">BookName</th>
+				  <th style="text-align:center;">BorrowDate</th>
+				  <th style="text-align:center;">ReturnDate</th>
+				  <th style="text-align:center;">Over-Days</th>
+				  <th style="text-align:center;">Fine</th>
 				</tr>
 				<tr>
 				  <td align="center">034</td>
@@ -450,10 +450,10 @@
 					<table id="ordertab" width="100%">
 						<thead>
 							<tr>
-								<th>序号</th>
-								<th>书名</th>
-								<th>借阅时间</th>
-								<th>归还时间</th>
+								<th>No</th>
+								<th>BookName</th>
+								<th>BorrowList</th>
+								<th>RetrunList</th>
 							</tr>
 						</thead>
 						<c:forEach items="${borrowedRecords }" var="borrowedRecord" varStatus="status">
@@ -473,11 +473,11 @@
 				<table id="ordertab" width="100%">
 					<thead>
 						<tr>
-							<th>序号</th>
-							<th>书名</th>
-							<th>预约时间</th>
-							<th>有效时间</th>
-							<th>状态</th>
+							<th>No</th>
+							<th>BookName</th>
+							<th>ReserveTime</th>
+							<th>AffectTime</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 					<c:forEach items="${myorders }" var="myorder" varStatus="mo">
@@ -486,7 +486,7 @@
 							<th>${myorder.barCode }</th>
 							<th>${myorder.time }</th>
 							<th>${myorder.time }</th>
-							<th>取消</th>
+							<th>Cancel</th>
 						</tr>
 					</c:forEach>
 			    </table>
@@ -540,32 +540,32 @@
 		<div class="tab-pane fade" id="changeinf" style="position: relative">
 			<table id="ordertab" width="100%">
       			<tr>
-					<td>账号</td>
+					<td>Account</td>
 					<td>${reader.account }</td>
 				</tr>
 				<tr>
-					<td>昵称</td>
+					<td>NickName</td>
 					<td></td>
 				</tr>
 				<tr>
-					<td>押金</td>
+					<td>CashPledge</td>
 					<td>${reader.cashPledge }</td>
 				</tr>
 				<tr>
-					<td>正在借阅</td>
-					<td><a>详情</a></td>
+					<td>BorrowingList</td>
+					<td><a>Details</a></td>
 				</tr>
 				<tr>
-					<td>密码</td>
-					<td><button onclick="changepd()">修改密码</button></td>
+					<td>Password</td>
+					<td><button onclick="changepd()">ChangePd</button></td>
 				</tr>
 				<tr>
-					<td>密保</td>
-					<td><button onclick="checksafe()">验证密保</button></td>
+					<td>Security</td>
+					<td><button onclick="checksafe()">Validation</button></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><button onclick="changesafe()">修改密保</button></td>
+					<td><button onclick="changesafe()">ChangeSecurity</button></td>
 				</tr>
     		</table>
 		</div>

@@ -128,13 +128,14 @@ public class readereditServlet extends HttpServlet {
           
          ToReader.update(reader);
      
-         RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
-         dispatcher.forward(request, response); 
+         /*RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
+         dispatcher.forward(request, response); */
+         response.sendRedirect("readeredit.jsp?error=no");
          }
        
         else {
         	 /*System.out.println("error1");*/
-        	 response.sendRedirect("readeradd.jsp?error=yes");
+        	 response.sendRedirect("readeredit.jsp?error=yes");
         	 /*System.out.println("error2");*/
         	 
         	 }
