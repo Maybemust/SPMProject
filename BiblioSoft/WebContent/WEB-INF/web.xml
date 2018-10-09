@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>BiblioSoft</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>fin.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>readermanagentServlet</servlet-name>
@@ -158,6 +153,37 @@
     <servlet-name>EnsureBorrowBookServlet</servlet-name>
     <url-pattern>/EnsureBorrowBook</url-pattern>
   </servlet-mapping>
-
-
+    	<servlet>
+  		<servlet-name>deletOrder</servlet-name>
+  		<servlet-class>servlet.deletOrder</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>deletOrder</servlet-name>
+  		<url-pattern>/deletOrder</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>addOrder</servlet-name>
+  		<servlet-class>servlet.addOrder</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>addOrder</servlet-name>
+  		<url-pattern>/addOrder</url-pattern>
+  	</servlet-mapping>
+                <servlet>
+  		<servlet-name>Login</servlet-name>
+  		<servlet-class>servlet.Login</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>Login</servlet-name>
+  		<url-pattern>/login</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    <servlet-name>getAuthorityServlet</servlet-name>
+    <servlet-class>servlet.getAuthorityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getAuthorityServlet</servlet-name>
+    <url-pattern>/getA</url-pattern>
+   </servlet-mapping>
 </web-app>

@@ -15,28 +15,44 @@ import updateTo.ToAdmin;
 import updateTo.ToLibrarian;
 
 public class AdminOp extends HttpServlet {
-	
-	/*判断字符串是否为纯数字*/
-	public static boolean isNumeric(String str){
-	    for(int i=str.length();--i>=0;){
-	        int chr=str.charAt(i);
-	        if(chr<48 || chr>57)
-	            return false;
-	    }
-	   return true;
-	}     
-	/*判断字符串是否为带小数点的纯数字*/
-	public static boolean isNumericWithPoint(String str){
-		int pointCount = 0;
-	    for(int i=str.length();--i>=0;){
-	        int chr=str.charAt(i);
-	        if(chr == 46) pointCount++;
-	        if(chr<46 || chr>57 || chr==47 )
-	            return false;
-	    }
-	    if(pointCount > 1) return false;
-	   return true;
+
+	/* 判断字符串是否为纯数字 */
+	public static boolean isNumeric(String str) {
+		for (int i = str.length(); --i >= 0;) {
+			int chr = str.charAt(i);
+			if (chr < 48 || chr > 57)
+				return false;
+		}
+		return true;
 	}
+
+	/* 判断字符串是否为带小数点的纯数字 */
+	public static boolean isNumericWithPoint(String str) {
+		// System.out.println(str);
+		int pointCount = 0, afterp = 0;
+		for (int i = 0; i < str.length(); i++) {
+			int chr = str.charAt(i);
+			if (chr == 46)
+				pointCount++;
+			else if (chr < 46 || chr > 57 || chr == 47)
+				return false;
+			else if (pointCount > 0) {
+				afterp++;
+			}
+			// System.out.println(i);
+			// System.out.println(pointCount);
+			// System.out.println();
+		}
+		if (afterp > 2)
+			return false;
+		if (pointCount > 1)
+			return false;
+		double numberjudge = Double.parseDouble(str);
+		if (numberjudge < 0 || numberjudge >= 1000)
+			return false;
+		return true;
+	}
+
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -53,7 +69,7 @@ public class AdminOp extends HttpServlet {
 			// a:Librarian账户
 			// flt:罚款时间
 			// rt:预约时间
-			//rm:预约上限
+			// rm:预约上限
 			String n = request.getParameter("number");
 			String f = request.getParameter("fine");
 			String c = request.getParameter("cash");
@@ -61,31 +77,34 @@ public class AdminOp extends HttpServlet {
 			String flt = request.getParameter("fineLimitTime");
 			String rt = request.getParameter("reservedTime");
 			String rm = request.getParameter("reservedMaxinum");
-			
 
 			// 添加Librarian
-			if (a != null) {
-				if(a.length()>15 || !isNumeric(a)){
+			String password = request.getParameter("password");
+			if (a != null && a != "") {
+				if (a.length() > 15 || !isNumeric(a)) {
 					out.write("no");
-				} else{
+				} else {
 					long account = Long.parseLong(a);
-					String password = request.getParameter("password");
-					if(password.length()>20){
-						out.write("no");
-					} else {
-						Librarian lbr = new Librarian(account, password, 0);
-						ToLibrarian tolbr = new ToLibrarian();
-						tolbr.add(lbr);
-						out.write("ok");
+					ToLibrarian tolbr = new ToLibrarian();
+					if (tolbr.get(a) != null) {
+						out.write("same");
+					} else if (tolbr.get(a) == null && password != null && password != "") {
+						if (password.length() > 20) {
+							out.write("no");
+						} else {
+							Librarian lbr = new Librarian(account, password, 0);
+							tolbr.add(lbr);
+							out.write("ok");
+						}
 					}
 				}
 			}
 
 			// 修改借书数
 			if (n != null) {
-				if(n.length()>2 || !isNumeric(n)){
+				if (n.length() > 2 || !isNumeric(n)) {
 					out.write("no");
-				} else{
+				} else {
 					int number = Integer.parseInt(n);
 					if (number >= 0) {
 						ToAdmin toad = new ToAdmin();
@@ -99,41 +118,41 @@ public class AdminOp extends HttpServlet {
 
 			// 修改罚款
 			if (f != null) {
-				if(f.length()>10 || !isNumericWithPoint(f)){
-					out.write("no");
-				} else{
+				if (f.length() > 10 || !isNumericWithPoint(f)) {
+					out.write("no1");
+				} else {
 					double fine = Double.parseDouble(f);
 					if (fine >= 0) {
 						ToAdmin toad = new ToAdmin();
 						toad.updateFine(fine);
 						out.write("ok");
 					} else {
-						out.write("no");
+						out.write("no1");
 					}
 				}
 			}
 
 			// 修改押金
 			if (c != null) {
-				if(c.length()>10 || !isNumericWithPoint(c)){
-					out.write("no");
-				} else{
+				if (c.length() > 10 || !isNumericWithPoint(c)) {
+					out.write("no1");
+				} else {
 					double cash = Double.parseDouble(c);
 					if (cash >= 0) {
 						ToAdmin toad = new ToAdmin();
 						toad.updateCash(cash);
 						out.write("ok");
 					} else {
-						out.write("no");
+						out.write("no1");
 					}
 				}
 			}
 
 			// 修改罚款时间
 			if (flt != null) {
-				if(flt.length()>5 || !isNumeric(flt)){
+				if (flt.length() > 5 || !isNumeric(flt)) {
 					out.write("no");
-				} else{
+				} else {
 					int fineLimitTime = Integer.parseInt(flt);
 					if (fineLimitTime >= 0) {
 						ToAdmin toad = new ToAdmin();
@@ -147,9 +166,9 @@ public class AdminOp extends HttpServlet {
 
 			// 修改预约时间
 			if (rt != null) {
-				if(rt.length()>3 || !isNumeric(rt)){
+				if (rt.length() > 3 || !isNumeric(rt)) {
 					out.write("no");
-				} else{
+				} else {
 					int reservedTime = Integer.parseInt(rt);
 					if (reservedTime >= 0) {
 						ToAdmin toad = new ToAdmin();
@@ -160,12 +179,12 @@ public class AdminOp extends HttpServlet {
 					}
 				}
 			}
-			
-			//修改预约上限
+
+			// 修改预约上限
 			if (rm != null) {
-				if(rm.length()>2 || !isNumeric(rm)){
+				if (rm.length() > 2 || !isNumeric(rm)) {
 					out.write("no");
-				} else{
+				} else {
 					int reservedMaxinum = Integer.parseInt(rm);
 					if (reservedMaxinum >= 0) {
 						ToAdmin toad = new ToAdmin();

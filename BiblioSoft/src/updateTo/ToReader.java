@@ -211,7 +211,7 @@ public class ToReader {
 		return readers;
 	}
 
-	public Reader getByAccount(String account) {
+	public static Reader getByAccount(String account) {
 		Reader reader = new Reader(account);
 		try {
 

@@ -110,19 +110,35 @@ public class bookaddServlet extends HttpServlet {
 		
 		String ISBN=request.getParameter("ISBN"); 
 		String num2,num3,barCode;
-		int num1=ToBook.getTotalISBN(ISBN)+1;
-		num3=String.valueOf(num1);
 		
-		if(num1<10)
+		int num1=0;
+		num3=String.valueOf(num1);
+		for(num1=1;;num1++)
 		{
-			num2=ISBN+"-0"+num3;
+			num3=String.valueOf(num1);
+			if(num1<10)
+			{
+				num2=ISBN+"-0"+num3;
+				
+			}
+			else
+			{
+				num2=ISBN+"-"+num3;
+			}
+			Book book=ToBook.getByBarCode(num2);
+			
+			
+			if(book.getISBN()==null)
+				break;
 			
 		}
-		else
-		{
-			num2=ISBN+"-"+num3;
-		}
+			
+		
+		System.out.println( "answer = "+num2);
+	
 		barCode=num2;	
+		
+		
 		
          String bookName=request.getParameter("bookName");  
          String author=request.getParameter("author"); 

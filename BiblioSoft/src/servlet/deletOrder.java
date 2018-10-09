@@ -11,23 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 import entity.*;
 import updateTo.*;
 
-public class ReaderServlet  extends HttpServlet{
+public class deletOrder  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
-		System.out.println(reader+"----------");
+		String rRID="";
 		String account="";
-		
 		try{
-			account = request.getParameter("account");
-
+			rRID = request.getParameter("rRID");
 		}catch(NumberFormatException e){
 			
 		}
 		account=reader.getAccount();
+		if(ToReservedRecord.getByrRID(rRID) != null ){
+			ToReservedRecord.deleteByrRID(rRID);
+			request.setAttribute("status", "Cancel Successfully");
+		}
+		else{
+			request.setAttribute("status", "Cancel Fail");
+		}
+		String url_return = "getreader?account=";
+		url_return +=account;
+		System.out.println(url_return);
+		request.setAttribute("Reader", reader);
+		
 		int start=0;
 		int count=0;
 		count=ToReservedRecord.getTotalByAccount(account);
@@ -67,6 +76,7 @@ public class ReaderServlet  extends HttpServlet{
 		request.setAttribute("nowrecord", nowrecord);
 		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
+		
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

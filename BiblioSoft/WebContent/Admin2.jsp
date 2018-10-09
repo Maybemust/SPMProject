@@ -33,7 +33,7 @@
 		</div>
 		<div>
 			<p style="position:relative;left:20px;top:10px"">password:</p>
-			<input type="text" value="${password}" id="modifiedpassword" name="modifiedpassword" style="position:relative;top:-25px;left:90px" required>
+			<input type="text" value="${password}" id="modifiedpassword" name="modifiedpassword" style="position:relative;top:-25px;left:90px" maxlength="20">
 		</div>
 		<input type="submit" value="save" style="position:relative;left:75px" onclick="check()">
 		<input type="button" onclick="history.go(-1)" value="back" style="position:relative;left:125px">

@@ -1,7 +1,6 @@
 package servlet;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,24 +9,43 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.*;
 import updateTo.*;
-
-public class ReaderServlet  extends HttpServlet{
+import java.sql.*;
+import java.sql.Date;
+import java.util.*;
+public class addOrder  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
-		System.out.println(reader+"----------");
+		String barcode="";
+		String bookname="";
 		String account="";
-		
 		try{
-			account = request.getParameter("account");
-
+			barcode = request.getParameter("barCode");
+			bookname = request.getParameter("bookName");
 		}catch(NumberFormatException e){
 			
 		}
 		account=reader.getAccount();
+		Book book = ToBook.getByBarCode(barcode);
+		long total = ToReservedRecord.getTotal();
+		total++;
+		Date date_sql = new Date(System.currentTimeMillis());
+		ReservedRecord record = new ReservedRecord(bookname,date_sql,account,barcode);
+		record.setrRID(total);
+		if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
+			ToReservedRecord.add(record);
+			request.setAttribute("status", "Add Successfully");
+		}
+		else{
+			request.setAttribute("status", "Add Fail");
+		}
+		String url_return = "getreader?account=";
+		url_return +=account;
+		System.out.println(url_return);
+		request.setAttribute("Reader", reader);
+		
 		int start=0;
 		int count=0;
 		count=ToReservedRecord.getTotalByAccount(account);
@@ -67,6 +85,7 @@ public class ReaderServlet  extends HttpServlet{
 		request.setAttribute("nowrecord", nowrecord);
 		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
+		
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

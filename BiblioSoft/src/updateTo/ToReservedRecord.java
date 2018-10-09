@@ -176,17 +176,11 @@ public class ToReservedRecord {
 
 		try {
 
-
-
 			Connection c = DBhelper.getInstance().getConnection();
 
-
-
-			String sql = "insert into reservedrecord(bRID,bookName,time,readerAccount,barCode) values(?,?,?,?,?)";
+			String sql = "insert into reservedrecord(rRID,bookName,time,readerAccount,barCode) values(?,?,?,?,?)";
 
 			PreparedStatement ps = c.prepareStatement(sql);
-
-			
 
 			ps.setLong(1, record.getrRID());
 
@@ -204,11 +198,11 @@ public class ToReservedRecord {
 
 
 
-			ResultSet rs = ps.getGeneratedKeys();
+			//ResultSet rs = ps.getGeneratedKeys();
 
 
 
-			DBhelper.closeConnection(c, ps, rs);
+			DBhelper.closeConnection(c, ps, null);
 
 
 
