@@ -84,11 +84,11 @@
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
                     <div class="menu-item" href="#three" >
-                         <a href="LibrarianBorrowBook4.jsp" style = "color:#F0F8FF">－Borrow Book</a>
+                         <a href="LibrarianBorrowBook4.jsp" target="mainFrame" style = "color:#F0F8FF">－Borrow Book</a>
                     </div>
                     
                     <div class="menu-item" href="#four" >
-                        <a href="LibrarianReturnBook.jsp" style = "color:#F0F8FF">－Return Book</a>
+                        <a href="LibrarianReturnBook.jsp"   target="mainFrame"  style = "color:#F0F8FF">－Return Book</a>
                     </div> 
 				<br>
 </div>

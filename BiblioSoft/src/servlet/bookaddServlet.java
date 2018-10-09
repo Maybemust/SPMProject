@@ -2,12 +2,15 @@ package servlet;
  
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -97,6 +100,14 @@ public class bookaddServlet extends HttpServlet {
 		private String tag1;
 		private String tag2;
 		private double price;*/
+		
+		
+		
+		java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
+
+		System.out.println(date);
+		
+		
 		String ISBN=request.getParameter("ISBN"); 
 		String num2,num3,barCode;
 		int num1=ToBook.getTotalISBN(ISBN)+1;
@@ -137,6 +148,7 @@ public class bookaddServlet extends HttpServlet {
          book.setPublishing(publishing);           
          book.setLocation(location);
          book.setBookName(bookName);
+         book.setDateOfStorage(date);
          /*reader.setTag(tag);*/
        
          

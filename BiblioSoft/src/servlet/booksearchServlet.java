@@ -95,13 +95,13 @@ public class booksearchServlet extends HttpServlet {
          book1=ToBook.getByBarCode(barCode);
          
          request.setAttribute("book1", book1);
-         request.getRequestDispatcher("bookmanagent.jsp").forward(request, response);
+         request.getRequestDispatcher("bookmanagent2.jsp").forward(request, response);
          
          }
        
         else {
         	System.out.println("error1");
-        	 response.sendRedirect("bookmanagent.jsp?error1=yes");
+        	 response.sendRedirect("bookmanagent2.jsp?error1=yes");
         	 System.out.println("error2");
     
         	 }

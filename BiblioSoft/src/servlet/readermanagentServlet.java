@@ -24,7 +24,7 @@ public  class readermanagentServlet extends HttpServlet {
 		
 	
 		int start = 0;
-		int count = 10;
+		int count = 100;
 
 		try {
 			start = Integer.parseInt(request.getParameter("start"));

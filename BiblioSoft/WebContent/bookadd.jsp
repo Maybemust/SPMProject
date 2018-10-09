@@ -61,7 +61,7 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">ISBN:</td>
 						  
-					    <td width="35%"><input type="text" name="ISBN" maxlength="15" style="width:154px"  required>
+					    <td width="35%"><input type="text" name="ISBN" maxlength="15" style="width:154px"  required/>
 							
 				        <span class="red">*</span></td>
 						  
@@ -76,11 +76,11 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">publishing:</td>
 						  
-					    <td width="35%"><input type="text" name="publishing" maxlength="35" style="width:154px" required></td> 
+					    <td width="35%"><input type="text" name="publishing" maxlength="35" style="width:154px" required/></td> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">location:</td>
 						  
-					    <td width="34%"><input name="location"  type="text" maxlength="35" style="width:154px" required/></td>
+					    <td width="34%"><input name="location"  type="text" maxlength="35" style="width:154px"  required /></td>
 					    
 						  
 					  </tr>
@@ -119,7 +119,7 @@ document.getElementById("aa").style.display="";
 					  </tr>
 					  <tr>
 					    <td align="right">cover:</td>
-					    <td><input  type="button"  name="cover" style="width:154px" value="upload" /></td>
+					    <td><input  type="button"  name="cover" style="width:154px" value="upload"/></td>
                          
                           
 					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
@@ -131,7 +131,7 @@ document.getElementById("aa").style.display="";
 		
 					  <tr>
 					    <td align="right">introduction:</td>
-					    <td colspan="3"><textarea name="introduction" cols="100" rows="8" ></textarea></td>
+					    <td colspan="3"><textarea name="introduction" cols="100" rows="8"></textarea></td>
 					    </tr>
 					  </table>
 			  <br />

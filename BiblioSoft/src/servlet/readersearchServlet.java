@@ -95,13 +95,13 @@ public class readersearchServlet extends HttpServlet {
          Reader reader1=new Reader();
          reader1=ToReader.getByAccount(account, "");
          request.setAttribute("reader1", reader1);
-         request.getRequestDispatcher("readermanagent.jsp").forward(request, response);
+         request.getRequestDispatcher("readermanagent2.jsp").forward(request, response);
          
          }
        
         else {
         	System.out.println("error1");
-        	 response.sendRedirect("readermanagent.jsp?error1=yes");
+        	 response.sendRedirect("readermanagent2.jsp?error1=yes");
         	 System.out.println("error2");
     
         	 }

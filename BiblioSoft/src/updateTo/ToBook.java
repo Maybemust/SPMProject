@@ -211,15 +211,6 @@ public class ToBook {
 	/*
 	 * 列出所有的书
 	 */
-
-	
-	public static List<Book> list() {
-		return list(0, Short.MAX_VALUE);
-	}
-	
-	/*
-	 * 设置书籍借阅状态
-	 */
 	public static void setStatus(String id,int i) {
 		try {
 
@@ -236,6 +227,10 @@ public class ToBook {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static List<Book> list() {
+		return list(0, Short.MAX_VALUE);
 	}
 	/*
 	 * 按照顺序显示一些书
