@@ -20,8 +20,7 @@ public class ReaderServlet  extends HttpServlet{
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
 		System.out.println(reader+"----------");
 		String account="";
-		int start=0;
-		int count=0;
+		
 		try{
 			account = request.getParameter("account");
 
@@ -29,6 +28,8 @@ public class ReaderServlet  extends HttpServlet{
 			
 		}
 		account=reader.getAccount();
+		int start=0;
+		int count=0;
 		count=ToReservedRecord.getTotalByAccount(account);
 		List<ReservedRecord> myorders =ToReservedRecord.listByReaderAccount(start, count, account);
 	

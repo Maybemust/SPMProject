@@ -493,7 +493,7 @@
                 <div id="left" class="left">
                     <div id="logoDiv" class="logoDiv">
                         <p id="logoTitle" class="logoTitle">
-                            <img id="logo" alt="picture-log" src="./images/picture.jpeg" style="height: 28px; padding-right: 5px;vertical-align: middle;">
+                            <img id="logo" alt="picture-log" src="./imgs/logo.JPG" style="height: 28px; padding-right: 5px;vertical-align: middle;">
                             <span style="font-size:18px;">Reader</span>
                         </p>
                     </div>
