@@ -36,7 +36,7 @@
 		  <br>
 		  <img src="./imgs/libraianProfile1.JPG"  height="100px" style ="float: inherit">
 	  <hr>
-		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>User_Name</a></h3>
+		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>${Librarian.getAccount()}</a></h3>
 
 	  
 	  <br>

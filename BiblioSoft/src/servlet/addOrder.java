@@ -17,25 +17,25 @@ public class addOrder  extends HttpServlet{
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		
+		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
 		String barcode="";
 		String bookname="";
 		String account="";
 		try{
 			barcode = request.getParameter("barCode");
 			bookname = request.getParameter("bookName");
-			account = request.getParameter("account");
 		}catch(NumberFormatException e){
 			
 		}
-		Book book = new ToBook().getByBarCode(barcode);
-		long total = new ToReservedRecord().getTotal();
+		account=reader.getAccount();
+		Book book = ToBook.getByBarCode(barcode);
+		long total = ToReservedRecord.getTotal();
 		total++;
 		Date date = new Date(System.currentTimeMillis());
 		ReservedRecord record = new ReservedRecord(bookname,date,account,barcode);
 		record.setrRID(total);
 		if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
-			new ToReservedRecord().add(record);
+			ToReservedRecord.add(record);
 			request.setAttribute("status", "Add Successfully");
 		}
 		else{
@@ -44,6 +44,7 @@ public class addOrder  extends HttpServlet{
 		String url_return = "getreader?account=";
 		url_return +=account;
 		System.out.println(url_return);
-		request.getRequestDispatcher(url_return).forward(request, response);
+		request.setAttribute("Reader", reader);
+		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

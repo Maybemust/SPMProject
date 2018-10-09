@@ -198,11 +198,11 @@ public class ToReservedRecord {
 
 
 
-			ResultSet rs = ps.getGeneratedKeys();
+			//ResultSet rs = ps.getGeneratedKeys();
 
 
 
-			DBhelper.closeConnection(c, ps, rs);
+			DBhelper.closeConnection(c, ps, null);
 
 
 

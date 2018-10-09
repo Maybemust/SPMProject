@@ -114,7 +114,7 @@
 	      			
 	      			var account=document.getElementById("useraccount").value;
 	      			var pd=document.getElementById("userpassword").value;
-	      			loginurl = "login?account="+account+"&&password="+pd;
+	      			loginurl = "login?useraccount="+account+"&&userpassword="+pd;
 	      			if(account==""){
 	      				alert("please input useraccount");
 	      			}
@@ -123,7 +123,7 @@
 		      				alert("please input password");
 	      				}
 	      				else{
-	      					alert(loginurl);
+	      					
 	    	      			window.location.href=loginurl;
 	      				}
 	      			}			

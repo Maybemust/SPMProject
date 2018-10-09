@@ -17,6 +17,8 @@ public class ReaderServlet  extends HttpServlet{
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		
+		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
+		System.out.println(reader+"----------");
 		String account="";
 		int start=0;
 		int count=0;
@@ -26,14 +28,13 @@ public class ReaderServlet  extends HttpServlet{
 		}catch(NumberFormatException e){
 			
 		}
-		
+		account=reader.getAccount();
 		count=ToReservedRecord.getTotalByAccount(account);
 		List<ReservedRecord> myorders =ToReservedRecord.listByReaderAccount(start, count, account);
-		System.out.println(myorders);
+	
 		request.setAttribute("myorders", myorders);
 		
-		Reader reader = ToReader.getByAccount(account,"123");
-		Book book = ToBook.getByBarCode("123");
+		
 		request.setAttribute("reader", reader);
 		
 		count=ToBorrowedRecord.getTotal();
@@ -60,7 +61,7 @@ public class ReaderServlet  extends HttpServlet{
 		    	 i++;
 		    }
 		}
-		
+		request.setAttribute("Reader", reader);
 		request.setAttribute("nowdate", nowdate);
 		request.setAttribute("nowrecord", nowrecord);
 		request.setAttribute("borrowedRecord", borrowedRecord);

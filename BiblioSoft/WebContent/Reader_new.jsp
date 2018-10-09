@@ -533,7 +533,7 @@
                 <div id="right" class="tab-content right">
                         <div id="one" class="tab-pane active">
                             <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
-                                   	<font size="10">Welcome to the page of Reader,Account.</font>
+                                   	<font size="10">Welcome to the page of Reader,${Reader.getAccount() }.</font>
                             </span>   
                         </div>
                         <!-- xiang -->
@@ -707,7 +707,7 @@
                         <!-- diao -->
                         <script>
                         	function deletOrder(rRID){
-                        		var deletOrder="deletOrder?rRID="+rRID+"&&account=diao";
+                        		var deletOrder="deletOrder?rRID="+rRID;
                         		alert(deletOrder);
                         		window.location.href=deletOrder;
 								alert(${status });
@@ -747,8 +747,9 @@
                         		if (barcode_order != ""){
                         			if (bookName_order != ""){
                         				if(confirm("Are you sure about the appointment?")){
-                        					addOrder = "addOrder?barCode="+barcode_order+"&&bookName="+bookName_order+"&&account=diao";
+                        					addOrder = "addOrder?barCode="+barcode_order+"&&bookName="+bookName_order;
                                 			window.location.href=addOrder;
+                                			alert(${status});
                         				}
                             		}
                             		else{
