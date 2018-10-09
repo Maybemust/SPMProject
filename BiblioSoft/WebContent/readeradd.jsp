@@ -62,7 +62,7 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">account:</td>
 						  
-					    <td width="35%"><input name="account" maxlength="15" type="text" style="width:154px"  required  /> 
+					    <td width="35%"><input name="account" maxlength="15" type="text" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"  /> 
 							
 				        <span class="red">*</span></td>
 						  
@@ -113,7 +113,7 @@ document.getElementById("aa").style.display="";
 					    
 					    <td align="right">phone:</td>
 					    
-					    <td><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required/></td>
+					    <td><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
 					  </tr>
 						  
 					
@@ -128,8 +128,10 @@ document.getElementById("aa").style.display="";
                         </select></td>
                         
 					   <td align="right">cashPledge:</td>
-					    <td><input type="text" name="cashPledge" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value=""   required/></td>
+					    <td><input type="number" name="cashPledge"  style="width:154px" value=""   step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}"/></td>
+					  
 					  </tr>
+					  
 						  
 		
 					  <tr>

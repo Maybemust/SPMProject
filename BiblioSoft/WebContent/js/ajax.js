@@ -1,4 +1,38 @@
 // JavaScript Document
+/** ************************账号重复***************************** */
+function smaeLibrarian(account, label, button) {
+	var xmlhttp;
+	var url = "";
+
+	url = "adminop?account=" + document.getElementById(account).value;
+
+	if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5 浏览器执行代码
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var check = xmlhttp.responseText;
+			myshow(check, account, label, button);
+		}
+	};
+	xmlhttp.send(null);
+
+}
+
+function myshow(str1, account, label, button) {
+	if (str1 == "same") {
+		document.getElementById(label).innerHTML = "Account already exists";
+		document.getElementById(button).setAttribute("disabled", "true");
+	} else {
+		document.getElementById(button).disabled=false;
+		document.getElementById(label).innerHTML = "";
+	}
+}
 /** ********************添加Librarian************************** */
 function addLibrarian(account, password, repeatPassword) {
 	var xmlhttp;
@@ -7,7 +41,7 @@ function addLibrarian(account, password, repeatPassword) {
 	if (document.getElementById(account).value == ""
 			|| document.getElementById(password).value == ""
 			|| document.getElementById(repeatPassword).value == "") {
-		alert("List is empty!");
+		alert("Account or password is empty!");
 		return;
 	}
 
@@ -44,7 +78,6 @@ function display(str1, account, password, repeatPassword) {
 		document.getElementById(account).value = "";
 		document.getElementById(password).value = "";
 		document.getElementById(repeatPassword).value = "";
-		
 	}
 	if (str1 == "no") {
 		alert("This operation fails!");
@@ -58,7 +91,7 @@ function display(str1, account, password, repeatPassword) {
 function sendtext(textId, labelId) {
 	var xmlhttp;
 	var url = "";
-	
+
 	if (textId == "number") {
 		url = "adminop?number=" + document.getElementById(textId).value;
 	} else if (textId == "fineStrategy") {
@@ -69,8 +102,9 @@ function sendtext(textId, labelId) {
 		url = "adminop?fineLimitTime=" + document.getElementById(textId).value;
 	} else if (textId == "reservedTime") {
 		url = "adminop?reservedTime=" + document.getElementById(textId).value;
-	}else if(textId=="reservedMaxinum"){
-		url = "adminop?reservedMaxinum=" + document.getElementById(textId).value;
+	} else if (textId == "reservedMaxinum") {
+		url = "adminop?reservedMaxinum="
+				+ document.getElementById(textId).value;
 	}
 
 	if (document.getElementById(textId).value == "") {
@@ -124,15 +158,22 @@ function show(str2, textId, labelId) {
 		if (labelId == "reservedTimeLabel")
 			document.getElementById(labelId).setAttribute('alt',
 					"reserved time: " + document.getElementById(textId).value);
-		
+
 		if (labelId == "reservedMaxinumLabel")
-			document.getElementById(labelId).setAttribute('alt',
-					"reserved maxinum: " + document.getElementById(textId).value);
+			document.getElementById(labelId).setAttribute(
+					'alt',
+					"reserved maxinum: "
+							+ document.getElementById(textId).value);
 
 		document.getElementById(textId).value = "";
 	}
 	if (str2 == "no") {
 		alert("This operation fails!");
 		document.getElementById(textId).value = "";
+	}
+	if (str2 == "no1") {
+		alert("You should type in a number between 0.00 to 999.99!");
+		document.getElementById(textId).value = "";
+
 	}
 }

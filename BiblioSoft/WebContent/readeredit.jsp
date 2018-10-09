@@ -54,7 +54,7 @@
 
 						  
 						  
-					    <td width="35%"><input name='account' type="text" class="text" maxlength="15" style="width:154px"  value="<%=account1 %>"  required />
+					    <td width="35%"><input name='account' type="text" class="text" maxlength="15" style="width:154px"  value="<%=account1 %>"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" />
 						
 				        <span class="red">*</span></td>
 						  
@@ -104,7 +104,7 @@
 					    <td align="right">email:</td>
 					    <td><input class="text" name="email"  type="email" maxlength="20" style="width:154px" oninvalid="this.setCustomValidity('Please enter the correct format for your mailbox');" value="<%=email %>"/></td>
 					    <td align="right">phone:</td>
-					    <td><input class="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value="<%=phone %>"   required/></td>
+					    <td><input class="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value="<%=phone %>"   required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
 					  </tr>
 						  
 					
@@ -118,14 +118,16 @@
                         </select></td>
                         
 					   <td align="right">cashPledge:</td>
-					    <td><input class="text" name="cashPledge" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value="<%=cashPledge %>"  required   ></td>
+					    <td><input type="number"  name="cashPledge"  style="width:154px" value="<%=cashPledge %>" step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}"  ></td>
+					  
+					      
 					  </tr>
 						  
 						   <tr>
 					    <td align="right">fine:</td>
-					    <td><input class="text" name="fine" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value="<%=fine %>"   required/></td>
+					    <td><input class="text" type="number" name="fine"  style="width:154px" value="<%=fine %>"   step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}"/></td>
 					    <td align="right">borrowedNum:</td>
-					    <td><input class="text" name="borrowedNum" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  style="width:154px" value="<%=borrowedNum %>"  required/></td>
+					    <td><input class="text" type="number" name="borrowedNum" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  style="width:154px" value="<%=borrowedNum %>"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
 					  </tr>
 					 
 					
