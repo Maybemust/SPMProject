@@ -17,7 +17,7 @@
     <link href="./css/bootstrap-4.0.0.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   </head>
-  <body>
+  <body style= "background-color: aliceblue">
 	  
 	  
 	  	  <div class="row" style="padding-left: 1%">

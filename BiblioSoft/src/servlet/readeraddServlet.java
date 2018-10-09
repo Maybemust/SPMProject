@@ -93,7 +93,8 @@ public class readeraddServlet extends HttpServlet {
 		
 	
          String account=request.getParameter("account");  
-         String password=request.getParameter("password");  
+         String password=request.getParameter("password");
+         String password2=request.getParameter("password2");
          String email=request.getParameter("email");
 
          long phone= Long.parseLong(request.getParameter("phone"));
@@ -116,10 +117,17 @@ public class readeraddServlet extends HttpServlet {
           reader.setCashPledge(cashPledge);
          /*reader.setTag(tag);*/
        
+         if(!password.equals(password2))
+         {
+        	 
+        	 response.sendRedirect("readeradd.jsp?mima=no");
+         }
+         else{
          
          ToReader.add(reader);
      
          response.sendRedirect("readeradd.jsp?error=no");
+         }
         /* RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
          dispatcher.forward(request, response); */
          

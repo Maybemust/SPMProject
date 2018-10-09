@@ -61,13 +61,13 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">ISBN:</td>
 						  
-					    <td width="35%"><input type="text" name="ISBN" maxlength="15" style="width:154px"  required/>
+					    <td width="35%"><input type="text" name="ISBN" maxlength="15" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/>
 							
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">author:</td>
 						  
-					    <td width="34%"><input name="author" maxlength="30" type="text" style="width:154px" required/></td>
+					    <td width="34%"><input name="author" maxlength="30" type="text" style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
 					    
 				
 					  </tr>
@@ -76,11 +76,11 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">publishing:</td>
 						  
-					    <td width="35%"><input type="text" name="publishing" maxlength="35" style="width:154px" required/></td> 
+					    <td width="35%"><input type="text" name="publishing" maxlength="35" style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">location:</td>
 						  
-					    <td width="34%"><input name="location"  type="text" maxlength="35" style="width:154px"  required /></td>
+					    <td width="34%"><input name="location"  type="text" maxlength="35" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /></td>
 					    
 						  
 					  </tr>
@@ -124,7 +124,7 @@ document.getElementById("aa").style.display="";
                           
 					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
 						  
-					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" required></td> 
+					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"></td> 
 					  </tr>
 					  
 					  

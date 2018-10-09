@@ -70,13 +70,13 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">barCode:</td>
 						  
-					    <td width="35%"><input name="barCode"  type="text" maxlength="15" style="width:154px" value="<%=barCode1 %>" required /> 
+					    <td width="35%"><input name="barCode"  type="text" maxlength="15" style="width:154px" value="<%=barCode1 %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /> 
 							
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">ISBN:</td>
 						  
-					    <td width="34%"><input type="text" name="ISBN" maxlength="15" style="width:154px" value="<%=ISBN %>" required></td>
+					    <td width="34%"><input type="text" name="ISBN" maxlength="15" style="width:154px" value="<%=ISBN %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"></td>
 					    
 						  
 					  </tr>
@@ -84,11 +84,11 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">author:</td>
 						  
-					    <td width="35%"><input name="author"  type="text" maxlength="30" style="width:154px" value="<%=author %>" required /> 
+					    <td width="35%"><input name="author"  type="text" maxlength="30" style="width:154px" value="<%=author %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">publishing:</td>
 						  
-					    <td width="34%"><input type="text" name="publishing" maxlength="35" style="width:154px" value="<%=publishing %>" required></td>
+					    <td width="34%"><input type="text" name="publishing" maxlength="35" style="width:154px" value="<%=publishing %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"></td>
 					    
 						  
 					  </tr>
@@ -98,7 +98,7 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">location:</td>
 						  
-					    <td width="35%"><input name="location" maxlength="35" type="text" style="width:154px" value="<%=location %>" required /> 
+					    <td width="35%"><input name="location" maxlength="35" type="text" style="width:154px" value="<%=location %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">Date:</td>
 						  
@@ -131,19 +131,19 @@ document.getElementById("aa").style.display="";
                         
                         <td width="16%" align="right" nowrap="nowrap">status:</td>
 						  
-					    <td width="34%"><input type="text" name="status" maxlength="1" style="width:154px" value="<%=status %>" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required ></td>
+					    <td width="34%"><input type="text" name="status" maxlength="1" style="width:154px" value="<%=status %>" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" ></td>
 					  </tr>
 		
 		  <tr>
 					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
 						  
-					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" value="<%=bookName %>" required></td>
+					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" value="<%=bookName %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"></td>
                         
                         <td width="16%" align="right" nowrap="nowrap">price:</td>
 						  
-					    <td width="34%"><input type="text" name="price" maxlength="10" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value="<%=price %>" required></td>
+					    <td width="34%"><input type="number" name="price" maxlength="10"   step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}" />  </td>
 					  </tr>
-					  
+					  		
 					  
 					  <tr>
 					    <td align="right">introduction:</td>
@@ -186,6 +186,10 @@ document.getElementById("aa").style.display="";
     	if(errory=='no')
     	{alert("successfully edit");
     	}
+    
+  
+    
+    
     </script>
      
 

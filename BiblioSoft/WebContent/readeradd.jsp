@@ -62,13 +62,13 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">account:</td>
 						  
-					    <td width="35%"><input name="account" maxlength="15" type="text" style="width:154px"  required  /> 
+					    <td width="35%"><input name="account" maxlength="15" type="text" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"  /> 
 							
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">password:</td>
 						  
-					    <td width="34%"><input type="password" name="password" maxlength="15" id="password"  style="width:154px"></td>
+					    <td width="34%"><input type="password" name="password" maxlength="15" id="password"  style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"  ></td>
 						  
 					  </tr>
 					  
@@ -80,7 +80,7 @@ document.getElementById("aa").style.display="";
 						  
 					    <td width="16%" align="right" nowrap="nowrap">confirm password:</td>
 						  
-					    <td width="34%"><input type="password" name="password2" id="password2" maxlength="15" style="width:154px" value="" onkeyup="validate()" ></td>
+					    <td width="34%"><input type="password" name="password2" id="password2" maxlength="15" style="width:154px" value="" onkeyup="validate()" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"  ></td>
 					    
 					   <span id="jianyan" style="display:block;padding-left:66% " ></span> 
 					  
@@ -93,7 +93,7 @@ document.getElementById("aa").style.display="";
 						  
 					    <td nowrap="nowrap" align="right">name:</td>
 						  
-					    <td><input class="text" name="name" style="width:154px" value=""/></td>
+					    <td><input class="text" name="name" style="width:154px" value="" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /></td>
 						  
 					    <td align="right">sex:</td>
 						  
@@ -113,7 +113,7 @@ document.getElementById("aa").style.display="";
 					    
 					    <td align="right">phone:</td>
 					    
-					    <td><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required/></td>
+					    <td><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
 					  </tr>
 						  
 					
@@ -128,8 +128,10 @@ document.getElementById("aa").style.display="";
                         </select></td>
                         
 					   <td align="right">cashPledge:</td>
-					    <td><input type="text" name="cashPledge" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value=""   required/></td>
+					    <td><input type="number" name="cashPledge"  style="width:154px" value=""   step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}"/></td>
+					  
 					  </tr>
+					  
 						  
 		
 					  <tr>
@@ -174,7 +176,14 @@ document.getElementById("aa").style.display="";
     	{
     	alert("successfully add");
     	}
-   
+    
+    var mima='<%=request.getParameter("mima")%>';
+    if(mima=='no')
+    	{
+    	alert("your passwords differ");
+    	}
+    
+    
     
     
     function validate()

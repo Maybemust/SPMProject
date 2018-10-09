@@ -17,15 +17,13 @@
     <link href="./css/bootstrap-4.0.0.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   </head>
-  <body>
-	  
-	  
-	  	  <div class="row" style="padding-left: 1%; background-color: aliceblue">
+  <body style= "background-color: aliceblue">
+
 		  
 		  	<!--div class="col-md-2 "  style="background:#06246B;color:aliceblue"-->
 
 		  
-    <div class="text-center col-md-12" style= "background-color: aliceblue">
+    <div class="text-center col-md-12" style= "padding-left: 1%;background-color: aliceblue">
 	 
       <!--div class="well" style= "width:700;background-color: aliceblue"><strong--> 
 
@@ -157,7 +155,6 @@
 <script src="js/bootstrap.js"></script>
 	
     </div>
-		  </div>
 		  
    <br>
  
