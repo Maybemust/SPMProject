@@ -149,7 +149,7 @@ function unselectAll(){
                   
                  
                   
-                  
+               <form name="fom" id="fom" method="post">   
                   
 		    <c:forEach items="${books}" var="book" varStatus="re">
 		    <tr>
@@ -165,11 +165,11 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${book.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
+			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book.barCode}&ISBN=${book.ISBN}&author=${book.author}&publishing=${book.publishing}&bookName=${book.bookName}&location=${book.location}&status=${book.status}&price=${book.price}&dateOfStorage=${book.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
 		    </tr>
 	        </c:forEach>
 					
-			 <tr>
+		<%-- 	 <tr>
 		  	    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
 		    <td height="20" bgcolor="#FFFFFF">${book1.barCode}</td>
             <td bgcolor="#FFFFFF">${book1.ISBN}</td>
@@ -182,12 +182,11 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${book1.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book1.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book1.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book1.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book1.barCode}" >delete</a>&nbsp;</td>
-			
-		           </tr>			
-					
-					
-					
+			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book1.barCode}&ISBN=${book1.ISBN}&author=${book1.author}&publishing=${book1.publishing}&bookName=${book1.bookName}&location=${book1.location}&status=${book1.status}&price=${book1.price}&dateOfStorage=${book1.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book1.barCode}" >delete</a>&nbsp;</td>
+	
+		    </tr> --%>			
+						
+		</form>
 					
 					
 					

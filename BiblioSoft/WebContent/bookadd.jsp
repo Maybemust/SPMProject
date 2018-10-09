@@ -34,7 +34,7 @@ document.getElementById("aa").style.display="";
 
 
   
-<form action="bookadd" method="post"  name="form" target="sypost" >
+<form action="bookadd" method="post"  name="form"  >
   
 <div class="MainDiv">
 
@@ -59,44 +59,45 @@ document.getElementById("aa").style.display="";
 					 
 					  <tr>
 						  
-					     <td nowrap align="right" width="15%">barCode:</td>
+					     <td nowrap align="right" width="15%">ISBN:</td>
 						  
-					    <td width="35%"><input name="barCode"  type="text" style="width:154px" required/> 
+					    <td width="35%"><input type="text" name="ISBN" maxlength="15" style="width:154px"  required>
 							
 				        <span class="red">*</span></td>
 						  
-					    <td width="16%" align="right" nowrap="nowrap">ISBN:</td>
+					    <td width="16%" align="right" nowrap="nowrap">author:</td>
 						  
-					    <td width="34%"><input type="text" name="ISBN" style="width:154px"></td>
+					    <td width="34%"><input name="author" maxlength="30" type="text" style="width:154px" required/></td>
 					    
-						  
+				
 					  </tr>
+					  
 					  <tr>
 						  
-					     <td nowrap align="right" width="15%">author:</td>
+					     <td nowrap align="right" width="15%">publishing:</td>
 						  
-					    <td width="35%"><input name="author"  type="text" style="width:154px" /> 
+					    <td width="35%"><input type="text" name="publishing" maxlength="35" style="width:154px" required></td> 
 						  
-					    <td width="16%" align="right" nowrap="nowrap">publishing:</td>
+					    <td width="16%" align="right" nowrap="nowrap">location:</td>
 						  
-					    <td width="34%"><input type="text" name="publishing" style="width:154px"></td>
+					    <td width="34%"><input name="location"  type="text" maxlength="35" style="width:154px" required/></td>
 					    
 						  
 					  </tr>
 					  
 					  
-					  <tr>
+					<!--   <tr>
 						  
 					     <td nowrap align="right" width="15%">location:</td>
 						  
-					    <td width="35%"><input name="location"  type="text" style="width:154px" /> 
+					    <td width="35%"><input name="location"  type="text" maxlength="35" style="width:154px" /> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">Date:</td>
 						  
-					    <td width="34%"><input type="text" name="date" style="width:154px"></td>
+					    <td width="34%"><input type="date" name="date" style="width:154px"></td>
 					    
 						  
-					  </tr>
+					  </tr> -->
 					  
 		  			  <tr>
 					  <tr>
@@ -118,19 +119,19 @@ document.getElementById("aa").style.display="";
 					  </tr>
 					  <tr>
 					    <td align="right">cover:</td>
-					    <td><input  type="button"  name="cover" style="width:154px" value="upload"/></td>
+					    <td><input  type="button"  name="cover" style="width:154px" value="upload" /></td>
                          
                           
 					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
 						  
-					    <td width="34%"><input type="text" name="bookName" style="width:154px"></td> 
+					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" required></td> 
 					  </tr>
 					  
 					  
 		
 					  <tr>
 					    <td align="right">introduction:</td>
-					    <td colspan="3"><textarea name="introduction" cols="100" rows="8"></textarea></td>
+					    <td colspan="3"><textarea name="introduction" cols="100" rows="8" ></textarea></td>
 					    </tr>
 					  </table>
 			  <br />

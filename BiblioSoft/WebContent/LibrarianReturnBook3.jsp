@@ -23,7 +23,7 @@
 	  	  <div class="row" style="padding-left: 1%">
 		  
 		  	<!--div class="col-md-2 "  style="background:#06246B;color:aliceblue"-->
-		 <div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
+		<div class="col-md-2 "  style="background:#186DAD;color:aliceblue">
 		<div class="panel panel-default">
   <div class="panel-heading">
 	  <br>
@@ -35,7 +35,7 @@
 
 	  
 	  <br>
-	  <p align="center" style = "font-size: 16px;color:#191D30">Biblio's librarian in Company</p></div>
+	  <p align="center" style = "font-size: 16px;color:#191D30">Biblo's librarian in Company</p></div>
   </div>
   <!--div class="panel-body">
         <a href="#" style="font-weight:bold; color:#BCBCBC; float:right;padding-right: 10px">发帖数目</a>
@@ -161,7 +161,7 @@
 		  
 	 <div class="panel panel-primary">
 		  <div class="panel-heading">
-	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Return Book</a></h3>
+	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Borrow Book -Ensure Informations</a></h3>
 		 </div>
 	  <div align="center" style="background-color: aliceblue">
 		  		      
@@ -178,20 +178,67 @@
 	<span class="glyphicon glyphicon-menu-right" ></span>
 </div-->
 	<script>
-		function borrowbook(){
-			document.getElementById("borrowbook").submit();
+		function returnbook(){
+			document.getElementById("ReturnBookss").submit();
 		}
+		
 	</script>
-			  <br>
-			  <br>
 			  <div>
-				  <h4 class="panel-title" align="center" style = "font-size: 20px;color:#191D30;padpadding-left: 20px">
-					  Submmit successfully!</h4>
-			  </div>
-			  <row>
-			  	<a href="./LibrarianReturnBook.jsp" style="color:#EFA445;float:right;font-size: 24;padding-right:2%" >return</a>
-			  </row>
+				  <row>
+				  <p style = "font-size: 20px;color:#191D30;padding-left: 20px;float:left">Book name:${borrowbook.getBookName()}</p>
+				  <br>
+				  <br>
+				  <p style = "font-size: 20px;color:#191D30;padding-left: 20px;float:left">Book ID :${borrowbook.getBarCode()}</p>
+				  <br>
+				  <br>
+				  <p style = "font-size: 20px;color:#191D30;padding-left: 20px;float:left">Book ISBN :${borrowbook.getISBN()}</p>
+				  <br>
+				  <br>
+				  <p style = "font-size: 20px;color:#191D30;padding-left: 20px;float:left">Borrower Account :${borrower.getAccount()}</p>
 
+				  
+				  				  <form method="post" action="ReturnBooks" id="ReturnBookss">
+
+					  <input  name="barCode" type="hidden" value = "${borrowbook.getBarCode()}" class="form-control" placeholder="Input Book Id" aria-describedby="sizing-addon1">
+					  <input  name="useraccount" type="hidden" value = "${borrower.getAccount()}"class="form-control" placeholder="Input UserAccount" aria-describedby="sizing-addon1">
+
+				  	<br>
+				  	
+				  						    <button type="button" class=" btn btn-warning btn-lg"
+				  						     onclick = "window.location.href='./LibrarianReturnBook.jsp'" style = "float:left;">Return</button>
+					    <button type="button" class=" btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" 
+					    style = "float:center" >OK</button>
+
+					  <hr>
+					  	</form>
+					  	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = "top:30%">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      
+      <div class="modal-body">
+        Are you sure you want to submit?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="returnbook()">Submit Now</button>
+      </div>
+    </div>
+  </div>
+</div>				  	
+					  <!-- div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Book ID :${barcode}</div>
+					  <div style  = "float :left; font-size: 18px;color: #002A5A;width:10%;">Book ISBN :${ISBN}</div-->
+
+				  	<br>
+
+					  <hr>
+				  </row>
+			  </div>
+			  
 	  </div>
 		  <!--img src="./imgs/bg1.JPG" style =" width:95%;"-->
 	  <hr>
@@ -215,10 +262,10 @@
           </div>
        </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/jquery-3.2.1.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.0.0.js"></script>
+    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/popper.min.js"></script>
+    <script src="file:///D|/C/desktop/Study/SPM/StaticPages/js/bootstrap-4.0.0.js"></script>
   </body>
 </html>

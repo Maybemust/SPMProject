@@ -149,7 +149,7 @@ function unselectAll(){
                   
                <form name="fom" id="fom" method="post">
                
-		    <c:forEach items="${readers}" var="reader" varStatus="re">
+		 <%--    <c:forEach items="${readers}" var="reader" varStatus="re">
 		    <tr>
 		    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
 		    <td height="20" bgcolor="#FFFFFF">${reader.account}</td>  
@@ -163,9 +163,9 @@ function unselectAll(){
 			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account1=${reader.account}&password=${reader.password}&phone=${reader.phone}&email=${reader.email}&fine=${reader.fine}&borrowedNum=${reader.borrowedNum}&cashPledge=${reader.cashPledge}&tag=${reader.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader.account}" >delete</a>&nbsp;</td>
 
 		    </tr>
-	        </c:forEach>
+	        </c:forEach> --%>
 	        
-		<%-- 	 <tr>
+			 <tr>
 		   <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
 		    <td height="20" bgcolor="#FFFFFF">${reader1.account}</td>  
             <td bgcolor="#FFFFFF">${reader1.password}</td>
@@ -177,7 +177,7 @@ function unselectAll(){
 			<td height="20" bgcolor="#FFFFFF">${reader1.tag}</td>               
 			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account1=${reader1.account}&password=${reader1.password}&phone=${reader1.phone}&email=${reader1.email}&fine=${reader1.fine}&borrowedNum=${reader1.borrowedNum}&cashPledge=${reader1.cashPledge}&tag=${reader1.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader1.account}" >delete</a>&nbsp;</td>
 			
-		           </tr> --%>	
+		           </tr>	
 				
 				
 				</form>

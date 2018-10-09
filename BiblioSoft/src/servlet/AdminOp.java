@@ -15,6 +15,28 @@ import updateTo.ToAdmin;
 import updateTo.ToLibrarian;
 
 public class AdminOp extends HttpServlet {
+	
+	/*判断字符串是否为纯数字*/
+	public static boolean isNumeric(String str){
+	    for(int i=str.length();--i>=0;){
+	        int chr=str.charAt(i);
+	        if(chr<48 || chr>57)
+	            return false;
+	    }
+	   return true;
+	}     
+	/*判断字符串是否为带小数点的纯数字*/
+	public static boolean isNumericWithPoint(String str){
+		int pointCount = 0;
+	    for(int i=str.length();--i>=0;){
+	        int chr=str.charAt(i);
+	        if(chr == 46) pointCount++;
+	        if(chr<46 || chr>57 || chr==47 )
+	            return false;
+	    }
+	    if(pointCount > 1) return false;
+	   return true;
+	}
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -43,83 +65,115 @@ public class AdminOp extends HttpServlet {
 
 			// 添加Librarian
 			if (a != null) {
-				long account = Long.parseLong(a);
-				String password = request.getParameter("password");
-				Librarian lbr = new Librarian(account, password, 0);
-				ToLibrarian tolbr = new ToLibrarian();
-				tolbr.add(lbr);
-				out.write("ok");
+				if(a.length()>15 || !isNumeric(a)){
+					out.write("no");
+				} else{
+					long account = Long.parseLong(a);
+					String password = request.getParameter("password");
+					if(password.length()>20){
+						out.write("no");
+					} else {
+						Librarian lbr = new Librarian(account, password, 0);
+						ToLibrarian tolbr = new ToLibrarian();
+						tolbr.add(lbr);
+						out.write("ok");
+					}
+				}
 			}
 
 			// 修改借书数
 			if (n != null) {
-				int number = Integer.parseInt(n);
-				if (number >= 0) {
-					ToAdmin toad = new ToAdmin();
-					toad.updateBorrowedMax(number);
-					out.write("ok");
-				} else {
+				if(n.length()>2 || !isNumeric(n)){
 					out.write("no");
+				} else{
+					int number = Integer.parseInt(n);
+					if (number >= 0) {
+						ToAdmin toad = new ToAdmin();
+						toad.updateBorrowedMax(number);
+						out.write("ok");
+					} else {
+						out.write("no");
+					}
 				}
 			}
 
 			// 修改罚款
 			if (f != null) {
-				double fine = Double.parseDouble(f);
-				if (fine >= 0) {
-					ToAdmin toad = new ToAdmin();
-					toad.updateFine(fine);
-					out.write("ok");
-				} else {
+				if(f.length()>10 || !isNumericWithPoint(f)){
 					out.write("no");
+				} else{
+					double fine = Double.parseDouble(f);
+					if (fine >= 0) {
+						ToAdmin toad = new ToAdmin();
+						toad.updateFine(fine);
+						out.write("ok");
+					} else {
+						out.write("no");
+					}
 				}
 			}
 
 			// 修改押金
 			if (c != null) {
-				double cash = Double.parseDouble(c);
-				if (cash >= 0) {
-					ToAdmin toad = new ToAdmin();
-					toad.updateCash(cash);
-					out.write("ok");
-				} else {
+				if(c.length()>10 || !isNumericWithPoint(c)){
 					out.write("no");
+				} else{
+					double cash = Double.parseDouble(c);
+					if (cash >= 0) {
+						ToAdmin toad = new ToAdmin();
+						toad.updateCash(cash);
+						out.write("ok");
+					} else {
+						out.write("no");
+					}
 				}
 			}
 
 			// 修改罚款时间
 			if (flt != null) {
-				int fineLimitTime = Integer.parseInt(flt);
-				if (fineLimitTime >= 0) {
-					ToAdmin toad = new ToAdmin();
-					toad.updateFineTime(fineLimitTime);
-					out.write("ok");
-				} else {
+				if(flt.length()>5 || !isNumeric(flt)){
 					out.write("no");
+				} else{
+					int fineLimitTime = Integer.parseInt(flt);
+					if (fineLimitTime >= 0) {
+						ToAdmin toad = new ToAdmin();
+						toad.updateFineTime(fineLimitTime);
+						out.write("ok");
+					} else {
+						out.write("no");
+					}
 				}
 			}
 
 			// 修改预约时间
 			if (rt != null) {
-				int reservedTime = Integer.parseInt(rt);
-				if (reservedTime >= 0) {
-					ToAdmin toad = new ToAdmin();
-					toad.updateReservedTime(reservedTime);
-					out.write("ok");
-				} else {
+				if(rt.length()>3 || !isNumeric(rt)){
 					out.write("no");
+				} else{
+					int reservedTime = Integer.parseInt(rt);
+					if (reservedTime >= 0) {
+						ToAdmin toad = new ToAdmin();
+						toad.updateReservedTime(reservedTime);
+						out.write("ok");
+					} else {
+						out.write("no");
+					}
 				}
 			}
 			
 			//修改预约上限
 			if (rm != null) {
-				int reservedMaxinum = Integer.parseInt(rm);
-				if (reservedMaxinum >= 0) {
-					ToAdmin toad = new ToAdmin();
-					toad.updateReservedMax(reservedMaxinum);
-					out.write("ok");
-				} else {
+				if(rm.length()>2 || !isNumeric(rm)){
 					out.write("no");
+				} else{
+					int reservedMaxinum = Integer.parseInt(rm);
+					if (reservedMaxinum >= 0) {
+						ToAdmin toad = new ToAdmin();
+						toad.updateReservedMax(reservedMaxinum);
+						out.write("ok");
+					} else {
+						out.write("no");
+					}
 				}
 			}
 

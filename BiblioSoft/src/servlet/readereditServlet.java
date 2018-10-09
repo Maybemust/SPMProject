@@ -79,7 +79,7 @@ public class readereditServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		
 		System.out.println("done1");
-		System.out.println(request.getParameter("account"));
+		System.out.println(request.getParameter("phone"));
 		System.out.println(request.getParameter("password"));
 		System.out.println("done2");
 		/*private String account;
@@ -91,6 +91,12 @@ public class readereditServlet extends HttpServlet {
 		private double cashPledge;
 		private int tag;*/
 		
+		
+		
+		 
+		  
+	
+	
 	
          String account=request.getParameter("account");  
          String password=request.getParameter("password");  
@@ -100,7 +106,7 @@ public class readereditServlet extends HttpServlet {
          int borrowedNum=Integer.parseInt(request.getParameter("borrowedNum"));
          int tag=Integer.parseInt(request.getParameter("tag"));
          double cashPledge=Double.parseDouble(request.getParameter("cashPledge"));
-         
+      
 
         /* System.out.println("done3");
          System.out.println("done4");*/
@@ -125,6 +131,7 @@ public class readereditServlet extends HttpServlet {
          reader.setBorrowedNum(borrowedNum);
          reader.setFine(fine);
          reader.setTag(tag);
+         
           
          ToReader.update(reader);
      
@@ -134,6 +141,8 @@ public class readereditServlet extends HttpServlet {
          }
        
         else {
+        	
+        	
         	 /*System.out.println("error1");*/
         	 response.sendRedirect("readeredit.jsp?error=yes");
         	 /*System.out.println("error2");*/

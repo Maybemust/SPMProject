@@ -97,10 +97,23 @@ public class bookaddServlet extends HttpServlet {
 		private String tag1;
 		private String tag2;
 		private double price;*/
+		String ISBN=request.getParameter("ISBN"); 
+		String num2,num3,barCode;
+		int num1=ToBook.getTotalISBN(ISBN)+1;
+		num3=String.valueOf(num1);
 		
-         String barCode=request.getParameter("barCode");  
-         String bookName=request.getParameter("bookName");
-         String ISBN=request.getParameter("ISBN");  
+		if(num1<10)
+		{
+			num2=ISBN+"-0"+num3;
+			
+		}
+		else
+		{
+			num2=ISBN+"-"+num3;
+		}
+		barCode=num2;	
+		
+         String bookName=request.getParameter("bookName");  
          String author=request.getParameter("author"); 
          String publishing=request.getParameter("publishing"); 
          String location=request.getParameter("location"); 
@@ -134,7 +147,7 @@ public class bookaddServlet extends HttpServlet {
          
          /*RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
          dispatcher.forward(request, response); */
-        response.sendRedirect("bookadd?error=no");
+        response.sendRedirect("bookadd.jsp?error=no");
          
    
          }

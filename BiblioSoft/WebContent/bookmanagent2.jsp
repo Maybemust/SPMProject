@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 
-<title>readermanagent</title>
+<title>bookmanagent</title>
 	
 <style type="text/css">
 <!--
@@ -101,17 +101,18 @@ function unselectAll(){
 					   <a href="#" class="right-font08" onclick="selectAll();">select all</a>
 				       -<a href="#" class="right-font08" onclick="unselectAll();">Inverse selection</a></span>
 				   
-		           <input name="Submit" type="button" class="right-button08" value="Delete reader " />
+		           <input name="Submit" type="button" class="right-button08" value="Delete book " />
 				   
-				   <input name="Submit" type="button" class="right-button08" value="Add reader" onclick="window.location.href='readeradd.jsp'" />
+				   <input name="Submit" type="button" class="right-button08" value="Add book" onclick="window.location.href='bookadd.jsp'" />
 				   
 				   
-				   <form action="readersearch" method="post" >
+				   <form action="booksearch" method="post" >
 				 
-				   <input name="searchaccount" type="text" size="12" />	
+				   <input name="searchbarCode" type="text" size="12" />	
 				   <input  type="submit" class="right-button02" value="search" />
 				  </form>
-	
+				   
+				   
 		           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 	              </td>
           </tr>
@@ -125,63 +126,69 @@ function unselectAll(){
                     <td height="20" colspan="15" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	
-				    Reader List&nbsp;
+				    Book List&nbsp;
 					</td>
                     </tr>
-				
 					
                   <tr>
 				    <td width="6%" align="center" bgcolor="#EEEEEE">select</td>
-					 <td width="9%" height="20" align="center" bgcolor="#EEEEEE">account</td>
-                    <td width="9%" align="center" bgcolor="#EEEEEE">password</td>
-                    <td width="9%" align="center" bgcolor="#EEEEEE">phone</td>
-					<td width="14%" align="center" bgcolor="#EEEEEE">email</td>
-					<td width="10%" align="center" bgcolor="#EEEEEE">fine</td>
-					<td width="9%" align="center" bgcolor="#EEEEEE">borrowedNum</td>
-					<td width="4%" align="center" bgcolor="#EEEEEE">cashPledge</td>
-					<td width="11%" align="center" bgcolor="#EEEEEE">tag</td>
-                    <td width="19%" align="center" bgcolor="#EEEEEE">operating</td>
+					 <td width="9%" height="20" align="center" bgcolor="#EEEEEE">barCode</td>
+                    <td width="9%" align="center" bgcolor="#EEEEEE">ISBN</td>
+                    <td width="8%" align="center" bgcolor="#EEEEEE">author</td>
+					<td width="9%" align="center" bgcolor="#EEEEEE">publishing</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">bookName</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">location</td>
+					<td width="5%" align="center" bgcolor="#EEEEEE">status</td>
+					<td width="5%" align="center" bgcolor="#EEEEEE">price</td>
+					<td width="4%" align="center" bgcolor="#EEEEEE">tag1</td>
+					<td width="4%" align="center" bgcolor="#EEEEEE">tag2</td>
+					<td width="9%" align="center" bgcolor="#EEEEEE">date</td>
+                    <td width="19%" align="center" bgcolor="#EEEEEE">edit</td>
                   </tr>
                   
                   
-               
+                 
                   
+         <%--       <form name="fom" id="fom" method="post">   
                   
-               <form name="fom" id="fom" method="post">
-               
-		    <c:forEach items="${readers}" var="reader" varStatus="re">
+		    <c:forEach items="${books}" var="book" varStatus="re">
 		    <tr>
 		    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF">${reader.account}</td>  
-            <td bgcolor="#FFFFFF">${reader.password}</td>
-            <td bgcolor="#FFFFFF">${reader.phone}</td>
-            <td bgcolor="#FFFFFF">${reader.email}</td>
-            <td bgcolor="#FFFFFF">${reader.fine}</td>
-		    <td height="20" bgcolor="#FFFFFF">${reader.borrowedNum}</td>
-		    <td height="20" bgcolor="#FFFFFF">${reader.cashPledge}</td>
-			<td height="20" bgcolor="#FFFFFF">${reader.tag}</td>               
-			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account1=${reader.account}&password=${reader.password}&phone=${reader.phone}&email=${reader.email}&fine=${reader.fine}&borrowedNum=${reader.borrowedNum}&cashPledge=${reader.cashPledge}&tag=${reader.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader.account}" >delete</a>&nbsp;</td>
-
+		    <td height="20" bgcolor="#FFFFFF">${book.barCode}</td>
+            <td bgcolor="#FFFFFF">${book.ISBN}</td>
+            <td bgcolor="#FFFFFF">${book.author}</td>
+            <td bgcolor="#FFFFFF">${book.publishing}</td>
+            <td bgcolor="#FFFFFF">${book.bookName}</td>
+            <td bgcolor="#FFFFFF">${book.location}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book.status}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book.price}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book.tag1}</td>
+			<td height="20" bgcolor="#FFFFFF">${book.tag2}</td>
+			<td height="20" bgcolor="#FFFFFF">${book.dateOfStorage}</td>
+			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book.barCode}&ISBN=${book.ISBN}&author=${book.author}&publishing=${book.publishing}&bookName=${book.bookName}&location=${book.location}&status=${book.status}&price=${book.price}&dateOfStorage=${book.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
 		    </tr>
-	        </c:forEach>
-	        
-		<%-- 	 <tr>
-		   <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF">${reader1.account}</td>  
-            <td bgcolor="#FFFFFF">${reader1.password}</td>
-            <td bgcolor="#FFFFFF">${reader1.phone}</td>
-            <td bgcolor="#FFFFFF">${reader1.email}</td>
-            <td bgcolor="#FFFFFF">${reader1.fine}</td>
-		    <td height="20" bgcolor="#FFFFFF">${reader1.borrowedNum}</td>
-		    <td height="20" bgcolor="#FFFFFF">${reader1.cashPledge}</td>
-			<td height="20" bgcolor="#FFFFFF">${reader1.tag}</td>               
-			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account1=${reader1.account}&password=${reader1.password}&phone=${reader1.phone}&email=${reader1.email}&fine=${reader1.fine}&borrowedNum=${reader1.borrowedNum}&cashPledge=${reader1.cashPledge}&tag=${reader1.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader1.account}" >delete</a>&nbsp;</td>
-			
-		           </tr> --%>	
-				
-				
-				</form>
-				
+	        </c:forEach> --%>
+					
+			 <tr>
+		  	    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
+		    <td height="20" bgcolor="#FFFFFF">${book1.barCode}</td>
+            <td bgcolor="#FFFFFF">${book1.ISBN}</td>
+            <td bgcolor="#FFFFFF">${book1.author}</td>
+            <td bgcolor="#FFFFFF">${book1.publishing}</td>
+            <td bgcolor="#FFFFFF">${book.bookName}</td>
+            <td bgcolor="#FFFFFF">${book1.location}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book1.status}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book.price}</td>
+		    <td height="20" bgcolor="#FFFFFF">${book1.tag1}</td>
+			<td height="20" bgcolor="#FFFFFF">${book1.tag2}</td>
+			<td height="20" bgcolor="#FFFFFF">${book1.dateOfStorage}</td>
+			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book1.barCode}&ISBN=${book1.ISBN}&author=${book1.author}&publishing=${book1.publishing}&bookName=${book1.bookName}&location=${book1.location}&status=${book1.status}&price=${book1.price}&dateOfStorage=${book1.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book1.barCode}" >delete</a>&nbsp;</td>
+	
+		    </tr>			
+						
+		</form>
+					
+					
 					
 			
                  
@@ -216,8 +223,6 @@ function unselectAll(){
       </table>          </td>
   </tr>
 </table>
-
-
  <script> 
     var errory='<%=request.getParameter("error")%>';
     if(errory=='yes')
@@ -232,9 +237,5 @@ function unselectAll(){
     	}
     
     </script>
-
-
-
- 
 </body>
 </html>

@@ -95,19 +95,16 @@ public class readeraddServlet extends HttpServlet {
          String account=request.getParameter("account");  
          String password=request.getParameter("password");  
          String email=request.getParameter("email");
-         
-         
-         
-         System.out.println("done3");
+
          long phone= Long.parseLong(request.getParameter("phone"));
-         System.out.println("done4");
          /*int tag=Integer.parseInt(request.getParameter("tag"));*/
+         
         double cashPledge=Double.parseDouble(request.getParameter("cashPledge"));
         
          readeraddServlet id1 = new readeraddServlet();
-         System.out.println("done4");
+       
          boolean canadd =id1.canadd(account);
-         System.out.println("done5");
+     
        if(canadd){
     	   
          Reader reader=new Reader();

@@ -1,4 +1,5 @@
 // JavaScript Document
+
 /** ********************添加Librarian************************** */
 function addLibrarian(account, password, repeatPassword) {
 	var xmlhttp;

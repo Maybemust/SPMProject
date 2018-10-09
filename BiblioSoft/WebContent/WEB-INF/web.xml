@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>BiblioSoft</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -12,50 +9,39 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  
   <servlet>
-            <servlet-name>readermanagentServlet</servlet-name>
-            <servlet-class>servlet.readermanagentServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>readermanagentServlet</servlet-name>
-        <url-pattern>/readerList</url-pattern>
-    </servlet-mapping>
-  
-   <servlet>
-            <servlet-name>bookmanagentServlet</servlet-name>
-            <servlet-class>servlet.bookmanagentServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>bookmanagentServlet</servlet-name>
-        <url-pattern>/bookList</url-pattern>
-    </servlet-mapping>
- 
- 
-
-   <servlet>
-            <servlet-name>readersearchServlet</servlet-name>
-            <servlet-class>servlet.readersearchServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>readersearchServlet</servlet-name>
-        <url-pattern>/readersearch</url-pattern>
-    </servlet-mapping>
- 
- 
-    <servlet>
-            <servlet-name>booksearchServlet</servlet-name>
-            <servlet-class>servlet.booksearchServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>booksearchServlet</servlet-name>
-        <url-pattern>/booksearch</url-pattern>
-    </servlet-mapping>
- 
- 
- 
-         <welcome-file-list>
+    <servlet-name>readermanagentServlet</servlet-name>
+    <servlet-class>servlet.readermanagentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>readermanagentServlet</servlet-name>
+    <url-pattern>/readerList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>bookmanagentServlet</servlet-name>
+    <servlet-class>servlet.bookmanagentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookmanagentServlet</servlet-name>
+    <url-pattern>/bookList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>readersearchServlet</servlet-name>
+    <servlet-class>servlet.readersearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>readersearchServlet</servlet-name>
+    <url-pattern>/readersearch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>booksearchServlet</servlet-name>
+    <servlet-class>servlet.booksearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>booksearchServlet</servlet-name>
+    <url-pattern>/booksearch</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
     <welcome-file>readeradd.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -65,10 +51,8 @@
   <servlet-mapping>
     <servlet-name>readeraddServlet</servlet-name>
     <url-pattern>/readeradd</url-pattern>
-  </servlet-mapping> 
-      
-      
-                <welcome-file-list>
+  </servlet-mapping>
+  <welcome-file-list>
     <welcome-file>bookadd.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -78,10 +62,8 @@
   <servlet-mapping>
     <servlet-name>bookaddServlet</servlet-name>
     <url-pattern>/bookadd</url-pattern>
-  </servlet-mapping>  
-      
-      
-         <welcome-file-list>
+  </servlet-mapping>
+  <welcome-file-list>
     <welcome-file>readeredit.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -91,9 +73,8 @@
   <servlet-mapping>
     <servlet-name>readereditServlet</servlet-name>
     <url-pattern>/readeredit</url-pattern>
-  </servlet-mapping> 
-  
-        <welcome-file-list>
+  </servlet-mapping>
+  <welcome-file-list>
     <welcome-file>bookedit.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
@@ -104,8 +85,6 @@
     <servlet-name>bookeditServlet</servlet-name>
     <url-pattern>/bookedit</url-pattern>
   </servlet-mapping>
-  
- 
   <servlet>
     <servlet-name>readerdeleteServlet</servlet-name>
     <servlet-class>servlet.readerdeleteServlet</servlet-class>
@@ -113,80 +92,72 @@
   <servlet-mapping>
     <servlet-name>readerdeleteServlet</servlet-name>
     <url-pattern>/readerdeleteServlet</url-pattern>
-  </servlet-mapping>  
-  
- <servlet>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>bookdeleteServlet</servlet-name>
     <servlet-class>servlet.bookdeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>bookdeleteServlet</servlet-name>
     <url-pattern>/bookdeleteServlet</url-pattern>
-  </servlet-mapping>  
-
-
-  
-     <servlet>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>borrowBook</servlet-name>
     <servlet-class>servlet.borrowBook</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>borrowBook</servlet-name>
-    <url-pattern>/borrowBook</url-pattern>
-   </servlet-mapping>
- 
-
-     <servlet>
+    <url-pattern>/borrowBooks</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ReturnBooks</servlet-name>
     <servlet-class>servlet.ReturnBooks</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ReturnBooks</servlet-name>
     <url-pattern>/ReturnBooks</url-pattern>
-   </servlet-mapping>
-
-
-<servlet>
-  	<servlet-name>admin1</servlet-name>
-  	<servlet-class>servlet.Admin1</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>admin1</servlet-name>
-  	<url-pattern>/admin1</url-pattern>
-  </servlet-mapping>
-
-
-  <servlet>
-  	<servlet-name>adminop</servlet-name>
-  	<servlet-class>servlet.AdminOp</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>adminop</servlet-name>
-  	<url-pattern>/adminop</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>admin2</servlet-name>
-  	<servlet-class>servlet.Admin2</servlet-class>
+    <servlet-name>admin1</servlet-name>
+    <servlet-class>servlet.Admin1</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>admin2</servlet-name>
-  	<url-pattern>/admin2</url-pattern>
+    <servlet-name>admin1</servlet-name>
+    <url-pattern>/admin1</url-pattern>
   </servlet-mapping>
-    <servlet>
-  	<servlet-name>ReaderServlet</servlet-name>
-  	<servlet-class>servlet.ReaderServlet</servlet-class>
+  <servlet>
+    <servlet-name>adminop</servlet-name>
+    <servlet-class>servlet.AdminOp</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>ReaderServlet</servlet-name>
-  	<url-pattern>/getreader</url-pattern>
+    <servlet-name>adminop</servlet-name>
+    <url-pattern>/adminop</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>admin2</servlet-name>
+    <servlet-class>servlet.Admin2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin2</servlet-name>
+    <url-pattern>/admin2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ReaderServlet</servlet-name>
+    <servlet-class>servlet.ReaderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReaderServlet</servlet-name>
+    <url-pattern>/getreader</url-pattern>
   </servlet-mapping>
 
-  
+  <servlet>
+    <servlet-name>EnsureBorrowBookServlet</servlet-name>
+    <servlet-class>servlet.EnsureBorrowBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnsureBorrowBookServlet</servlet-name>
+    <url-pattern>/EnsureBorrowBook</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>
-     
-      
-    
-         
-    

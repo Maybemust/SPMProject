@@ -62,13 +62,13 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">account:</td>
 						  
-					    <td width="35%"><input name="account"  type="text" style="width:154px" required/> 
+					    <td width="35%"><input name="account" maxlength="15" type="text" style="width:154px"  required  /> 
 							
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">password:</td>
 						  
-					    <td width="34%"><input type="password" name="password" id="password"  style="width:154px"></td>
+					    <td width="34%"><input type="password" name="password" maxlength="15" id="password"  style="width:154px"></td>
 						  
 					  </tr>
 					  
@@ -80,7 +80,7 @@ document.getElementById("aa").style.display="";
 						  
 					    <td width="16%" align="right" nowrap="nowrap">confirm password:</td>
 						  
-					    <td width="34%"><input type="password" name="password2" id="password2" style="width:154px" value="" onkeyup="validate()" ></td>
+					    <td width="34%"><input type="password" name="password2" id="password2" maxlength="15" style="width:154px" value="" onkeyup="validate()" ></td>
 					    
 					   <span id="jianyan" style="display:block;padding-left:66% " ></span> 
 					  
@@ -109,11 +109,11 @@ document.getElementById("aa").style.display="";
 						  
 					  <tr>
 					    <td align="right">email:</td>
-					    <td><input  type="email"  name="email" style="width:154px" value=""/></td>
+					    <td><input  type="email"  name="email" maxlength="20" style="width:154px" oninvalid="this.setCustomValidity('Please enter the correct format for your mailbox');" value=""/></td>
 					    
 					    <td align="right">phone:</td>
 					    
-					    <td><input type="text" name="phone" style="width:154px" value=""/></td>
+					    <td><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required/></td>
 					  </tr>
 						  
 					
@@ -128,7 +128,7 @@ document.getElementById("aa").style.display="";
                         </select></td>
                         
 					   <td align="right">cashPledge:</td>
-					    <td><input type="text" name="cashPledge" style="width:154px" value=""/></td>
+					    <td><input type="text" name="cashPledge" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value=""   required/></td>
 					  </tr>
 						  
 		
@@ -182,11 +182,11 @@ document.getElementById("aa").style.display="";
     	 var pwd1 = document.getElementById("password").value;
          var pwd2 = document.getElementById("password2").value;
          if(pwd1 == pwd2) {
-             document.getElementById("jianyan").innerHTML="<font color='green'>两次密码相同</font>";
+             document.getElementById("jianyan").innerHTML="<font color='green'>The same password twice</font>";
              document.getElementById("button").disabled = false;
          }
          else {
-             document.getElementById("jianyan").innerHTML="<font color='red'>两次密码不相同</font>";
+             document.getElementById("jianyan").innerHTML="<font color='red'>Two passwords are different</font>";
            document.getElementById("button").disabled = true;
          }
     	

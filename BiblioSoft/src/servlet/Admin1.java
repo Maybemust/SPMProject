@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import entity.Librarian;
 import updateTo.ToLibrarian;
@@ -17,6 +18,8 @@ import entity.Admin;
 import updateTo.ToAdmin;
 
 public class Admin1 extends HttpServlet{
+
+	
 	private ToLibrarian tolbr = new ToLibrarian();
 	private ToAdmin toad = new ToAdmin();
 	private Admin ad;
@@ -34,8 +37,12 @@ public class Admin1 extends HttpServlet{
 			Long account = Long.parseLong(request.getParameter("modifiedaccount"));
 			if(account != null){
 				String password = request.getParameter("modifiedpassword");
-				Librarian lbr = new Librarian(account, password, 1);
-				tolbr.update(lbr);
+				if(password.length()>20){
+					JOptionPane.showMessageDialog(null,"Your input is too long!");
+				} else {
+					Librarian lbr = new Librarian(account, password, 1);
+					tolbr.update(lbr);
+				}
 			}
 		} catch (NumberFormatException e){
 			

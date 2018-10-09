@@ -24,7 +24,7 @@ public  class bookmanagentServlet extends HttpServlet {
 		
 	
 		int start = 0;
-		int count = 5;
+		int count = 10;
 
 		try {
 			start = Integer.parseInt(request.getParameter("start"));
@@ -54,7 +54,7 @@ public  class bookmanagentServlet extends HttpServlet {
 		request.setAttribute("pre", pre);
 		request.setAttribute("last", last);
 
-		int a=5;
+	
 		List<Book> books = ToBook.list(start, count);
 		request.setAttribute("books", books);
       

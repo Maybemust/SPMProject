@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,13 +33,40 @@
 		</div>
 		<div>
 			<p style="position:relative;left:20px;top:10px"">password:</p>
-			<input type="text" value="${password}" name="modifiedpassword" style="position:relative;top:-25px;left:90px">
+			<input type="text" value="${password}" id="modifiedpassword" name="modifiedpassword" style="position:relative;top:-25px;left:90px" required>
 		</div>
-		<input type="submit" value="save" style="position:relative;left:75px">
+		<input type="submit" value="save" style="position:relative;left:75px" onclick="check()">
 		<input type="button" onclick="history.go(-1)" value="back" style="position:relative;left:125px">
 		</form>
 	</div>
-	
-<!-- 	<p>test</p> -->
+	<script>
+function check(){
+	var password=document.getElementById("modifiedpassword").value;
+	if(password==""){
+    				alert("Password can not be blank!");
+    				 document.getElementById("modifiedpassword").focus();
+    				 return false;
+    			}
+}
+
+// function checkLength(){
+//  var str = document.getElementById("modifiedpassword").value;
+//  var i,sum;
+//   sum=0;
+//   for(i=0;i<str.length;i++)
+//   {
+//        if ((str.charCodeAt(i)>=0) && (str.charCodeAt(i)<=255))
+//             sum=sum+1;
+//        else
+//             sum=sum+2;
+//   }
+//   if(sum<=20){
+//  	 return true;
+//   } else{
+//  	 alert("Your input is too long");
+//  	 return false;
+//   }
+// }
+</script>
 </body>
 </html>

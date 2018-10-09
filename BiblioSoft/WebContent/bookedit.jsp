@@ -32,8 +32,18 @@ document.getElementById("aa").style.display="";
 <body class="ContentBody">
 
 <% String barCode1=request.getParameter("barCode1");  %>
-  
-<form action="bookedit" method="post"  name="form" target="sypost" >
+ <% String ISBN=request.getParameter("ISBN");  %>
+ <% String author=request.getParameter("author");  %>
+ <% String publishing=request.getParameter("publishing");  %>
+ <% String bookName=request.getParameter("bookName");  %>
+ <% String location=request.getParameter("location");  %>
+ <% String status=request.getParameter("status");  %>
+ <% String price=request.getParameter("price");  %>
+ <% String dateOfStorage=request.getParameter("dateOfStorage");  %>
+ 
+ 
+ 
+<form action="bookedit" method="post"  name="form"  >
   
 <div class="MainDiv">
 
@@ -60,13 +70,13 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">barCode:</td>
 						  
-					    <td width="35%"><input name="barCode"  type="text" style="width:154px" value="<%=barCode1 %>" /> 
+					    <td width="35%"><input name="barCode"  type="text" maxlength="15" style="width:154px" value="<%=barCode1 %>" /> 
 							
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">ISBN:</td>
 						  
-					    <td width="34%"><input type="text" name="ISBN" style="width:154px"></td>
+					    <td width="34%"><input type="text" name="ISBN" maxlength="15" style="width:154px" value="<%=ISBN %>" ></td>
 					    
 						  
 					  </tr>
@@ -74,11 +84,11 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">author:</td>
 						  
-					    <td width="35%"><input name="author"  type="text" style="width:154px" /> 
+					    <td width="35%"><input name="author"  type="text" maxlength="30" style="width:154px" value="<%=author %>" /> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">publishing:</td>
 						  
-					    <td width="34%"><input type="text" name="publishing" style="width:154px"></td>
+					    <td width="34%"><input type="text" name="publishing" maxlength="35" style="width:154px" value="<%=publishing %>"></td>
 					    
 						  
 					  </tr>
@@ -88,11 +98,11 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">location:</td>
 						  
-					    <td width="35%"><input name="location"  type="text" style="width:154px" /> 
+					    <td width="35%"><input name="location" maxlength="35" type="text" style="width:154px" value="<%=location %>" /> 
 						  
 					    <td width="16%" align="right" nowrap="nowrap">Date:</td>
 						  
-					    <td width="34%"><input type="text" name="date" style="width:154px"></td>
+					    <td width="34%"><input type="date" name="date" style="width:154px" value="<%=dateOfStorage %>"></td>
 					    
 						  
 					  </tr>
@@ -121,17 +131,17 @@ document.getElementById("aa").style.display="";
                         
                         <td width="16%" align="right" nowrap="nowrap">status:</td>
 						  
-					    <td width="34%"><input type="text" name="status" style="width:154px"></td>
+					    <td width="34%"><input type="text" name="status" maxlength="1" style="width:154px" value="<%=status %>" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  ></td>
 					  </tr>
 		
 		  <tr>
 					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
 						  
-					    <td width="34%"><input type="text" name="bookName" style="width:154px"></td>
+					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" value="<%=bookName %>"></td>
                         
                         <td width="16%" align="right" nowrap="nowrap">price:</td>
 						  
-					    <td width="34%"><input type="text" name="price" style="width:154px"></td>
+					    <td width="34%"><input type="text" name="price" maxlength="10" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value="<%=price %>"></td>
 					  </tr>
 					  
 					  

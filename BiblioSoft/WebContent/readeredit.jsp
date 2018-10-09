@@ -17,10 +17,19 @@
 
 <body class="ContentBody">
  
-：
-<% String account1=request.getParameter("account1");  %>
 
-  <form action="readeredit" method="post"  name="form" target="sypost" >
+<% String account1=request.getParameter("account1");  %>
+<% String password=request.getParameter("password");  %>
+<% String phone=request.getParameter("phone");  %>
+<% String email=request.getParameter("email");  %>
+<% String fine=request.getParameter("fine");  %>
+<% String borrowedNum=request.getParameter("borrowedNum");  %>
+<% String cashPledge=request.getParameter("cashPledge");  %>
+<% String tag=request.getParameter("tag");  %>
+
+
+
+  <form action="readeredit" method="post"  name="form"  >
 <div class="MainDiv">
 <table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
   <tr>
@@ -45,13 +54,13 @@
 
 						  
 						  
-					    <td width="35%"><input name='account' type="text" class="text" style="width:154px" value="<%=account1 %>" />
+					    <td width="35%"><input name='account' type="text" class="text" maxlength="15" style="width:154px"  value="<%=account1 %>"  required />
 						
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">password:</td>
 						  
-					    <td width="34%"><input class="text" name="password" type="password" style="width:154px" value=""></td>
+					    <td width="34%"><input class="text" name="password" maxlength="15" type="password" id="password" style="width:154px" value="<%=password %>"></td>
 						  
 					  </tr>
 					  
@@ -63,7 +72,9 @@
 						  
 					    <td width="16%" align="right" nowrap="nowrap">confirm password:</td>
 						  
-					    <td width="34%"><input class="text" name="password2"   type="password"   style="width:154px" value=""></td>
+					    <td width="34%"><input class="text" name="password2" maxlength="15"  type="password"  id="password2"  style="width:154px" value="" onkeyup="validate()"></td>
+						  
+						  
 						  
 					  </tr>	  
 						  
@@ -80,8 +91,8 @@
 					    <td align="right">sex:</td>
 						  
 					    <td><select name="sex" >
-                            <option selected="selected">==select==</option>
-                            <option>man</option>
+                            <option selected="selected">man</option>
+                           
                             <option>woman</option>
                         </select></td>
 					  </tr>
@@ -91,31 +102,30 @@
 						  
 					  <tr>
 					    <td align="right">email:</td>
-					    <td><input class="text" name="email"  type="email" style="width:154px" value=""/></td>
+					    <td><input class="text" name="email"  type="email" maxlength="20" style="width:154px" oninvalid="this.setCustomValidity('Please enter the correct format for your mailbox');" value="<%=email %>"/></td>
 					    <td align="right">phone:</td>
-					    <td><input class="text" name="phone" style="width:154px" value=""/></td>
+					    <td><input class="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value="<%=phone %>"   required/></td>
 					  </tr>
 						  
 					
 						  
 					  <tr>
 					    <td align="right">tag:</td>
-					    <td><select name="tag" >
-                            <option  selected="selected">==select==</option>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
+					    <td><select name="tag"  >
+                            <option  selected="selected">0</option>
+                                                 <option>1</option>
+                                                 <option>2</option>
                         </select></td>
                         
 					   <td align="right">cashPledge:</td>
-					    <td><input class="text" name="cashPledge" style="width:154px" value=""></td>
+					    <td><input class="text" name="cashPledge" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value="<%=cashPledge %>"  required   ></td>
 					  </tr>
 						  
 						   <tr>
 					    <td align="right">fine:</td>
-					    <td><input class="text" name="fine" style="width:154px" value=""/></td>
+					    <td><input class="text" name="fine" onkeyup="value=value.replace(/[^\d||/.]/g,'')" onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))" style="width:154px" value="<%=fine %>"   required/></td>
 					    <td align="right">borrowedNum:</td>
-					    <td><input class="text" name="borrowedNum" style="width:154px" value=""/></td>
+					    <td><input class="text" name="borrowedNum" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  style="width:154px" value="<%=borrowedNum %>"  required/></td>
 					  </tr>
 					 
 					
@@ -164,31 +174,37 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     <script> 
     var errory1='<%=request.getParameter("error")%>';
+  
     if(errory1=='yes')
     	{
     	alert("not find reader");
     	}
     	else
-        	if(errory=='no')
+        	if(errory1=='no')
         	{
         	alert("successfully edit");
         	}
+   
     
     
-    
+    function validate()
+    {
+    	 var pwd1 = document.getElementById("password").value;
+         var pwd2 = document.getElementById("password2").value;
+         if(pwd1 == pwd2) {
+             document.getElementById("jianyan").innerHTML="<font color='green'>The same password twice</font>";
+             document.getElementById("button").disabled = false;
+         }
+         else {
+             document.getElementById("jianyan").innerHTML="<font color='red'>Two passwords are different</font>";
+           document.getElementById("button").disabled = true;
+         }
+    }
+     
+         
+         
     
     </script>
     

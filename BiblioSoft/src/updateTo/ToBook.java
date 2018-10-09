@@ -93,7 +93,7 @@ public class ToBook {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into book(barCode,bookName,ISBN,author,publishing,location,status) values(?,?,?,?,?,?,0)";
+			String sql = "insert into book(barCode,bookName,ISBN,author,publishing,location,dateOfStorage,status) values(?,?,?,?,?,?,?,0)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, book.getBarCode());
 			ps.setString(2,book.getBookName());
@@ -101,12 +101,13 @@ public class ToBook {
 			ps.setString(4, book.getAuthor());
 			ps.setString(5, book.getPublishing());
 			ps.setString(6, book.getLocation());
+			ps.setDate(7, book.getDateOfStorage());
 			
 			ps.execute();
 
-			ResultSet rs = ps.getGeneratedKeys();
+			//ResultSet rs = ps.getGeneratedKeys();
 
-			DBhelper.closeConnection(c, ps, rs);
+			DBhelper.closeConnection(c, ps, null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -210,6 +211,15 @@ public class ToBook {
 	/*
 	 * 列出所有的书
 	 */
+
+	
+	public static List<Book> list() {
+		return list(0, Short.MAX_VALUE);
+	}
+	
+	/*
+	 * 设置书籍借阅状态
+	 */
 	public static void setStatus(String id,int i) {
 		try {
 
@@ -226,10 +236,6 @@ public class ToBook {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static List<Book> list() {
-		return list(0, Short.MAX_VALUE);
 	}
 	/*
 	 * 按照顺序显示一些书

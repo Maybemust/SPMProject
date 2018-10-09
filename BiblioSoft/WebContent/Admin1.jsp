@@ -9,15 +9,13 @@
     <link rel="stylesheet" type="text/css" href="css/buttons.css" />
 	<link rel="stylesheet" type="text/css" href="css/input.css"/>
 	<link rel="stylesheet" type="text/css" href="css/password.css" />
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" media="screen"> 
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen"> 
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/ajax.js"></script>
-    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/pop-ups.css">
-<!-- 	<script src="js/pop-ups.js"></script> -->
+<!--     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
 
     <style>
         body{
@@ -324,7 +322,26 @@
                	 	color.style.color="#aab1b7";
             	//}
             }
-
+            
+//             function checkStringLength(param,leng){
+//                 var str = document.getElementById(param).value;
+//                 var i,sum;
+//                  sum=0;
+//                  //alert("33333");
+//                  for(i=0;i<str.length;i++)
+//                  {
+//                       if ((str.charCodeAt(i)>=0) && (str.charCodeAt(i)<=255))
+//                            sum=sum+1;
+//                       else
+//                            sum=sum+2;
+//                  }
+//                  if(sum<=leng){
+//                 	 return true;
+//                  } else{
+//                 	 alert("Your input is too long");
+//                 	 return false;
+//                  }
+//             }
             
     </script>
 </html>
