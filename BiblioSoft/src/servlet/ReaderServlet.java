@@ -46,22 +46,25 @@ public class ReaderServlet  extends HttpServlet{
 		/*
 		 * 区分历史借阅和正在借阅
 		 */
-		for( int i = 0 ; i < borrowedRecord.size() ; i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
-		    if(borrowedRecord.get(i) == null){
+		int size=0;
+		int i = 0;
+		size=borrowedRecord.size();
+		while(i < size) {//内部不锁定 执行效率高 并发操作会出错
+		    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
 		    	nowdate.add(date.get(i));
-		    	date.remove(i);
+		    	size--;
+		    }
+		    else{
+		    	 i++;
 		    }
 		}
-		System.out.println("1");
 		
 		request.setAttribute("nowdate", nowdate);
 		request.setAttribute("nowrecord", nowrecord);
-		request.setAttribute("borrowedRecords", borrowedRecord);
+		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
-		
-		System.out.println("2");
-		request.getRequestDispatcher("reader.jsp").forward(request, response);
+		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

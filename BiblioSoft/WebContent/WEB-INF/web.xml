@@ -158,6 +158,22 @@
     <servlet-name>EnsureBorrowBookServlet</servlet-name>
     <url-pattern>/EnsureBorrowBook</url-pattern>
   </servlet-mapping>
+    	<servlet>
+  		<servlet-name>deletOrder</servlet-name>
+  		<servlet-class>servlet.deletOrder</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>deletOrder</servlet-name>
+  		<url-pattern>/deletOrder</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>addOrder</servlet-name>
+  		<servlet-class>servlet.addOrder</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>addOrder</servlet-name>
+  		<url-pattern>/addOrder</url-pattern>
+  	</servlet-mapping>
 
 
 </web-app>
