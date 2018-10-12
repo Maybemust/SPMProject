@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import entity.Book;
 import entity.BorrowedRecord;
@@ -274,5 +275,386 @@ public class ToBook {
 		return books;
 	}
 	
+	
+	/*
+	 * 为搜索所做的更新，通过bookname找到指定的书
+	 */
+	public static List<Book> getByBookName(String bookname) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where bookName like " + "'%"+bookname+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	/*
+	 * 为搜索所做的更新，通过ISBN找到指定的书
+	 */
+	public static List<Book> getByISBN(String ISBN) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where ISBN like " + "'%"+ISBN+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	/*
+	 * 为搜索所做的更新，通过author找到指定的书
+	 */
+	public static List<Book> getByAuthor(String author) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where author like " + "'%"+author+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过publishing找到指定的书
+	 */
+	public static List<Book> getByPublishing(String publishing) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where publishing like " + "'%"+publishing+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过location找到指定的书
+	 */
+	public static List<Book> getByLocation(String location) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where location like " + "'%"+location+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过introduction找到指定的书
+	 */
+	public static List<Book> getByIntroduction(String introduction) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where introduction like " + "'%"+introduction+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过tag1找到指定的书
+	 */
+	public static List<Book> getByTag1(String tag1) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where tag1 like " + "'%"+tag1+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过tag2找到指定的书
+	 */
+	public static List<Book> getByTag2(String tag2) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from book where tag2 like " + "'%"+tag2+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				Book book = new Book();
+				book.setBarCode(rs.getString("barCode"));
+				book.setBookName(rs.getString("bookName"));
+				book.setAuthor(rs.getString("author"));
+				book.setISBN(rs.getString("ISBN"));
+				book.setPublishing(rs.getString("publishing"));
+				book.setLocation(rs.getString("location"));
+				book.setCover(rs.getBlob("cover"));
+				book.setIntroduction(rs.getString("introduction"));
+				book.setStatus(rs.getInt("status"));
+				book.setDateOfStorage(rs.getDate("dateOfStorage"));
+				book.setTag1(rs.getString("tag1"));
+				book.setTag2(rs.getString("tag2"));
+				book.setPrice(rs.getDouble("price"));
+				books.add(book);
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
+	/*
+	 * 根据关键字搜索
+	 */
+	public static List<Book> searchForKey(String key) {
+		List<Book>books=new ArrayList<Book>();
+		
+		try {
+			Book book=getByBarCode(key);
+			books.add(book);
+			List<Book>books1=getByBookName(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByAuthor(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByIntroduction(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByISBN(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByLocation(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByPublishing(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByTag1(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+			books1=getByTag2(key);
+			for (Book b : books1) {
+				books.add(b);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;
+	}
 	
 }
