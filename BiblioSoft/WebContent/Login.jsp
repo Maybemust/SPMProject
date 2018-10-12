@@ -5,111 +5,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>log in</title>
-	<style>
-		.btn-medium {
-  			line-height: 30px;
-  			width: 60px;
- 			height: 30px;
-  			font-size: 120%;
-		}
-	    .info {
-       		background: #264DEE;
-		  	box-shadow: 0px 5px #5f023f;
-  			color: white;
-		}
-
-		.info:hover {
-  			background:#38C4E3;
-  			box-shadow: 0px 4px #3f002a;
-  			color: white;
-		}
-		.info:active {
-  			top: 4px;
-  			box-shadow: 0px 0px #d3545d;
-		}
-		body{
-			background-image: url(images/image-background.jpg);
-			background-size: 100% 100%;
-			background-attachment: fixed;
-			background-repeat: no-repeat;
-			height: 600px;
-		}
-		#topbar{
-			position: relative;
-			width: 100%;
-			height:100px;
-		}
-		#middlecontainer{
-			position: relative;
-			width: 100%;
-		}
-		#login{
-			border-radius: 12px;
-			opacity: 0.5;
-			height: 350px;
-			background:#FFFFFF;
-			position: relative;
-			margin-left: 10%;
-			margin-top: 70px;
-			width: 30%;
-		}
-		#container1{
-			position: relative;
-			width: 30%;
-			margin-left: 10%;
-			height: 100px;
-		}
-		#container2{
-			position: relative;
-			width: auto;
-			height: 150px;
-		}
-		#container2-1{
-			margin-left: 10%;
-			width: auto;
-			height: 25px;
-		}
-		#container2-2{
-			margin-left: 10%;
-			width: auto;
-			height: 25px;
-		}
-		#container2-3{
-			margin-left: 10%;
-			width: auto;
-			height: 25px;
-		}
-		#container2-4{
-			margin-left: 10%;
-			width: auto;
-			height: 25px;
-		}
-		#container3{
-			position: relative;
-			width: auto;
-			height: 100px;
-		}
-		#bottombar{
-			position: absolute;
-			width: 100%;
-			height: 100px;
-			bottom: 0;
-		}
-	</style>
-</head>
-
-<body>
-	<div id="topbar">
-		
-	</div>
-	<div id="middlecontainer">
-	  <div id="login">
-		  <div id="container1">
-			    <br/>
-		     	<h1>Log in</h1>
-	      </div>
-	      <script>
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="css/buttons.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/backgroundShow.js"></script>
+<script>
 	      		function login(){
 	      			
 	      			var account=document.getElementById("useraccount").value;
@@ -128,20 +28,150 @@
 	      				}
 	      			}			
 	      		}
-	      </script>
+</script>
+	
+<style type="text/css">
+
+	.d1{
+		width:100%;
+		height:100%;
+		display:block;
+		position:absolute;
+		left:0px;
+		top:0px;
+	}
+	
+	.bg{
+		width: 300px;
+    	height: 400px;
+		background: inherit;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+		
+	}
+	
+	.bg:after{
+		content: "";
+     	width: 100%;
+    	height: 100%;
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    	background: inherit;
+    	filter: blur(15px) opacity(97%);
+    	z-index: 11;
+	}
+	
+	.mydiv{
+		border-radius: 8px;
+		background-color: rgba(200, 200, 200, 0.13);
+		width: 300px;
+    	height: 400px;
+		position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+		z-index: 99;
+	}
+	
+	.myinput{
+		font-weight: bold;
+		background-color: rgba(200,200,200,0); 
+		border-style: solid;
+		border-width: 2px;
+        border-color: rgba(0, 0, 0, 0.8);
+		border-radius: 4px;
+		width: 210px;
+		height: 25px;
+		box-shadow: 0 0 3px rgba(0,0,0,0.4) inset;
+		position: relative;
+		left: 40px;
+	}
+	
+	.myp{
+		color: #000000;
+		line-height: 5px;
+		font-size: 20px;
+		font-weight: 800;
+		position: relative;
+		left: 40px;
+	}
+	
+	.myh1{
+		font-weight: bold;
+		font-family: Microsoft YaHei;
+		position: relative;
+		left: 40px;
+		bottom: 20px;
+	}
+
+</style>
+</head>
+
+<body>
+
+<!-- 登录窗口      -->
+<div class="mydiv">
+	<img src="images/logo2.png" style="width: 30%; height: 6%; position: relative; left: 200px; top: 5px;"/>
+	<div id="topbar">
+		
+	</div>
+	<div id="middlecontainer">
+	  <div id="login">
+		  <div id="container1">
+			    <br/>
+		     	<h1 class="myh1">Log in</h1>
+	      </div>
 		  <div id="container2">
-			  <div id="container2-1"> <p>Account:</p> </div>
-			  <div id="container2-2"> <input id="useraccount" maxlength="14" type="text"> </div>
-			  <div id="container2-3"> <p>Password:</p> </div>
-			  <div id="container2-4"> <input id="userpassword" maxlength="14" type="password"> </div>
+			  <div id="container2-1"> <p class="myp">Account:</p> </div>
+			  <div id="container2-2"> <input id="useraccount" maxlength="14" type="text" class="myinput"> </div>
+			  <div id="container2-3"> <p class="myp" style="position: relative; top: 20px;">Password:</p> </div>
+			  <div id="container2-4"> <input id="userpassword" maxlength="14" type="password" class="myinput" style="position: relative; top: 20px;"> </div>
 		  </div>	
-		  <div id="container3">
-			  <button class="btn-medium info" style="margin-left: 10%;border-radius: 5px;" type="button" onClick="login()">Login</button>
-			  <a style="position: relative;left: 10%" onclick="login()">SignUp</a>
+		  <div id="container3" style="position: relative; left: 52px; top: 40px;">
+			  <button style="padding: 0.7em 2em;" 
+			  class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l" type="button" onClick="login()">Login</button>
+			  <a style="position: relative;left: -10px; top:15px; font-weight: bold; font-size: 12px;" onclick="login()">Sign Up</a>
 		  </div>
 	  </div>
 	</div>
 	<div id="bottombar">
 	</div>
+</div>
+
+<!--  背景     -->
+<div id="banner" style="width: 100%; height: 100%; margin: 0; padding: 0;">
+	<div class="d1" style="background-image: url(images/back_1.jpg);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;">
+		<div class="bg"></div>
+	</div>
+	<div class="d1" style="background-image: url(images/back_2.jpg);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;">
+		<div class="bg"></div>
+	</div>
+	<div class="d1" style="background-image: url(images/back_3.jpg);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;">
+		<div class="bg"></div>
+	</div>
+	<div class="d1" style="background-image: url(images/back_4.jpg);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;">
+		<div class="bg"></div>
+	</div>
+</div>
+<script type="text/javascript">banner()</script>
 </body>
 </html>

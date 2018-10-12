@@ -13,7 +13,6 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/ajax.js"></script>
-<!--     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script> -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.min.js"></script>
 
@@ -78,7 +77,6 @@ body {
 }
 
 .menu-item-active {
-	/*background-color: #99ffcc; */
 	border-right: 4px solid #647f9d;
 	color: #ffffcc;
 }
@@ -106,6 +104,7 @@ body {
 <body>
 	<div class="wrap">
 		<!-- 左边导航栏-->
+		
 		<div id="left" class="left">
 			<div id="logoDiv" class="logoDiv">
 				<p id="logoTitle" class="logoTitle">
@@ -114,11 +113,7 @@ body {
 					<span style="font-size: 18px;">Admin</span>
 				</p>
 			</div>
-
-			<div class="menu-item" href="#one" data-toggle="tab"
-				onmouseover="mouseover('div1')" onmouseout="mouseout('div1')"
-				style="background-color: #4D4D4D" id="div1">search book</div>
-
+		
 			<div class="menu-item" data-toggle="collapse" data-target="#demo1"
 				onmouseover="mouseover('div2')" onmouseout="mouseout('div2')"
 				id="div2">operate for librarian</div>
@@ -148,27 +143,19 @@ body {
 				<div class="menu-item" href="#seven" data-toggle="tab"
 					onmouseover="mouseover('div9')" onmouseout="mouseout('div9')"
 					id="div9">reservation</div>
+				<div class="menu-item" href="#eight" data-toggle="tab"
+					onmouseover="mouseover('div10')" onmouseout="mouseout('div10')"
+					id="div10">modify Admin's password</div>
 			</div>
 
 
 		</div>
+		<a href="fin.jsp" style="float:right">back to log page</a>
 		<!-- 添加导航栏所链接的内容-->
 		<div id="right" class="tab-content right">
-			<div id="one" class="tab-pane">
-				<div class="content">
-					<input type="text" name="searchBook"
-						style="font-weight: bold; font-size: 18px; width: 400px"
-						placeholder="Enter the book you are searching for"> <input
-						type="button" name="search" value="search"> <br> <br>
-					<input type="button" name="backToFirstPage"
-						value="Back to firstpage"> <input type="button"
-						name="signOut" value="Sign out">
-				</div>
-			</div>
+
 			<div id="two" class="tab-pane">
-				<!--  <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
-                                  
-                            </span>  -->
+
 				<div class="content">
 					<form action="">
 						<p>account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a
@@ -361,8 +348,30 @@ body {
 					</form>
 				</div>
 			</div>
+			<div id="eight" class="tab-pane">
+				<div class="content">
+					<form action="">
+						<p>old password</p>
+						<input type="text" id="modifyadminoldpassword" name="modifyadminoldpassword"
+							maxlength="15"> 
+						<label style="color: red;"
+							name="adminoldpassword" id="adminoldpassword"></label>
+						<p>new password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a string of
+							no more than 20 characters*</p>
+						<input type="password" id="modifyadminnewpassword" name="modifyadminnewpassword"
+							maxlength="20">
+						<p>repeat password</p>
+						<input type="password" id="modifyadminrepeatpassword" name="modifyadminrepeatpassword"
+							maxlength="20"> <br> <br>
+						<button type="button"
+							name="adminrepeatpassword" id="adminrepeatpassword"
+							onClick="modifyAdminPassword('modifyadminoldpassword', 'modifyadminnewpassword', 'modifyadminrepeatpassword')">Modify</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
+	
 </body>
 <script>
 	$(function() {
@@ -421,24 +430,5 @@ body {
 		//}
 	}
 
-	//             function checkStringLength(param,leng){
-	//                 var str = document.getElementById(param).value;
-	//                 var i,sum;
-	//                  sum=0;
-	//                  //alert("33333");
-	//                  for(i=0;i<str.length;i++)
-	//                  {
-	//                       if ((str.charCodeAt(i)>=0) && (str.charCodeAt(i)<=255))
-	//                            sum=sum+1;
-	//                       else
-	//                            sum=sum+2;
-	//                  }
-	//                  if(sum<=leng){
-	//                 	 return true;
-	//                  } else{
-	//                 	 alert("Your input is too long");
-	//                 	 return false;
-	//                  }
-	//             }
 </script>
 </html>

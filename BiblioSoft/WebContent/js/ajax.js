@@ -86,7 +86,59 @@ function display(str1, account, password, repeatPassword) {
 		document.getElementById(repeatPassword).value = "";
 	}
 }
+/** ********************修改Admin密码************************** */
+function modifyAdminPassword(oldPassword, newPassword, repeatPassword) {
+	var xmlhttp;
+	var url = "";
 
+	if (document.getElementById(oldPassword).value == ""
+			|| document.getElementById(newPassword).value == ""
+			|| document.getElementById(repeatPassword).value == "") {
+		alert("Password is empty!");
+		return;
+	}
+
+	if (document.getElementById(newPassword).value != document
+			.getElementById(repeatPassword).value) {
+		alert("Entered new passwords differ!");
+		return;
+	}
+
+	url = "adminop?oldPassword=" + document.getElementById(oldPassword).value
+			+ "&newPassword=" + document.getElementById(newPassword).value;
+
+	if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5 浏览器执行代码
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var check = xmlhttp.responseText;
+			display1(check, oldPassword, newPassword, repeatPassword);
+		}
+	};
+	xmlhttp.send(null);
+
+}
+
+function display1(str1, oldPassword, newPassword, repeatPassword) {
+	if (str1 == "ok") {
+		alert("This operation succeeds!");
+		document.getElementById(oldPassword).value = "";
+		document.getElementById(newPassword).value = "";
+		document.getElementById(repeatPassword).value = "";
+	}
+	if (str1 == "no") {
+		alert("This operation fails!");
+		document.getElementById(oldPassword).value = "";
+		document.getElementById(newPassword).value = "";
+		document.getElementById(repeatPassword).value = "";
+	}
+}
 /** ********************修改借书数、罚款、押金************************** */
 function sendtext(textId, labelId) {
 	var xmlhttp;

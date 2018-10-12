@@ -119,6 +119,29 @@ public class ToAdmin {
 
 	}
 	/*
+	 * 单独更新密码信息
+	 */
+	public static void updatePassword(String password) {
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "update admin set password=?";
+			
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setString(1, password);
+		
+			ps.execute();
+
+			DBhelper.closeConnection(c, ps, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	/*
 	 * 单独更新罚款信息
 	 */
 	public static void updateFine(double fine) {
