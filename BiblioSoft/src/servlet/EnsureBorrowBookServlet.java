@@ -84,7 +84,7 @@ public class EnsureBorrowBookServlet extends HttpServlet {
 			if(book.getStatus() == 0){//判断该书是否被预约或者借出
 				request.setAttribute("borrowbook", book);
 				request.setAttribute("borrower", reader);
-				BorrowedRecord record = new BorrowedRecord(barcode,bookName,account,date,null,0.0);
+				BorrowedRecord record = new BorrowedRecord(barcode,bookName,account,date,null,0.0,0);
 				//bRID和两个日期请自行按规则进行处理，我个人觉得数据库挺迷的，不知道该怎么写，就先这么写了
 				System.out.print("======================================================================>");
 				System.out.print(record.toString());

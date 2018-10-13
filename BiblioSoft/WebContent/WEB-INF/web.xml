@@ -186,4 +186,20 @@
     <servlet-name>getAuthorityServlet</servlet-name>
     <url-pattern>/getA</url-pattern>
    </servlet-mapping>
+   <servlet>
+       <servlet-name>modifyPersonImformation</servlet-name>
+  		<servlet-class>servlet.modifyPersonImformation</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>modifyPersonImformation</servlet-name>
+  		<url-pattern>/modifyImformation</url-pattern>
+  	</servlet-mapping>
+  	  	<servlet>
+   <servlet-name>changePassword</servlet-name>
+    <servlet-class>servlet.changePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>changePassword</servlet-name>
+    <url-pattern>/changePassword</url-pattern>
+   </servlet-mapping>
 </web-app>

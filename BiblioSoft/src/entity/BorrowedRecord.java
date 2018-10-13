@@ -18,11 +18,17 @@ public class BorrowedRecord {
 	private Date returnedDate;
 	private double fine;
 	private String bookName;
+	private Long reduceDate;
 	
 	
 	
 	
-	
+	public Long getReduceDate() {
+		return reduceDate;
+	}
+	public void setReduceDate(Long reduceDate) {
+		this.reduceDate = reduceDate;
+	}
 	/**
 	 * 
 	 */
@@ -51,7 +57,7 @@ public class BorrowedRecord {
 	 * @param fine
 	 */
 	public BorrowedRecord(int bRID, String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
-			double fine) {
+			double fine,long reduceDate) {
 		super();
 		this.bRID = bRID;
 		this.barCode = barCode;
@@ -60,9 +66,10 @@ public class BorrowedRecord {
 		this.borrowedDate = borrowedDate;
 		this.returnedDate = returnedDate;
 		this.fine = fine;
+		this.reduceDate = reduceDate;
 	}
 	public BorrowedRecord(String barCode,String bookName, String readerAccount, Date borrowedDate, Date returnedDate,
-			double fine) {
+			double fine,long reduceDate) {
 		super();
 		this.barCode = barCode;
 		this.bookName = bookName;
@@ -70,6 +77,7 @@ public class BorrowedRecord {
 		this.borrowedDate = borrowedDate;
 		this.returnedDate = returnedDate;
 		this.fine = fine;
+		this.reduceDate = reduceDate;
 	}
 	/**
 	 * @return the bRID

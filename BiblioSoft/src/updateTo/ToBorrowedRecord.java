@@ -21,12 +21,12 @@ import entity.ReservedRecord;
 import entity.Admin;
 import utils.DBhelper;
 /**
- * @author ����
+ * @author 李洋
  *
  */
 public class ToBorrowedRecord {
 	/*
-	 * ͨ���˺Ż��ĳһ���˽������Ŀ
+	 * 得到某个account(用户)借阅记录的总数
 	 */
 	public static int getTotalByAccount(String readerAccount) {
 		int total = 0;
@@ -52,7 +52,7 @@ public class ToBorrowedRecord {
 		return total;
 	}
 	/*
-	 * ��ȡ���н����¼������Ŀ
+	 * 得到数据库钟借阅记录的总数
 	 */
 	public static int getTotal() {
 		int total = 0;
@@ -82,7 +82,7 @@ public class ToBorrowedRecord {
 	
 
 	/*
-	 * ����һ�������¼
+	 * 添加一条借阅记录
 	 */
 	public static void add(BorrowedRecord record) {
 
@@ -115,7 +115,7 @@ public class ToBorrowedRecord {
 	
 	
 	/*
-	 * ����һ�������¼
+	 * 更新一条借阅记录
 	 */
 	public static void update(BorrowedRecord record) {
 		try {
@@ -143,7 +143,7 @@ public class ToBorrowedRecord {
 
 	}
 	/*
-	 * ɾ��һ�������¼
+	 * 删除一条借阅记录
 	 */
 	public static void deleteBybRID(String bRID) {
 		try {
@@ -163,7 +163,7 @@ public class ToBorrowedRecord {
 		}
 	}
 	/*
-	 * ͨ��bRID�ҵ�һ�������¼
+	 * 根据bRID得到一条借阅记录
 	 */
 	public static BorrowedRecord getBybRID(int bRID) {
 		BorrowedRecord record = new BorrowedRecord();
@@ -184,6 +184,7 @@ public class ToBorrowedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
+				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 			}
 
@@ -196,7 +197,7 @@ public class ToBorrowedRecord {
 	}
 	
 	/*
-	 * ͨ��barcode�ҵ����һ�������¼
+	 * 根据bRID得到一条借阅记录
 	 */
 	public static BorrowedRecord getByBarCode(String barcode) {
 		BorrowedRecord record = new BorrowedRecord();
@@ -217,6 +218,7 @@ public class ToBorrowedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
+				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 			}
 
@@ -230,13 +232,13 @@ public class ToBorrowedRecord {
 	
 	
 	/*
-	 * �г����м�¼
+	 * 借阅List
 	 */
 	public List<BorrowedRecord> list() {
 		return list(0, Short.MAX_VALUE);
 	}
 	/*
-	 * �г����ֽ����¼
+	 * 
 	 */
 	public static List<BorrowedRecord> list(int start, int count) {
 		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
@@ -260,6 +262,7 @@ public class ToBorrowedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
+				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 				records.add(record);
 			}
@@ -270,7 +273,7 @@ public class ToBorrowedRecord {
 		return records;
 	}
 	/*
-	 * �г�ĳһ�˺ŵĽ����¼
+	 * 得到部分借阅List
 	 */
 	public static List<BorrowedRecord> listByReaderAccount(int start, int count,String readerAccount) {
 		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
@@ -295,6 +298,7 @@ public class ToBorrowedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
+				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 				records.add(record);
 			}
@@ -305,7 +309,7 @@ public class ToBorrowedRecord {
 		return records;
 	}
 	/*
-	 * by �Ԫ
+	 * by hby
 	 */
 	public static List<Long> reducelist(int start, int count, String readerAccount) {
 		List<Long> dates = new ArrayList<Long>();

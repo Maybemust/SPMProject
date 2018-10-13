@@ -17,7 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import java.sql.Statement;
-
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -44,7 +45,7 @@ import utils.DBhelper;
 
 /**
 
- * @author ÀîÑó
+ * @author ææ´‹
 
  *
 
@@ -54,7 +55,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ÕÒµ½Ä³ÈËÔ¤Ô¼ÊéµÄ×ÜÊı
+	 * 
 
 	 */
 
@@ -106,7 +107,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * »ñÈ¡±»Ô¤Ô¼ÊéµÄ×ÜÊı
+	 * å¾—åˆ°é¢„çº¦æ€»æ•°
 
 	 */
 
@@ -165,9 +166,7 @@ public class ToReservedRecord {
 
 
 	/*
-
-	 * Ìí¼ÓÒ»ÌõÔ¤Ô¼¼ÇÂ¼
-
+	 * æ·»åŠ ä¸€æ¡é¢„çº¦è®°å½•
 	 */
 
 	public static void add(ReservedRecord record) {
@@ -185,8 +184,10 @@ public class ToReservedRecord {
 			ps.setLong(1, record.getrRID());
 
 			ps.setString(2, record.getBookName());
-
-			ps.setDate(3, record.getTime());
+			
+			Date date = record.getTime();
+			Timestamp timeStamp = new Timestamp(date.getTime());
+			ps.setTimestamp(3, timeStamp);
 
 			ps.setString(4, record.getReaderAccount());
 
@@ -218,7 +219,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ¸üĞÂÒ»ÌõÔ¤Ô¼¼ÇÂ¼
+	 * æ›´æ–°ä¸€æ¡é¢„çº¦è®°å½•
 
 	 */
 
@@ -243,8 +244,9 @@ public class ToReservedRecord {
 			ps.setLong(5, record.getrRID());
 
 			ps.setString(1, record.getBookName());
-
-			ps.setDate(2, record.getTime());
+			Date date = record.getTime();
+			Timestamp timeStamp = new Timestamp(date.getTime());
+			ps.setTimestamp(3, timeStamp);
 
 			ps.setString(3, record.getReaderAccount());
 
@@ -272,7 +274,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ¸ù¾İrRIDÉ¾³ıÒ»Ìõ¼ÇÂ¼
+	 * æ ¹æ®rRIDå¾—åˆ°ä¸€æ¡é¢„çº¦è®°å½•
 
 	 */
 
@@ -312,7 +314,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ¸ù¾İrRIDÕÒµ½Ò»Ìõ¼ÇÂ¼
+	 * Í¨æ ¹æ®rRIDå¾—åˆ°ä¸€æ¡é¢„çº¦è®°å½•
 
 	 */
 
@@ -352,7 +354,7 @@ public class ToReservedRecord {
 
 				record.setReaderAccount(rs.getString("readerAccount"));
 
-				record.setTime(rs.getDate("time"));
+				record.setTime(rs.getTimestamp("time"));
 
 			}
 
@@ -374,7 +376,7 @@ public class ToReservedRecord {
 
 /*
 
- * ÕÒµ½ËùÓĞµÄ¼ÇÂ¼
+ * List
 
  */
 
@@ -386,7 +388,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ÁĞ³ö²¿·Ö¼ÇÂ¼
+	 * 
 
 	 */
 
@@ -432,7 +434,7 @@ public class ToReservedRecord {
 
 				record.setReaderAccount(rs.getString("readerAccount"));
 
-				record.setTime(rs.getDate("time"));
+				record.setTime(rs.getTimestamp("time"));
 
 				records.add(record);
 
@@ -452,7 +454,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ÁĞ³öÄ³ÈËÔ¤Ô¼µÄ²¿·Ö¼ÇÂ¼
+	 * 
 
 	 */
 
@@ -500,7 +502,7 @@ public class ToReservedRecord {
 
 				record.setReaderAccount(rs.getString("readerAccount"));
 
-				record.setTime(rs.getDate("time"));
+				record.setTime(rs.getTimestamp("time"));
 
 				records.add(record);
 

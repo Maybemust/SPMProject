@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="java.text.*" %>
 <!doctype html>
 <html>
 <head>
+	<script language="JavaScript">
+	function myrefresh(){
+	   window.location.reload();
+	}
+	setTimeout('myrefresh()',10000); //指定5秒刷新一次
+	</script>
 	<meta charset="utf-8">
 	<title>version2.0</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,155 +103,74 @@
     <!-- xiang -->
     <style>
     	#ps-container{
-			width: 1000px;
-			height: 730px;
-		}
-		#ps-head{
-			width: auto;
-			height: 50px;
-		}
-		#person-security{
-			width: 1000px;
-			height: 360px;
-		}
-		#ps-detail{
 			width: 800px;
-			margin-left: 80px;
-			margin-top: 70px;
-			border-collapse: separate;
-			border-spacing: 10px;
-		}
-		#ps-detail tr:first-child{
-			
-		}
-		#ps-detail tr:last-child{
-			border-radius: 5px;
-		}
-		#ps-detail td:first-child{
-			width: 240px;
-		}
-		#ps-detail td:last-child{
-			width: 560px;
-			border-radius: 5px;
-		}
-		#oldSecurityQuestionInput{
-			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#oldAnswerInput{
-			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#newSecurityQuestionInput{
-			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#newAnswerInput{
-			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#oldPasswordInput{
-			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#newPasswordInput{
-			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#ps-bottom{
-			width: auto;
-			height: 180px;
-		}
-		#savep{
-			width: 20%;
-			height: 35px;
-			margin-left: 43%;
-			border-radius:6px;
-			color: #2C76BA;
-		}
-		#saves{
-			margin-left: 350px;
-			width: 200px;
-			height:35px;
-		}
-		#pm-container{
-			width: 1000px;
-			height: 730px;
+			height: 750px;
 		}
 		#pm-head{
 			width: auto;
 			height: 50px;
 		}
-		#person-imformation{
+		#ps-security{
+			margin-left: 200px;
+			margin-top: 100px;
+		}
+		#oldPasswordInput{
+			width: 300px;
+			height: 30px;
+			border-radius: 7px;
+		}
+		#newPasswordInput{
+			width: 300px;
+			height: 30px;
+			border-radius: 7px;
+		}
+		#newPasswordInputAgain{
+			width: 300px;
+			height: 30px;
+			border-radius: 7px;
+		}
+		#pm-head{
+			width: auto;
+			height: 50px;
+		}
+		#pm-container{
 			width: 1000px;
-			height: 320px;
+			height: 750px;
 		}
-		#pm-detail{
-			width: 800px;
-			margin-left: 80px;
-			margin-top: 70px;
-			border-collapse: separate;
-			border-spacing: 10px;
-		}
-		#pm-detail tr:first-child{
-			
-		}
-		#pm-detail tr:last-child{
-			border-radius: 5px;
-		}
-		#pm-detail td:first-child{
-			width: 240px;
-		}
-		#pm-detail td:last-child{
-			width: 560px;
-			border-radius: 5px;
+		#pm-imformation{
+		    width:800px;
+			margin-left: 200px;
+			margin-top: 40px;
 		}
 		#accountInput{
+			width: 300px;
 			height: 30px;
-			width: 100%;
-			border-radius: 5px;
+			border-radius: 7px;
 		}
 		#emailInput{
+			width: 300px;
 			height: 30px;
-			width: 100%;
-			border-radius: 5px;
+			border-radius: 7px;
 		}
 		#phoneInput{
+			width: 300px;
 			height: 30px;
-			width: 100%;
-			border-radius: 5px;
+			border-radius: 7px;
 		}
 		#fineInput{
+			width: 300px;
 			height: 30px;
-			width: 100%;
-			border-radius: 5px;
+			border-radius: 7px;
 		}
 		#borrowedNumInput{
+			width: 300px;
 			height: 30px;
-			width: 100%;
-			border-radius: 5px;
+			border-radius: 7px;
 		}
 		#cashPledgeInput{
+			width: 300px;
 			height: 30px;
-			width: 100%;
-			border-radius: 5px;
-		}
-		#pm-bottom{
-			width: auto;
-			height: 180px;
-		}
-		#modify{
-			width: 25%;
-			height: 40px;
-			margin-left: 40%;
-			border-radius:6px;
-			color: #2C76BA;
+			border-radius: 7px;
 		}
 	</style>
 	<!--hou style-->
@@ -529,7 +456,29 @@
                     </div> 
 					
                 </div>
+				
 				<!-- 添加导航栏所链接的内容-->
+				<script type="text/javascript">
+        			function modifyImformation(){
+        				var email = document.getElementById("emailInput").value;
+        				var phone = document.getElementById("phoneInput").value;
+        				if(email != ""){
+        					if(phone != ""){
+        						if(confirm("Are you sure to modify the personal imformation?")){
+        							modifyurl="modifyImformation?Email="+email+"&&Phone="+phone;
+        							window.location.href=modifyurl;
+        							alert("modify successfully!");
+        						}
+        					}
+        					else{
+        						alert("please input the phone!");
+        					}
+        				}
+        				else {
+        					alert("please input the email!");
+        				}
+        			}
+				</script>
                 <div id="right" class="tab-content right">
                         <div id="one" class="tab-pane active">
                             <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
@@ -537,103 +486,73 @@
                             </span>   
                         </div>
                         <!-- xiang -->
-                        <div id="pm-container" class="tab-pane">
-							<div style="width: auto;height: 8px"></div>
+                       <div id="pm-container" class="tab-pane">
+                            <div style="width: auto;height: 8px"></div>
 								<div id="pm-head">
 									<h3 style="text-indent: 5%">Personal Imformation</h3>
 								</div>
 								<hr style="color: black">
-								<div id="person-imformation">
-									<table id="pm-detail" border="0" cellpadding="5">
-										<tr>
-											<td><p style="float: right">Account:</p></td>
-											<td><input id="accountInput" readonly></td>
-										</tr>
-										<tr>
-											<td><p style="float: right">Email:</p></td>
-											<td><input id="emailInput"></td>
-										</tr>
-										<tr>
-											<td><p style="float: right">Phone:</p></td>
-											<td><input id="phoneInput"></td>
-										</tr>
-										<tr>
-											<td><p style="float: right">Fine:</p></td>
-											<td><input id="fineInput" readonly></td>
-										</tr>
-										<tr>
-											<td><p style="float: right">BorrowedNum:</p></td>
-											<td><input id="borrowedNumInput" readonly></td>
-										</tr>
-										<tr>
-											<td><p style="float: right">CashPledge:</p></td>
-											<td><input id="cashPledgeInput" readonly></td>
-										</tr>
-									</table>
-								</div>
-								<div id="pm-bottom">
-									<button id="modify" class="button button-3d button-primary button-rounded">
-										<font style="color: black">Modify Imformation</font>
-									</button>
+								<div id="pm-imformation" >
+									<p>Account:<input id="accountInput" class="form-control" value="${reader.account}" readonly></p>
+									<p>Eamil:<input id="emailInput" class="form-control" value="${reader.email}"></p>
+									<p>Phone:<input id="phoneInput" class="form-control" value="${reader.phone}"></p>
+									<p>Fine:<input id="fineInput" class="form-control" value="${reader.fine}" readonly></p>
+									<p>BorrowedNum:<input id="borrowedNumInput" class="form-control" value="${reader.borrowedNum}" readonly></p>
+									<p>CashPledge:<input id="cashPledgeInput" class="form-control" value="${reader.cashPledge}" readonly></p>
+									</br>
+									<button id="modify" class="btn btn-primary btn_search" onclick="modifyImformation()">modify</button>
+           							<button id="cleanImformation" class="btn btn-primary btn-info">clean</button>
 								</div>
 						</div>
 						<script type="text/javascript">
-                        		function cleanpd(){
-                        	
-
-                        		}
-                        		function savepd(){
-                        			
-                        		}
+                            function changePassword(){
+                            	var oldPassword = document.getElementById("oldPasswordInput").value;
+                            	var newPassword = document.getElementById("newPasswordInput").value;
+                            	var newPasswordAgain = document.getElementById("newPasswordInputAgain").value;
+                            	if(oldPassword == "")
+                            		alert("old password can't be null");
+                            	else
+                            		if(newPassword == "")
+                            			alert("new password can't be null");
+                            		else
+                            			if(newPasswordAgain == "")
+                            				alert("please input new password again");
+                            			else
+                            				{
+                            				   if(newPassword == newPasswordAgain){
+                            					   if(confirm("Are you sure to cahnge the password?")){
+                          					  		 changeurl = "changePassword?oldPassword="+oldPassword+"&&newPassword="+newPassword;
+                          					  		 window.location.href = changeurl;
+                          					  		 alert("change successfully!");
+                          					       }   
+                            				   }
+                            				   else
+                            					   alert("the two input password is inconsistent.");
+                            				}
+                            }
                         </script>
-						<div id="ps-container" class="tab-pane">
-							<div style="width: auto;height: 8px"></div>
-								<div id="ps-head">
-									<h3 style="text-indent: 5%">Personal Security</h3>
+							<div id="ps-container" class="tab-pane">
+								<div style="width: auto;height: 8px"></div>
+									<div id="pm-head">
+  										<h3 style="text-indent: 5%">Personal Security</h3>
+									</div>
+									<hr style="color: black">
+									<div id="ps-security">
+									<p>OldPassword:
+									<input id="oldPasswordInput" class="form-control" placeholder="please input your old password" type="password" maxlength="16">
+									</p>
+									</br>
+									<p>NewPassword:
+									<input id="newPasswordInput" class="form-control" placeholder="please input your new password" type="password" maxlength="16">
+									</p>
+									</br>
+									<p>
+									NewPassword:<input id="newPasswordInputAgain" placeholder="please input your new password again" class="form-control" type="password" maxlength="16">
+									</p>
+									</br>
+									<button id="cleanImformation" style="margin-left:100px;" class="btn btn-primary btn-info" onclick="changePassword()">sumbit</button>
 								</div>
-								<hr style="color: black">
-								<div id="person-security">
-								<table id="ps-detail" border="0" cellpadding="5">
-								<tr>
-									<td><p style="float: right">OldSecurityQuestion:</p></td>
-									<td><input id="oldSecurityQuestionInput" readonly></td>
-								</tr>
-								<tr>
-									<td><p style="float: right">OldAnswer:</p></td>
-									<td><input id="oldAnswerInput"></td>
-								</tr>
-								<tr>
-									<td><p style="float: right">NewSecurityQuestion:</p></td>
-									<td><input id="newSecurityQuestionInput"></td>
-								</tr>
-								<tr>
-									<td><p style="float: right">NewAnswer:</p></td>
-									<td><input id="newAnswerInput"></td>
-								</tr>
-								<tr>
-								<td colspan="2">
-									<button id="saves" class="button button-3d button-primary button-rounded">
-										<font style="color: black">SaveNewSecurity</font>
-								</button>
-								</td>
-								</tr>
-								<tr>
-									<td><p style="float: right">OldPassword:</p></td>
-									<td><input id="oldPasswordInput"></td>
-								</tr>
-								<tr>
-									<td><p style="float: right">NewPassword:</p></td>
-									<td><input id="newPasswordInput"></td>
-								</tr>
-								</table>
 							</div>
-							
-							<div id="ps-bottom">
-									<button id="savep" onclick="savepd" class="button button-3d button-primary button-rounded">
-										<font style="color: black">SaveNewPassword</font>
-									</button>
-							</div>
-						</div>
                         <!-- xiang -->
                         <!-- hou -->
                 		<div class="tab-pane" id="jieyue" style="position: relative">
@@ -658,7 +577,7 @@
 									<td><font size="4">${nowrecord.readerAccount}</font></td>
 									<td><font size="4">${nowrecord.borrowedDate}</font></td>
 									<td><font size="4">${nowrecord.returnedDate}</font></td>
-									<td><font size="4">${date[loop.count-1]}Days</font></td>
+									<td><font size="4">${nowrecord.reduceDate}Days</font></td>
 									<td><font size="4">${nowrecord.fine}</font></td>
 									<c:set var="userSum" value="${userSum+nowrecord.fine }"/>		
 								</tr>
@@ -669,7 +588,7 @@
 									if(${userSum}==0){
 									$("#123").hide();
 									}
-								}
+								} 
 							</script>
 						<div id=123 style="text-align:right;display:block">
 							<h3>FineSum：￥ ${userSum }</h3>
@@ -687,7 +606,6 @@
 				  							<th style="text-align:center;"><font size="4">BorrowDate</font></th>
 				  							<th style="text-align:center;"><font size="4">ReturnDate</font></th>
 				  							<th style="text-align:center;"><font size="4">Days</font></th>
-				  							<th style="text-align:center;"><font size="4">Fine</font></th>
 										</tr>
 									<c:forEach items="${borrowedRecord}" var="borrowedRecord" varStatus="loop">
 										<tr>
@@ -697,7 +615,7 @@
 											<td><font size="4">${borrowedRecord.readerAccount}</font></td>
 											<td><font size="4">${borrowedRecord.borrowedDate}</font></td>
 											<td><font size="4">${borrowedRecord.returnedDate}</font></td>
-											<td><font size="4">${date[loop.count-1]}Days</font></td>	
+											<td><font size="4">${borrowedRecord.reduceDate}Days</font></td>	
 										</tr>
 									</c:forEach>
 								</table>
@@ -705,7 +623,7 @@
 						</div>
                         <!-- hou -->
                         <!-- diao -->
-                        <script>
+                         <script>
                         	function deletOrder(rRID){
                         		var deletOrder="deletOrder?rRID="+rRID;
                         		alert(deletOrder);
@@ -722,20 +640,37 @@
 										<th>ReserveTime</th>
 										<th>AffectTime</th>
 										<th>Status</th>
+										<th>Behavior</th>
 							   		</tr>
 								</thead>
+							    <%
+								SimpleDateFormat format = new SimpleDateFormat("HHmm");
+								String nowtime= format.format(new Date());
+								int intnowTime=Integer.parseInt(nowtime);
+								int nowTime=(intnowTime%100)+(intnowTime-(intnowTime%100))/100*60;
+								%>
+								<c:set var="nowTime" value="<%=nowTime %>"/>
 								<c:forEach items="${myorders }" var="myorder" varStatus="mo">
+									<p><fmt:formatDate var="hout" value="${myorder.time}" pattern="HHmm"/></p><br>
 									<tr>
 										<th>${mo.index + 1}</th>
 										<th>${myorder.bookName }</th>
-										<th>${myorder.time }</th>
-										<th>${myorder.time }</th>
+										<th><fmt:formatDate value="${myorder.time }" type="both" dateStyle="medium" timeStyle="medium"/></th>
+										<th><fmt:formatDate value="${myorder.time }" type="both" dateStyle="medium" timeStyle="medium"/></th>
+										<c:choose>
+										    <c:when test="${nowTime-((hout%100)+(hout-(hout)%100)/100*60)>120}">
+										    	<th>超期</th>
+										    </c:when>
+										    <c:otherwise>
+										    	<th>未超期</th>
+										    </c:otherwise>
+										</c:choose>
 										<th><a onclick="deletOrder(${myorder.rRID})">Cancel</a></th>
 									</tr>
 								</c:forEach>
 			    			</table>
                         </div>
-                        <script type="text/javascript">
+						<script type="text/javascript">
                         	function cleanorder(){
                         		document.getElementById("barCode_order").value ="";
                         		document.getElementById("bookName_order").value ="";
@@ -801,7 +736,6 @@
             function mouseout(divname){
             	 var color=document.getElementById(divname);
                	 color.style.color="#aab1b7";
-
             }
     </script>
 </body>
