@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-06 09:53:19
+Date: 2018-10-13 23:26:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,6 +60,8 @@ CREATE TABLE `book` (
 -- ----------------------------
 -- Records of book
 -- ----------------------------
+INSERT INTO `book` VALUES ('1', 'DS', 'ISBN-1', 'xx', 'xxx', 'xxx', null, 'zzz', '0', '2018-09-24', null, null, '100');
+INSERT INTO `book` VALUES ('2', 'SO', 'ISBN-2', 'xx', 'xx', 'xx', null, 'zzz', '0', '2018-10-09', null, null, null);
 
 -- ----------------------------
 -- Table structure for `borrowedrecord`
@@ -83,6 +85,7 @@ CREATE TABLE `borrowedrecord` (
 -- ----------------------------
 -- Records of borrowedrecord
 -- ----------------------------
+INSERT INTO `borrowedrecord` VALUES ('1', '1', 'DS', 'diao', '2018-10-09', '2018-10-10', '0');
 
 -- ----------------------------
 -- Table structure for `librarian`
@@ -144,6 +147,7 @@ CREATE TABLE `reader` (
 -- ----------------------------
 -- Records of reader
 -- ----------------------------
+INSERT INTO `reader` VALUES ('diao', '159', '10414', '5555', '3', '0', '300', '0');
 
 -- ----------------------------
 -- Table structure for `reservedrecord`
@@ -152,7 +156,7 @@ DROP TABLE IF EXISTS `reservedrecord`;
 CREATE TABLE `reservedrecord` (
   `rRID` int(14) NOT NULL,
   `bookName` varchar(20) NOT NULL,
-  `time` date NOT NULL,
+  `time` datetime NOT NULL,
   `readerAccount` varchar(15) NOT NULL,
   `barCode` varchar(20) NOT NULL,
   PRIMARY KEY (`rRID`),
@@ -165,3 +169,4 @@ CREATE TABLE `reservedrecord` (
 -- ----------------------------
 -- Records of reservedrecord
 -- ----------------------------
+INSERT INTO `reservedrecord` VALUES ('1', 'DS', '2018-10-09 00:00:00', 'diao', '1');
