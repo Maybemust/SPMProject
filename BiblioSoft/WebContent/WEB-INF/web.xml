@@ -202,4 +202,13 @@
     <servlet-name>changePassword</servlet-name>
     <url-pattern>/changePassword</url-pattern>
    </servlet-mapping>
+
+   <servlet>
+    <servlet-name>bookDetailServlet</servlet-name>
+    <servlet-class>servlet.bookDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookDetailServlet</servlet-name>
+    <url-pattern>/bookDetailServlet</url-pattern>
+   </servlet-mapping>
 </web-app>

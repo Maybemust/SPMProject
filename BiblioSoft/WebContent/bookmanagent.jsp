@@ -154,7 +154,7 @@ function unselectAll(){
 		    <c:forEach items="${books}" var="book" varStatus="re">
 		    <tr>
 		    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF">${book.barCode}</td>
+		    <td height="20" bgcolor="#FFFFFF"><a href="bookDetailServlet?barCode=${book.barCode }">${book.barCode}</a></td>
             <td bgcolor="#FFFFFF">${book.ISBN}</td>
             <td bgcolor="#FFFFFF">${book.author}</td>
             <td bgcolor="#FFFFFF">${book.publishing}</td>
