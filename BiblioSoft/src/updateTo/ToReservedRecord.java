@@ -187,6 +187,7 @@ public class ToReservedRecord {
 			
 			Date date = record.getTime();
 			Timestamp timeStamp = new Timestamp(date.getTime());
+			
 			ps.setTimestamp(3, timeStamp);
 
 			ps.setString(4, record.getReaderAccount());

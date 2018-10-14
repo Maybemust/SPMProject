@@ -485,7 +485,7 @@
                                    	<font size="10">Welcome to the page of Reader,${Reader.getAccount() }.</font>
                             </span>   
                         </div>
-                        <!-- xiang -->
+                         <!-- xiang -->
                        <div id="pm-container" class="tab-pane">
                             <div style="width: auto;height: 8px"></div>
 								<div id="pm-head">
@@ -521,14 +521,15 @@
                             				{
                             				   if(newPassword == newPasswordAgain){
                             					   if(confirm("Are you sure to cahnge the password?")){
-                          					  		 changeurl = "changePassword?oldPassword="+oldPassword+"&&newPassword="+newPassword;
-                          					  		 window.location.href = changeurl;
-                          					  		 alert("change successfully!");
+                          					  		 document.getElementById("oldPasswordInput").submit();
+                          					  		 document.getElementById("newPasswordInput").submit();
+                          					  		 document.getElementById("newPasswordInputAgain").submit();
                           					       }   
                             				   }
                             				   else
                             					   alert("the two input password is inconsistent.");
                             				}
+                            	alert("passwordJudge");
                             }
                         </script>
 							<div id="ps-container" class="tab-pane">
@@ -537,21 +538,23 @@
   										<h3 style="text-indent: 5%">Personal Security</h3>
 									</div>
 									<hr style="color: black">
-									<div id="ps-security">
+								<form method="post" action="changePassword">
+								<div id="ps-security">
 									<p>OldPassword:
-									<input id="oldPasswordInput" class="form-control" placeholder="please input your old password" type="password" maxlength="16">
+									<input id="oldPasswordInput" name="OldPassword" class="form-control" placeholder="please input your old password" type="password" maxlength="16">
 									</p>
 									</br>
 									<p>NewPassword:
-									<input id="newPasswordInput" class="form-control" placeholder="please input your new password" type="password" maxlength="16">
+									<input id="newPasswordInput" name="NewPassword" class="form-control" placeholder="please input your new password" type="password" maxlength="16">
 									</p>
 									</br>
 									<p>
-									NewPassword:<input id="newPasswordInputAgain" placeholder="please input your new password again" class="form-control" type="password" maxlength="16">
+									NewPasswordInputAgain:<input id="newPasswordInputAgain" name="NewPasswordAgain" placeholder="please input your new password again" class="form-control" type="password" maxlength="16">
 									</p>
 									</br>
-									<button id="cleanImformation" style="margin-left:100px;" class="btn btn-primary btn-info" onclick="changePassword()">sumbit</button>
+									<button id="cleanImformation" style="margin-left:100px;" class="btn btn-primary btn-info" onclick="changePassword">sumbit</button>
 								</div>
+								</form>
 							</div>
                         <!-- xiang -->
                         <!-- hou -->

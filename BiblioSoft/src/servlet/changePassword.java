@@ -18,21 +18,25 @@ public class changePassword extends HttpServlet{
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
-		String OldPassword = "";
-		String NewPassword = "";
+		String oldPassword = "";
+		String newPassword = "";
+		int status=0;
 		try{
-			OldPassword = request.getParameter("oldPassword");
-			NewPassword = request.getParameter("newPassword");
+			oldPassword = request.getParameter("OldPassword");
+			newPassword = request.getParameter("NewPassword");
 		}catch(NumberFormatException e){
 		}
-          if(OldPassword.equals(reader.getPassword())){
-        	  reader.setPassword(NewPassword);
-              ToReader.update(reader);
-        	  }
-          else
-        	  {
-        	  System.out.println("old password is error!");
+          if(oldPassword.equals(reader.getPassword())){
+        	  reader.setPassword(newPassword);
+        	  ToReader.update(reader);
+        	  System.out.println("modify successfully!");
+        	  status=1;
           }
+          else{
+        	  System.out.println("old password is error!");
+        	  status=-1;
+          }
+          request.setAttribute("status", status);
           String account=reader.getAccount();     
           int start=0;
           int count=0;
@@ -51,13 +55,11 @@ public class changePassword extends HttpServlet{
       		
       		List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
       		List<Long> nowdate = new ArrayList<Long>();
-      		/*
-      		 * 区分历史借阅和正在借阅
-      		 */
+      		
       		int size=0;
       		int i = 0;
       		size=borrowedRecord.size();
-      		while(i < size) {//内部不锁定 执行效率高 并发操作会出错
+      		while(i < size) {
       		    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
       		    	nowrecord.add(borrowedRecord.get(i));
       		    	borrowedRecord.remove(i);

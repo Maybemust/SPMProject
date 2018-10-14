@@ -202,7 +202,31 @@
     <servlet-name>changePassword</servlet-name>
     <url-pattern>/changePassword</url-pattern>
    </servlet-mapping>
-
+   
+   <servlet>
+    <servlet-name>SendEmail</servlet-name>
+    <servlet-class>servlet.SendEmail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendEmail</servlet-name>
+    <url-pattern>/sendemail</url-pattern>
+  </servlet-mapping>
+     <servlet>
+    <servlet-name>EmailResetPd</servlet-name>
+    <servlet-class>servlet.EmailResetPd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailResetPd</servlet-name>
+    <url-pattern>/backpd</url-pattern>
+   </servlet-mapping>
+   <servlet>
+   <servlet-name>EmailChangePd</servlet-name>
+    <servlet-class>servlet.EmailChangePd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailChangePd</servlet-name>
+    <url-pattern>/emailchangepd</url-pattern>
+   </servlet-mapping>
    <servlet>
     <servlet-name>bookDetailServlet</servlet-name>
     <servlet-class>servlet.bookDetailServlet</servlet-class>

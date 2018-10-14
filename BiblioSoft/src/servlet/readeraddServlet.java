@@ -26,22 +26,12 @@ import entity.Reader;
 public class readeraddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public readeraddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
- 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-    
 	public boolean canadd(String account ) {
 		boolean returnValue = true;
 		String sql = "SELECT * FROM reader";

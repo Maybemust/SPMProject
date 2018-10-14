@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/buttons.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/backgroundShow.js"></script>
-<script>
+	      <script>
 	      		function login(){
 	      			
 	      			var account=document.getElementById("useraccount").value;
@@ -28,7 +28,13 @@
 	      				}
 	      			}			
 	      		}
-</script>
+	      		
+	      		function forgetpd(){
+	      			var st=prompt("请输入账号");
+	      			var urlsend="sendemail?account="+st;
+	      			window.location.href=urlsend;
+	      		}
+		  </script>
 	
 <style type="text/css">
 
@@ -128,6 +134,7 @@
 			    <br/>
 		     	<h1 class="myh1">Log in</h1>
 	      </div>
+
 		  <div id="container2">
 			  <div id="container2-1"> <p class="myp">Account:</p> </div>
 			  <div id="container2-2"> <input id="useraccount" maxlength="14" type="text" class="myinput"> </div>
@@ -137,7 +144,7 @@
 		  <div id="container3" style="position: relative; left: 52px; top: 40px;">
 			  <button style="padding: 0.7em 2em;" 
 			  class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l" type="button" onClick="login()">Login</button>
-			  <a style="position: relative;left: -10px; top:15px; font-weight: bold; font-size: 12px;" onclick="login()">Sign Up</a>
+			  <a style="position: relative;left: -10px; top:15px; font-weight: bold; font-size: 12px;" onclick="forgetpd()">Forget</a>
 		  </div>
 	  </div>
 	</div>

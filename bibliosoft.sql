@@ -10,10 +10,33 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-13 23:26:23
+Date: 2018-10-14 17:01:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `active`
+-- ----------------------------
+DROP TABLE IF EXISTS `active`;
+CREATE TABLE `active` (
+  `ID` varchar(20) NOT NULL,
+  `account` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `affective` datetime NOT NULL,
+  `flag` int(2) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of active
+-- ----------------------------
+INSERT INTO `active` VALUES ('1', 'diao', '1041405881@qq.com', '2018-10-15 16:34:59', '0');
+INSERT INTO `active` VALUES ('2', 'diao', '1041405881@qq.com', '2018-10-15 16:37:06', '0');
+INSERT INTO `active` VALUES ('3', 'diao', '1041405881@qq.com', '2018-10-15 16:39:23', '0');
+INSERT INTO `active` VALUES ('4', 'diao', '1041405881@qq.com', '2018-10-15 16:40:53', '0');
+INSERT INTO `active` VALUES ('5', 'diao', '1041405881@qq.com', '2018-10-15 16:43:02', '0');
+INSERT INTO `active` VALUES ('6', 'diao', '1041405881@qq.com', '2018-10-15 16:45:02', '0');
 
 -- ----------------------------
 -- Table structure for `admin`
@@ -147,7 +170,7 @@ CREATE TABLE `reader` (
 -- ----------------------------
 -- Records of reader
 -- ----------------------------
-INSERT INTO `reader` VALUES ('diao', '159', '10414', '5555', '3', '0', '300', '0');
+INSERT INTO `reader` VALUES ('diao', '6666', '1041405881@qq.com', '5555', '0', '3', '300', '0');
 
 -- ----------------------------
 -- Table structure for `reservedrecord`

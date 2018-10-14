@@ -24,22 +24,13 @@ import entity.Reader;
  */
 public class readerdeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public readerdeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
  
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
     
     
 	/*public boolean candelete(String account ) {
