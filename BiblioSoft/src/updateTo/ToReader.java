@@ -72,7 +72,6 @@ public class ToReader {
 			ps.setLong(4, reader.getPhone());
 			ps.setDouble(5, reader.getCashPledge());
 			
-			System.out.println(sql);
 			ps.execute();
 
 			//ResultSet rs = ps.getGeneratedKeys();

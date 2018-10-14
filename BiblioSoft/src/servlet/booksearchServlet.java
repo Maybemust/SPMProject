@@ -27,13 +27,21 @@ import entity.Book;
 public class booksearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public booksearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
  
-	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
     
     public boolean cansearch(String barCode ) {
 		boolean returnValue = true;

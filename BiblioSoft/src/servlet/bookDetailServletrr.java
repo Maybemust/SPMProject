@@ -16,7 +16,7 @@ import updateTo.ToAdmin;
 import updateTo.ToBook;
 import updateTo.ToLibrarian;
 
-public class bookDetailServlet extends HttpServlet{
+public class bookDetailServletrr extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");

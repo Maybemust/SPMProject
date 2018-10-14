@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import updateTo.ToBook;
 import utils.DBhelper;
 import entity.Book;
+import entity.Librarian;
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -50,9 +51,17 @@ public class bookdeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		int k=0;
 		
+		Librarian librarian=(Librarian)request.getSession().getAttribute("PERSON");
+		String deleteman=String.valueOf(librarian.getAccount());
+		System.out.println("answer = "+deleteman);
 		
-        String barCode=request.getParameter("barCode1"); 
-        ToBook.deleteByBarCode(barCode);
+        String barCode=request.getParameter("barCode1");
+        Book book=ToBook.getByBarCode(barCode);
+        book.setDeleteman(deleteman);
+        
+        ToBook.update1(book);
+        
+        //ToBook.deleteByBarCode(barCode);
         k=k+1;
         if(k>0)
         {

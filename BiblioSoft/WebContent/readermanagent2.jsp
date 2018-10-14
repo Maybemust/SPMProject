@@ -132,7 +132,7 @@ function unselectAll(){
 					
                   <tr>
 				    <td width="6%" align="center" bgcolor="#EEEEEE">select</td>
-					 <td width="9%" height="20" align="center" bgcolor="#EEEEEE">account</td>
+					<td width="9%" height="20" align="center" bgcolor="#EEEEEE">account</td> 
                     <td width="9%" align="center" bgcolor="#EEEEEE">password</td>
                     <td width="9%" align="center" bgcolor="#EEEEEE">phone</td>
 					<td width="14%" align="center" bgcolor="#EEEEEE">email</td>
@@ -167,7 +167,7 @@ function unselectAll(){
 	        
 			 <tr>
 		   <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF">${reader1.account}</td>  
+		     <td height="20" bgcolor="#FFFFFF">${reader1.account}</td> 
             <td bgcolor="#FFFFFF">${reader1.password}</td>
             <td bgcolor="#FFFFFF">${reader1.phone}</td>
             <td bgcolor="#FFFFFF">${reader1.email}</td>
@@ -175,7 +175,7 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${reader1.borrowedNum}</td>
 		    <td height="20" bgcolor="#FFFFFF">${reader1.cashPledge}</td>
 			<td height="20" bgcolor="#FFFFFF">${reader1.tag}</td>               
-			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account1=${reader1.account}&password=${reader1.password}&phone=${reader1.phone}&email=${reader1.email}&fine=${reader1.fine}&borrowedNum=${reader1.borrowedNum}&cashPledge=${reader1.cashPledge}&tag=${reader1.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader1.account}" >delete</a>&nbsp;</td>
+			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account=${reader1.account}&password=${reader1.password}&phone=${reader1.phone}&email=${reader1.email}&fine=${reader1.fine}&borrowedNum=${reader1.borrowedNum}&cashPledge=${reader1.cashPledge}&tag=${reader1.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader1.account}" >delete</a>&nbsp;</td>
 			
 		           </tr>	
 				

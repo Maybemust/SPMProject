@@ -25,7 +25,7 @@
 	font-size: 18px;
 	font-weight: bold;
 	position: relative;
-	top: 100px;
+	top: 40px;
 	font-size: 35px;
 }
 
@@ -46,29 +46,25 @@ body {
 </style>
 <body>
 	<div
-		style="width: 700px; height: 300px; position: relative; left: 35%; top: 200px">
+		style="width: 700px; height: 300px; position: relative; left: 35%; top: 140px">
 		<p class="myp1">Welcome to library !</p>
 		<hr class="myhr">
 	</div>
 	<div
-		style="width: 1000px; position: relative; left: 22.5%; bottom: 80px;">
+		style="width: 1000px; position: relative; left: 22.5%; bottom: 140px;">
 		<img src="images/pattern.png" style="width: 1000px; height: 150px" />
 		<img src="images/logo1.png"
-			style="width: 60%; height: 60%; position: relative; left: 230px; top: 40px;" />
+			style="width: 60%; height: 60%; position: relative; left: 200px; top: 40px;" />
 	</div>
 	<div
-		style="width: 1000px; height: 300px; position: relative; left: 25%;">
+		style="width: 1000px; height: 300px; position: relative; left: 35%;">
 		<button type="button" class="mybutton"
 			onmouseover="this.style.backgroundColor='#d19503';"
 			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='getA?a=Librarian'">Librarian</button>
 		<button type="button" class="mybutton"
-			style="position: relative; left: 90px"
+			style="position: relative; left: 120px"
 			onmouseover="this.style.backgroundColor='#d19503';"
 			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='getA?a=Reader'">Reader</button>
-		<button type="button" class="mybutton"
-			style="position: relative; left: 180px"
-			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='getA?a=Admin'">Admin</button>
 	</div>
 </body>
 </html>

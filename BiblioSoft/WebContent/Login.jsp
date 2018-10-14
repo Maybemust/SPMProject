@@ -24,8 +24,8 @@
 	      				}
 	      				else{
 	      					
-	    	      			window.location.href=loginurl;
-	      				}
+	    	      			document.getElementById("log").submit();
+	    	      		}
 	      			}			
 	      		}
 	      		
@@ -134,18 +134,21 @@
 			    <br/>
 		     	<h1 class="myh1">Log in</h1>
 	      </div>
-
+		
 		  <div id="container2">
+		  	 <form action="login" method="post" id="log">
 			  <div id="container2-1"> <p class="myp">Account:</p> </div>
-			  <div id="container2-2"> <input id="useraccount" maxlength="14" type="text" class="myinput"> </div>
+			  <div id="container2-2"> <input id="useraccount"  name="useraccount" maxlength="14" type="text" class="myinput"> </div>
 			  <div id="container2-3"> <p class="myp" style="position: relative; top: 20px;">Password:</p> </div>
-			  <div id="container2-4"> <input id="userpassword" maxlength="14" type="password" class="myinput" style="position: relative; top: 20px;"> </div>
+			  <div id="container2-4"> <input id="userpassword" name="userpassword" maxlength="14" type="password" class="myinput" style="position: relative; top: 20px;"> </div>
+		  	 </form>
 		  </div>	
 		  <div id="container3" style="position: relative; left: 52px; top: 40px;">
 			  <button style="padding: 0.7em 2em;" 
 			  class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l" type="button" onClick="login()">Login</button>
 			  <a style="position: relative;left: -10px; top:15px; font-weight: bold; font-size: 12px;" onclick="forgetpd()">Forget</a>
 		  </div>
+		 
 	  </div>
 	</div>
 	<div id="bottombar">

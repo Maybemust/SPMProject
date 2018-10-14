@@ -31,15 +31,19 @@ document.getElementById("aa").style.display="";
 
 <body class="ContentBody">
 
-<% String barCode1=request.getParameter("barCode1");  %>
- <% String ISBN=request.getParameter("ISBN");  %>
- <% String author=request.getParameter("author");  %>
- <% String publishing=request.getParameter("publishing");  %>
- <% String bookName=request.getParameter("bookName");  %>
- <% String location=request.getParameter("location");  %>
- <% String status=request.getParameter("status");  %>
- <% String price=request.getParameter("price");  %>
- <% String dateOfStorage=request.getParameter("dateOfStorage");  %>
+<% String barCode = request.getAttribute("barCode").toString(); %>
+<% String ISBN = request.getAttribute("ISBN").toString(); %>
+<% String publishing = request.getAttribute("publishing").toString(); %>
+<% String author = request.getAttribute("author").toString(); %>
+<% String bookName = request.getAttribute("bookName").toString(); %>
+<% String location = request.getAttribute("location").toString(); %>
+<% String status = request.getAttribute("status").toString(); %>
+<% String price = request.getAttribute("price").toString(); %>
+<% String dateOfStorage = request.getAttribute("dateOfStorage").toString(); %>
+
+
+ 
+ 
  
  
  
@@ -70,13 +74,13 @@ document.getElementById("aa").style.display="";
 						  
 					     <td nowrap align="right" width="15%">barCode:</td>
 						  
-					    <td width="35%"><input name="barCode"  type="text" maxlength="15" style="width:154px" value="<%=barCode1 %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /> 
+					    <td width="35%"><input name="barCode"  type="text" maxlength="15" style="width:154px" value="<%=barCode %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /> 
 							
 				        <span class="red">*</span></td>
 						  
 					    <td width="16%" align="right" nowrap="nowrap">ISBN:</td>
 						  
-					    <td width="34%"><input type="text" name="ISBN" maxlength="15" style="width:154px" value="<%=ISBN %>" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"></td>
+					    <td width="34%"><input type="text" name="ISBN" maxlength="15" style="width:154px" value="<%=ISBN %>" readonly="readonly"></td>
 					    
 						  
 					  </tr>
@@ -113,16 +117,30 @@ document.getElementById("aa").style.display="";
 					    <td align="right">tag1</td>
 						  
 					    <td><select name="tag1" >
-                            <option selected="selected1">==select==</option>
-                            <option>history</option>
-                            <option>literature</option>
+                            <option selected="selected1">==none==</option>
+                            <option>Music</option>
+                            <option>Milltary</option>
+                            <option>Bibliography</option>
+                            <option>World History</option>
+                            <option>Fine Arts</option>
+                            <option>Philososphy</option>
+                            <option>Technology</option>
+                            <option>Language</option>
+                            <option>Geography</option>
                         </select></td>
                         <td align="right">tag2</td>
 						  
 					    <td><select name="tag2" >
-                            <option selected="selected2">==select==</option>
-                            <option>history</option>
-                            <option>literature</option>
+                            <option selected="selected2">==none==</option>
+                           <option>Music</option>
+                            <option>Milltary</option>
+                            <option>Bibliography</option>
+                            <option>World History</option>
+                            <option>Fine Arts</option>
+                            <option>Philososphy</option>
+                            <option>Technology</option>
+                            <option>Language</option>
+                            <option>Geography</option>
                         </select></td>
 					  </tr>
 					  <tr>

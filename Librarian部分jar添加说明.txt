@@ -1,0 +1,17 @@
+总共上传了4个压缩文件 分别是
+1.net.sf.json依赖包
+2.httpcomponents-client-4.2.5
+3.barcode4j-2.0
+4.barcode4j-2.1.0
+
+其中3-4是完成生成 barCode码包
+1-2是完成去网上爬到书数据的的包
+添加时在项目中的build path中 点击Add External JARs  
+
+添加的内容有
+net.sf.json依赖包：  6 个jar
+httpcomponents-client-4.2.5：  lib文件下 7 个jar
+
+barcode4j-2.0：   lib文件下的     avalon-framework-4.2.0.jar
+
+barcode4j-2.1.0： build 文件下的  barcode4j.jar

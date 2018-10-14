@@ -18,21 +18,34 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import updateTo.ToReader;
+import updateTo.ToAdmin;
 import utils.DBhelper;
 import entity.Reader;
+import entity.Admin;
+
 /**
  * Servlet implementation class RegisterServlet
  */
 public class readeraddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public readeraddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+ 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 
-	public boolean canadd(String account ) {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+    
+    public boolean canadd(String account ) {
 		boolean returnValue = true;
 		String sql = "SELECT * FROM reader";
 		Connection conn = null;
@@ -57,6 +70,7 @@ public class readeraddServlet extends HttpServlet {
 		return returnValue;
 	}
 	
+	
     
     
     
@@ -68,10 +82,7 @@ public class readeraddServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");	
 		request.setCharacterEncoding("utf-8"); 
 		
-		System.out.println("done1");
-		System.out.println(request.getParameter("account"));
-		System.out.println(request.getParameter("password"));
-		System.out.println("done2");
+		
 		/*private String account;
 		private String password;
 		private String email;
@@ -81,15 +92,12 @@ public class readeraddServlet extends HttpServlet {
 		private double cashPledge;
 		private int tag;*/
 		
-	
-         String account=request.getParameter("account");  
-         String password=request.getParameter("password");  
          String email=request.getParameter("email");
-
+         String account=request.getParameter("phone");
          long phone= Long.parseLong(request.getParameter("phone"));
          /*int tag=Integer.parseInt(request.getParameter("tag"));*/
          
-        double cashPledge=Double.parseDouble(request.getParameter("cashPledge"));
+       
         
          readeraddServlet id1 = new readeraddServlet();
        
@@ -99,14 +107,15 @@ public class readeraddServlet extends HttpServlet {
     	   
          Reader reader=new Reader();
          
-         reader.setAccount(account);;
-         reader.setPassword(password);
+         
+         reader.setAccount(account);
          reader.setEmail(email);
          reader.setPhone(phone);
-          reader.setCashPledge(cashPledge);
+         reader.setPassword("12345678");
+         Admin admin=ToAdmin.list().get(0);
+         reader.setCashPledge(admin.getCash());
          /*reader.setTag(tag);*/
        
-         
          ToReader.add(reader);
      
          response.sendRedirect("readeradd.jsp?error=no");

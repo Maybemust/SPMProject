@@ -60,60 +60,21 @@ document.getElementById("aa").style.display="";
 					 
 					  <tr>
 						  
-					     <td nowrap align="right" width="15%">account:</td>
+					     <td nowrap align="right" width="15%">phone:</td>
 						  
-					    <td width="35%"><input name="account" maxlength="15" type="text" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"  /> 
+					    <td width="35%"><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/>
 							
 				        <span class="red">*</span></td>
-						  
-					    <td width="16%" align="right" nowrap="nowrap">password:</td>
-						  
-					    <td width="34%"><input type="password" name="password" maxlength="15" id="password"  style="width:154px"></td>
+						   
 						  
 					  </tr>
-					  
-					 <tr>
-						  
-					    <td nowrap align="right" width="15%"></td>
-						  
-					    <td width="35%">&nbsp;</td>
-						  
-					    <td width="16%" align="right" nowrap="nowrap">confirm password:</td>
-						  
-					    <td width="34%"><input type="password" name="password2" id="password2" maxlength="15" style="width:154px" value="" onkeyup="validate()" ></td>
-					    
-					   <span id="jianyan" style="display:block;padding-left:66% " ></span> 
-					  
-					    
-		              </tr>
-		              
-		          
-					    
-					  <tr>
-						  
-					    <td nowrap="nowrap" align="right">name:</td>
-						  
-					    <td><input class="text" name="name" style="width:154px" value=""/></td>
-						  
-					    <td align="right">sex:</td>
-						  
-					    <td><select name="sex" >
-                            <option selected="selected">==select==</option>
-                            <option>man</option>
-                            <option>woman</option>
-                        </select></td>
-					  </tr>
-					  
-					  
 					  
 						  
 					  <tr>
 					    <td align="right">email:</td>
 					    <td><input  type="email"  name="email" maxlength="20" style="width:154px" oninvalid="this.setCustomValidity('Please enter the correct format for your mailbox');" value=""/></td>
 					    
-					    <td align="right">phone:</td>
-					    
-					    <td><input type="text" name="phone" maxlength="11" style="width:154px" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value=""  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
+					  
 					  </tr>
 						  
 					
@@ -127,8 +88,7 @@ document.getElementById("aa").style.display="";
                             <option>2</option>
                         </select></td>
                         
-					   <td align="right">cashPledge:</td>
-					    <td><input type="number" name="cashPledge"  style="width:154px" value=""   step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}"/></td>
+					   
 					  
 					  </tr>
 					  

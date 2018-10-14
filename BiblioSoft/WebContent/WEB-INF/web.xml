@@ -243,4 +243,71 @@
     <servlet-name>bookDetailServlet</servlet-name>
     <url-pattern>/bookDetailServlet</url-pattern>
    </servlet-mapping>
+<servlet>
+    <servlet-name>bookEditAndSaveServlet</servlet-name>
+    <servlet-class>servlet.bookEditAndSaveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookEditAndSaveServlet</servlet-name>
+    <url-pattern>/bookEditAndSave</url-pattern>
+   </servlet-mapping>
+   
+   
+ <servlet>
+    <servlet-name>BarcodeServlet</servlet-name>
+    <servlet-class>servlet.BarcodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BarcodeServlet</servlet-name>
+    <url-pattern>/barcode</url-pattern>
+  </servlet-mapping> 
+
+
+    <servlet>
+    <servlet-name>bookeditServlet2</servlet-name>
+    <servlet-class>servlet.bookeditServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookeditServlet2</servlet-name>
+    <url-pattern>/bookeditServlet2</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>bookaddServlet2</servlet-name>
+    <servlet-class>servlet.bookaddServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookaddServlet2</servlet-name>
+    <url-pattern>/bookadd2</url-pattern>
+  </servlet-mapping>
+
+   <servlet>
+    <servlet-name>borrowrecordServlet</servlet-name>
+    <servlet-class>servlet.borrowrecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>borrowrecordServlet</servlet-name>
+    <url-pattern>/borrowedrecordList</url-pattern>
+  </servlet-mapping>
+  
+
+ <servlet>
+    <servlet-name>bookdeleteinformationServlet</servlet-name>
+    <servlet-class>servlet.bookdeleteinformationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookdeleteinformationServlet</servlet-name>
+    <url-pattern>/bookdeleteList</url-pattern>
+  </servlet-mapping> 
+
+<servlet>
+    <servlet-name>JumpToDetailServlet</servlet-name>
+    <servlet-class>servlet.JumpToDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JumpToDetailServlet</servlet-name>
+    <url-pattern>/JumpToDetailServlet</url-pattern>
+  </servlet-mapping> 
+
 </web-app>

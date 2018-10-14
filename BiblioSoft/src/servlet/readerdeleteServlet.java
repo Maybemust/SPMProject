@@ -24,13 +24,22 @@ import entity.Reader;
  */
 public class readerdeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public readerdeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
  
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
     
     
 	/*public boolean candelete(String account ) {
@@ -72,6 +81,18 @@ public class readerdeleteServlet extends HttpServlet {
 		
 		System.out.println(request.getParameter("account1"));
         String account=request.getParameter("account1"); 
+        Reader reader=ToReader.getByAccount(account);
+        if(reader.getFine()>0)
+        	response.sendRedirect("readerList?fine=no");
+        else{
+        if(reader.getBorrowedNum()>0)
+        	response.sendRedirect("readerList?borrownum=no");
+        
+        
+        
+        
+        
+        else{
         ToReader.deleteByAccount(account);
         k=k+1;
         if(k>0)
@@ -84,7 +105,10 @@ public class readerdeleteServlet extends HttpServlet {
         	response.sendRedirect("readerList?error=no");
         	
         }
-    
+        
+        }
+        
+        }
 
 	}
 

@@ -26,14 +26,14 @@ import entity.Book;
 /**
  * Servlet implementation class RegisterServlet
  */
-public class bookeditServlet extends HttpServlet {
+public class bookeditServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final java.sql.Blob NUll = null;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public bookeditServlet() {
+    public bookeditServlet2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,32 +46,7 @@ public class bookeditServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-	public boolean canedit(String barCode ) {
-		boolean returnValue = true;
-		String sql = "SELECT * FROM book";
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBhelper.getInstance().getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while (rs.next()) {
-				String userNameInDB = rs.getString("barCode");
-
-				if (userNameInDB.equals(barCode) ) {
-					returnValue = false;
-					break;
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		return returnValue;
-	}
 	
-    
     
     
     
@@ -81,7 +56,7 @@ public class bookeditServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");	
 		request.setCharacterEncoding("utf-8"); 
-		
+	
 
 /*		private String barCode;
 		private String bookName;
@@ -100,8 +75,8 @@ public class bookeditServlet extends HttpServlet {
 
 		
 		
-		   String barCode=request.getParameter("barCode"); 
-		   String bookName=request.getParameter("bookName"); 
+		   String barCode=request.getParameter("barCode1"); 
+		  /* String bookName=request.getParameter("bookName"); 
 	       String ISBN=request.getParameter("ISBN");  
 	       String author=request.getParameter("author"); 
 	       String publishing=request.getParameter("publishing"); 
@@ -110,58 +85,53 @@ public class bookeditServlet extends HttpServlet {
 	       String tag1=request.getParameter("tag1");
 	       String tag2=request.getParameter("tag2");
 	       int status=Integer.parseInt(request.getParameter("status"));
-	       double price=Double.parseDouble(request.getParameter("price"));
+	       double price=Double.parseDouble(request.getParameter("price"));*/
+	       Book book =ToBook.getByBarCode(barCode);
+	       String ISBN = book.getISBN();
+	       String author = book.getAuthor();
+	       String publishing = book.getPublishing();
+	       String bookName=book.getBookName();
+	       String location = book.getLocation();
+	       int status = book.getStatus();
+	       double price = book.getPrice();
+	       Date dateOfStorage = book.getDateOfStorage();
+	       if(ISBN==null)
+	    	   ISBN="none";
+	       if(author==null)
+	    	   author="none";
+	       if(publishing==null)
+	    	   publishing="none";
+	       if(bookName==null)
+	    	   bookName="none";
+	       if(location==null)
+	    	   location="none";
 	       
 	       
-
-		
-	       java.sql.Date dateOfStorage=java.sql.Date.valueOf(request.getParameter("date"));
 	       
-
-        /* System.out.println("done3");
-         System.out.println("done4");*/
-         
-        
-         bookeditServlet id1 = new bookeditServlet();
-         
-        /* System.out.println("done4");*/
-         
-         boolean canadd =id1.canedit(barCode);
-         
-        
-       if(!canadd){
-    	   
-         Book book=new Book();
-         
-         book.setBarCode(barCode);
-         book.setBookName(bookName);
-         book.setISBN(ISBN);
-         book.setAuthor(author);     
-         book.setPublishing(publishing);           
-         book.setLocation(location);
-         book.setCover(NUll);
-         book.setStatus(status);
-         book.setTag1(tag1);
-         book.setTag2(tag2);
-         book.setIntroduction(introduction);
-         book.setDateOfStorage(dateOfStorage);
-         book.setPrice(price);
-         ToBook.update(book);
-         
-    
-         /*RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
-         dispatcher.forward(request, response); */
-        response.sendRedirect("bookedit.jsp?error=no");
+	      
+	    
+	       request.setAttribute("barCode", barCode );
+	       request.setAttribute("ISBN", ISBN );
+	       request.setAttribute("author", author );
+	       request.setAttribute("publishing", publishing );
+	       request.setAttribute("bookName", bookName );
+	       request.setAttribute("location", location );
+	       request.setAttribute("status", status );
+	       request.setAttribute("price", price );
+	       request.setAttribute("dateOfStorage", dateOfStorage );
+         RequestDispatcher dispatcher = request.getRequestDispatcher("/bookedit.jsp"); 
+         dispatcher.forward(request, response); 
+       /* response.sendRedirect("bookedit.jsp?error=no");*/
        
-         }
-       
+         
+       /*
         else {
-        	 /*System.out.println("error1");*/
+        	 System.out.println("error1");
         	 response.sendRedirect("bookedit.jsp?error=yes");
-        	 /*System.out.println("error2");*/
+        	 System.out.println("error2");
         	 
-        	 }
-       System.out.println("doneall");
+        	 }*/
+    
 	}
 
 	

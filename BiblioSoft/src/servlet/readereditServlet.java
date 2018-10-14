@@ -26,13 +26,21 @@ import entity.Reader;
 public class readereditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public readereditServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
  
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
     
 	public boolean canedit(String account ) {
 		boolean returnValue = true;
@@ -91,9 +99,11 @@ public class readereditServlet extends HttpServlet {
 	
 	
          String account=request.getParameter("account");  
-         String password=request.getParameter("password");  
+         String password=request.getParameter("password"); 
+         String password2=request.getParameter("password2"); 
          String email=request.getParameter("email");
          long phone= Long.parseLong(request.getParameter("phone"));
+         
          Double fine =Double.parseDouble(request.getParameter("fine"));
          int borrowedNum=Integer.parseInt(request.getParameter("borrowedNum"));
          int tag=Integer.parseInt(request.getParameter("tag"));
@@ -123,7 +133,12 @@ public class readereditServlet extends HttpServlet {
          reader.setBorrowedNum(borrowedNum);
          reader.setFine(fine);
          reader.setTag(tag);
-         
+         if(!password.equals(password2))
+         {
+        	 
+        	 response.sendRedirect("readeredit.jsp?mima=no");
+         }
+         else{
           
          ToReader.update(reader);
      
@@ -131,7 +146,7 @@ public class readereditServlet extends HttpServlet {
          dispatcher.forward(request, response); */
          response.sendRedirect("readeredit.jsp?error=no");
          }
-       
+       }
         else {
         	
         	

@@ -36,7 +36,7 @@
 		  <br>
 		  <img src="./imgs/libraianProfile1.JPG"  height="100px" style ="float: inherit">
 	  <hr>
-		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>${Librarian.getAccount()}</a></h3>
+		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>User_Name</a></h3>
 
 	  
 	  <br>
@@ -52,11 +52,11 @@
                     <div class="menu-title"><a href="bookList" target="mainFrame" style = "color:#F0F8FF" >Book Management</a></div>
                     
                     <div class="menu-item" href="#one" > 
-                 <a href="bookadd.jsp" target="mainFrame"  style = "color:#F0F8FF">－Add Book</a>
+                 <a href="bookaddselect.jsp" target="mainFrame"  style = "color:#F0F8FF">－Add Book</a>
                     </div>
                     
-                    <div class="menu-item" href="#two" data-toggle="tab">
-                         －Delete Book
+                    <div class="menu-item" href="#two" >
+                         <a href="bookdeleteList" target="mainFrame"  style = "color:#F0F8FF">－Book Delete Information</a>
                     </div>
 					<div class="menu-item" href="#test" data-toggle="tab">
                          －Modify Book
@@ -68,8 +68,8 @@
       <a href="readeradd.jsp" target="mainFrame" style = "color:#F0F8FF">－Add Reader</a>
                     </div>
                     
-                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                    <div class="menu-item" href="#four" >
+                      <a href="borrowedrecordList" target="mainFrame" style = "color:#F0F8FF"> － Borrowedrecord List</a>
                     </div> 
 					<div class="menu-item" href="#four" data-toggle="tab">
                          －Modify Reader

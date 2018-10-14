@@ -44,14 +44,13 @@ body {
 html { overflow-x: auto; overflow-y: auto; border:0;} 
 -->
 </style>
-
-	                                                            
+<link href="./css/style.css" rel="stylesheet" type="text/css" />                                                       
 <link href="./css/css.css" rel="stylesheet" type="text/css" />
 	
-<script type="text/JavaScript">
-</script>
+</style>
+    
 	
-<link href="./css/style.css" rel="stylesheet" type="text/css" />
+
 	
 </head>
 	
@@ -103,7 +102,7 @@ function unselectAll(){
 				   
 		           <input name="Submit" type="button" class="right-button08" value="Delete book " />
 				   
-				   <input name="Submit" type="button" class="right-button08" value="Add book" onclick="window.location.href='bookadd.jsp'" />
+				   <input name="Submit" type="button" class="right-button08" value="Add book" onclick="window.location.href='bookaddselect.jsp'" />
 				   
 				   
 				   <form action="booksearch" method="post" >
@@ -136,14 +135,14 @@ function unselectAll(){
                     <td width="9%" align="center" bgcolor="#EEEEEE">ISBN</td>
                     <td width="8%" align="center" bgcolor="#EEEEEE">author</td>
 					<td width="9%" align="center" bgcolor="#EEEEEE">publishing</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">bookName</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">location</td>
+					<td width="10%" align="center" bgcolor="#EEEEEE">bookName</td>
+					<td width="10%" align="center" bgcolor="#EEEEEE">location</td>
 					<td width="5%" align="center" bgcolor="#EEEEEE">status</td>
 					<td width="5%" align="center" bgcolor="#EEEEEE">price</td>
 					<td width="4%" align="center" bgcolor="#EEEEEE">tag1</td>
 					<td width="4%" align="center" bgcolor="#EEEEEE">tag2</td>
 					<td width="9%" align="center" bgcolor="#EEEEEE">date</td>
-                    <td width="19%" align="center" bgcolor="#EEEEEE">edit</td>
+                    <td width="24%" align="center" bgcolor="#EEEEEE">edit</td>
                   </tr>
                   
                   
@@ -154,7 +153,7 @@ function unselectAll(){
 		    <c:forEach items="${books}" var="book" varStatus="re">
 		    <tr>
 		    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF"><a href="bookDetailServlet?barCode=${book.barCode }">${book.barCode}</a></td>
+		    <td height="20" bgcolor="#FFFFFF">${book.barCode}</td>
             <td bgcolor="#FFFFFF">${book.ISBN}</td>
             <td bgcolor="#FFFFFF">${book.author}</td>
             <td bgcolor="#FFFFFF">${book.publishing}</td>
@@ -165,9 +164,29 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${book.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book.barCode}&ISBN=${book.ISBN}&author=${book.author}&publishing=${book.publishing}&bookName=${book.bookName}&location=${book.location}&status=${book.status}&price=${book.price}&dateOfStorage=${book.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
+			
+			<%-- <input type="hidden" name="barCode1" value="${book.barCode}"  /></input>
+	        <input type="hidden" name="ISBN" value="${book.ISBN}"  /></input>
+	        <input type="hidden" name="author" value="${book.author}"  /></input>
+	        <input type="hidden" name="publishing" value="${book.publishing}"  /></input>
+	        <input type="hidden" name="bookName" value="${book.bookName}"  /></input>
+	        <input type="hidden" name="location" value="${book.location}"  /></input>
+	        <input type="hidden" name="status" value="${book.status}"  /></input>
+	        <input type="hidden" name="price" value="${book.price}"  /></input>
+	        <input type="hidden" name="dateOfStorage" value="${book.dateOfStorage}" /></input> --%>
+	        
+			<td bgcolor="#FFFFFF"><a href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
+			
+		 
+	        
+	    
+		    
 		    </tr>
 	        </c:forEach>
+	        
+	        
+	        
+	        
 					
 		<%-- 	 <tr>
 		  	    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 

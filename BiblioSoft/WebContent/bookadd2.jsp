@@ -36,7 +36,7 @@ document.getElementById("aa").style.display="";
 
 
   
-<form action="bookadd" method="post"  name="form"  >
+<form action="bookadd2" method="post"  name="form"  >
   
 <div class="MainDiv">
 
@@ -66,15 +66,12 @@ document.getElementById("aa").style.display="";
 					    <td width="35%"><input type="text" name="ISBN" maxlength="15" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/>
 							
 				        <span class="red">*</span></td>
-						  
-					    <td width="16%" align="right" nowrap="nowrap">author:</td>
-						  
-					    <td width="34%"><input name="author" maxlength="30" type="text" style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td>
+						
 					    
 				
 					  </tr>
 					  
-					  <tr>
+					  <!-- <tr>
 						  
 					     <td nowrap align="right" width="15%">publishing:</td>
 						  
@@ -88,7 +85,7 @@ document.getElementById("aa").style.display="";
 					  </tr>
 					  
 					  
-					<!--   <tr>
+					  <tr>
 						  
 					     <td nowrap align="right" width="15%">location:</td>
 						  
@@ -99,7 +96,7 @@ document.getElementById("aa").style.display="";
 					    <td width="34%"><input type="date" name="date" style="width:154px"></td>
 					    
 						  
-					  </tr> -->
+					  </tr>
 					  
 		  			  <tr>
 					  <tr>
@@ -150,12 +147,6 @@ document.getElementById("aa").style.display="";
 					  <td><input type="button" class="opt" value="-"/>
                          <input type="text"    name="number"    id="res" value="1" readonly="readonly"/>
                       <input type="button" class="opt" value="+"/></td>
-                      
-                      
-                      <td width="16%" align="right" nowrap="nowrap">price:</td>
-						  
-					    <td width="34%"><input type="number" name="price" maxlength="10"   step="0.01" required oninvalid="setCustomValidity('please input correctlly');" oninput="setCustomValidity('');" onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}" />  </td>
-                      
 					  </tr>
 					  
 					  
@@ -165,7 +156,7 @@ document.getElementById("aa").style.display="";
 					  <tr>
 					    <td align="right">introduction:</td>
 					    <td colspan="3"><textarea name="introduction" cols="100" rows="8"></textarea></td>
-					    </tr>
+					    </tr> -->
 					  </table>
 			  <br />
 				</fieldset>			
@@ -198,12 +189,9 @@ document.getElementById("aa").style.display="";
     var number='<%=request.getParameter("number")%>';
     if(errory=='yes')
     	{
-    	alert("book has existed");
+    	alert("no find book");
     	}
-    else
-    	if(errory=='no')
-    	{alert("successfully add");
-    	}
+    
     if(number=='no')
     	{
     	alert("number must be more than 0");

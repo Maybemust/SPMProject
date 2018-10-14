@@ -103,7 +103,7 @@ function unselectAll(){
 				   
 		           <input name="Submit" type="button" class="right-button08" value="Delete book " />
 				   
-				   <input name="Submit" type="button" class="right-button08" value="Add book" onclick="window.location.href='bookadd.jsp'" />
+				   <input name="Submit" type="button" class="right-button08" value="Add book" onclick="window.location.href='bookaddselect.jsp'" />
 				   
 				   
 				   <form action="booksearch" method="post" >
@@ -136,14 +136,14 @@ function unselectAll(){
                     <td width="9%" align="center" bgcolor="#EEEEEE">ISBN</td>
                     <td width="8%" align="center" bgcolor="#EEEEEE">author</td>
 					<td width="9%" align="center" bgcolor="#EEEEEE">publishing</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">bookName</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">location</td>
+					<td width="10%" align="center" bgcolor="#EEEEEE">bookName</td>
+					<td width="10%" align="center" bgcolor="#EEEEEE">location</td>
 					<td width="5%" align="center" bgcolor="#EEEEEE">status</td>
 					<td width="5%" align="center" bgcolor="#EEEEEE">price</td>
 					<td width="4%" align="center" bgcolor="#EEEEEE">tag1</td>
 					<td width="4%" align="center" bgcolor="#EEEEEE">tag2</td>
 					<td width="9%" align="center" bgcolor="#EEEEEE">date</td>
-                    <td width="19%" align="center" bgcolor="#EEEEEE">edit</td>
+                    <td width="24%" align="center" bgcolor="#EEEEEE">edit</td>
                   </tr>
                   
                   
@@ -182,7 +182,7 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${book1.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book1.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book1.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book1.barCode}&ISBN=${book1.ISBN}&author=${book1.author}&publishing=${book1.publishing}&bookName=${book1.bookName}&location=${book1.location}&status=${book1.status}&price=${book1.price}&dateOfStorage=${book1.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book1.barCode}" >delete</a>&nbsp;</td>
+			<td bgcolor="#FFFFFF"><a href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
 	
 		    </tr>			
 						

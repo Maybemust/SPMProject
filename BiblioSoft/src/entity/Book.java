@@ -27,7 +27,8 @@ public class Book {
 	private String tag1;
 	private String tag2;
 	private double price;
-	
+	private int isdelete;
+	private String deleteman;
 	
 	
 	
@@ -193,6 +194,30 @@ public class Book {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	
+	
+	public int getIsdelete() {
+		return isdelete;
+	}
+	/**
+	 * @param status the status to set
+	 */
+	public void setIsdelete(int isdelete) {
+		this.isdelete = isdelete;
+	}
+	
+	public String getDeleteman() {
+		return deleteman;
+	}
+	/**
+	 * @param iSBN the iSBN to set
+	 */
+	public void setDeleteman(String deleteman) {
+		this.deleteman = deleteman;
+	}
+	
+	
 	/**
 	 * @return the dateOfStorage
 	 */
