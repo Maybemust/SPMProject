@@ -12,6 +12,33 @@ import entity.*;
 import updateTo.*;
 
 public class EmailResetPd  extends HttpServlet{
+	public static char waydec(String tem)
+			throws Exception{
+			int a = Integer.parseInt(tem);
+			char b = (char) a;
+		    return b;
+	}
+	public static String deccode(String a)
+			throws Exception {
+				int len=a.length();
+				String st="";
+				String sum="";
+				for(int i=0;i<len;i++){
+					if(i%3==0 && i!=0){
+						sum+=waydec(st);
+						st="";
+						st+=a.charAt(i);
+					}
+					else{
+						st+=a.charAt(i);
+						if(i == len - 1){
+							sum+=waydec(st);
+						}
+					}
+				}
+				
+				return sum;
+	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
@@ -24,6 +51,12 @@ public class EmailResetPd  extends HttpServlet{
 
 		}catch(NumberFormatException e){
 			
+		}
+		try {
+			email = deccode(email);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		account = ToActive.getByEmail(email);
 		request.setAttribute("email", email);

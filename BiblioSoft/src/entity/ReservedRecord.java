@@ -20,6 +20,8 @@ public class ReservedRecord {
 	private String readerAccount;
 
 	private String barCode;
+	
+	private int flag;
 
 	
 
@@ -88,7 +90,21 @@ public class ReservedRecord {
 		this.barCode = barCode;
 
 	}
+	
+	public ReservedRecord(String bookName,Date time, String readerAccount, String barCode,int flag) {
 
+		super();
+
+		this.bookName=bookName;
+
+		this.time = time;
+
+		this.readerAccount = readerAccount;
+
+		this.barCode = barCode;
+		
+		this.flag = flag;
+	}
 	/**
 
 	 * @return the rRID
@@ -211,27 +227,24 @@ public class ReservedRecord {
 
 	}
 
-	/* (non-Javadoc)
-
-	 * @see java.lang.Object#toString()
-
+	/**
+	 * @return the flag
 	 */
-
-
-	public String toString() {
-
-		return "ReservedRecord [rRID=" + rRID + ", bookName=" + bookName + ", time=" + time + ", readerAccount="
-
-				+ readerAccount + ", barCode=" + barCode + "]";
-
+	public int getFlag() {
+		return flag;
 	}
 
-	
+	/**
+	 * @param flag the flag to set
+	 */
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 
-	
-
-	
-
-	
+	@Override
+	public String toString() {
+		return "ReservedRecord [rRID=" + rRID + ", bookName=" + bookName + ", time=" + time + ", readerAccount="
+				+ readerAccount + ", barCode=" + barCode + ", flag=" + flag + "]";
+	}
 
 }

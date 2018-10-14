@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-14 17:01:44
+Date: 2018-10-14 23:42:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,6 +37,7 @@ INSERT INTO `active` VALUES ('3', 'diao', '1041405881@qq.com', '2018-10-15 16:39
 INSERT INTO `active` VALUES ('4', 'diao', '1041405881@qq.com', '2018-10-15 16:40:53', '0');
 INSERT INTO `active` VALUES ('5', 'diao', '1041405881@qq.com', '2018-10-15 16:43:02', '0');
 INSERT INTO `active` VALUES ('6', 'diao', '1041405881@qq.com', '2018-10-15 16:45:02', '0');
+INSERT INTO `active` VALUES ('7', 'diao', '1041405881@qq.com', '2018-10-15 23:40:16', '0');
 
 -- ----------------------------
 -- Table structure for `admin`
@@ -170,7 +171,7 @@ CREATE TABLE `reader` (
 -- ----------------------------
 -- Records of reader
 -- ----------------------------
-INSERT INTO `reader` VALUES ('diao', '6666', '1041405881@qq.com', '5555', '0', '3', '300', '0');
+INSERT INTO `reader` VALUES ('diao', '111', '1041405881@qq.com', '123546', '0', '3', '300', '0');
 
 -- ----------------------------
 -- Table structure for `reservedrecord`
@@ -182,6 +183,7 @@ CREATE TABLE `reservedrecord` (
   `time` datetime NOT NULL,
   `readerAccount` varchar(15) NOT NULL,
   `barCode` varchar(20) NOT NULL,
+  `flag` int(2) NOT NULL,
   PRIMARY KEY (`rRID`),
   KEY `RR_Book` (`barCode`),
   KEY `RR_Reader` (`readerAccount`),
@@ -192,4 +194,25 @@ CREATE TABLE `reservedrecord` (
 -- ----------------------------
 -- Records of reservedrecord
 -- ----------------------------
-INSERT INTO `reservedrecord` VALUES ('1', 'DS', '2018-10-09 00:00:00', 'diao', '1');
+INSERT INTO `reservedrecord` VALUES ('1', 'DS', '2018-10-09 00:00:00', 'diao', '1', '1');
+INSERT INTO `reservedrecord` VALUES ('2', 'OS', '2018-10-05 20:59:19', 'diao', '2', '1');
+INSERT INTO `reservedrecord` VALUES ('3', 'DS', '2018-10-14 23:33:36', 'diao', '1', '0');
+
+-- ----------------------------
+-- Procedure structure for `update_reservedrecord`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `update_reservedrecord`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_reservedrecord`()
+UPDATE reservedrecord set flag=1 where TIME_TO_SEC(TIMEDIFF(now(),time))>7200
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `update_reserver`
+-- ----------------------------
+DROP EVENT IF EXISTS `update_reserver`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `update_reserver` ON SCHEDULE EVERY 1 MINUTE STARTS '2018-10-14 21:35:53' ON COMPLETION NOT PRESERVE ENABLE DO call update_reservedrecord()
+;;
+DELIMITER ;

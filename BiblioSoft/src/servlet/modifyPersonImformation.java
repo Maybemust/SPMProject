@@ -38,7 +38,7 @@ public class modifyPersonImformation extends HttpServlet{
 		int start=0;
 		int count=0;
 		count=ToReservedRecord.getTotalByAccount(account);
-		List<ReservedRecord> myorders =ToReservedRecord.listByReaderAccount(start, count, account);
+		List<ReservedRecord> myorders =ToReservedRecord.listByAccountFlag(start, count, account);
 	
 		request.setAttribute("myorders", myorders);
 		

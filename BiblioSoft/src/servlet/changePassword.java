@@ -40,27 +40,27 @@ public class changePassword extends HttpServlet{
           String account=reader.getAccount();     
           int start=0;
           int count=0;
-      		count=ToReservedRecord.getTotalByAccount(account);
-      		List<ReservedRecord> myorders =ToReservedRecord.listByReaderAccount(start, count, account);
+      	  count=ToReservedRecord.getTotalByAccount(account);
+      	  List<ReservedRecord> myorders =ToReservedRecord.listByAccountFlag(start, count, account);
       	
-      		request.setAttribute("myorders", myorders);
+      	  request.setAttribute("myorders", myorders);
       		
       		
-      		request.setAttribute("reader", reader);
+          request.setAttribute("reader", reader);
       		
-      		count=ToBorrowedRecord.getTotal();
-      		List<BorrowedRecord> borrowedRecord = ToBorrowedRecord.listByReaderAccount(start, count, account);
-      		List<Long> date=ToBorrowedRecord.reducelist(start, count, account);
+          count=ToBorrowedRecord.getTotal();
+          List<BorrowedRecord> borrowedRecord = ToBorrowedRecord.listByReaderAccount(start, count, account);
+      	  List<Long> date=ToBorrowedRecord.reducelist(start, count, account);
 
       		
-      		List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
-      		List<Long> nowdate = new ArrayList<Long>();
+      	  List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
+      	  List<Long> nowdate = new ArrayList<Long>();
       		
-      		int size=0;
-      		int i = 0;
-      		size=borrowedRecord.size();
-      		while(i < size) {
-      		    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
+      	  int size=0;
+      	  int i = 0;
+      	  size=borrowedRecord.size();
+      	  while(i < size) {
+      	    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
       		    	nowrecord.add(borrowedRecord.get(i));
       		    	borrowedRecord.remove(i);
       		    	nowdate.add(date.get(i));
@@ -70,13 +70,13 @@ public class changePassword extends HttpServlet{
       		    	 i++;
       		    }
       		}
-      		request.setAttribute("Reader", reader);
-      		request.setAttribute("nowdate", nowdate);
-      		request.setAttribute("nowrecord", nowrecord);
-      		request.setAttribute("borrowedRecord", borrowedRecord);
-      		request.setAttribute("date", date);
+      	  request.setAttribute("Reader", reader);
+      	  request.setAttribute("nowdate", nowdate);
+      	  request.setAttribute("nowrecord", nowrecord);
+      	  request.setAttribute("borrowedRecord", borrowedRecord);
+      	  request.setAttribute("date", date);
       		
-      		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
-		}
+      	  request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
+}
 

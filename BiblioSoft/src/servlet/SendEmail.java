@@ -17,6 +17,23 @@ import entity.*;
 import updateTo.*;
 
 public class SendEmail  extends HttpServlet{
+	public static String waycode(char a)
+            throws Exception {
+			int tem = a;
+			String newString = String.format("%03d", tem);	
+            return newString;
+    }
+	public static String addcode(String a)
+            throws Exception {
+			int len=a.length();
+			String st="";
+			
+			for(int i=0;i<len;i++){
+		
+				st+=waycode(a.charAt(i));
+			}
+            return st;
+    }
 	public static MimeMessage createSimpleMail(Session session,Reader reader)
             throws Exception {
 		String st= "";
@@ -29,7 +46,7 @@ public class SendEmail  extends HttpServlet{
         //邮件的标题
         message.setSubject("BiblioSoft-Password");
         //邮件的文本内容
-        st="http://localhost:8080/BiblioSoft/backpd?email="+reader.getEmail();
+        st="http://localhost:8080/BiblioSoft/backpd?email="+addcode(reader.getEmail());
         message.setContent(st, "text/html;charset=UTF-8");
         //返回创建好的邮件对象
         return message;

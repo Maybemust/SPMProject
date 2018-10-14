@@ -45,9 +45,7 @@ import utils.DBhelper;
 
 /**
 
- * @author 李洋
-
- *
+ * 
 
  */
 
@@ -177,7 +175,7 @@ public class ToReservedRecord {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into reservedrecord(rRID,bookName,time,readerAccount,barCode) values(?,?,?,?,?)";
+			String sql = "insert into reservedrecord(rRID,bookName,time,readerAccount,barCode,flag) values(?,?,?,?,?,?)";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 
@@ -194,7 +192,7 @@ public class ToReservedRecord {
 
 			ps.setString(5, record.getBarCode());
 
-			
+			ps.setInt(6, record.getFlag());
 
 			ps.execute();
 
@@ -234,7 +232,7 @@ public class ToReservedRecord {
 
 
 
-			String sql = "update book set bookName=?, time= ?, readerAccount = ? ,barCode=? where rRID = ?";
+			String sql = "update book set bookName=?, time= ?, readerAccount = ? ,barCode=? ,flag = ? where rRID = ?";
 
 			
 
@@ -242,19 +240,19 @@ public class ToReservedRecord {
 
 			
 
-			ps.setLong(5, record.getrRID());
+			ps.setLong(6, record.getrRID());
 
 			ps.setString(1, record.getBookName());
 			Date date = record.getTime();
 			Timestamp timeStamp = new Timestamp(date.getTime());
-			ps.setTimestamp(3, timeStamp);
+			ps.setTimestamp(2, timeStamp);
 
 			ps.setString(3, record.getReaderAccount());
 
 			ps.setString(4, record.getBarCode());
 
-
-
+			ps.setInt(5, record.getFlag());
+			
 			ps.execute();
 
 
@@ -356,6 +354,8 @@ public class ToReservedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 
 				record.setTime(rs.getTimestamp("time"));
+				
+				record.setFlag(rs.getInt("flag"));
 
 			}
 
@@ -401,8 +401,6 @@ public class ToReservedRecord {
 
 		try {
 
-
-
 			Connection c = DBhelper.getInstance().getConnection();
 
 
@@ -436,6 +434,8 @@ public class ToReservedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 
 				record.setTime(rs.getTimestamp("time"));
+				
+				record.setFlag(rs.getInt("flag"));
 
 				records.add(record);
 
@@ -452,7 +452,66 @@ public class ToReservedRecord {
 		return records;
 
 	}
+	
+	public static List<ReservedRecord> listByFlag(int start, int count) {
 
+		List<ReservedRecord> records = new ArrayList<ReservedRecord>();
+
+
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+
+
+			String sql = "select * from reservedrecord where readerAccount=? and flag=0 order by barCode desc limit ?,? ";
+
+
+
+			PreparedStatement ps = c.prepareStatement(sql);
+
+			ps.setInt(1, start);
+
+			ps.setInt(2, count);
+
+
+
+			ResultSet rs = ps.executeQuery();
+
+
+
+			while (rs.next()) {
+
+				ReservedRecord record = new ReservedRecord();
+
+				record.setBarCode(rs.getString("barCode"));
+
+				record.setrRID(rs.getLong("rRID"));
+
+				record.setBookName(rs.getString("bookName"));
+
+				record.setReaderAccount(rs.getString("readerAccount"));
+
+				record.setTime(rs.getTimestamp("time"));
+				
+				record.setFlag(rs.getInt("flag"));
+
+				records.add(record);
+
+			}
+
+			DBhelper.closeConnection(c, ps, rs);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return records;
+
+	}
 	/*
 
 	 * 
@@ -504,6 +563,8 @@ public class ToReservedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 
 				record.setTime(rs.getTimestamp("time"));
+				
+				record.setFlag(rs.getInt("flag"));
 
 				records.add(record);
 
@@ -520,5 +581,67 @@ public class ToReservedRecord {
 		return records;
 
 	}
+	public static List<ReservedRecord> listByAccountFlag(int start, int count,String readerAccount) {
 
+		List<ReservedRecord> records = new ArrayList<ReservedRecord>();
+
+
+
+		try {
+
+
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+
+
+			String sql = "select * from reservedrecord where readerAccount=? and flag=0 order by barCode desc limit ?,? ";
+
+
+
+			PreparedStatement ps = c.prepareStatement(sql);
+
+			ps.setString(1, readerAccount);
+
+			ps.setInt(2, start);
+
+			ps.setInt(3, count);
+
+
+
+			ResultSet rs = ps.executeQuery();
+
+
+
+			while (rs.next()) {
+
+				ReservedRecord record = new ReservedRecord();
+
+				record.setBarCode(rs.getString("barCode"));
+
+				record.setrRID(rs.getLong("rRID"));
+
+				record.setBookName(rs.getString("bookName"));
+
+				record.setReaderAccount(rs.getString("readerAccount"));
+
+				record.setTime(rs.getTimestamp("time"));
+				
+				record.setFlag(rs.getInt("flag"));
+
+				records.add(record);
+
+			}
+
+			DBhelper.closeConnection(c, ps, rs);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return records;
+
+	}
 }

@@ -5,11 +5,7 @@
 <!doctype html>
 <html>
 <head>
-	<script language="JavaScript">
-	function myrefresh(){
-	   window.location.reload();
-	}
-	setTimeout('myrefresh()',10000); //指定5秒刷新一次
+
 	</script>
 	<meta charset="utf-8">
 	<title>version2.0</title>
@@ -457,7 +453,6 @@
 					
                 </div>
 				
-				<!-- 添加导航栏所链接的内容-->
 				<script type="text/javascript">
         			function modifyImformation(){
         				var email = document.getElementById("emailInput").value;
@@ -465,7 +460,7 @@
         				if(email != ""){
         					if(phone != ""){
         						if(confirm("Are you sure to modify the personal imformation?")){
-        							modifyurl="modifyImformation?Email="+email+"&&Phone="+phone;
+        							modifyurl="modifyImformation?Email="+email+"&Phone="+phone;
         							window.location.href=modifyurl;
         							alert("modify successfully!");
         						}
@@ -586,13 +581,7 @@
 								</tr>
 						</c:forEach>
 						</table>
-							<script language="JavaScript">
-								$(document).ready(function(){
-									if(${userSum}==0){
-									$("#123").hide();
-									}
-								} 
-							</script>
+				
 						<div id=123 style="text-align:right;display:block">
 							<h3>FineSum：￥ ${userSum }</h3>
 						</div>
@@ -626,14 +615,6 @@
 						</div>
                         <!-- hou -->
                         <!-- diao -->
-                         <script>
-                        	function deletOrder(rRID){
-                        		var deletOrder="deletOrder?rRID="+rRID;
-                        		alert(deletOrder);
-                        		window.location.href=deletOrder;
-								alert(${status });
-                        	}
-                        </script>
 						<div id="myorder" class="tab-pane">
                              <table id="ordertab" width="100%">
 								<thead>
@@ -668,7 +649,7 @@
 										    	<th>未超期</th>
 										    </c:otherwise>
 										</c:choose>
-										<th><a onclick="deletOrder(${myorder.rRID})">Cancel</a></th>
+										<th><a href="deletOrder?rRID=${myorder.rRID}">Cancel</a></th>
 									</tr>
 								</c:forEach>
 			    			</table>
@@ -685,9 +666,10 @@
                         		if (barcode_order != ""){
                         			if (bookName_order != ""){
                         				if(confirm("Are you sure about the appointment?")){
-                        					addOrder = "addOrder?barCode="+barcode_order+"&&bookName="+bookName_order;
-                                			window.location.href=addOrder;
-                                			alert(${status});
+                        					addOrder = "addOrder?barCode="+barcode_order+"&bookName="+bookName_order;
+                                			location.href=addOrder;
+                    
+                                			alert("done");
                         				}
                             		}
                             		else{
@@ -706,7 +688,7 @@
                             <button id="cleanorder" class="btn btn-primary btn-info" onclick="cleanorder()">clean</button>
                         </div>
                 </div>
-      </div>
+        </div>
 </body>
     <script>
          $(function() {
