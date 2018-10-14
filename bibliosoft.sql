@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-14 23:42:06
+Date: 2018-10-15 02:01:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,14 +78,16 @@ CREATE TABLE `book` (
   `tag1` varchar(20) DEFAULT NULL,
   `tag2` varchar(20) DEFAULT NULL,
   `price` float DEFAULT NULL,
+  `isdelete` int(1) DEFAULT NULL,
+  `deleteman` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`barCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES ('1', 'DS', 'ISBN-1', 'xx', 'xxx', 'xxx', null, 'zzz', '0', '2018-09-24', null, null, '100');
-INSERT INTO `book` VALUES ('2', 'SO', 'ISBN-2', 'xx', 'xx', 'xx', null, 'zzz', '0', '2018-10-09', null, null, null);
+INSERT INTO `book` VALUES ('1', 'DS', 'ISBN-1', 'xx', 'xxx', 'xxx', null, 'zzz', '0', '2018-09-24', null, null, '100', null, null);
+INSERT INTO `book` VALUES ('2', 'SO', 'ISBN-2', 'xx', 'xx', 'xx', null, 'zzz', '0', '2018-10-09', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `borrowedrecord`
@@ -144,7 +146,9 @@ CREATE TABLE `post` (
   `postID` varchar(14) NOT NULL,
   `author` varchar(20) DEFAULT NULL,
   `time` date DEFAULT NULL,
-  `text` varchar(1000) DEFAULT NULL,
+  `text` varchar(2000) DEFAULT NULL,
+  `postImage` varchar(1000) DEFAULT NULL,
+  `postTitle` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`postID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -205,6 +209,7 @@ DROP PROCEDURE IF EXISTS `update_reservedrecord`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `update_reservedrecord`()
 UPDATE reservedrecord set flag=1 where TIME_TO_SEC(TIMEDIFF(now(),time))>7200
+;
 ;;
 DELIMITER ;
 

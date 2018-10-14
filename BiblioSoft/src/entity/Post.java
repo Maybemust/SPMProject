@@ -15,6 +15,8 @@ public class Post {
 	private String author;
 	private Date time;
 	private String text;
+	private String postImage;
+	private String postTitle;
 	
 	
 	
@@ -47,6 +49,20 @@ public class Post {
 		this.author = author;
 		this.time = time;
 		this.text = text;
+	}
+	
+	/**
+	 * @author ZoeX
+	 *
+	 */	
+	public Post(String author, Date time, String text, String postImage, String postTitle) {
+		super();
+	//	this.postID = postID;
+		this.author = author;
+		this.time = time;
+		this.text = text;
+		this.postImage = postImage;
+		this.postTitle = postTitle;
 	}
 	/**
 	 * @return the postID
@@ -96,14 +112,48 @@ public class Post {
 	public void setText(String text) {
 		this.text = text;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Post [postID=" + postID + ", author=" + author + ", time=" + time + ", text=" + text + "]";
+
+
+	/**
+	 * @author ZoeX
+	 *
+	 *
+	 */	
+	
+	public void setPostImage(String postImage) {
+		this.postImage = postImage;
 	}
-	
-	
-	
+	/**
+	 * @author ZoeX
+	 *
+	 *
+	 */	
+	public String getPostImage() {
+		return postImage;
+	}
+	/**
+	 * @author ZoeX
+	 *
+	 */	
+	public String getPostTitle() {
+		return postTitle;
+	}
+
+	/**
+	 * @author ZoeX
+	 *
+	 */	
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
+
+
+	/**
+	 * @author ZoeX
+	 *
+	 */	
+	public String toString() {
+		return "Post [postID=" + postID + ", author=" + author + ", time=" + time + ", text=" + text + ", postImage="
+				+ postImage + ", postTitle=" + postTitle + "]";
+	}
 }

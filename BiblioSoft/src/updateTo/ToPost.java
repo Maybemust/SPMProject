@@ -84,19 +84,23 @@ public class ToPost {
 	/*
 	 * 添加一条通知
 	 */
+	/*
+	 * 修改了，添加了postImage和postTitle两个属性
+	 */
 	public static void add(Post post) {
 
 		try {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into post(postID,author,time,text) values(?,?,?,?)";
+			String sql = "insert into post(author,time,text,postImage,postTitle) values(?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(1, post.getPostID());
-			ps.setString(2, post.getAuthor());
-			ps.setDate(4, post.getTime());
-			ps.setString(5, post.getText());
+			ps.setString(1, post.getAuthor());
+			ps.setDate(2, post.getTime());
+			ps.setString(3, post.getText());
+			ps.setString(4, post.getPostImage());
+			ps.setString(5, post.getPostTitle());
 			
 			ps.execute();
 
@@ -112,12 +116,15 @@ public class ToPost {
 	/*
 	 * 更新一条通知
 	 */
+	/*
+	 * 修改了，添加了postImage和postTitle两个属性
+	 */
 	public static void update(Post post) {
 		try {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "update post set author = ? , time = ? , text=? where postID = ?";
+			String sql = "update post set author = ? , time = ? , text=? ,postImage = ?, postTitle = ? where postID = ?";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
@@ -125,6 +132,8 @@ public class ToPost {
 			ps.setString(1, post.getAuthor());
 			ps.setString(3,post.getText());
 			ps.setDate(2, post.getTime());
+			ps.setString(5,post.getPostImage());
+			ps.setString(6,post.getPostTitle());
 
 			ps.execute();
 
@@ -158,6 +167,9 @@ public class ToPost {
 	/*
 	 * 通过编号获取通知
 	 */
+	/*
+	 * 修改了，添加了postImage和postTitle两个属性
+	 */
 	public static Post getByPostID(String postID) {
 		Post post = new Post();
 		try {
@@ -175,6 +187,8 @@ public class ToPost {
 				post.setAuthor(rs.getString("author"));
 				post.setTime(rs.getDate("time"));
 				post.setText(rs.getString("text"));
+				post.setPostImage(rs.getString("postImage"));
+				post.setPostTitle(rs.getString("postTitle"));
 				
 				
 			}
@@ -195,6 +209,9 @@ public class ToPost {
 	/*
 	 * 列出部分通知
 	 */
+	/*
+	 * 修改了，添加了postImage和postTitle两个属性
+	 */
 	public static List<Post> list(int start, int count) {
 		List<Post> posts = new ArrayList<Post>();
 
@@ -202,7 +219,7 @@ public class ToPost {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "select * from post order by barCode desc limit ?,? ";
+			String sql = "select * from post order by postID desc limit ?,? ";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setInt(1, start);
@@ -216,6 +233,9 @@ public class ToPost {
 				post.setAuthor(rs.getString("author"));
 				post.setTime(rs.getDate("time"));
 				post.setText(rs.getString("text"));
+				post.setPostImage(rs.getString("postImage"));
+				post.setPostTitle(rs.getString("postTitle"));
+				
 				posts.add(post);
 			}
 			DBhelper.closeConnection(c, ps, rs);
@@ -226,6 +246,9 @@ public class ToPost {
 	}
 	/*
 	 * 列出某人发布的通知
+	 */
+	/*
+	 * 修改了，添加了postImage和postTitle两个属性
 	 */
 	public static List<Post> list(int start, int count,String author) {
 		List<Post> posts = new ArrayList<Post>();
@@ -257,4 +280,7 @@ public class ToPost {
 		}
 		return posts;
 	}
+
+	
+	
 }
