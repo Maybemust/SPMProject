@@ -681,7 +681,67 @@
                         		}
                         	}
                         </script>
+                        <script>
+                        function addOrder(barCode,bookName){
+      						alert("hello");
+                    		if (barCode != ""){
+                    			if (bookName != ""){
+                    				if(confirm("Are you sure about the appointment?")){
+                    					addOrder = "addOrder?barCode="+barCode+"&bookName="+bookName;
+                            			window.location.href=addOrder;
+                            			alert("2");
+                    				}
+                        		}
+                        		else{
+                        			alert("please input bookName");
+                        		}
+                    		}
+                    		else{
+                    			alert("please input barCode");
+                    		}
+                    	}
+                        </script>
                         <div id="addorder" class="tab-pane">
+                        <form method="POST" action="searchBook">
+                          <div id="search-container" style="margin-left:500px;margin-top:100px">
+								<div id="search-iuput">
+								  	<input id="searchBook" type="text" name="searchou" placeholder="please input key words">
+								    <input id="search-button" type="submit" name="btn_submit" value="search"/>
+								</div>
+								<div style="height: 30px;"></div>
+								<hr/>
+							</div>
+							</form>
+							<div id=wodeyuyue class="table_wrap" style="text-align:center;display:block">
+								<table id="myhistory" border="1" class="table" cellpadding="5" style="margin-left:5px;margin-right:30px">
+									<caption style="text-align:center"><font size="5">SearchResult</caption>
+										<tr>
+				  							<th style="text-align:center;"><font size="4">barCode</font></th>				
+				  							<th style="text-align:center;"><font size="4">bookName</font></th>
+				  							<th style="text-align:center;"><font size="4">ISBN</font></th>
+				  							<th style="text-align:center;"><font size="4">author</font></th>
+				  							<th style="text-align:center;"><font size="4">publishing</font></th>
+				  							<th style="text-align:center;"><font size="4">location</font></th>
+				  							<th style="text-align:center;"><font size="4">introduction</font></th>
+				  							<th style="text-align:center;"><font size="4">status</font></th>
+				  							<th style="text-align:center;"><font size="4">dateOfStorage</font></th>
+										</tr>
+									<c:forEach items="${bookList}" var="bookList" varStatus="loop">
+										<tr>
+											<td><font size="4">${bookList.barCode}</font></td>
+											<td><font size="4">${bookList.bookName}</font></td>
+											<td ><font size="4">${bookList.ISBN}</font></td>
+											<td><font size="4">${bookList.author}</font></td>
+											<td><font size="4">${bookList.publishing}</font></td>
+											<td><font size="4">${bookList.location}</font></td>	
+											<td><font size="4">${bookList.introduction}</font></td>	
+											<td><font size="4">${bookList.status}</font></td>	
+											<td><font size="4">${bookList.dateOfStorage}</font></td>
+											<th><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}">Add</a></th>
+										</tr>
+									</c:forEach>
+								</table>
+							</div>
                             <p>barCode</p><input class="form-control" id="barCode_order" placeholder="please input barCode" style="width:300px;">
                             <p>bookName</p><input class="form-control" id="bookName_order" placeholder="please input bookName" style="width:300px;"><br/>
                             <button id="saveorder" class="btn btn-primary btn_search" onclick="saveorder()">save</button>

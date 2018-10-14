@@ -616,8 +616,7 @@ public class ToBook {
 		List<Book>books=new ArrayList<Book>();
 		
 		try {
-			Book book=getByBarCode(key);
-			books.add(book);
+
 			List<Book>books1=getByBookName(key);
 			for (Book b : books1) {
 				books.add(b);

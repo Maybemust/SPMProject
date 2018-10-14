@@ -169,6 +169,14 @@
   		<servlet-name>addOrder</servlet-name>
   		<url-pattern>/addOrder</url-pattern>
   	</servlet-mapping>
+  	  <servlet>
+    <servlet-name>searchBook</servlet-name>
+    <servlet-class>servlet.searchBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchBook</servlet-name>
+    <url-pattern>/searchBook</url-pattern>
+  </servlet-mapping>
                 <servlet>
   		<servlet-name>Login</servlet-name>
   		<servlet-class>servlet.Login</servlet-class>
