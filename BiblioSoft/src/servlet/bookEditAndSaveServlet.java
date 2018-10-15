@@ -78,15 +78,15 @@ public class bookEditAndSaveServlet extends HttpServlet {
         String location=request.getParameter("saveLocation"); 
         String tag1=request.getParameter("saveTag1");
         String tag2=request.getParameter("saveTag2");
+        String imagePath=request.getParameter("imagePath");
+        double price=0;
+        
         
         StringTokenizer st = new StringTokenizer(request.getParameter("savePrice"),"Ԫ");
         String abc=st.nextToken();
-        if(abc==null)
-        {
-        	abc="0";
-        	
-        }
-	     double price=Double.parseDouble(abc);
+        price=Double.parseDouble(abc);
+        
+    
 	     
 	     
 	     
@@ -94,8 +94,7 @@ public class bookEditAndSaveServlet extends HttpServlet {
 	
         
 		
-        
-        
+  
       
 		
          Book book=new Book();

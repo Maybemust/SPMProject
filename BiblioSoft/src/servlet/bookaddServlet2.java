@@ -134,6 +134,24 @@ public class bookaddServlet2 extends HttpServlet {
 	     String imagePath=book1.getImagePath();
 	     
 	     
+	     System.out.println(price1);
+	     
+	     
+	     if(price1==null)
+	    	 price1="0.0";
+	     
+	     if(publishing==null)
+	    	 publishing="none";
+	     
+	     if(bookName==null)
+	    	 bookName="none";
+	     
+	     if(author==null)
+	    	 author="none";
+	     
+	     if(imagePath==null)
+	    	 imagePath="none";
+	     
 	/*     StringTokenizer st = new StringTokenizer(price1,"Ԫ");
 	     double price=Double.parseDouble(st.nextToken());
 	     */
@@ -171,7 +189,7 @@ public class bookaddServlet2 extends HttpServlet {
          request.setAttribute("date", date );
          request.setAttribute("price", price1 );
          request.setAttribute("imagePath", imagePath );
-
+         System.out.println(imagePath);
          RequestDispatcher dispatcher = request.getRequestDispatcher("/bookDetailPage.jsp?"); 
          dispatcher.forward(request, response); 
          

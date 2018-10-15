@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -14,8 +14,7 @@
 		}
 	</script>
 	<form method="post" action="borrowbook" id="borrowbook">
-		<input name="useraccount"></input>
-		<input name="barCode"></input>
+		<input name="useraccount"></input> <input name="barCode"></input>
 		<button onclick="borrowbook()">确认</button>
 	</form>
 </body>

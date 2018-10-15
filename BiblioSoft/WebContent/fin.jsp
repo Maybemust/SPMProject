@@ -60,11 +60,13 @@ body {
 		style="width: 1000px; height: 300px; position: relative; left: 35%;">
 		<button type="button" class="mybutton"
 			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='getA?a=Librarian'">Librarian</button>
+			onmouseout="this.style.backgroundColor='#1a1a1a';"
+			onclick="location='getA?a=Librarian'">Librarian</button>
 		<button type="button" class="mybutton"
 			style="position: relative; left: 120px"
 			onmouseover="this.style.backgroundColor='#d19503';"
-			onmouseout="this.style.backgroundColor='#1a1a1a';" onclick="location='getA?a=Reader'">Reader</button>
+			onmouseout="this.style.backgroundColor='#1a1a1a';"
+			onclick="location='getA?a=Reader'">Reader</button>
 	</div>
 </body>
 </html>

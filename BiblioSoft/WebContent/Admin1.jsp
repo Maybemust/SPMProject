@@ -104,7 +104,7 @@ body {
 <body>
 	<div class="wrap">
 		<!-- 左边导航栏-->
-		
+
 		<div id="left" class="left">
 			<div id="logoDiv" class="logoDiv">
 				<p id="logoTitle" class="logoTitle">
@@ -113,7 +113,7 @@ body {
 					<span style="font-size: 18px;">Admin</span>
 				</p>
 			</div>
-		
+
 			<div class="menu-item" data-toggle="collapse" data-target="#demo1"
 				onmouseover="mouseover('div2')" onmouseout="mouseout('div2')"
 				id="div2">operate for librarian</div>
@@ -150,7 +150,7 @@ body {
 
 
 		</div>
-		<a href="fin.jsp" style="float:right">back to log page</a>
+		<a href="fin.jsp" style="float: right">back to log page</a>
 		<!-- 添加导航栏所链接的内容-->
 		<div id="right" class="tab-content right">
 
@@ -165,8 +165,7 @@ body {
 							onkeyup="this.value=this.value.replace(/\D/g,'')"
 							onblur="smaeLibrarian('account', 'accountsame', 'register')"
 							onafterpaste="this.value=this.value.replace(/\D/g,'')"
-							maxlength="15"> 
-						<label style="color: red;"
+							maxlength="15"> <label style="color: red;"
 							name="accountsame" id="accountsame"></label>
 						<p>password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a string of
 							no more than 20 characters*</p>
@@ -175,8 +174,7 @@ body {
 						<p>repeat password</p>
 						<input type="password" id="repeatPassword" name="repeatPassword"
 							maxlength="20"> <br> <br>
-						<button type="button"
-							name="register" id="register"
+						<button type="button" name="register" id="register"
 							onClick="addLibrarian('account', 'password', 'repeatPassword')">Register</button>
 					</form>
 				</div>
@@ -352,26 +350,26 @@ body {
 				<div class="content">
 					<form action="">
 						<p>old password</p>
-						<input type="text" id="modifyadminoldpassword" name="modifyadminoldpassword"
-							maxlength="15"> 
-						<label style="color: red;"
-							name="adminoldpassword" id="adminoldpassword"></label>
-						<p>new password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a string of
-							no more than 20 characters*</p>
-						<input type="password" id="modifyadminnewpassword" name="modifyadminnewpassword"
-							maxlength="20">
+						<input type="text" id="modifyadminoldpassword"
+							name="modifyadminoldpassword" maxlength="15"> <label
+							style="color: red;" name="adminoldpassword" id="adminoldpassword"></label>
+						<p>new password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a string
+							of no more than 20 characters*</p>
+						<input type="password" id="modifyadminnewpassword"
+							name="modifyadminnewpassword" maxlength="20">
 						<p>repeat password</p>
-						<input type="password" id="modifyadminrepeatpassword" name="modifyadminrepeatpassword"
-							maxlength="20"> <br> <br>
-						<button type="button"
-							name="adminrepeatpassword" id="adminrepeatpassword"
+						<input type="password" id="modifyadminrepeatpassword"
+							name="modifyadminrepeatpassword" maxlength="20"> <br>
+						<br>
+						<button type="button" name="adminrepeatpassword"
+							id="adminrepeatpassword"
 							onClick="modifyAdminPassword('modifyadminoldpassword', 'modifyadminnewpassword', 'modifyadminrepeatpassword')">Modify</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 <script>
 	$(function() {
