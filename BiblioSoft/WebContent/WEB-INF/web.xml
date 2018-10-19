@@ -313,4 +313,31 @@
 		<url-pattern>/JumpToDetailServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>bookDetailServletrr</servlet-name>
+		<servlet-class>servlet.bookDetailServletrr</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bookDetailServletrr</servlet-name>
+		<url-pattern>/bookDetailServletrr</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>bookDetailChangeLocationServlet</servlet-name>
+		<servlet-class>servlet.bookDetailChangeLocationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bookDetailChangeLocationServlet</servlet-name>
+		<url-pattern>/bookDetailChangeLocationServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LogOutServlet</servlet-name>
+		<servlet-class>servlet.LogOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogOutServlet</servlet-name>
+		<url-pattern>/LogOutServlet</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

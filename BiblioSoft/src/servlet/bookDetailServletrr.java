@@ -20,14 +20,21 @@ public class bookDetailServletrr extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String aaa = "111";
+		out.write("aa");
 		try {
-			System.out.println("bookdetail111");
 			request.setCharacterEncoding("UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html");
-			System.out.println("1");
-			String barCode = request.getParameter("barCode");
-			Book book = ToBook.getByBarCode(barCode);
+			
+			
+			
+			
+			String ISBN = request.getParameter("ISBN");
+			List<Book> books = ToBook.getByISBN(ISBN);
+			Book book = books.get(1);
+			request.setAttribute("books", books);
 			request.setAttribute("ISBN", book.getISBN());
 			request.setAttribute("bookName", book.getBookName());
 			request.setAttribute("author", book.getAuthor());
@@ -37,21 +44,37 @@ public class bookDetailServletrr extends HttpServlet{
 			request.setAttribute("tag1", book.getTag1());
 			request.setAttribute("tag2", book.getTag2());
 			request.setAttribute("price", book.getPrice());
-			String str = book.getISBN();
-			List<Book> books = ToBook.getByISBN(str);
-			int count = 0;
-			for(int i = 0; i < books.size(); i++){
-				if(books.get(i).getStatus() == 0) 
-					count++;
-			}
-			request.setAttribute("remainingNumber", count);
+			request.setAttribute("books", books);
+			request.setAttribute("status", book.getStatus());
+			request.setAttribute("imagePath", book.getCover());
 			
 			
+//			String aaa = "111";
+//			out.write("aa");
+			
+//			String bookbarCode = request.getParameter("bookbarCode");
+//			System.out.println(bookbarCode);
+//			Book book2 = ToBook.getByBarCode(bookbarCode);
+//			String location = book2.getLocation();
+//			System.out.println("1111");
+//			System.out.println(location);
+//			out.write(location);
 			
 		} catch (NumberFormatException e){
 			
 		}
-		request.getRequestDispatcher("bookDetailPage.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("bookDetailPagerr.jsp").forward(request, response);
 
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		service(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		service(request, response);
 	}
 }

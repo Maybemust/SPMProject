@@ -56,7 +56,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -97,7 +97,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -138,7 +138,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -180,7 +180,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -222,7 +222,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -264,7 +264,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -306,7 +306,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -348,7 +348,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -524,7 +524,7 @@ public class ToBook {
 			ps.setString(3, book.getAuthor());
 			ps.setString(4, book.getPublishing());
 			ps.setString(5, book.getLocation());
-			ps.setBlob(6,book.getCover());
+			ps.setString(6,book.getCover());
 			ps.setString(7, book.getIntroduction());
 			ps.setInt(8, book.getStatus());
 			ps.setDate(9, book.getDateOfStorage());
@@ -621,7 +621,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -692,7 +692,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));
@@ -737,7 +737,7 @@ public class ToBook {
 				book.setISBN(rs.getString("ISBN"));
 				book.setPublishing(rs.getString("publishing"));
 				book.setLocation(rs.getString("location"));
-				book.setCover(rs.getBlob("cover"));
+				book.setCover(rs.getString("cover"));
 				book.setIntroduction(rs.getString("introduction"));
 				book.setStatus(rs.getInt("status"));
 				book.setDateOfStorage(rs.getDate("dateOfStorage"));

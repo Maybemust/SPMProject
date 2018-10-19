@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : test1
 Source Server Version : 50615
 Source Host           : localhost:3306
 Source Database       : bibliosoft
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-15 02:01:19
+Date: 2018-10-20 01:54:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,7 +71,7 @@ CREATE TABLE `book` (
   `author` varchar(40) NOT NULL,
   `publishing` varchar(40) NOT NULL,
   `location` varchar(40) DEFAULT NULL,
-  `cover` mediumblob,
+  `cover` varchar(1000) DEFAULT NULL,
   `introduction` varchar(80) DEFAULT NULL,
   `status` int(1) NOT NULL COMMENT '0是可借，1是预约，2是被借出',
   `dateOfStorage` date DEFAULT NULL,
@@ -87,7 +87,9 @@ CREATE TABLE `book` (
 -- Records of book
 -- ----------------------------
 INSERT INTO `book` VALUES ('1', 'DS', 'ISBN-1', 'xx', 'xxx', 'xxx', null, 'zzz', '0', '2018-09-24', null, null, '100', null, null);
-INSERT INTO `book` VALUES ('2', 'SO', 'ISBN-2', 'xx', 'xx', 'xx', null, 'zzz', '0', '2018-10-09', null, null, null, null, null);
+INSERT INTO `book` VALUES ('2', 'SO', 'ISBN-2', 'xx', 'xx', 'xx', 'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg', 'zzz', '0', '2018-10-09', null, null, null, null, null);
+INSERT INTO `book` VALUES ('3', '3', 'ISBN-2', '33', '33', '33', 'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg', '33', '1', '2018-10-18', '3', '33', '33', null, null);
+INSERT INTO `book` VALUES ('4', '4', 'ISBN-2', '44', '44', '44', 'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg', '44', '0', '2018-10-04', '4', '44', '44', null, null);
 
 -- ----------------------------
 -- Table structure for `borrowedrecord`
@@ -210,14 +212,5 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `update_reservedrecord`()
 UPDATE reservedrecord set flag=1 where TIME_TO_SEC(TIMEDIFF(now(),time))>7200
 ;
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for `update_reserver`
--- ----------------------------
-DROP EVENT IF EXISTS `update_reserver`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` EVENT `update_reserver` ON SCHEDULE EVERY 1 MINUTE STARTS '2018-10-14 21:35:53' ON COMPLETION NOT PRESERVE ENABLE DO call update_reservedrecord()
 ;;
 DELIMITER ;

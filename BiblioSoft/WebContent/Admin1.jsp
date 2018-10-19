@@ -150,7 +150,7 @@ body {
 
 
 		</div>
-		<a href="fin.jsp" style="float: right">back to log page</a>
+		<a href="LogOutServlet" style="float: right">back to log page</a>
 		<!-- 添加导航栏所链接的内容-->
 		<div id="right" class="tab-content right">
 

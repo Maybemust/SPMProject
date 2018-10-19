@@ -1,4 +1,33 @@
 // JavaScript Document
+/** ************************图书详情***************************** */
+function changeBookInfo(value, location, status){
+	var xmlhttp;
+	var url = "";
+	url = "bookDetailChangeLocationServlet?bookbarCode=" + value;
+
+	if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5 浏览器执行代码
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var check = xmlhttp.responseText;
+			display2(check, location, status);
+		}
+	};
+	xmlhttp.send(null);
+
+}
+
+function display2(str, location, status) {
+		arr = str.split("|");
+		document.getElementById(location).value = arr[0];
+		document.getElementById(status).value = arr[1];
+}
 /** ************************账号重复***************************** */
 function smaeLibrarian(account, label, button) {
 	var xmlhttp;

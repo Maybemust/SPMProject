@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="js/ajax.js"></script>
 <title>Book Detail Page rr</title>
 <style>
 .or-spacer {
@@ -66,27 +67,36 @@
 		</div>
 	</div>
 	<div style="margin: 0 auto; width: 620px; height: 500px">
-		<img src="images/2017-12-05 111525.png" class="bookimg"
-			style="position: relative; top: 50px;">
+		<img src="${imagePath }" class="bookimg"
+			style="position: relative; top: 50px;" alt="this is cover!">
 		<div class="mydiv">
+		<form action="">
+			<select id="barCode" name="barCode" onchange="changeBookInfo(this.value, 'location', 'status');">
+				<c:forEach items="${books }" var="book" varStatus="st">
+					<option value="${book.barCode }">${book.barCode }</option>
+				</c:forEach>
+			</select>
+		</form>
 			<input type="text" value="ISBN:  ${ISBN }" class="myinput"
-				style="background-color: #abd9ff;" readonly /> <input type="text"
-				value="Book Name:  ${bookName }" class="myinput"
-				style="background-color: #f0f8ff;" readonly /> <input type="text"
-				value="Author:  ${author }" class="myinput"
-				style="background-color: #abd9ff;" readonly /> <input type="text"
-				value="Publishing:  ${publishing }" class="myinput"
-				style="background-color: #f0f8ff;" readonly /> <input type="text"
-				value="Location:  ${location }" class="myinput"
-				style="background-color: #abd9ff;" readonly /> <input type="text"
-				value="Remaining Number:  ${remainingNumber }" class="myinput"
-				style="background-color: #f0f8ff;" readonly /> <input type="text"
-				value="Date of Storage:  ${dateOfStorage }" class="myinput"
-				style="background-color: #abd9ff;" readonly /> <input type="text"
-				value="Tag:  ${tag1 } and ${tag2 }" class="myinput"
-				style="background-color: #f0f8ff;" readonly /> <input type="text"
-				value="Price:  ${price }" class="myinput"
 				style="background-color: #abd9ff;" readonly />
+			<input type="text" value="Book Name:  ${bookName }" class="myinput"
+				style="background-color: #f0f8ff;" readonly />
+			<input type="text" value="Author:  ${author }" class="myinput"
+				style="background-color: #abd9ff;" readonly />
+			<input type="text" value="Publishing:  ${publishing }" class="myinput"
+				style="background-color: #f0f8ff;" readonly />
+			<input type="text" value="Location:  ${location }" class="myinput"
+				style="background-color: #abd9ff;" id="location" readonly />
+			<input type="text" value="Status:  ${status }" class="myinput"
+				style="background-color: #f0f8ff;" id="status" readonly />
+			<input type="text" value="Date of Storage:  ${dateOfStorage }" class="myinput"
+				style="background-color: #abd9ff;" readonly />
+			<input type="text" value="Tag1:  ${tag1 }" class="myinput"
+				style="background-color: #f0f8ff;" readonly />
+			<input type="text" value="Tag2:  ${tag2 }" class="myinput"
+				style="background-color: #abd9ff;" readonly />
+			<input type="text" value="Price:  ${price }" class="myinput"
+				style="background-color: #f0f8ff;" readonly />
 		</div>
 		<form>
 			<input type="submit" value="reserve"

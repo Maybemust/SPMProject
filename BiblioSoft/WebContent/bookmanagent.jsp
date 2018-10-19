@@ -169,7 +169,7 @@ function unselectAll(){
 														<td bgcolor="#FFFFFF"><input type="checkbox"
 															name="delid" /></td>
 														<td height="20" bgcolor="#FFFFFF">${book.barCode}</td>
-														<td bgcolor="#FFFFFF">${book.ISBN}</td>
+														<td bgcolor="#FFFFFF"><a href="bookDetailServletrr?ISBN=${book.ISBN }">${book.ISBN}</a></td>
 														<td bgcolor="#FFFFFF">${book.author}</td>
 														<td bgcolor="#FFFFFF">${book.publishing}</td>
 														<td bgcolor="#FFFFFF">${book.bookName}</td>

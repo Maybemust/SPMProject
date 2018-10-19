@@ -20,7 +20,7 @@ public class Book {
 	private String author;
 	private String publishing;
 	private String location;
-	private Blob cover;
+	private String cover;
 	private String introduction;
 	private int status;
 	private Date dateOfStorage;
@@ -81,7 +81,7 @@ public class Book {
 	 * @param tag2
 	 * @param price
 	 */
-	public Book(String barCode, String bookName,String iSBN, String author, String publishing, String location, Blob cover,
+	public Book(String barCode, String bookName,String iSBN, String author, String publishing, String location, String cover,
 			String introduction, int status, Date dateOfStorage, String tag1, String tag2,double price) {
 		super();
 		this.barCode = barCode;
@@ -161,13 +161,13 @@ public class Book {
 	/**
 	 * @return the cover
 	 */
-	public Blob getCover() {
+	public String getCover() {
 		return cover;
 	}
 	/**
 	 * @param cover the cover to set
 	 */
-	public void setCover(Blob cover) {
+	public void setCover(String cover) {
 		this.cover = cover;
 	}
 	/**
