@@ -17,10 +17,14 @@ public class addOrder  extends HttpServlet{
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
+		
 		String barcode="";
 		String bookname="";
 		String account="";
+		String sta="";
+		
 		try{
 			barcode = request.getParameter("barCode");
 			bookname = request.getParameter("bookName");
@@ -28,32 +32,44 @@ public class addOrder  extends HttpServlet{
 			
 		}
 		account=reader.getAccount();
+		
 		Book book = ToBook.getByBarCode(barcode);
 		long total = ToReservedRecord.getTotal();
 		total++;
 		Date date_sql = new Date(System.currentTimeMillis());
 		ReservedRecord record = new ReservedRecord(bookname,date_sql,account,barcode);
 		record.setrRID(total);
-		if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
-			ToReservedRecord.add(record);
-			request.setAttribute("status", "Add Successfully");
+		int start=0;
+		int count = 0;
+		count = ToReservedRecord.getTotal();
+		List<ReservedRecord> myorders =ToReservedRecord.listByAccountFlag(start, count, account);
+		boolean flag = true;
+		int size = 0;
+		size = myorders.size();
+		for(int i = 0;i < size;i++){
+			if(myorders.get(i).getBarCode().equals(barcode)){
+				sta="already existed";
+				flag=false;
+				break;
+			}
+		}
+		if(flag){
+			if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
+				sta="Add successfully";
+				ToReservedRecord.add(record);
+				request.setAttribute("status",sta);
+			}
+			else{
+				sta="please check barCode or bookName is true";
+				request.setAttribute("status",sta);
+			}
 		}
 		else{
-			request.setAttribute("status", "Add Fail");
+			request.setAttribute("status",sta);
 		}
-		String url_return = "getreader?account=";
-		url_return +=account;
-		System.out.println(url_return);
+
 		request.setAttribute("Reader", reader);
-		
-		int start=0;
-		int count=0;
-		count=ToReservedRecord.getTotalByAccount(account);
-		List<ReservedRecord> myorders =ToReservedRecord.listByAccountFlag(start, count, account);
-	
-		request.setAttribute("myorders", myorders);
-		
-		
+		request.setAttribute("myorders", myorders);		
 		request.setAttribute("reader", reader);
 		
 		count=ToBorrowedRecord.getTotal();
@@ -66,11 +82,10 @@ public class addOrder  extends HttpServlet{
 		/*
 		 * 区分历史借阅和正在借阅
 		 */
-		int size=0;
 		int i = 0;
 		size=borrowedRecord.size();
 		while(i < size) {//内部不锁定 执行效率高 并发操作会出错
-		    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
+			 if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
 		    	nowdate.add(date.get(i));

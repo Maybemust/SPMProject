@@ -60,7 +60,7 @@ public class changePassword extends HttpServlet{
       	  int i = 0;
       	  size=borrowedRecord.size();
       	  while(i < size) {
-      	    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
+      		  	if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
       		    	nowrecord.add(borrowedRecord.get(i));
       		    	borrowedRecord.remove(i);
       		    	nowdate.add(date.get(i));

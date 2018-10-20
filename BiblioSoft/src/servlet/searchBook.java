@@ -44,7 +44,7 @@ public class searchBook extends HttpServlet {
 		int start=0;
 		int count=0;
 		count=ToReservedRecord.getTotalByAccount(account);
-		List<ReservedRecord> myorders =ToReservedRecord.listByReaderAccount(start, count, account);
+		List<ReservedRecord> myorders =ToReservedRecord.listByAccountFlag(start, count, account);
 	
 		request.setAttribute("myorders", myorders);
 		
@@ -59,13 +59,13 @@ public class searchBook extends HttpServlet {
 		List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
 		List<Long> nowdate = new ArrayList<Long>();
 		/*
-		 * ������ʷ���ĺ����ڽ���
+		 * 锟斤拷锟斤拷锟斤拷史锟斤拷锟侥猴拷锟斤拷锟节斤拷锟斤拷
 		 */
 		int size=0;
 		int i = 0;
 		size=borrowedRecord.size();
-		while(i < size) {//�ڲ������� ִ��Ч�ʸ� �������������
-		    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
+		while(i < size) {//锟节诧拷锟斤拷锟斤拷锟斤拷 执锟斤拷效锟绞革拷 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�
+			if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
 		    	nowdate.add(date.get(i));
@@ -88,7 +88,7 @@ public class searchBook extends HttpServlet {
 		}
 		List<Book> bookList = ToBook.searchForKey(key);
 		request.setAttribute("bookList", bookList);
-		RequestDispatcher view = request.getRequestDispatcher("Reader_new.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ReaderaddOrder.jsp");
 	    view.forward(request, response);
 	}
 

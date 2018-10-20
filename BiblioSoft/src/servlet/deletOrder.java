@@ -27,10 +27,10 @@ public class deletOrder  extends HttpServlet{
 		account=reader.getAccount();
 		if(ToReservedRecord.getByrRID(rRID) != null ){
 			ToReservedRecord.deleteByrRID(rRID);
-			request.setAttribute("status", "Cancel Successfully");
+			request.setAttribute("status","Cancel Successfully");
 		}
 		else{
-			request.setAttribute("status", "Cancel Fail");
+			request.setAttribute("status","Cancel Fail");
 		}
 		String url_return = "getreader?account=";
 		url_return +=account;
@@ -61,7 +61,7 @@ public class deletOrder  extends HttpServlet{
 		int i = 0;
 		size=borrowedRecord.size();
 		while(i < size) {//内部不锁定 执行效率高 并发操作会出错
-		    if(ToBook.getByBarCode(borrowedRecord.get(i).getBarCode()).getStatus()==0){
+			 if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
 		    	nowdate.add(date.get(i));

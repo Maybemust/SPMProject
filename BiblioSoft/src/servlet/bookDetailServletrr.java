@@ -33,7 +33,7 @@ public class bookDetailServletrr extends HttpServlet{
 			
 			String ISBN = request.getParameter("ISBN");
 			List<Book> books = ToBook.getByISBN(ISBN);
-			Book book = books.get(1);
+			Book book = books.get(0);
 			request.setAttribute("books", books);
 			request.setAttribute("ISBN", book.getISBN());
 			request.setAttribute("bookName", book.getBookName());

@@ -81,6 +81,8 @@
 				style="background-color: #abd9ff;" readonly />
 			<input type="text" value="Book Name:  ${bookName }" class="myinput"
 				style="background-color: #f0f8ff;" readonly />
+			<input type="hidden" id="bookName" type="text" value="${bookName }" class="myinput"
+				style="background-color: #f0f8ff;" readonly />
 			<input type="text" value="Author:  ${author }" class="myinput"
 				style="background-color: #abd9ff;" readonly />
 			<input type="text" value="Publishing:  ${publishing }" class="myinput"
@@ -98,7 +100,16 @@
 			<input type="text" value="Price:  ${price }" class="myinput"
 				style="background-color: #f0f8ff;" readonly />
 		</div>
-		<form>
+		<script type="text/javascript">
+			function addorder(){
+				addurl="addOrder?barCode="+document.getElementById("barCode").value+"&bookName="+document.getElementById("bookName").value;
+				alert(addurl);
+				location.href=addurl;
+				location.reload(); 	
+			}
+		</script>
+		<button onclick="addorder()">test</button>
+		<form action="addOrder">
 			<input type="submit" value="reserve"
 				name="reserveBookInBookDetailPage" id="reserveBookInBookDetailPage"
 				style="position: relative; top: -230px">

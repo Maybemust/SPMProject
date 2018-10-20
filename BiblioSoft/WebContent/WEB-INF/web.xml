@@ -214,6 +214,7 @@
 		<url-pattern>/changePassword</url-pattern>
 	</servlet-mapping>
 
+	
 	<servlet>
 		<servlet-name>SendEmail</servlet-name>
 		<servlet-class>servlet.SendEmail</servlet-class>
