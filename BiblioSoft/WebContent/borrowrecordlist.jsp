@@ -145,7 +145,8 @@ function unselectAll(){
 												<td width="8%" align="center" bgcolor="#EEEEEE">readerAccount</td>
 												<td width="9%" align="center" bgcolor="#EEEEEE">borrowedDate</td>
 												<td width="10%" align="center" bgcolor="#EEEEEE">returnedDate</td>
-												<td width="10%" align="center" bgcolor="#EEEEEE">fine</td>
+												<td width="5%" align="center" bgcolor="#EEEEEE">fine</td>
+												<td width="10%" align="center" bgcolor="#EEEEEE">operating</td>
 											</tr>
 
 
@@ -165,6 +166,7 @@ function unselectAll(){
 														<td bgcolor="#FFFFFF">${borrowedrecord.borrowedDate}</td>
 														<td bgcolor="#FFFFFF">${borrowedrecord.returnedDate}</td>
 														<td height="20" bgcolor="#FFFFFF">${borrowedrecord.fine}</td>
+														<td bgcolor="#FFFFFF"> <a href="finepaymentServlet?account=${borrowedrecord.readerAccount}&bRID=${borrowedrecord.bRID}&fine=${borrowedrecord.fine}">Confirm payment</a>&nbsp; </td>
 
 														<%-- <input type="hidden" name="barCode1" value="${book.barCode}"  /></input>
 	        <input type="hidden" name="ISBN" value="${book.ISBN}"  /></input>

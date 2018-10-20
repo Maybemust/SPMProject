@@ -101,8 +101,8 @@ public class ToReader {
 			ps.setString(2, reader.getPassword());
 			ps.setString(3, reader.getEmail());
 			ps.setLong(4, reader.getPhone());
-			ps.setInt(5, reader.getBorrowedNum());
-			ps.setDouble(6, reader.getFine());
+			ps.setInt(6, reader.getBorrowedNum());
+			ps.setDouble(5, reader.getFine());
 			ps.setDouble(7, reader.getCashPledge());
 			ps.setInt(8, reader.getTag());
 

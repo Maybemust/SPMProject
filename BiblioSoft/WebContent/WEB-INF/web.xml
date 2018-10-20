@@ -341,4 +341,13 @@
 		<url-pattern>/LogOutServlet</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>finepaymentServlet</servlet-name>
+		<servlet-class>servlet.finepaymentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>finepaymentServlet</servlet-name>
+		<url-pattern>/finepaymentServlet</url-pattern>
+	</servlet-mapping> 
+
 </web-app>
