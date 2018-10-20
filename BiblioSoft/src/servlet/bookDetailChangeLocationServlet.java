@@ -21,7 +21,12 @@ public class bookDetailChangeLocationServlet extends HttpServlet{
 		String barCode = request.getParameter("bookbarCode");
 		String location = ToBook.getByBarCode(barCode).getLocation();
 		int status = ToBook.getByBarCode(barCode).getStatus();
-		out.write("Location:  "+location+"|"+"Status:  "+status);
+		if(status == 0){
+			out.write("Location:  "+location+"|"+"Status:  can be bowwored");
+		} else {
+			out.write("Location:  "+location+"|"+"Status:  can not be bowwored");
+		}
+		
 		
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

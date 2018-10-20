@@ -50,7 +50,7 @@
 		height: 300px;
 		position: relative;
 		left: 200px;
-		bottom: 200px;
+		top:-50px;
 		text-align: right;
 	}
 	
@@ -113,35 +113,35 @@
 				<label class="myposition mylabel">ISBN: </label>
 				<input type="text" value=<%=ISBN %> class="myposition myinput" name="saveISBN"/>
 			</div>
-			<div class="mydiv1">
+			<div class="mydiv2">
 				<label class="myposition mylabel">barCode: </label>
 				<input type="text" value=<%=barCode %> class="myposition myinput" name="savebarCode"/>
 			</div>
-			<div class="mydiv2">
+			<div class="mydiv1">
 				<label class="myposition mylabel">Book Name: </label>
 				<input type="text" value=<%=bookName %> class="myposition myinput" name="saveBookName"/>
 			</div>
-			<div class="mydiv1">
+			<div class="mydiv2">
 				<label class="myposition mylabel">Author: </label>
 				<input type="text" value=<%=author %> class="myposition myinput" name="saveAuthor"/>
 			</div>
-			<div class="mydiv2">
+			<div class="mydiv1">
 				<label class="myposition mylabel">Publishing: </label>
 				<input type="text" value=<%=publishing %> class="myposition myinput" name="savePublishing"/>
 			</div>
-			<div class="mydiv1">
+			<div class="mydiv2">
 				<label class="myposition mylabel">Location: </label>
 				<input type="text" value=<%=location %> class="myposition myinput" name="saveLocation"/>
 			</div>
-			<div class="mydiv2">
+			<div class="mydiv1">
 				<label class="myposition mylabel">Tag1: </label>
 				<input type="text" value=<%=tag1 %> class="myposition myinput" name="saveTag1"/>
 			</div>
-			<div class="mydiv1">
+			<div class="mydiv2">
 				<label class="myposition mylabel">Tag2: </label>
 				<input type="text" value=<%=tag2 %> class="myposition myinput" name="saveTag2"/>
 			</div>
-			<div class="mydiv2">
+			<div class="mydiv1">
 				<label class="myposition mylabel">Price: </label>
 				<input type="text" value=<%=price %> class="myposition myinput" name="savePrice"/>
 			</div>

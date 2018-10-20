@@ -47,6 +47,13 @@ public class bookDetailServletrr extends HttpServlet{
 			request.setAttribute("books", books);
 			request.setAttribute("status", book.getStatus());
 			request.setAttribute("imagePath", book.getCover());
+			request.setAttribute("introduction", book.getIntroduction());
+			int st = book.getStatus();
+			if(st == 0) {
+				request.setAttribute("status", "can be borrowed");
+			} else {
+				request.setAttribute("status", "can not be borrowed");
+			}
 			
 			
 //			String aaa = "111";
