@@ -95,6 +95,25 @@ public class addOrder  extends HttpServlet{
 		    	 i++;
 		    }
 		}
+		
+		count = 10;
+		List<Post>posts = ToPost.list(start, count);
+		size = posts.size();
+		String st="";
+		for(int tem = 0;tem < size; tem++){
+			if(posts.get(tem).getText().length() > 25){
+				st=posts.get(tem).getText().substring(0, 10)+"...";
+				posts.get(tem).setText(st);
+				st="";
+			}
+			if(posts.get(tem).getPostTitle().length() > 10){
+				st=posts.get(tem).getPostTitle().substring(0, 10)+"...";
+				posts.get(tem).setPostTitle(st);
+				st="";
+			}
+		}
+		request.setAttribute("posts", posts);
+		
 		request.setAttribute("Reader", reader);
 		request.setAttribute("nowdate", nowdate);
 		request.setAttribute("nowrecord", nowrecord);

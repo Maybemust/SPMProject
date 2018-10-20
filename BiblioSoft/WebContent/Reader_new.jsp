@@ -286,6 +286,20 @@
             border-bottom-right-radius: 15px;
         }
     </style>
+<!-- welcome style by xiang-->
+	<style>
+		#welcome{
+	   		margin-top: 30px;
+	   		margin-left:240px;
+	   		text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);
+	   		width: 1000px;
+	   		height: 100px;
+	  	}
+	  	#post-imformation{
+	  	    width: 1000px;
+	  	    
+	  	}
+	</style>
 </head>
 <body>
 	<div class="wrap">
@@ -331,34 +345,54 @@
                 </div>
 				
 				<!-- 添加导航栏所链接的内容-->
-				<script type="text/javascript">
-        			function modifyImformation(){
-        				var email = document.getElementById("emailInput").value;
-        				var phone = document.getElementById("phoneInput").value;
-        				if(email != ""){
-        					if(phone != ""){
-        						if(confirm("Are you sure to modify the personal imformation?")){
-        							modifyurl="modifyImformation?Email="+email+"&&Phone="+phone;
-        							window.location.href=modifyurl;
-        							alert("modify successfully!");
-        						}
-        					}
-        					else{
-        						alert("please input the phone!");
-        					}
-        				}
-        				else {
-        					alert("please input the email!");
-        				}
-        			}
-				</script>
+				
                 <div id="right" class="tab-content right">
                         <div id="one" class="tab-pane active">
-                            <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
-                                   	<font size="10">Welcome to the page of Reader,${Reader.getAccount() }.</font>
-                            </span>   
+                            <div id="welcome">
+                            	<font size="10" style="color: gray;">Welcome to the page of Reader,${Reader.getAccount() }.</font>
+                            </div>
+                            <div id="post-information">
+                             	<h2 style="margin-left: 250px;">Post Information :</h2>
+                            	<table id="ordertab" border="1" cellpadding="5"> 
+                            	<thead>
+                            		<tr>
+                            			<th style="text-align: certer;width: 200px;"><font size="4" style="margin-left:86px;">Title</th>
+                            			<th style="text-align: center;width: 500px;"><font size="4">Text</th>
+                            			<th style="text-align: center;width: 200px;"><font size="4">Post Time</th>
+                            		</tr>
+                            	</thead>
+                            	<c:forEach items="${posts}" var="post" varStatus="counter">
+                            		<tr>
+                            			<td style="text-align: center"><a target="_blank" href="#" style="color:black">${post.getPostTitle() }</a></td>
+                            			<td style="text-align: center"><a target="_blank" href="#" style="color:black">${post.getText() }</a></td>
+                            			<td style="text-align: center">${post.getTime() }</td>
+                            		</tr>
+                            	</c:forEach>
+                            	</table>
+                            </div>   
                         </div>
                          <!-- xiang -->
+                         <script type="text/javascript">
+        					function modifyImformation(){
+        						var email = document.getElementById("emailInput").value;
+        						var phone = document.getElementById("phoneInput").value;
+        						if(email != ""){
+        							if(phone != ""){
+        								if(confirm("Are you sure to modify the personal imformation?")){
+        									modifyurl="modifyImformation?Email="+email+"&&Phone="+phone;
+        									window.location.href=modifyurl;
+        									alert("modify successfully!");
+        								}
+        							}
+        							else{
+        								alert("please input the phone!");
+        							}
+        						}
+        						else {
+        							alert("please input the email!");
+        						}
+        					}
+					   </script>
                        <div id="pm-container" class="tab-pane">
                             <div style="width: auto;height: 8px"></div>
 								<div id="pm-head">

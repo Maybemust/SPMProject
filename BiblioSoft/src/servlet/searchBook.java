@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Book;
 import entity.BorrowedRecord;
+import entity.Post;
 import entity.Reader;
 import entity.ReservedRecord;
 import updateTo.ToBook;
 import updateTo.ToBorrowedRecord;
+import updateTo.ToPost;
 import updateTo.ToReservedRecord;
 
 public class searchBook extends HttpServlet {
@@ -59,12 +61,12 @@ public class searchBook extends HttpServlet {
 		List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
 		List<Long> nowdate = new ArrayList<Long>();
 		/*
-		 * 锟斤拷锟斤拷锟斤拷史锟斤拷锟侥猴拷锟斤拷锟节斤拷锟斤拷
+		 * 閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷峰彶閿熸枻鎷烽敓渚ョ尨鎷烽敓鏂ゆ嫹閿熻妭鏂ゆ嫹閿熸枻鎷�
 		 */
 		int size=0;
 		int i = 0;
 		size=borrowedRecord.size();
-		while(i < size) {//锟节诧拷锟斤拷锟斤拷锟斤拷 执锟斤拷效锟绞革拷 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�
+		while(i < size) {//閿熻妭璇ф嫹閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷� 鎵ч敓鏂ゆ嫹鏁堥敓缁為潻鎷� 閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ嫹閿燂拷
 			if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
@@ -75,6 +77,25 @@ public class searchBook extends HttpServlet {
 		    	 i++;
 		    }
 		}
+		
+		count = 10;
+		List<Post>posts = ToPost.list(start, count);
+		size = posts.size();
+		String st="";
+		for(int tem = 0;tem < size; tem++){
+			if(posts.get(tem).getText().length() > 25){
+				st=posts.get(tem).getText().substring(0, 10)+"...";
+				posts.get(tem).setText(st);
+				st="";
+			}
+			if(posts.get(tem).getPostTitle().length() > 10){
+				st=posts.get(tem).getPostTitle().substring(0, 10)+"...";
+				posts.get(tem).setPostTitle(st);
+				st="";
+			}
+		}
+		request.setAttribute("posts", posts);
+		
 		request.setAttribute("Reader", reader);
 		request.setAttribute("nowdate", nowdate);
 		request.setAttribute("nowrecord", nowrecord);
