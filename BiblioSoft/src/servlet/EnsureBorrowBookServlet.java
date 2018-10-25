@@ -15,6 +15,7 @@ import entity.Reader;
 import updateTo.ToBook;
 import updateTo.ToBorrowedRecord;
 import updateTo.ToReader;
+import updateTo.ToReservedRecord;
 
 /**
  * Servlet implementation class EnsureBorrowBookServlet
@@ -80,7 +81,7 @@ public class EnsureBorrowBookServlet extends HttpServlet {
 		 */
 		request.setAttribute("borrowBook", book);
 
-		if(reader.getBorrowedNum()<10){//判断用户是否能够借书
+		if(reader.getBorrowedNum()<=3){//判断用户是否能够借书
 			if(book.getStatus() == 0){//判断该书是否被预约或者借出
 				request.setAttribute("borrowbook", book);
 				request.setAttribute("borrower", reader);
@@ -95,10 +96,30 @@ public class EnsureBorrowBookServlet extends HttpServlet {
 				return;
 			}
 
-			else{
-				System.out.println("该书已被预约或者借出，请自行处理");
+			if(book.getStatus() == 1){//判断该书是否被预约或者借出
+				
+//				ToReservedRecord record1 = new ToReservedRecord();
+
+				String account2 = ToReservedRecord.getByBarcode(barcode).getReaderAccount();
+				if(account.equals(account2)){
+					//bRID和两个日期请自行按规则进行处理，我个人觉得数据库挺迷的，不知道该怎么写，就先这么写了
+					request.getRequestDispatcher("LibrarianBorrowBook3.jsp").forward(request, response);
+					System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>");
+					return;
+				}
+				else {
+					request.setAttribute("ifReserved", 1);
+
+				}
+
+			}
+
+			if(book.getStatus() == 1){//判断该书是否被预约或者借出
+				request.setAttribute("ifReserved", 1);
+				System.out.println("该书已被预约，请自行处理");
 			}
 		}
+
 		else{
 			System.out.println("用户借书超出上限，请自行处理");
 			request.setAttribute("borrownum", 0);

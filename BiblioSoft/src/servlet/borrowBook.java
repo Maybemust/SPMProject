@@ -96,7 +96,7 @@ public class borrowBook  extends HttpServlet{
 		 */
 		request.setAttribute("borrowBook", book);
 
-		if(reader.getBorrowedNum()<=3){//判断用户是否能够借书
+		if(reader.getBorrowedNum()<=2){//判断用户是否能够借书
 			if(book.getStatus() == 0){//判断该书是否被预约或者借出
 				BorrowedRecord record = new BorrowedRecord(barcode,bookName,account,date,date3,0.0,0);
 				//bRID和两个日期请自行按规则进行处理，我个人觉得数据库挺迷的，不知道该怎么写，就先这么写了
@@ -104,6 +104,7 @@ public class borrowBook  extends HttpServlet{
 				System.out.println(record.toString());
 				new ToBorrowedRecord().add(record);
 				new ToBook().setStatus(barcode, 2);
+				ToReader.setBorrowNumplus1(reader);
 				request.getRequestDispatcher("LibrarianBorrowBook3.jsp").forward(request, response);
 				System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>");
 				return;

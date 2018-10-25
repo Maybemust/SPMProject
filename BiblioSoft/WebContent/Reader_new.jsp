@@ -408,7 +408,7 @@
 									<p>CashPledge:<input id="cashPledgeInput" class="form-control" value="${reader.cashPledge}" readonly></p>
 									<br/>
 									<button id="modify" class="btn btn-primary btn_search" onclick="modifyImformation()">modify</button>
-           							<button id="cleanImformation" class="btn btn-primary btn-info">clean</button>
+           							
 								</div>
 						</div>
 						<script type="text/javascript">
@@ -445,7 +445,7 @@
   										<h3 style="text-indent: 5%">Personal Security</h3>
 									</div>
 									<hr style="color: black">
-								<form method="post" action="changePassword">
+								<form method="post" action="changePassword" id="changepd">
 								<div id="ps-security">
 									<p>OldPassword:
 									<input id="oldPasswordInput" name="OldPassword" class="form-control" placeholder="please input your old password" type="password" maxlength="16">
@@ -459,9 +459,10 @@
 									NewPasswordInputAgain:<input id="newPasswordInputAgain" name="NewPasswordAgain" placeholder="please input your new password again" class="form-control" type="password" maxlength="16">
 									</p>
 									<br/>
-									<button id="cleanImformation" style="margin-left:100px;" class="btn btn-primary btn-info" onclick="changePassword">sumbit</button>
+									<button id="cleanImformation" style="margin-left:100px;" class="btn btn-primary btn-info" onclick="changePassword()">sumbit</button>
 								</div>
 								</form>
+								<from id="tem123"></from>
 							</div>
                         <!-- xiang -->
                         <!-- hou -->
@@ -473,9 +474,9 @@
 						<tr>
 				  			<th style="text-align:center;"><font size="4">No</font></th>				
 				  			<th style="text-align:center;"><font size="4">BookID</font></th>
+				  			<th style="text-align:center;"><font size="4">BookName</font></th>
 				  			<th style="text-align:center;"><font size="4">ReaderAccount</font></th>
 				  			<th style="text-align:center;"><font size="4">BorrowDate</font></th>
-				  			<th style="text-align:center;"><font size="4">Days</font></th>
 				  			<th style="text-align:center;"><font size="4">Fine</font></th>
 						</tr>
 						</thead>
@@ -485,9 +486,9 @@
 									<td><font size="4"><p id="bRID${nowrecord.bRID}">${loop.count}</p></font></td>
 									<script>id1 = ${nowrecord.bRID}</script>
 									<td><font size="4">${nowrecord.barCode}</font></td>
+									<td><font size="4">${nowrecord.bookName}</font></td>
 									<td><font size="4">${nowrecord.readerAccount}</font></td>
 									<td><font size="4">${nowrecord.borrowedDate}</font></td>
-									<td><font size="4">${nowrecord.reduceDate}Days</font></td>
 									<td><font size="4">${nowrecord.fine}</font></td>
 									<c:set var="userSum" value="${userSum+nowrecord.fine }"/>		
 								</tr>
@@ -506,10 +507,11 @@
 										<tr>
 				  							<th style="text-align:center;"><font size="4">No</font></th>				
 				  							<th style="text-align:center;"><font size="4">BookID</font></th>
+				  							<th style="text-align:center;"><font size="4">BookName</font></th>
 				  							<th style="text-align:center;"><font size="4">ReaderAccount</font></th>
 				  							<th style="text-align:center;"><font size="4">BorrowDate</font></th>
 				  							<th style="text-align:center;"><font size="4">ReturnDate</font></th>
-				  							<th style="text-align:center;"><font size="4">Days</font></th>
+				  							
 										</tr>
 										</thead>
 									<c:forEach items="${borrowedRecord}" var="borrowedRecord" varStatus="loop">
@@ -517,10 +519,11 @@
 											<td><font size="4"><p id="bRID${borrowedRecord.bRID}">${loop.count}</p></font></td>
 											<script>id1 = ${borrowedRecord.bRID}</script>
 											<td><font size="4">${borrowedRecord.barCode}</font></td>
+											<td><font size="4">${borrowedRecord.getBookName()}</font></td>	
 											<td><font size="4">${borrowedRecord.readerAccount}</font></td>
 											<td><font size="4">${borrowedRecord.borrowedDate}</font></td>
 											<td><font size="4">${borrowedRecord.returnedDate}</font></td>
-											<td><font size="4">${borrowedRecord.reduceDate}Days</font></td>	
+											
 										</tr>
 									</c:forEach>
 								</table>

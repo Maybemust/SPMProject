@@ -137,7 +137,15 @@
 									<h4 style="color: #002A5A">Cannot find this book!</h4>
 
 								</div>
-							</c:if> </row>
+							</c:if>
+							<c:if test="${ifReserved == 1}">
+								<div class="modal-body">
+									<h4 style="color: #002A5A">This book has been reserved!</h4>
+
+								</div>
+							</c:if>
+							
+							 </row>
 						</div>
 
 					</div>

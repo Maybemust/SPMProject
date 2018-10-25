@@ -39,22 +39,32 @@ public class SendEmail  extends HttpServlet{
 		String st= "";
         //创建邮件对象
         MimeMessage message = new MimeMessage(session);
+//        try{
+//        	message.addHeader("X-Mailer", "Microsoft Outlook Express 6.00.2900.2869");
+//        }
+//        catch(Exception e){
+//        	
+//        }
         //指明邮件的发件人
         message.setFrom(new InternetAddress("wangleksdjh@163.com"));
-        //指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
+        //指明邮件的收件人
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(reader.getEmail()));
         //邮件的标题
-        message.setSubject("BiblioSoft-Password");
+        message.setSubject("BiblioSoft-Library-Password,网易你真帅，给我发出去吧");
         //邮件的文本内容
-        st="http://localhost:8080/BiblioSoft/backpd?email="+addcode(reader.getEmail());
-        message.setContent(st, "text/html;charset=UTF-8");
+        StringBuffer str = new StringBuffer();
+        st="Hello,dear User.If you want to reset your password,please click <a>http://localhost:8080/BiblioSoft/backpd?email="+addcode(reader.getEmail())+"</a>.If it isn't your account,please ignore it.";
+        str.append("<h1>"+st);
+        //str.append("遇到困难，越坚强的人越有一股让人尊敬与心疼的魅力。坚强不是倔强更不是强悍，它是情感的理性依托。它让受伤的人把目光投向远方，给自己一个信步生活的理由。坚强的人会打一把钥匙解开心锁；借一方晴空，拥抱阳光。会找一个肩膀让泪水尽情流淌。爱过痛过，哭过笑过。然后继续坚强。 ");
+        str.append("</h1>");
+        message.setContent(str.toString(), "text/html;charset=UTF-8");
         //返回创建好的邮件对象
         return message;
     }
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("text/html; charset=gb2312");
 		request.setCharacterEncoding("utf-8");
 		
 		String account="";

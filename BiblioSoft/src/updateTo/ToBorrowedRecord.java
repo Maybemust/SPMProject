@@ -347,6 +347,7 @@ public class ToBorrowedRecord {
 				record.setBarCode(rs.getString("barCode"));
 				record.setbRID(rs.getInt("bRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBookName(rs.getString("bookName"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
 				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));

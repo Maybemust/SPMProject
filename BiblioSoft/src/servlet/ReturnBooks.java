@@ -92,8 +92,9 @@ public class ReturnBooks extends HttpServlet {
 		else{
 			
 			new ToBorrowedRecord().update(record);
+			Reader reader = ToReader.getByAccount(record.getReaderAccount());
 			System.out.println("--------------3	333333333333--------------------->"+record.toString());
-
+			ToReader.setBorrowNumplus1(reader);
 			new ToBook().setStatus(barcode, 0);
 			request.getRequestDispatcher("LibrarianReturnBook2.jsp").forward(request, response);
 			return ;

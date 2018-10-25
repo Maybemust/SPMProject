@@ -164,7 +164,7 @@ public class ToReservedRecord {
 
 
 	/*
-	 * 添加一条预约记录
+	 * 添加一条预约记�?
 	 */
 
 	public static void add(ReservedRecord record) {
@@ -218,7 +218,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * 更新一条预约记录
+	 * 更新一条预约记�?
 
 	 */
 
@@ -273,7 +273,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * 根据rRID得到一条预约记录
+	 * 根据rRID得到一条预约记�?
 
 	 */
 
@@ -313,7 +313,7 @@ public class ToReservedRecord {
 
 	/*
 
-	 * ͨ根据rRID得到一条预约记录
+	 * ͨ根据rRID得到一条预约记�?
 
 	 */
 
@@ -644,4 +644,64 @@ public class ToReservedRecord {
 		return records;
 
 	}
+
+
+public static ReservedRecord getByBarcode(String barcode) {
+
+		ReservedRecord record = new ReservedRecord();
+
+		try {
+
+
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+
+
+			Statement s = c.createStatement();
+
+
+
+			String sql = "select * from reservedrecord where barCode = " + "'"+barcode+"' and flag=0;";
+
+
+
+			ResultSet rs = s.executeQuery(sql);
+
+
+
+			if (rs.next()) {
+
+				
+
+				record.setBarCode(rs.getString("barCode"));
+
+				record.setrRID(rs.getLong("rRID"));
+
+				record.setBookName(rs.getString("bookName"));
+
+				record.setReaderAccount(rs.getString("readerAccount"));
+
+				record.setTime(rs.getTimestamp("time"));
+				
+				record.setFlag(rs.getInt("flag"));
+
+			}
+
+
+
+			DBhelper.closeConnection(c, s, rs);
+
+
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return record;
+
+	}
+
 }
