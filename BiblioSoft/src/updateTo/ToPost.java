@@ -128,12 +128,12 @@ public class ToPost {
 			
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(4, post.getPostID());
+			ps.setLong(6, post.getPostID());
 			ps.setString(1, post.getAuthor());
 			ps.setString(3,post.getText());
 			ps.setDate(2, post.getTime());
-			ps.setString(5,post.getPostImage());
-			ps.setString(6,post.getPostTitle());
+			ps.setString(4,post.getPostImage());
+			ps.setString(5,post.getPostTitle());
 
 			ps.execute();
 
@@ -183,7 +183,7 @@ public class ToPost {
 			ResultSet rs = s.executeQuery(sql);
 
 			if (rs.next()) {
-				post.setPostID(rs.getString("postID"));
+				post.setPostID(rs.getLong("postID"));
 				post.setAuthor(rs.getString("author"));
 				post.setTime(rs.getDate("time"));
 				post.setText(rs.getString("text"));
@@ -229,7 +229,7 @@ public class ToPost {
 
 			while (rs.next()) {
 				Post post = new Post();
-				post.setPostID(rs.getString("postID"));
+				post.setPostID(rs.getLong("postID"));
 				post.setAuthor(rs.getString("author"));
 				post.setTime(rs.getDate("time"));
 				post.setText(rs.getString("text"));
@@ -268,7 +268,7 @@ public class ToPost {
 
 			while (rs.next()) {
 				Post post = new Post();
-				post.setPostID(rs.getString("postID"));
+				post.setPostID(rs.getLong("postID"));
 				post.setAuthor(rs.getString("author"));
 				post.setTime(rs.getDate("time"));
 				post.setText(rs.getString("text"));

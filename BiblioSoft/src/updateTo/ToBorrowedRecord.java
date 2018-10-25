@@ -79,7 +79,40 @@ public class ToBorrowedRecord {
 		return total;
 	}
 	
-	
+	public static List<BorrowedRecord> getListByAccount(String readerAccount) {
+
+		List <BorrowedRecord> BorrowedRecords = new ArrayList <BorrowedRecord>();
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from borrowedrecord where readerAccount = "+"'"+readerAccount+"'and returnedDate is null"+";";
+
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+			
+				BorrowedRecord borrowedrecord= new BorrowedRecord();
+				borrowedrecord.setBarCode(rs.getString("barCode"));
+				borrowedrecord.setbRID(rs.getInt("bRID"));
+				borrowedrecord.setBookName(rs.getString("bookName"));
+				borrowedrecord.setReaderAccount(rs.getString("readerAccount"));
+				borrowedrecord.setBorrowedDate(rs.getDate("borrowedDate"));
+				borrowedrecord.setReturnedDate(rs.getDate("returnedDate"));
+				borrowedrecord.setFine(rs.getDouble("fine"));
+				BorrowedRecords.add(borrowedrecord);
+				
+			}
+
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return BorrowedRecords;
+	}
 
 	/*
 	 * 添加一条借阅记录
@@ -197,7 +230,7 @@ public class ToBorrowedRecord {
 	}
 	
 	/*
-	 * 根据bRID得到一条借阅记录
+	 * 根据bRID得到一条借阅记录 去掉了ReduceDate
 	 */
 	public static BorrowedRecord getByBarCode(String barcode) {
 		BorrowedRecord record = new BorrowedRecord();
@@ -211,15 +244,18 @@ public class ToBorrowedRecord {
 
 			ResultSet rs = s.executeQuery(sql);
 
+
 			if (rs.next()) {
-				
+				System.out.println("----sqqqqqqqqqqqqqqqqq2------------------------>"+rs.getFloat("fine"));
 				record.setBarCode(rs.getString("barCode"));
+				
+				record.setFine(rs.getDouble("fine"));
+				System.out.println("----sqqqqqqqqqqqqqqqqq3------------------------>"+rs.getFloat("fine"));
 				record.setbRID(rs.getInt("bRID"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
-				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
-				record.setFine(rs.getDouble("fine"));
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 			}
 
 			DBhelper.closeConnection(c, s, rs);
@@ -227,6 +263,8 @@ public class ToBorrowedRecord {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 		return record;
 	}
 	
@@ -238,7 +276,7 @@ public class ToBorrowedRecord {
 		return list(0, Short.MAX_VALUE);
 	}
 	/*
-	 * 
+	 * 去掉了ReduceDate
 	 */
 	public static List<BorrowedRecord> list(int start, int count) {
 		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
@@ -259,10 +297,11 @@ public class ToBorrowedRecord {
 				BorrowedRecord record = new BorrowedRecord();
 				record.setBarCode(rs.getString("barCode"));
 				record.setbRID(rs.getInt("bRID"));
+				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
-				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 				records.add(record);
 			}
@@ -298,7 +337,7 @@ public class ToBorrowedRecord {
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
 				record.setReturnedDate(rs.getDate("returnedDate"));
-				record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 				records.add(record);
 			}
@@ -338,5 +377,41 @@ public class ToBorrowedRecord {
 			e.printStackTrace();
 		}
 		return dates;
+	}
+	
+	/*
+	 * 根据某一本书的barCode列出这本书的被借记录 by huang tao
+	 */
+	public static List<BorrowedRecord> listByBarCode(int start, int count,String barcode) {
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from borrowedrecord where barcode=? order by barCode desc limit ?,? ";;
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setString(1, barcode);
+			ps.setInt(2, start);
+			ps.setInt(3, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				BorrowedRecord record = new BorrowedRecord();
+				record.setBarCode(rs.getString("barCode"));
+				record.setbRID(rs.getInt("bRID"));
+				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBorrowedDate(rs.getDate("borrowedDate"));
+				record.setReturnedDate(rs.getDate("returnedDate"));
+				record.setFine(rs.getDouble("fine"));
+				records.add(record);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return records;
 	}
 }

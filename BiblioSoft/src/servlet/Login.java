@@ -45,8 +45,14 @@ public class Login  extends HttpServlet{
 		}
 		else if(authority.equals("Librarian"))
 		{
+			System.out.println("===============");
 			Librarian librarian=ToLibrarian.get(account);
-			if(librarian.getPassword().equals(pd))
+			System.out.println(librarian.toString());
+			if(librarian.getAccount()==0)
+			{
+				url="Login.jsp";
+			}
+			else if(librarian.getPassword().equals(pd))
 			{
 				request.getSession().setAttribute("PERSON", librarian);
 				request.setAttribute("Librarian", librarian);

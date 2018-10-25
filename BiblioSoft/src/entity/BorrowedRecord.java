@@ -163,6 +163,10 @@ public class BorrowedRecord {
 		// TODO Auto-generated method stub
 		return bookName;
 	}
+	public void setBookName(String bookName) {
+		// TODO Auto-generated method stub
+		this.bookName = bookName;
+	}
 	
 	
 }

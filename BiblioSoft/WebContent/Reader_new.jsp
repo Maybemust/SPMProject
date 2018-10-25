@@ -363,8 +363,8 @@
                             	</thead>
                             	<c:forEach items="${posts}" var="post" varStatus="counter">
                             		<tr>
-                            			<td style="text-align: center"><a target="_blank" href="#" style="color:black">${post.getPostTitle() }</a></td>
-                            			<td style="text-align: center"><a target="_blank" href="#" style="color:black">${post.getText() }</a></td>
+                            			<td style="text-align: center"><a target="_blank" href="PostDetails?postID=${post.getPostID() }" style="color:black">${post.getPostTitle() }</a></td>
+                            			<td style="text-align: center"><a target="_blank" href="PostDetails?postID=${post.getPostID() }" style="color:black">${post.getText() }</a></td>
                             			<td style="text-align: center">${post.getTime() }</td>
                             		</tr>
                             	</c:forEach>
@@ -422,21 +422,21 @@
                             		if(newPassword == "")
                             			alert("new password can't be null");
                             		else
+                            		{
                             			if(newPasswordAgain == "")
                             				alert("please input new password again");
                             			else
                             				{
                             				   if(newPassword == newPasswordAgain){
                             					   if(confirm("Are you sure to cahnge the password?")){
-                          					  		 document.getElementById("oldPasswordInput").submit();
-                          					  		 document.getElementById("newPasswordInput").submit();
-                          					  		 document.getElementById("newPasswordInputAgain").submit();
+                          					  		 document.getElementById("changepd").submit();
+                          				
                           					       }   
                             				   }
                             				   else
                             					   alert("the two input password is inconsistent.");
                             				}
-                            	alert("passwordJudge");
+                            		}
                             }
                         </script>
 							<div id="ps-container" class="tab-pane">
@@ -475,7 +475,6 @@
 				  			<th style="text-align:center;"><font size="4">BookID</font></th>
 				  			<th style="text-align:center;"><font size="4">ReaderAccount</font></th>
 				  			<th style="text-align:center;"><font size="4">BorrowDate</font></th>
-				  			<th style="text-align:center;"><font size="4">ReturnDate</font></th>
 				  			<th style="text-align:center;"><font size="4">Days</font></th>
 				  			<th style="text-align:center;"><font size="4">Fine</font></th>
 						</tr>
@@ -488,7 +487,6 @@
 									<td><font size="4">${nowrecord.barCode}</font></td>
 									<td><font size="4">${nowrecord.readerAccount}</font></td>
 									<td><font size="4">${nowrecord.borrowedDate}</font></td>
-									<td><font size="4">${nowrecord.returnedDate}</font></td>
 									<td><font size="4">${nowrecord.reduceDate}Days</font></td>
 									<td><font size="4">${nowrecord.fine}</font></td>
 									<c:set var="userSum" value="${userSum+nowrecord.fine }"/>		
@@ -502,6 +500,7 @@
 						</div>
 						<div class="tab-pane" id="lishi" style="position: relative">
             				<div id="lishijieyue" style="text-align:center;display:block">
+            				<h2  style="text-align:center;">Welcome to HistoryList page,${reader.getAccount()}!</h2>
 								<table id="ordertab" border="1"  style="margin-left:5px;margin-right:30px;width:100%">
 									<thead>
 										<tr>

@@ -20,15 +20,19 @@ public class EmailChangePd  extends HttpServlet{
 		String account="";
 		String accountinput="";
 		String pd="";
+		String pd2="";
 		try{
 			account = request.getParameter("account");
 			pd = request.getParameter("pd");
+			pd2 = request.getParameter("NewPasswordAgain");
 		}catch(NumberFormatException e){
 			
 		}
 
 		Reader reader = ToReader.getByAccount(account);
-		reader.setPassword(pd);
+		if(pd.equals(pd2)){
+			reader.setPassword(pd);
+		}
 		ToReader.update(reader);
 
 		request.getRequestDispatcher("fin.jsp").forward(request, response);

@@ -51,7 +51,7 @@ public class ReaderServlet  extends HttpServlet{
 		int i = 0;
 		size=borrowedRecord.size();
 		while(i < size) {//内部不锁定 执行效率高 并发操作会出错
-		    if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
+		    if(borrowedRecord.get(i).getBorrowedDate().after(borrowedRecord.get(i).getReturnedDate())){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
 		    	nowdate.add(date.get(i));

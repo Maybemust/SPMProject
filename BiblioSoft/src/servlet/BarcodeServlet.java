@@ -17,8 +17,10 @@ package servlet;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +41,8 @@ import org.apache.avalon.framework.configuration.Configuration;
 import org.apache.avalon.framework.configuration.DefaultConfiguration;
 import org.apache.avalon.framework.logger.ConsoleLogger;
 import org.apache.avalon.framework.logger.Logger;
+
+import servlet.Barcodefunction.*;
 
 /**
  * Simple barcode servlet.
@@ -91,56 +95,75 @@ public class BarcodeServlet extends HttpServlet {
 
             String msg = request.getParameter(BARCODE_MSG);
             if (msg == null) msg = "0123456789";
-
-            BarcodeUtil util = BarcodeUtil.getInstance();
-            BarcodeGenerator gen = util.createBarcodeGenerator(cfg);
-
-            ByteArrayOutputStream bout = new ByteArrayOutputStream(4096);
-            try {
-                if (format.equals(MimeTypes.MIME_SVG)) {
-                    //Create Barcode and render it to SVG
-                    SVGCanvasProvider svg = new SVGCanvasProvider(false, orientation);
-                    gen.generateBarcode(svg, msg);
-                    org.w3c.dom.DocumentFragment frag = svg.getDOMFragment();
-
-                    //Serialize SVG barcode
-                    TransformerFactory factory = TransformerFactory.newInstance();
-                    Transformer trans = factory.newTransformer();
-                    Source src = new javax.xml.transform.dom.DOMSource(frag);
-                    Result res = new javax.xml.transform.stream.StreamResult(bout);
-                    trans.transform(src, res);
-                } else if (format.equals(MimeTypes.MIME_EPS)) {
-                    EPSCanvasProvider eps = new EPSCanvasProvider(bout, orientation);
-                    gen.generateBarcode(eps, msg);
-                    eps.finish();
-                } else {
-                    String resText = request.getParameter(BARCODE_IMAGE_RESOLUTION);
-                    int resolution = 300; //dpi
-                    if (resText != null) {
-                        resolution = Integer.parseInt(resText);
-                    }
-                    if (resolution > 2400) {
-                        throw new IllegalArgumentException(
-                            "Resolutions above 2400dpi are not allowed");
-                    }
-                    if (resolution < 10) {
-                        throw new IllegalArgumentException(
-                            "Minimum resolution must be 10dpi");
-                    }
-                    String gray = request.getParameter(BARCODE_IMAGE_GRAYSCALE);
-                    BitmapCanvasProvider bitmap = ("true".equalsIgnoreCase(gray)
-                        ? new BitmapCanvasProvider(
-                                bout, format, resolution,
-                                BufferedImage.TYPE_BYTE_GRAY, true, orientation)
-                        : new BitmapCanvasProvider(
-                                bout, format, resolution,
-                                BufferedImage.TYPE_BYTE_BINARY, false, orientation));
-                    gen.generateBarcode(bitmap, msg);
-                    bitmap.finish();
+            String gray = request.getParameter(BARCODE_IMAGE_GRAYSCALE);
+            String resText = request.getParameter(BARCODE_IMAGE_RESOLUTION);
+            ByteArrayOutputStream bout =Barcodefunction.generateBarcode(format, cfg, msg, resText, gray);
+//            BarcodeUtil util = BarcodeUtil.getInstance();
+//            BarcodeGenerator gen = util.createBarcodeGenerator(cfg);
+//
+//            ByteArrayOutputStream bout = new ByteArrayOutputStream(4096);
+//            try {
+//                if (format.equals(MimeTypes.MIME_SVG)) {
+//                    //Create Barcode and render it to SVG
+//                    SVGCanvasProvider svg = new SVGCanvasProvider(false, orientation);
+//                    gen.generateBarcode(svg, msg);
+//                    org.w3c.dom.DocumentFragment frag = svg.getDOMFragment();
+//
+//                    //Serialize SVG barcode
+//                    TransformerFactory factory = TransformerFactory.newInstance();
+//                    Transformer trans = factory.newTransformer();
+//                    Source src = new javax.xml.transform.dom.DOMSource(frag);
+//                    Result res = new javax.xml.transform.stream.StreamResult(bout);
+//                    trans.transform(src, res);
+//                } else if (format.equals(MimeTypes.MIME_EPS)) {
+//                    EPSCanvasProvider eps = new EPSCanvasProvider(bout, orientation);
+//                    gen.generateBarcode(eps, msg);
+//                    eps.finish();
+//                } else {
+//                    String resText = request.getParameter(BARCODE_IMAGE_RESOLUTION);
+//                    int resolution = 300; //dpi
+//                    if (resText != null) {
+//                        resolution = Integer.parseInt(resText);
+//                    }
+//                    if (resolution > 2400) {
+//                        throw new IllegalArgumentException(
+//                            "Resolutions above 2400dpi are not allowed");
+//                    }
+//                    if (resolution < 10) {
+//                        throw new IllegalArgumentException(
+//                            "Minimum resolution must be 10dpi");
+//                    }
+//                    String gray = request.getParameter(BARCODE_IMAGE_GRAYSCALE);
+//                    BitmapCanvasProvider bitmap = ("true".equalsIgnoreCase(gray)
+//                        ? new BitmapCanvasProvider(
+//                                bout, format, resolution,
+//                                BufferedImage.TYPE_BYTE_GRAY, true, orientation)
+//                        : new BitmapCanvasProvider(
+//                                bout, format, resolution,
+//                                BufferedImage.TYPE_BYTE_BINARY, false, orientation));
+//                    gen.generateBarcode(bitmap, msg);
+//                    bitmap.finish();
+//                }
+//            } finally {
+//                bout.close();
+//            }
+            
+            /*
+             * 
+             */
+            try{
+            	String path="D://BarcodeStore//"+msg+".png";
+                FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));//打开输入流
+                imageOutput.write(bout.toByteArray(), 0, bout.toByteArray().length);//将byte写入硬盘
+                imageOutput.close();
+                System.out.println("Make Picture success,Please find image in " + path);
+                } catch(Exception ex) {
+                  System.out.println("Exception: " + ex);
+                  ex.printStackTrace();
                 }
-            } finally {
-                bout.close();
-            }
+            /*
+             * 
+             */
             response.setContentType(format);
             response.setContentLength(bout.size());
             response.getOutputStream().write(bout.toByteArray());

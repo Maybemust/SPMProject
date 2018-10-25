@@ -36,7 +36,7 @@
 		  <br>
 		  <img src="./imgs/libraianProfile1.JPG"  height="100px" style ="float: inherit">
 	  <hr>
-		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>User_Name</a></h3>
+		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>${PERSON.getAccount()}</a></h3>
 
 	  
 	  <br>
@@ -58,9 +58,15 @@
                     <div class="menu-item" href="#two" >
                          <a href="bookdeleteList" target="mainFrame"  style = "color:#F0F8FF">－Book Delete Information</a>
                     </div>
+                    
+                    
+                    
 					<div class="menu-item" href="#test" data-toggle="tab">
                          －Modify Book
                     </div>
+                    
+                    
+                    
 	<hr>
                     <div class="menu-title"><a href="readerList" target="mainFrame" style = "color:#F0F8FF" >Reader Management</a></div>
                     
@@ -71,15 +77,19 @@
                     <div class="menu-item" href="#four" >
                       <a href="borrowedrecordList" target="mainFrame" style = "color:#F0F8FF"> － Borrowedrecord List</a>
                     </div> 
-					<div class="menu-item" href="#four" data-toggle="tab">
-                         －Modify Reader
+                    
+					<div class="menu-item" href="#four" >
+                      <a href="postList" target="mainFrame" style = "color:#F0F8FF"> －Post Managent</a>
                     </div>
-	                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                    
+	                 <div class="menu-item" href="#three" >
+      <a href="LibrarianFirstPage" target="mainFrame" style = "color:#F0F8FF">－Post</a>
                     </div>
-	                    <div class="menu-item" href="#four" data-toggle="tab">
-                         －Delete Reader
+                    
+	                    <div class="menu-item" href="#four" >
+      <a href="LibrarianRecieveFine1.jsp" target="mainFrame" style = "color:#F0F8FF"> －Reader Pay Fine</a>
                     </div>
+                    
                 </div>
 			<hr>
 				                    <div class="menu-title">Borrow & Return</div>
@@ -129,14 +139,22 @@
 
           </ul>
 		   <ul class="navbar-nav mr-auto">
-			  <form class="form-inline my-2 my-lg-0"style = "float :left;">
+			  <form class="form-inline my-2 my-lg-0"   style = "float :left;">
+			  
              <input class="form-control mr-sm-2" type="search" placeholder="Grimms Fairytales" aria-label="Search">
              <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+             
           </form>
 		   </ul>
 		   
 	
+	
+	
+	
+	
 		    <ul class="nav navbar-nav navbar-right">
+		    
+		    <li><a class="nav-link" target="mainFrame"  href="income.jsp">Income</a></li>
 				<li><a class="nav-link" href="fin.jsp">Back </a></li>
 				
 				<li> <a class="nav-link" href="admin1">Admin </a></li>
@@ -150,7 +168,7 @@
     
     
     
-    <iframe style="width:90% ; height:80%"   src="images/123.png"  scrolling=no frameborder=0 name="mainFrame" id="mainFrame" title="mainFrame"> 
+    <iframe style="width:90% ; height:80%"   src="images/123.png"   frameborder=0 name="mainFrame" id="mainFrame" title="mainFrame"> 
     
   
    

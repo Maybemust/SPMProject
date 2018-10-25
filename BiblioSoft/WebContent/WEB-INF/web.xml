@@ -350,4 +350,157 @@
 		<url-pattern>/finepaymentServlet</url-pattern>
 	</servlet-mapping> 
 
+
+	<servlet>
+    <servlet-name>EditNewsServlet</servlet-name>
+    <servlet-class>servlet.EditNewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditNewsServlet</servlet-name>
+    <url-pattern>/EditNews</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LibrarianFirstPageServlet</servlet-name>
+    <servlet-class>servlet.LibrarianFirstPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LibrarianFirstPageServlet</servlet-name>
+    <url-pattern>/LibrarianFirstPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditNewsTextServlet</servlet-name>
+    <servlet-class>servlet.EditNewsTextServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditNewsTextServlet</servlet-name>
+    <url-pattern>/EditNewsText</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PostDetailsServlet</servlet-name>
+    <servlet-class>servlet.PostDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostDetailsServlet</servlet-name>
+    <url-pattern>/PostDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>postmanagentServlet</servlet-name>
+    <servlet-class>servlet.postmanagentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>postmanagentServlet</servlet-name>
+    <url-pattern>/postList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>postdeleteServlet</servlet-name>
+    <servlet-class>servlet.postdeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>postdeleteServlet</servlet-name>
+    <url-pattern>/postdeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditNewsServlet2</servlet-name>
+    <servlet-class>servlet.EditNewsServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditNewsServlet2</servlet-name>
+    <url-pattern>/EditNewsServlet2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditNewsServlet3</servlet-name>
+    <servlet-class>servlet.EditNewsServlet3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditNewsServlet3</servlet-name>
+    <url-pattern>/EditNews2</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet-mapping>
+    <servlet-name>LogOutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EditNewsTextServlet2</servlet-name>
+    <servlet-class>servlet.EditNewsTextServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditNewsTextServlet2</servlet-name>
+    <url-pattern>/EditNewsTextServlet2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RecieveFine2Servlet</servlet-name>
+    <servlet-class>servlet.RecieveFine2Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RecieveFine2Servlet</servlet-name>
+    <url-pattern>/recievefine2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RecieveFineServlet</servlet-name>
+    <servlet-class>servlet.RecieveFineServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RecieveFineServlet</servlet-name>
+    <url-pattern>/RecieveFines</url-pattern>
+  </servlet-mapping>
+  
+  		<servlet>
+    <servlet-name>ShowReaderBorrowRecord</servlet-name>
+    <servlet-class>servlet.ShowReaderBorrowRecord</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowReaderBorrowRecord</servlet-name>
+    <url-pattern>/ShowReaderBorrowRecord</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowReaderReturnRecord</servlet-name>
+    <servlet-class>servlet.ShowReaderReturnRecord</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowReaderReturnRecord</servlet-name>
+    <url-pattern>/ShowReaderReturnRecord</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ShowBookBorrowedRecord</servlet-name>
+    <servlet-class>servlet.ShowBookBorrowedRecord</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowBookBorrowedRecord</servlet-name>
+    <url-pattern>/ShowBookBorrowedRecord</url-pattern>
+  </servlet-mapping> 
+  
+ <servlet>
+    <servlet-name>ShowBookReturnedRecord</servlet-name>
+    <servlet-class>servlet.ShowBookReturnedRecord</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowBookReturnedRecord</servlet-name>
+    <url-pattern>/ShowBookReturnedRecord</url-pattern>
+  </servlet-mapping> 
+
+  
+  <servlet>
+    <servlet-name>ShowIncome</servlet-name>
+    <servlet-class>servlet.ShowIncome</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowIncome</servlet-name>
+    <url-pattern>/ShowIncome</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+    <servlet-name>ShowIncome1</servlet-name>
+    <servlet-class>servlet.ShowIncome1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowIncome1</servlet-name>
+    <url-pattern>/ShowIncome1</url-pattern>
+  </servlet-mapping> 
+
 </web-app>

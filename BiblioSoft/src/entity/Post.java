@@ -11,7 +11,7 @@ import java.sql.Date;
  */
 public class Post {
 
-	private String postID;
+	private long postID;
 	private String author;
 	private Date time;
 	private String text;
@@ -43,12 +43,30 @@ public class Post {
 	 * @param time
 	 * @param text
 	 */
-	public Post(String postID, String author, Date time, String text) {
+	public Post(long postID, String author, Date time, String text) {
 		super();
 		this.postID = postID;
 		this.author = author;
 		this.time = time;
 		this.text = text;
+	}
+	
+	/**
+	 * @param postID
+	 * @param author
+	 * @param time
+	 * @param text
+	 * @param postImage
+	 * @param postTitle
+	 */
+	public Post(long postID, String author, Date time, String text,String postImage,String postTitle) {
+		super();
+		this.postID = postID;
+		this.author = author;
+		this.time = time;
+		this.text = text;
+		this.postImage = postImage;
+		this.postTitle = postTitle;
 	}
 	
 	/**
@@ -67,13 +85,13 @@ public class Post {
 	/**
 	 * @return the postID
 	 */
-	public String getPostID() {
+	public long getPostID() {
 		return postID;
 	}
 	/**
 	 * @param postID the postID to set
 	 */
-	public void setPostID(String postID) {
+	public void setPostID(long postID) {
 		this.postID = postID;
 	}
 	/**

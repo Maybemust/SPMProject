@@ -744,6 +744,7 @@ public class ToBook {
 				book.setTag1(rs.getString("tag1"));
 				book.setTag2(rs.getString("tag2"));
 				book.setPrice(rs.getDouble("price"));
+				book.setDeleteman(rs.getString("deleteman"));
 				books.add(book);
 			}
 			DBhelper.closeConnection(c, ps, rs);

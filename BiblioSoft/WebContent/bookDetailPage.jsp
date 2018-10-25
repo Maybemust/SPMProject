@@ -106,7 +106,7 @@
 		</div>
 	</div>
 	<div style="margin: 0 auto; width: 620px; height: 500px">
-		<img src="<%=imagePath %>" class="bookimg" style="position: relative; top:50px;" alt="this is cover!">
+		<img src="<%=imagePath %>" class="bookimg" style="position: relative; top:50px;" >
 		<form action="bookEditAndSave" method="post">
 		<div class="mydiv">
 			<div class="mydiv1">

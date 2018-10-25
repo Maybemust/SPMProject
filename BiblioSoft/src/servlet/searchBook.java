@@ -61,13 +61,13 @@ public class searchBook extends HttpServlet {
 		List<BorrowedRecord> nowrecord = new ArrayList<BorrowedRecord>();
 		List<Long> nowdate = new ArrayList<Long>();
 		/*
-		 * 閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷峰彶閿熸枻鎷烽敓渚ョ尨鎷烽敓鏂ゆ嫹閿熻妭鏂ゆ嫹閿熸枻鎷�
+		 * 闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲褰堕柨鐔告灮閹风兘鏁撴笟銉у皑閹风兘鏁撻弬銈嗗闁跨喕濡弬銈嗗闁跨喐鏋婚幏锟�
 		 */
 		int size=0;
 		int i = 0;
 		size=borrowedRecord.size();
-		while(i < size) {//閿熻妭璇ф嫹閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷� 鎵ч敓鏂ゆ嫹鏁堥敓缁為潻鎷� 閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ嫹閿燂拷
-			if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
+		while(i < size) {//闁跨喕濡拠褎瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏锟� 閹笛囨晸閺傘倖瀚归弫鍫ユ晸缂佺偤娼婚幏锟� 闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐕傛嫹
+			 if(borrowedRecord.get(i).getBorrowedDate().after(borrowedRecord.get(i).getReturnedDate())){
 		    	nowrecord.add(borrowedRecord.get(i));
 		    	borrowedRecord.remove(i);
 		    	nowdate.add(date.get(i));

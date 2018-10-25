@@ -151,7 +151,7 @@ public class bookeditServlet extends HttpServlet {
     
          /*RequestDispatcher dispatcher = request.getRequestDispatcher("/bookList"); 
          dispatcher.forward(request, response); */
-        response.sendRedirect("bookedit.jsp?error=no");
+        response.sendRedirect("bookList?error=no");
        
          }
        

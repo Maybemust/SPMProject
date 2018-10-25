@@ -66,9 +66,6 @@ public class bookaddServlet2 extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		
 	
-		
-		
-
 /*		private String barCode;
 		private String bookName;
 		private String ISBN;

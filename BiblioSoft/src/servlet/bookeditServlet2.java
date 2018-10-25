@@ -108,7 +108,7 @@ public class bookeditServlet2 extends HttpServlet {
 	       
 	       
 	       
-	      
+	      System.out.println("======================>"+book.toString());
 	    
 	       request.setAttribute("barCode", barCode );
 	       request.setAttribute("ISBN", ISBN );

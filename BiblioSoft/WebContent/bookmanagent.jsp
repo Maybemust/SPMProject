@@ -193,7 +193,13 @@ function unselectAll(){
 														<td bgcolor="#FFFFFF"><a
 															href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp;
 															|&nbsp;<a
-															href="bookdeleteServlet?barCode1=${book.barCode}">delete</a>&nbsp;</td>
+															href="bookdeleteServlet?barCode1=${book.barCode}">delete</a>&nbsp;
+															<a href="ShowBookBorrowedRecord?barCode1=${book.barCode}" >borrowedrecord</a>&nbsp; &nbsp;
+															<a href="ShowBookReturnedRecord?barCode1=${book.barCode}" >returnedrecord</a>&nbsp;
+															
+															
+															</td>
+															
 
 
 

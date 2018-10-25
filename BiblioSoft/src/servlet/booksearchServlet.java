@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -43,30 +44,7 @@ public class booksearchServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-    public boolean cansearch(String barCode ) {
-		boolean returnValue = true;
-		String sql = "SELECT * FROM book";
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBhelper.getInstance().getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while (rs.next()) {
-				String userNameInDB = rs.getString("barCode");
-
-				if (userNameInDB.equals(barCode) ) {
-					returnValue = false;
-					break;
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		return returnValue;
-	}
+   
 	
     
     
@@ -80,31 +58,16 @@ public class booksearchServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		
 		
-         String barCode=request.getParameter("searchbarCode"); 
-         
-         
-
-         booksearchServlet id1 = new booksearchServlet();
-       
-         boolean cansearch =id1.cansearch(barCode);
-         
-     
-       if(!cansearch){
-    	   
-         Book book1=new Book();
-         book1=ToBook.getByBarCode(barCode);
-         
-         request.setAttribute("book1", book1);
+         String searchkey=request.getParameter("searchbarCode"); 
+          
+         List<Book> BookLists =ToBook.searchForKey(searchkey);
+        
+         request.setAttribute("BookLists", BookLists);
          request.getRequestDispatcher("bookmanagent2.jsp").forward(request, response);
          
-         }
+         
        
-        else {
-        	System.out.println("error1");
-        	 response.sendRedirect("bookmanagent2.jsp?error1=yes");
-        	 System.out.println("error2");
-    
-        	 }
+       
        
 	}
 

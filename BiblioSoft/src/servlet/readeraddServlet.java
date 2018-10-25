@@ -3,9 +3,12 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -19,9 +22,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import updateTo.ToReader;
 import updateTo.ToAdmin;
+import updateTo.ToDayilyIncome;
 import utils.DBhelper;
 import entity.Reader;
 import entity.Admin;
+import entity.DayilyIncome;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -70,7 +75,30 @@ public class readeraddServlet extends HttpServlet {
 		return returnValue;
 	}
 	
-	
+    public boolean canincome(String date ) {
+		boolean returnValue = true;
+		String sql = "SELECT * FROM DayilyIncome";
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBhelper.getInstance().getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				String date1 = rs.getString("date");
+
+				if (date1.equals(date) ) {
+					returnValue = false;
+					break;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return returnValue;
+	}
     
     
     
@@ -96,7 +124,9 @@ public class readeraddServlet extends HttpServlet {
          String account=request.getParameter("phone");
          long phone= Long.parseLong(request.getParameter("phone"));
          /*int tag=Integer.parseInt(request.getParameter("tag"));*/
-         
+         Date now = new Date();// new Date()为获取当前系统时间
+ 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+ 		String today = dateFormat.format(now);
        
         
          readeraddServlet id1 = new readeraddServlet();
@@ -117,6 +147,33 @@ public class readeraddServlet extends HttpServlet {
          /*reader.setTag(tag);*/
        
          ToReader.add(reader);
+         
+           if(!canincome(today)){
+        	   
+			ToDayilyIncome income=new ToDayilyIncome();
+			try {
+				income.updateDayilyIncome(admin.getCash(), 0);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+           }
+           else
+           {
+        	   DayilyIncome cometoday=new DayilyIncome();
+        	   cometoday.setCash(admin.getCash());
+        	   cometoday.setDate(now);
+        	   cometoday.setFine(0);
+        	   ToDayilyIncome income1=new ToDayilyIncome();
+        	   try {
+				income1.addDayilyIncome(cometoday);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	   
+           }
+		
      
          response.sendRedirect("readeradd.jsp?error=no");
         /* RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 

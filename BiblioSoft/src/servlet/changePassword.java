@@ -20,21 +20,25 @@ public class changePassword extends HttpServlet{
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
 		String oldPassword = "";
 		String newPassword = "";
+		String pdagain="";
 		int status=0;
 		try{
 			oldPassword = request.getParameter("OldPassword");
 			newPassword = request.getParameter("NewPassword");
+			pdagain = request.getParameter("NewPasswordAgain");
 		}catch(NumberFormatException e){
 		}
-          if(oldPassword.equals(reader.getPassword())){
-        	  reader.setPassword(newPassword);
-        	  ToReader.update(reader);
-        	  System.out.println("modify successfully!");
-        	  status=1;
-          }
-          else{
-        	  System.out.println("old password is error!");
-        	  status=-1;
+          if(pdagain.equals(newPassword)){
+        	  if(oldPassword.equals(reader.getPassword())){
+            	  reader.setPassword(newPassword);
+            	  ToReader.update(reader);
+            	  System.out.println("modify successfully!");
+            	  status=1;
+              }
+              else{
+            	  System.out.println("old password is error!");
+            	  status=-1;
+              }
           }
           request.setAttribute("status", status);
           String account=reader.getAccount();     
@@ -60,7 +64,7 @@ public class changePassword extends HttpServlet{
       	  int i = 0;
       	  size=borrowedRecord.size();
       	  while(i < size) {
-      		  	if(borrowedRecord.get(i).getReturnedDate().after(borrowedRecord.get(i).getBorrowedDate())||borrowedRecord.get(i).getReturnedDate() == null){
+      		 if(borrowedRecord.get(i).getBorrowedDate().after(borrowedRecord.get(i).getReturnedDate())){
       		    	nowrecord.add(borrowedRecord.get(i));
       		    	borrowedRecord.remove(i);
       		    	nowdate.add(date.get(i));
