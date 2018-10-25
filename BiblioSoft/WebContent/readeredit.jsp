@@ -85,7 +85,8 @@
 
 												<td width="34%"><input class="text" name="password2"
 													maxlength="15" type="password" id="password2"
-													style="width: 154px" value="" onkeyup="validate()"></td>
+													style="width: 154px" value="<%=password %>" onkeyup="validate()"></td>
+													
 												<span id="jianyan" style="display: block; padding-left: 66%"></span>
 
 

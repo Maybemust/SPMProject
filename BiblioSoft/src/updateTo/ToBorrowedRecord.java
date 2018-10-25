@@ -8,9 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
+import java.sql.Date;
 
 import entity.Book;
 import entity.BorrowedRecord;
@@ -300,7 +301,17 @@ public class ToBorrowedRecord {
 				record.setBookName(rs.getString("bookName"));
 				record.setReaderAccount(rs.getString("readerAccount"));
 				record.setBorrowedDate(rs.getDate("borrowedDate"));
-				record.setReturnedDate(rs.getDate("returnedDate"));
+				
+				Date date1=null;
+	
+			    String date=(new SimpleDateFormat("yyyy-MM-dd")).format(rs.getDate("returnedDate"));
+			    if(date.equals("1949-10-01"))
+			    	date1=null;
+			    else
+			    	date1=rs.getDate("returnedDate");
+			
+				
+				record.setReturnedDate(date1);
 				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
 				record.setFine(rs.getDouble("fine"));
 				records.add(record);
@@ -311,6 +322,7 @@ public class ToBorrowedRecord {
 		}
 		return records;
 	}
+
 	/*
 	 * 得到部分借阅List
 	 */
@@ -380,7 +392,7 @@ public class ToBorrowedRecord {
 	}
 	
 	/*
-	 * 根据某一本书的barCode列出这本书的被借记录 by huang tao
+	 * 根据某一本书的barCode列出这本书的被借记�?by huang tao
 	 */
 	public static List<BorrowedRecord> listByBarCode(int start, int count,String barcode) {
 		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
@@ -414,6 +426,155 @@ public class ToBorrowedRecord {
 		}
 		return records;
 	}
+
+
+
+/*
+	 * 为搜索所做的更新，通过bookname找到指定的书
+	 */
+	public static List<BorrowedRecord> getByBookName(String bookname) {
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from borrowedrecord where bookName like " + "'%"+bookname+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				BorrowedRecord record = new BorrowedRecord();
+				record.setBarCode(rs.getString("barCode"));
+				record.setbRID(rs.getInt("bRID"));
+				record.setBookName(rs.getString("bookName"));
+				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBorrowedDate(rs.getDate("borrowedDate"));
+				record.setReturnedDate(rs.getDate("returnedDate"));
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
+				record.setFine(rs.getDouble("fine"));
+				records.add(record);
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过barCode找到指定的书
+	 */
+	public static List<BorrowedRecord> getByBarCode1(String barCode) {
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from borrowedrecord where barCode like " + "'%"+barCode+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				BorrowedRecord record = new BorrowedRecord();
+				record.setBarCode(rs.getString("barCode"));
+				record.setbRID(rs.getInt("bRID"));
+				record.setBookName(rs.getString("bookName"));
+				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBorrowedDate(rs.getDate("borrowedDate"));
+				record.setReturnedDate(rs.getDate("returnedDate"));
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
+				record.setFine(rs.getDouble("fine"));
+				records.add(record);
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
+	
+	/*
+	 * 为搜索所做的更新，通过readerAccount找到指定的书
+	 */
+	public static List<BorrowedRecord> getByReaderAccount(String readerAccount) {
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+		
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from borrowedrecord where readerAccount like " + "'%"+readerAccount+"%';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			while(rs.next()) {
+				BorrowedRecord record = new BorrowedRecord();
+				record.setBarCode(rs.getString("barCode"));
+				record.setbRID(rs.getInt("bRID"));
+				record.setBookName(rs.getString("bookName"));
+				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBorrowedDate(rs.getDate("borrowedDate"));
+				record.setReturnedDate(rs.getDate("returnedDate"));
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
+				record.setFine(rs.getDouble("fine"));
+				records.add(record);
+				
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
+/* 关键字搜�?*/
+	public static List<BorrowedRecord> searchForKey(String key) {
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+		
+		try {
+			List<BorrowedRecord> records1 = getByBookName(key);
+			
+			for (BorrowedRecord b : records1) {
+				records.add(b);
+			}
+			
+			records1=getByBarCode1(key);
+			
+			for (BorrowedRecord b : records1) {
+				records.add(b);
+			}
+			
+			records1=getByReaderAccount(key);
+			
+			
+			for (BorrowedRecord b : records1) {
+				records.add(b);
+			}
+		
+
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
+
 }
 
 

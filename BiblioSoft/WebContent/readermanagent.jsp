@@ -178,7 +178,9 @@ function unselectAll(){
 														<td bgcolor="#FFFFFF"><a
 															href="readeredit.jsp?account1=${reader.account}&password=${reader.password}&phone=${reader.phone}&email=${reader.email}&fine=${reader.fine}&borrowedNum=${reader.borrowedNum}&cashPledge=${reader.cashPledge}&tag=${reader.tag}">edit</a>&nbsp;
 															|&nbsp;<a
-															href="readerdeleteServlet?account1=${reader.account}">delete</a>&nbsp;</td>
+															href="readerdeleteServlet?account1=${reader.account}">delete</a>&nbsp;
+															|&nbsp;<a href="ShowReaderBorrowRecord?account1=${reader.account }">borrowrecord</a>&nbsp; 
+															|&nbsp;<a href="ShowReaderReturnRecord?account1=${reader.account }">returnrecord</a></td>
 
 													</tr>
 												</c:forEach>

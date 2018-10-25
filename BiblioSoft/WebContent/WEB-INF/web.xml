@@ -503,4 +503,14 @@
     <url-pattern>/ShowIncome1</url-pattern>
   </servlet-mapping> 
 
+<servlet>
+		<servlet-name>borrowrecordsearchServlet</servlet-name>
+		<servlet-class>servlet.borrowrecordsearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>borrowrecordsearchServlet</servlet-name>
+		<url-pattern>/borrowrecordsearch</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>

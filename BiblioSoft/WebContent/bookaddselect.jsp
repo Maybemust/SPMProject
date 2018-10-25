@@ -68,10 +68,10 @@ document.getElementById("aa").style.display="";
 
 
 
-										<input type="button" value="Scanner input" class="button"
+										<input type="button" value="Internet input" class="button"
 											style="position: relative; top: 150px; left: 500px; height: 50px; width: 150px; font-size: 20px"
 											onclick="window.location.href='bookadd2.jsp'" /> <input
-											type="button" value="Manual input" class="button"
+											type="button" value="No Internet input" class="button"
 											style="position: relative; top: 150px; left: 500px; height: 50px; width: 150px; font-size: 20px"
 											onclick="window.location.href='bookadd.jsp'" /> <br />
 									</fieldset>

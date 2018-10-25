@@ -30,7 +30,7 @@
 	      		}
 	      		
 	      		function forgetpd(){
-	      			var st=prompt("请输入账号");
+	      			var st=prompt("Please input your account to reset password by email");
 	      			var urlsend="sendemail?account="+st;
 	      			window.location.href=urlsend;
 	      		}

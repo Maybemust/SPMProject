@@ -89,6 +89,17 @@ function unselectAll(){
 	}
 }
 
+function submit2(){
+	 var date1 = document.getElementById("date1").value;
+	
+   if(date1==""){
+       alert("Please input correctly!");
+       return false;
+   }else{
+       form.submit();
+       return true;
+   }
+}
 </SCRIPT>
 
 
@@ -111,10 +122,10 @@ function unselectAll(){
 									<td height="20">
 
 
-										<form action="borrowedrecordsearch" method="post">
+										<form action="borrowrecordsearch" method="post" onsubmit="return submit2()" >
 
-											<input name="searchBRID" type="text" size="12" /> <input
-												type="submit" class="right-button02" value="search" />
+											<input name="searchBRID" type="text" size="12" id="date1" /> <input
+												type="submit" class="right-button02" value="search"   />
 										</form>
 
 

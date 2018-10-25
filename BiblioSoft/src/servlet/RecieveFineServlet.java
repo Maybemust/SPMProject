@@ -77,7 +77,7 @@ import updateTo.ToBook;
 				double fineall =0;
 				Date returnDate = new Date(System.currentTimeMillis());//²»Í¬ÓÚjava.util.Date
 
-				double fineaday =new ToAdmin().getByAccount("1").getFine();
+				double fineaday =ToAdmin.getByAccount("1").getFine();
 
 	//			List <BorrowedRecord> BorrowedRecords = new ArrayList <BorrowedRecord>();
 

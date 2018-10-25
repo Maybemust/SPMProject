@@ -101,7 +101,7 @@ public class modifyPersonImformation extends HttpServlet{
 			java.util.Date datehh=houorders.get(ih).getTime();
 			Calendar c = Calendar.getInstance();
 			c.setTime(datehh);
-			c.add(Calendar.HOUR_OF_DAY, 2);
+			c.add(Calendar.HOUR_OF_DAY, ToAdmin.getByAccount("1").getResercedTime());
 			java.util.Date hhDate = c.getTime();
 			houorders.get(ih).setTime(hhDate);
 			ih++;

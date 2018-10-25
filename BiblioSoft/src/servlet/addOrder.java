@@ -48,7 +48,7 @@ public class addOrder  extends HttpServlet{
 		int size = 0;
 		size = myorders.size();
 		System.out.println(barcode+" "+bookname+" size="+size);
-		if(size<3){
+		if(size<ToAdmin.getByAccount("1").getReservedMaxinum()){
 			for(int i = 0;i < size;i++){
 				if(myorders.get(i).getBarCode().equals(barcode)){
 					sta="already existed";
@@ -139,7 +139,7 @@ public class addOrder  extends HttpServlet{
 					java.util.Date datehh=houorders.get(ih).getTime();
 					Calendar c = Calendar.getInstance();
 					c.setTime(datehh);
-					c.add(Calendar.HOUR_OF_DAY, 2);
+					c.add(Calendar.HOUR_OF_DAY, ToAdmin.getByAccount("1").getResercedTime());
 					java.util.Date hhDate = c.getTime();
 					houorders.get(ih).setTime(hhDate);
 					ih++;

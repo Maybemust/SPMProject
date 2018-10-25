@@ -104,11 +104,11 @@ html {
 		  
 		  <form action="ShowIncome" method="post" onsubmit="return submit1()">
 		  
-                   查询某天收入：  <input type="text" name="date"  id="date"  value="${riqi}"/>  &nbsp;<input type="submit" value="查询"/>       
+                   查询某天收入：  <input type="date" name="date"  id="date"  value="${riqi}"/>  &nbsp;<input type="submit" value="查询"/>       
 		    
 		  </form>
 		   <form action="ShowIncome1" method="post" onsubmit="return submit2()">
-		   查询一段时间收入： <input type="text" name="date1" id="date1" value="${qishi}"/>   &nbsp;-&nbsp; <input type="text" name="date2" id="date2" value="${jieshu}"/> &nbsp;<input type="submit" value="查询"/>    
+		   查询一段时间收入： <input type="date" name="date1" id="date1" value="${qishi}"/>   &nbsp;-&nbsp; <input type="date" name="date2" id="date2" value="${jieshu}"/> &nbsp;<input type="submit" value="查询"/>    
 		
 		  </form>
 		
