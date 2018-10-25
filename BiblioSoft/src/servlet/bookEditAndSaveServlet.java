@@ -78,7 +78,8 @@ public class bookEditAndSaveServlet extends HttpServlet {
         String location=request.getParameter("saveLocation"); 
         String tag1=request.getParameter("saveTag1");
         String tag2=request.getParameter("saveTag2");
-        String imagePath=request.getParameter("imagePath");
+        String imagePath=request.getParameter("saveCover");
+        System.out.print("picture-------------------->"+imagePath);
         double price=0;
         
         
@@ -108,6 +109,7 @@ public class bookEditAndSaveServlet extends HttpServlet {
          book.setTag1(tag1);
          book.setTag2(tag2);
          book.setPrice(price);
+         book.setCover(imagePath);
          
          ToBook.add(book);
          request.setAttribute("barCode1", barCode );

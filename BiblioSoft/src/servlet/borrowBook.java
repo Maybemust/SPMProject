@@ -14,6 +14,8 @@ import updateTo.*;
 
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 public class borrowBook  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -34,7 +36,7 @@ public class borrowBook  extends HttpServlet{
 		}
 		Reader reader = new ToReader().getByAccount(account, "");
 		System.out.print("==============sssssssssssssssssssssssssssssssssssssss====================>");
-		System.out.print(reader.toString());
+		System.out.println(reader.toString());
 		if(reader.getEmail()==null){
 			request.setAttribute("ifAccountExists",0);		
 			request.getRequestDispatcher("LibrarianBorrowBook4.jsp").forward(request, response);
@@ -54,6 +56,26 @@ public class borrowBook  extends HttpServlet{
 		System.out.print('\n');
 		Date date = new Date(System.currentTimeMillis());//不同于java.util.Date
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+//		Date date2 =new java.sql.Date(sdf.parse("2016-4-04"));
+		java.util.Date date2 = null;
+		try {
+			date2 = sdf.parse("1949-10-01");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		java.sql.Date date3=null;
+		date3 = new java.sql.Date(date2.getTime());
+		
+		System.out.println("===========================++++++++++++++============================>date3"+date3.toString());
+
+		
+		
+//		date2 = new java.sql(sdf.parse("1949-10-01"));
+
 //		Date date2 = new Date(System.currentTimeMillis());//不同于java.util.Date
 //		
 //		Calendar calendar = Calendar.getInstance();
@@ -64,8 +86,8 @@ public class borrowBook  extends HttpServlet{
 //		
 		
 		String bookName = book.getBookName();
-		System.out.print("======================================================================>");
-		System.out.print(bookName);
+		System.out.println("======================================================================>");
+		System.out.println(bookName);
 		int ifBorrow = 0;
 		
 		/*
@@ -76,14 +98,14 @@ public class borrowBook  extends HttpServlet{
 
 		if(reader.getBorrowedNum()<10){//判断用户是否能够借书
 			if(book.getStatus() == 0){//判断该书是否被预约或者借出
-				BorrowedRecord record = new BorrowedRecord(barcode,bookName,account,date,null,0.0,0);
+				BorrowedRecord record = new BorrowedRecord(barcode,bookName,account,date,date3,0.0,0);
 				//bRID和两个日期请自行按规则进行处理，我个人觉得数据库挺迷的，不知道该怎么写，就先这么写了
-				System.out.print("======================================================================>");
-				System.out.print(record.toString());
+				System.out.println("======================================================================>date3"+date3.toString());
+				System.out.println(record.toString());
 				new ToBorrowedRecord().add(record);
 				new ToBook().setStatus(barcode, 2);
 				request.getRequestDispatcher("LibrarianBorrowBook3.jsp").forward(request, response);
-				System.out.print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>");
+				System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>");
 				return;
 			}
 

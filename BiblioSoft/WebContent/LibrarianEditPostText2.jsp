@@ -52,8 +52,9 @@
 <form method="post" action="EditNewsTextServlet2" id="EditNewsText2">
 
     <h2>Post Title:${Post.getPostTitle()}</h2>
-    <img src = "${Post.getPostImage()}">
-        <h3>Put Your Post Text Below</h3>
+    <h2>Put Your Post Title Here:</h2>
+        <input type="text" id="MyPostTitle" name = "postTitle"  value="${Post.getPostTitle()}"/>
+            <h3>Put Your Post Text Below</h3>
     
     <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
     <input type="hidden" name="postImage" value="${Post.getPostImage()}">
@@ -61,7 +62,12 @@
     <input type="hidden" name="postTitle" value="${Post.getPostTitle()}">
     					    <button type="submit" class=" btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" 
 					    style = "float:center">OK</button>
+					   
+					    
 </form>
+
+					       					    <button  class=" btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" 
+					    style = "float:left"onclick="setContent()">Click here to see what you wrote last time </button> 
 		<script>
 		function EditNews3(){
 			document.getElementById("editor").submit();
@@ -69,31 +75,7 @@
 		</script>				    
 
 </div>
-<div id="btns">
-    <div>
-        <button onclick="getAllHtml()">获得整个html的内容</button>
-        <button onclick="getContent()">获得内容</button>
-        <button onclick="setContent()">写入内容</button>
-        <button onclick="setContent(true)">追加内容</button>
-        <button onclick="getContentTxt()">获得纯文本</button>
-        <button onclick="getPlainTxt()">获得带格式的纯文本</button>
-        <button onclick="hasContent()">判断是否有内容</button>
-        <button onclick="setFocus()">使编辑器获得焦点</button>
-        <button onmousedown="isFocus(event)">编辑器是否获得焦点</button>
-        <button onmousedown="setblur(event)" >编辑器失去焦点</button>
 
-    </div>
-    <div>
-        <button onclick="getText()">获得当前选中的文本</button>
-        <button onclick="insertHtml()">插入给定的内容</button>
-        <button id="enable" onclick="setEnabled()">可以编辑</button>
-        <button onclick="setDisabled()">不可编辑</button>
-        <button onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
-        <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
-        <button onclick=" UE.getEditor('editor').setHeight(300)">设置高度为300默认关闭了自动长高</button>
-    </div>
-
-</div>
 </div>
 </div>
 </div>
@@ -101,13 +83,7 @@
 
 		
 					    
-<div>
-    <button onclick="createEditor()">
-    创建编辑器</button>
-    <button onclick="deleteEditor()">
-    删除编辑器</button>
-    
-</div>
+
 
 <script type="text/javascript">
 
@@ -151,7 +127,7 @@
     }
     function setContent(isAppendTo) {
         var arr = [];
-        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+        arr.push("What you wrote last time will be shown in the input field!\n");
         //UE.getEditor('editor').setContent('111111111111111111', isAppendTo);
         UE.getEditor('editor').setContent('${Post.getText()}', isAppendTo);
         alert(arr.join("\n"));

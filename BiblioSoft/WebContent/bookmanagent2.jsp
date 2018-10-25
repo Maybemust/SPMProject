@@ -163,9 +163,9 @@ function unselectAll(){
 
 
 
-											<%--       <form name="fom" id="fom" method="post">   
+									      <form name="fom" id="fom" method="post">   
                   
-		    <c:forEach items="${books}" var="book" varStatus="re">
+		    <c:forEach items="${BookLists}" var="book" varStatus="re">
 		    <tr>
 		    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
 		    <td height="20" bgcolor="#FFFFFF">${book.barCode}</td>
@@ -179,11 +179,11 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${book.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book.barCode}&ISBN=${book.ISBN}&author=${book.author}&publishing=${book.publishing}&bookName=${book.bookName}&location=${book.location}&status=${book.status}&price=${book.price}&dateOfStorage=${book.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
+			<td bgcolor="#FFFFFF">  <a href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
 		    </tr>
-	        </c:forEach> --%>
+	        </c:forEach> 
 
-											<tr>
+										<%-- 	<tr>
 												<td bgcolor="#FFFFFF"><input type="checkbox"
 													name="delid" /></td>
 												<td height="20" bgcolor="#FFFFFF">${book1.barCode}</td>
@@ -201,7 +201,7 @@ function unselectAll(){
 													href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp;
 													|&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}">delete</a>&nbsp;</td>
 
-											</tr>
+											</tr> --%>
 
 											</form>
 

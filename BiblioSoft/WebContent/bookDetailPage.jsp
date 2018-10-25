@@ -109,6 +109,13 @@
 		<img src="<%=imagePath %>" class="bookimg" style="position: relative; top:50px;" >
 		<form action="bookEditAndSave" method="post">
 		<div class="mydiv">
+		
+	
+				
+				<input type="hidden" value=<%=imagePath %>  class="myposition myinput" name="saveCover"/>
+		
+		
+		
 			<div class="mydiv1">
 				<label class="myposition mylabel">ISBN: </label>
 				<input type="text" value=<%=ISBN %> class="myposition myinput" name="saveISBN"/>

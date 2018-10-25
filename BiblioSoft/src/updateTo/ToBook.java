@@ -477,7 +477,7 @@ public class ToBook {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into book(barCode,bookName,ISBN,author,publishing,location,dateOfStorage,tag1,tag2,price,status,isdelete) values(?,?,?,?,?,?,?,?,?,?,0,0)";
+			String sql = "insert into book(barCode,bookName,ISBN,author,publishing,location,dateOfStorage,tag1,tag2,price,cover,status,isdelete) values(?,?,?,?,?,?,?,?,?,?,?,0,0)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, book.getBarCode());
 			ps.setString(2,book.getBookName());
@@ -489,6 +489,7 @@ public class ToBook {
 			ps.setString(8, book.getTag1());
 			ps.setString(9, book.getTag2());
 			ps.setDouble(10,book.getPrice());
+			ps.setString(11, book.getCover());
 			
 			
 			ps.execute();

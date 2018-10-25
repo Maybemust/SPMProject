@@ -108,26 +108,14 @@ function unselectAll(){
 							<table width="95%" border="0" align="center" cellpadding="0"
 								cellspacing="0">
 								<tr>
-									<td height="20"><span class="newfont07"> select： <a
-											href="#" class="right-font08" onclick="selectAll();">select
-												all</a> -<a href="#" class="right-font08"
-											onclick="unselectAll();">Inverse selection</a></span> <input
-										name="Submit" type="button" class="right-button08"
-										value="Delete reader " /> <input name="Submit" type="button"
-										class="right-button08" value="Add reader"
-										onclick="window.location.href='readeradd.jsp'" />
-
-
-										<form action="readersearch" method="post">
-
-											<input name="searchaccount" type="text" size="12" /> <input
-												type="submit" class="right-button02" value="search" />
-										</form>
-
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								
+										
+										<input name="Submit" type="button"
+										class="" value="Add reader"
+										onclick="window.location.href='LibrarianEditPostText.jsp'" />
 									</td>
 								</tr>
-
+									<hr>
 								<tr>
 									<td height="40" class="font42">
 

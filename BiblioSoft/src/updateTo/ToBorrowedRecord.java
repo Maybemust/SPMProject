@@ -88,7 +88,7 @@ public class ToBorrowedRecord {
 
 			Statement s = c.createStatement();
 
-			String sql = "select * from borrowedrecord where readerAccount = "+"'"+readerAccount+"'and returnedDate is null"+";";
+			String sql = "select * from borrowedrecord where readerAccount = "+"'"+readerAccount+"'and returnedDate = '1949-10-01'"+";";
 
 			ResultSet rs = s.executeQuery(sql);
 			while (rs.next()) {
@@ -240,7 +240,7 @@ public class ToBorrowedRecord {
 
 			Statement s = c.createStatement();
 
-			String sql = "select * from borrowedrecord where barCode = " + "'"+barcode+"' and returnedDate is null;";
+			String sql = "select * from borrowedrecord where barCode = " + "'"+barcode+"' and returnedDate = '1949-10-01';";
 
 			ResultSet rs = s.executeQuery(sql);
 
@@ -415,3 +415,5 @@ public class ToBorrowedRecord {
 		return records;
 	}
 }
+
+

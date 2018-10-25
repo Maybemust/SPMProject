@@ -119,14 +119,23 @@
 							</div>
 
 
-							<c:if test="${returnedbook.getStatus() == 0}">
+							<c:if test="${ifReturned == 1}">
 								<div class="modal-body">
 									<h4 style="color: #002A5A">This book has already been
 										returned!!</h4>
 
 
 								</div>
-							</c:if> <c:if test="${ifExist == 0}">
+								
+							</c:if>
+							 <c:if test="${ifFine == 1}">
+								<div class="modal-body">
+									<h4 style="color: #002A5A">Please pay for the fine first!</h4>
+
+								</div>
+							</c:if> 
+							
+							 <c:if test="${ifExist == 0}">
 								<div class="modal-body">
 									<h4 style="color: #002A5A">Cannot find this book!</h4>
 

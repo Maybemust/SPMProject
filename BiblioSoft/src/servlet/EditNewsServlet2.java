@@ -53,11 +53,11 @@ public class EditNewsServlet2 extends HttpServlet {
 		Date date = new Date(System.currentTimeMillis());//²»Í¬ÓÚjava.util.Date		
 		
 		System.out.print("==========EDS2=====================>"+post.toString()+'\n');
-		request.setAttribute("post", post);
+		request.setAttribute("Post", post);
 		request.setAttribute("postID", postID);
 		System.out.print(post.toString()+'\n');
 
-				request.getRequestDispatcher("EditNews2.jsp").forward(request, response);
+				request.getRequestDispatcher("LibrarianEditPostText2.jsp").forward(request, response);
 
 				return;
 	}

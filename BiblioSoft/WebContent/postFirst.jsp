@@ -14,38 +14,49 @@
 <body>
 	<div>
 		<c:forEach items="${posts}" var="postItem" varStatus="st">
-
-  	<img src="${postItem.getPostImage()}" title="1539503768268070846.jpg" alt="timg.jpg" style = "float:center;width:800px" onclick="PostDetails?postID =${postItem.getPostID()}"/>
-  	  	<h2>${postItem.getPostTitle()}</h2>
-  	  	  
-  	  	<a href="PostDetails?postID=${postItem.getPostID()}">${postItem.getPostTitle()}</a>
+	  	  
+  	  	<a href="PostDetails?postID=${postItem.getPostID()}"><h2>${postItem.getPostTitle()}</h2></a>
   	  	</c:forEach>
+  	  	      <div>
+  	${post.getPostTitle()}
+
+</div> 
   <ul class="pagination">
-    <li>
-      <a href="LibrarianFirstPage?start=${pre}" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
+  
+      <li>
+      <a href="LibrarianFirstPage?start=0" aria-label="First">
+      First Page
+        <span aria-hidden="true"></span>
       </a>
     </li>
-    <li><a href="LibrarianFirstPage?start=1">1</a></li>
-    <li><a href="LibrarianFirstPage?start=2">2</a></li>
-    <li><a href="LibrarianFirstPage?start=3">3</a></li>
-    <li><a href="LibrarianFirstPage?start=4">4</a></li>
-    <li><a href="LibrarianFirstPage?start=5">5</a></li>
+    
+    <li>
+    
+      <a href="LibrarianFirstPage?start=${pre}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+      
+                Previous
+      </a>
+    </li>
+
     <li>
       <a href="LibrarianFirstPage?start=${next}" aria-label="Next">
+      Next
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
+    
+        <li>
+          <a href="LibrarianFirstPage?start=${last}" aria-label="Last">
+          Last Page
+      </a>
+    </li>
+    
+    
   </ul>
 </div>
 
-<div>
-  	${post.getPostTitle()}
 
-</div>  
-<div>
-  ${post.getText()}
-  </div>
   
   
   

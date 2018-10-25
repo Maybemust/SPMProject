@@ -224,7 +224,7 @@ public class bookaddServlet extends HttpServlet {
 		}
  		
  		try{
-        	String path="E://BarcodeStore//"+msg+".png";
+        	String path="D://BarcodeStore//"+msg+".png";
             FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));//打开输入流
             imageOutput.write(bout.toByteArray(), 0, bout.toByteArray().length);//将byte写入硬盘
             imageOutput.close();
