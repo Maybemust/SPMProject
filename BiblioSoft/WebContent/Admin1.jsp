@@ -237,7 +237,7 @@ body {
 							style="font-weight: bold; font-size: 18px"
 							alt="current maximum number: ${borrowedMaxinum}"
 							placeholder="maximum number" id="numberlabel" name="numberlabel"></label>
-						<p style="position: relative; top: -30px">&nbsp;&nbsp;&nbsp;&nbsp;*a
+						<p style="position: relative; top: 0px">&nbsp;&nbsp;&nbsp;&nbsp;*a
 							string of no more than 2 digits*</p>
 						<button type="button"
 							style="position: relative; left: 80px; bottom: 10px"
@@ -257,9 +257,10 @@ body {
 							onkeyup="value=value.replace(/[^\d||/.]/g,'')"
 							onbeforepaste="this.val(this.val().replace(/[^\d||/.]/g,''))">
 						<label style="font-weight: bold; font-size: 18px"
-							alt="current strategy: ${fine}" placeholder="fine strategy"
+							alt="current fine strategy: ${fine}" placeholder="fine strategy"
 							id="finelabel" name="finelabel"></label>
-						<p style="position: relative; top: -30px">&nbsp;&nbsp;&nbsp;&nbsp;*a
+						<p style="position: relative; top: 0px">&nbsp;&nbsp;&nbsp;&nbsp;*the fine that a reader will pay for each book per day*</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;*a
 							decimal less than 1000*</p>
 						<button type="button"
 							style="position: relative; left: 400px; bottom: 130px"
@@ -272,13 +273,13 @@ body {
 							onafterpaste="this.value=this.value.replace(/\D/g,'')"
 							maxlength="5"> <label
 							style="font-weight: bold; font-size: 18px"
-							alt="current limit time: ${fineTime}"
+							alt="current fine limit time: ${fineTime}"
 							placeholder="fine limit time" id="fineLimitTimeLabel"
 							name="fineLimitTimeLabel"></label>
-						<p style="position: relative; top: -30px">&nbsp;&nbsp;&nbsp;&nbsp;*a
+						<p style="position: relative; top: 0px">&nbsp;&nbsp;&nbsp;&nbsp;*a
 							string of no more than 5 digits*</p>
 						<button type="button"
-							style="position: relative; left: 400px; bottom: 130px"
+							style="position: relative; left: 400px; bottom: 100px"
 							class="button button--round-s button--ujarak button--border-thin button--text-thick"
 							onClick="sendtext('fineLimitTime','fineLimitTimeLabel')">Modify</button>
 					</form>
@@ -297,7 +298,7 @@ body {
 						<label style="font-weight: bold; font-size: 18px"
 							alt="current pledge: ${cash}" placeholder="cash pledge"
 							id="cashlabel" name="cashlabel"></label>
-						<p style="position: relative; top: -30px">&nbsp;&nbsp;&nbsp;&nbsp;*a
+						<p style="position: relative; top: 0px">&nbsp;&nbsp;&nbsp;&nbsp;*a
 							decimal less than 1000*</p>
 						<button type="button"
 							style="position: relative; left: 80px; bottom: 10px"
@@ -321,10 +322,10 @@ body {
 							alt="current reserved maxinum: ${reservedmaxinum}"
 							placeholder="reserved maxinum" id="reservedMaxinumLabel"
 							name="reservedMaxinumLabel"></label>
-						<p style="position: relative; top: -30px">&nbsp;&nbsp;&nbsp;&nbsp;*a
+						<p style="position: relative; top: 0px">&nbsp;&nbsp;&nbsp;&nbsp;*a
 							string of no more than 2 digits*</p>
 						<button type="button"
-							style="position: relative; left: 400px; bottom: 130px"
+							style="position: relative; left: 400px; bottom: 100px"
 							class="button button--round-s button--ujarak button--border-thin button--text-thick"
 							onClick="sendtext('reservedMaxinum','reservedMaxinumLabel')">Modify</button>
 						<input style="width: 400px" required="" required
@@ -337,10 +338,10 @@ body {
 							alt="current reserved time: ${reservedtime}"
 							placeholder="reserved time" id="reservedTimeLabel"
 							name="reservedTimeLabel"></label>
-						<p style="position: relative; top: -30px">&nbsp;&nbsp;&nbsp;&nbsp;*a
+						<p style="position: relative; top: 0px">&nbsp;&nbsp;&nbsp;&nbsp;*a
 							string of no more than 3 digits*</p>
 						<button type="button"
-							style="position: relative; left: 400px; bottom: 130px"
+							style="position: relative; left: 400px; bottom: 100px"
 							class="button button--round-s button--ujarak button--border-thin button--text-thick"
 							onClick="sendtext('reservedTime','reservedTimeLabel')">Modify</button>
 					</form>

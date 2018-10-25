@@ -32,10 +32,10 @@
 					style="position: relative; top: -15px; left: 90px">
 			</div>
 			<div>
-				<p style="position: relative; left: 20px; top: 10px"">password:</p>
+				<p style="position: relative; left: 20px; top: 10px"">password:  </p>
 				<input type="text" value="${password}" id="modifiedpassword"
 					name="modifiedpassword"
-					style="position: relative; top: -25px; left: 90px" maxlength="20">
+					style="position: relative; top: -25px; left: 100px" maxlength="20">
 			</div>
 			<input type="submit" value="save"
 				style="position: relative; left: 75px" onclick="check()"> <input

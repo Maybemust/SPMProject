@@ -103,15 +103,16 @@ public class AdminOp extends HttpServlet {
 			// 修改Admin密码
 			String oldPassword = request.getParameter("oldPassword");
 			String adminPassword = request.getParameter("newPassword");
-			String str = new ToAdmin().list().get(0).getPassword();
-			if(!oldPassword.equals(str)){
-				out.write("no");
-			} else {
-				ToAdmin toad = new ToAdmin();
-				toad.updatePassword(adminPassword);
-				out.write("ok");
+			if(oldPassword != null && adminPassword != null){
+				String str = new ToAdmin().list().get(0).getPassword();
+				if(!oldPassword.equals(str)){
+					out.write("no");
+				} else {
+					ToAdmin toad = new ToAdmin();
+					toad.updatePassword(adminPassword);
+					out.write("ok");
+				}
 			}
-			
 			
 			
 			// 修改借书数
