@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -109,6 +110,20 @@ public class searchBook extends HttpServlet {
 		}
 		List<Book> bookList = ToBook.searchForKey(key);
 		request.setAttribute("bookList", bookList);
+		//hou
+		List<ReservedRecord> houorders =ToReservedRecord.listByAccountFlag(start, count, account);
+		int ih=0;
+		while(ih < myorders.size()) {
+			java.util.Date datehh=houorders.get(ih).getTime();
+			Calendar c = Calendar.getInstance();
+			c.setTime(datehh);
+			c.add(Calendar.HOUR_OF_DAY, 2);
+			java.util.Date hhDate = c.getTime();
+			houorders.get(ih).setTime(hhDate);
+			ih++;
+		}
+		request.setAttribute("houorders", houorders);
+		//hou
 		RequestDispatcher view = request.getRequestDispatcher("ReaderaddOrder.jsp");
 	    view.forward(request, response);
 	}

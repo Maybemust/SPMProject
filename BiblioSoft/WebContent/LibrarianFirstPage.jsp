@@ -75,16 +75,13 @@
                     </div>
                     
                     <div class="menu-item" href="#four" >
-                      <a href="borrowedrecordList" target="mainFrame" style = "color:#F0F8FF"> － Borrowedrecord List</a>
+                      <a href="borrowedrecordList" target="mainFrame" style = "color:#F0F8FF"> － Borrowed history record List</a>
                     </div> 
                     
-					<div class="menu-item" href="#four" >
-                      <a href="postList" target="mainFrame" style = "color:#F0F8FF"> －Post Managent</a>
-                    </div>
+
                     
-	                 <div class="menu-item" href="#three" >
-      <a href="LibrarianFirstPage" target="mainFrame" style = "color:#F0F8FF">－Post</a>
-                    </div>
+                    
+                    
                     
 	                    <div class="menu-item" href="#four" >
       <a href="LibrarianRecieveFine1.jsp" target="mainFrame" style = "color:#F0F8FF"> －Reader Pay Fine</a>
@@ -100,7 +97,14 @@
                     <div class="menu-item" href="#four" >
                         <a href="LibrarianReturnBook.jsp"   target="mainFrame"  style = "color:#F0F8FF">－Return Book</a>
                     </div> 
+				<hr>
+				
+				                    <div class="menu-title">                      <a href="postList" target="mainFrame" style = "color:#F0F8FF"> －Post Management</a>
+</div>
 				<br>
+
+				<br>
+
 </div>
 		  
 		  
@@ -119,32 +123,19 @@
              <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
              </li>
-             <li class="nav-item">
-                <a class="nav-link" href="#">Link1</a>
-             </li>
-             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                   <a class="dropdown-item" href="#">Action</a>
-                   <a class="dropdown-item" href="#">Another action</a>
-                   <div class="dropdown-divider"></div>
-                   <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-             </li>
+            
+
 
           </ul>
 		   <ul class="navbar-nav mr-auto">
-			  <form class="form-inline my-2 my-lg-0"   style = "float :left;">
+			  <form class="form-inline my-2 my-lg-0" action="booksearch" method="post"  style = "float :left;">
 			  
-             <input class="form-control mr-sm-2" type="search" placeholder="Grimms Fairytales" aria-label="Search">
+             <input class="form-control mr-sm-2" name="searchbarCode" type="search" placeholder="Grimms Fairytales" aria-label="Search">
+             
              <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
              
           </form>
+          
 		   </ul>
 		   
 	
@@ -168,7 +159,7 @@
     
     
     
-    <iframe style="width:90% ; height:80%"   src="images/123.png"   frameborder=0 name="mainFrame" id="mainFrame" title="mainFrame"> 
+    <iframe style="width:90% ; height:80%"   src="LibrarianFirstPage"   frameborder=0 name="mainFrame" id="mainFrame" title="mainFrame"> 
     
   	
    

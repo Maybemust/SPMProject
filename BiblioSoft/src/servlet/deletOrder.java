@@ -1,6 +1,7 @@
 package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,7 +27,12 @@ public class deletOrder  extends HttpServlet{
 		}
 		account=reader.getAccount();
 		if(ToReservedRecord.getByrRID(rRID) != null ){
-			ToReservedRecord.deleteByrRID(rRID);
+			ReservedRecord record = ToReservedRecord.getByrRID(rRID);
+			record.setFlag(1);
+			ToReservedRecord.update(record);
+			Book tembook=ToBook.getByBarCode(ToReservedRecord.getByrRID(rRID).getBarCode());
+			tembook.setStatus(0);
+			ToBook.update(tembook);
 			request.setAttribute("status","Cancel Successfully");
 		}
 		else{
@@ -34,7 +40,6 @@ public class deletOrder  extends HttpServlet{
 		}
 		String url_return = "getreader?account=";
 		url_return +=account;
-		System.out.println(url_return);
 		request.setAttribute("Reader", reader);
 		
 		int start=0;
@@ -97,6 +102,20 @@ public class deletOrder  extends HttpServlet{
 		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
 		
+		//hou
+		List<ReservedRecord> houorders =ToReservedRecord.listByAccountFlag(start, count, account);
+		int ih=0;
+		while(ih < myorders.size()) {
+			java.util.Date datehh=houorders.get(ih).getTime();
+			Calendar c = Calendar.getInstance();
+			c.setTime(datehh);
+			c.add(Calendar.HOUR_OF_DAY, 2);
+			java.util.Date hhDate = c.getTime();
+			houorders.get(ih).setTime(hhDate);
+			ih++;
+		}
+		request.setAttribute("houorders", houorders);
+		//hou
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

@@ -232,7 +232,7 @@ public class ToReservedRecord {
 
 
 
-			String sql = "update book set bookName=?, time= ?, readerAccount = ? ,barCode=? ,flag = ? where rRID = ?";
+			String sql = "update reservedrecord set bookName=?, time= ?, readerAccount = ? ,barCode=? ,flag = ? where rRID = ?";
 
 			
 

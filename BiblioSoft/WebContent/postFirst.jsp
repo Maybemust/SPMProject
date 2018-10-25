@@ -17,10 +17,7 @@
 	  	  
   	  	<a href="PostDetails?postID=${postItem.getPostID()}"><h2>${postItem.getPostTitle()}</h2></a>
   	  	</c:forEach>
-  	  	      <div>
-  	${post.getPostTitle()}
 
-</div> 
   <ul class="pagination">
   
       <li>

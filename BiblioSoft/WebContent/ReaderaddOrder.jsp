@@ -134,9 +134,9 @@
               if (barcode_order != ""){
               	if (bookName_order != ""){
                     if(confirm("Are you sure about the appointment?")){
-                        	addOrder = "addOrder?barCode="+barcode_order+"&&bookName="+bookName_order;
-                            window.location.href=addOrder;
-                            location.reload(); 
+                        	adurl="addOrder?barCode="+barcode_order+"&bookName="+bookName_order;   
+                        	parent.location.href=adurl;  
+                        	top.location.href.reload();
                     }
                 }
                 else{
@@ -147,6 +147,11 @@
                    alert("please input barcode_order");
               }
             }
+           function temp(bar_Code,book_Name){
+        	   urlord="addOrder?barCode="+barcode_order+"&bookName="+bookName_order;   
+        	   location.href=urlord;   
+        	   location.reload();
+           }
        </script>
        
        <div id="all">
@@ -192,7 +197,7 @@
 						<td><font size="4">${bookList.introduction}</font></td>	
 						<td><font size="4">${bookList.status}</font></td>	
 						<td><font size="4">${bookList.dateOfStorage}</font></td>
-						<td><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}">Add</a></td>
+						<td><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}" onclick="top.location.replace('http://localhost:8080/BiblioSoft/getreader')">Add</a></td>
 						</tr>
 					</c:forEach>
 				</table>

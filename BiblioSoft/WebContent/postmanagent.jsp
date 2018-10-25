@@ -111,7 +111,7 @@ function unselectAll(){
 								
 										
 										<input name="Submit" type="button"
-										class="" value="Add reader"
+										class="" value="Add post"
 										onclick="window.location.href='LibrarianEditPostText.jsp'" />
 									</td>
 								</tr>

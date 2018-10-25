@@ -1,7 +1,7 @@
 package servlet;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
 import java.lang.String;
 
 import javax.servlet.ServletException;
@@ -19,6 +19,12 @@ public class ReaderServlet  extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(reader+"----------");
 		String account="";
 		
@@ -84,6 +90,20 @@ public class ReaderServlet  extends HttpServlet{
 		request.setAttribute("nowrecord", nowrecord);
 		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
+		//hou
+		List<ReservedRecord> houorders =ToReservedRecord.listByAccountFlag(start, count, account);
+		int ih=0;
+		while(ih < myorders.size()) {
+			Date datehh=houorders.get(ih).getTime();
+			Calendar c = Calendar.getInstance();
+			c.setTime(datehh);
+			c.add(Calendar.HOUR_OF_DAY, 2);
+			Date hhDate = c.getTime();
+			houorders.get(ih).setTime(hhDate);
+			ih++;
+		}
+		request.setAttribute("houorders", houorders);
+		//hou
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

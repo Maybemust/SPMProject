@@ -26,6 +26,7 @@ public class addOrder  extends HttpServlet{
 		String sta="";
 		
 		try{
+			System.out.println("why");
 			barcode = request.getParameter("barCode");
 			bookname = request.getParameter("bookName");
 		}catch(NumberFormatException e){
@@ -36,7 +37,7 @@ public class addOrder  extends HttpServlet{
 		Book book = ToBook.getByBarCode(barcode);
 		long total = ToReservedRecord.getTotal();
 		total++;
-		Date date_sql = new Date(System.currentTimeMillis());
+		java.sql.Date date_sql = new Date(System.currentTimeMillis());
 		ReservedRecord record = new ReservedRecord(bookname,date_sql,account,barcode);
 		record.setrRID(total);
 		int start=0;
@@ -46,28 +47,40 @@ public class addOrder  extends HttpServlet{
 		boolean flag = true;
 		int size = 0;
 		size = myorders.size();
-		for(int i = 0;i < size;i++){
-			if(myorders.get(i).getBarCode().equals(barcode)){
-				sta="already existed";
-				flag=false;
-				break;
+		System.out.println(barcode+" "+bookname+" size="+size);
+		if(size<3){
+			for(int i = 0;i < size;i++){
+				if(myorders.get(i).getBarCode().equals(barcode)){
+					sta="already existed";
+					flag=false;
+					break;
+				}
 			}
-		}
-		if(flag){
-			if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
-				sta="Add successfully";
-				ToReservedRecord.add(record);
-				request.setAttribute("status",sta);
+			System.out.println("flag="+flag);
+			if(flag){
+				if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
+					sta="Add successfully";
+					ToReservedRecord.add(record);
+					Book tembook=ToBook.getByBarCode(barcode);
+					tembook.setStatus(1);
+					ToBook.update(tembook);
+					request.setAttribute("status",sta);
+				}
+				else{
+					sta="please check barCode or bookName is true";
+					request.setAttribute("status",sta);
+				}
 			}
 			else{
-				sta="please check barCode or bookName is true";
 				request.setAttribute("status",sta);
 			}
 		}
 		else{
+			sta="sum over";
 			request.setAttribute("status",sta);
 		}
-
+		
+		myorders=ToReservedRecord.listByAccountFlag(start, count, account);
 		request.setAttribute("Reader", reader);
 		request.setAttribute("myorders", myorders);		
 		request.setAttribute("reader", reader);
@@ -119,7 +132,20 @@ public class addOrder  extends HttpServlet{
 		request.setAttribute("nowrecord", nowrecord);
 		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
-		
+		//hou
+				List<ReservedRecord> houorders =ToReservedRecord.listByAccountFlag(start, count, account);
+				int ih=0;
+				while(ih < myorders.size()) {
+					java.util.Date datehh=houorders.get(ih).getTime();
+					Calendar c = Calendar.getInstance();
+					c.setTime(datehh);
+					c.add(Calendar.HOUR_OF_DAY, 2);
+					java.util.Date hhDate = c.getTime();
+					houorders.get(ih).setTime(hhDate);
+					ih++;
+				}
+				request.setAttribute("houorders", houorders);
+				//hou
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

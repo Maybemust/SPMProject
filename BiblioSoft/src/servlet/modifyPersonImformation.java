@@ -94,7 +94,20 @@ public class modifyPersonImformation extends HttpServlet{
 		request.setAttribute("nowrecord", nowrecord);
 		request.setAttribute("borrowedRecord", borrowedRecord);
 		request.setAttribute("date", date);
-		
+		//hou
+		List<ReservedRecord> houorders =ToReservedRecord.listByAccountFlag(start, count, account);
+		int ih=0;
+		while(ih < myorders.size()) {
+			java.util.Date datehh=houorders.get(ih).getTime();
+			Calendar c = Calendar.getInstance();
+			c.setTime(datehh);
+			c.add(Calendar.HOUR_OF_DAY, 2);
+			java.util.Date hhDate = c.getTime();
+			houorders.get(ih).setTime(hhDate);
+			ih++;
+		}
+		request.setAttribute("houorders", houorders);
+		//hou
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	
 	}

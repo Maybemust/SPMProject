@@ -308,7 +308,7 @@
            <div id="logoDiv" class="logoDiv">
                <p id="logoTitle" class="logoTitle">
                		<img id="logo" alt="picture-log" src="./imgs/logo.JPG" style="height: 28px; padding-right: 5px;vertical-align: middle;">
-                    <span style="font-size:18px;">Reader</span>
+                    <span style="font-size:18px;"><a onclick="location.reload()">${reader.account}</a></span>
                </p>
             </div>
                     <!-- hou -->
@@ -530,12 +530,12 @@
                         <!-- diao -->
                          <script>
                         	function deletOrder(rRID){
-                        		var deletOrder="deletOrder?rRID="+rRID;
-                        		alert(deletOrder);
+                        		var deletOrder="deletOrder?rRID="+rRID;             
                         		window.location.href=deletOrder;		
                         	}
                         </script>
 						<div id="myorder" class="tab-pane" style="text-align:center;postion:relative;">
+						<h2  style="text-align:center;">Welcome to Reserve page,${reader.getAccount()}!</h2>
 						<div style="display:block" >
                              <table id="ordertab" border="1" width=100% cellpadding="5" style="margin-left:5px;margin-right:30px;">
 								<thead>
@@ -555,13 +555,14 @@
 										<td><font size="4">${mo.index + 1}</td>
 										<td><font size="4">${myorder.bookName }</td>
 										<td><font size="4"><fmt:formatDate value="${myorder.time }" type="both" dateStyle="medium" timeStyle="medium"/></td>
-										<td><font size="4"><fmt:formatDate value="${myorder.time }" type="both" dateStyle="medium" timeStyle="medium"/></td>
+										<td><font size="4"><fmt:formatDate value="${houorders[mo.count-1].time }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										<c:set var="jugg" value="${myorder.flag}"/>
 										<c:choose>
-										    <c:when test="${nowTime-((hout%100)+(hout-(hout)%100)/100*60)>120}">
-										    	<td>超期</td>
+										    <c:when test="${jugg > 0}">
+										    	<td>Invalid</td>
 										    </c:when>
 										    <c:otherwise>
-										    	<td>未超期</td>
+										    	<td>Valid</td>
 										    </c:otherwise>
 										</c:choose>
 										<td><font size="4"><a onclick="deletOrder(${myorder.rRID})" style="color:black;">Cancel</a></td>
@@ -569,49 +570,8 @@
 								</c:forEach>
 			    			</table></div>
                         </div>
-						<script type="text/javascript">
-                        	function cleanorder(){
-                        		document.getElementById("barCode_order").value ="";
-                        		document.getElementById("bookName_order").value ="";
-
-                        	}
-                        	function saveorder(){
-                        		var barcode_order = document.getElementById("barCode_order").value;
-                        		var bookName_order = document.getElementById("bookName_order").value;
-                        		if (barcode_order != ""){
-                        			if (bookName_order != ""){
-                        				if(confirm("Are you sure about the appointment?")){
-                        					addOrder = "addOrder?barCode="+barcode_order+"&&bookName="+bookName_order;
-                                			window.location.href=addOrder;
-                        				}
-                            		}
-                            		else{
-                            			alert("please input bookName_order");
-                            		}
-                        		}
-                        		else{
-                        			alert("please input barcode_order");
-                        		}
-                        	}
-                        </script>
-                        <script>
-                        function addorder(barCode,bookName){
-                    		if (barCode != ""){
-                    			if (bookName != ""){
-                    				if(confirm("Are you sure about the appointment?")){
-                    					addOrder = "addOrder?barCode="+barCode+"&&bookName="+bookName;
-                            			window.location.href=addOrder;
-                    				}
-                        		}
-                        		else{
-                        			alert("please input bookName_order");
-                        		}
-                    		}
-                    		else{
-                    			alert("please input barcode_order");
-                    		}
-                    	}
-                        </script>
+					
+                       
                         <div id="addorder" class="tab-pane"style="width:100%;margin-top:0px;margin-left:0px;">
 							<iframe src="ReaderaddOrder.jsp" style="width:100%;height:730px;margin-top:0px;">
 							</iframe>
@@ -653,5 +613,5 @@
                	 color.style.color="#aab1b7";
             }
     </script>
-</body>
+
 </html>

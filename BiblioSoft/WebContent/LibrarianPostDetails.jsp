@@ -11,7 +11,7 @@
 	  <script src="js/jquery.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
-    <title>Biblio -Edit Post Text </title>
+    <title>Bibliosoft -Post Details </title>
     <!-- Bootstrap -->
     <link href="./css/bootstrap-4.0.0.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
     <div class="text-center col-md-12" style= "background-color: aliceblue">	  
 	 <div class="panel panel-primary">
 		  <div class="panel-heading">
-	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Post News -Ensure Informations</a></h3>
+	 <h3 class="panel-title" align="left" style = "font-size: 20px;color:#191D30;padpadding-left: 20px"><a>Post News -Post Details</a></h3>
 		 </div>
 	  <div align="center" style="background-color: aliceblue">
 		  		      
