@@ -33,13 +33,21 @@ table:hover {
 
 
 
-	<% String barCode1 = request.getAttribute("barCode1").toString(); %>
+	<%-- //<% String barCode1 = request.getAttribute("barCode1").toString(); %>
+   // <% String barCode2 = request.getAttribute("barCode2").toString(); %>
+       // <% String [] barCodeList = request.getAttribute("barCodeList").toString(); %> --%>
+<table style="position: relative; left: 25%;">
+	<c:forEach items="${barCodeList}" var="barCode" varStatus="st">
 
+	<tr>
+	<td> <img src="barcode?msg=${barCode}" style="max-height:300px; max-width:auto; position: relative; left: 35%; top: 150px" />
+</td>
+</tr>
 
-
-	<img src="barcode?msg=<%=barCode1 %>"
-		style="height: 30%; width: 30%; position: relative; left: 35%; top: 150px" />
-
+</c:forEach>
+</table>
+<%-- <img src="barcode?msg=<%=barCode2 %>"
+		style="height: 30%; width: 30%; position: relative; left: 35%; top: 150px" /> --%>
 	<%-- <%=barCode %> --%>
 
 

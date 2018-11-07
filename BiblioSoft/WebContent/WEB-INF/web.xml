@@ -512,5 +512,94 @@
 		<url-pattern>/borrowrecordsearch</url-pattern>
 	</servlet-mapping>
 
+    <servlet>
+		<servlet-name>lostfineServlet1</servlet-name>
+		<servlet-class>servlet.lostfineServlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lostfineServlet1</servlet-name>
+		<url-pattern>/lostfine</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>lostfineServlet2</servlet-name>
+		<servlet-class>servlet.lostfineServlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lostfineServlet2</servlet-name>
+		<url-pattern>/lostfine2</url-pattern>
+	</servlet-mapping>
 
+<servlet>
+		<servlet-name>LabelManage</servlet-name>
+		<servlet-class>servlet.LabelManage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LabelManage</servlet-name>
+		<url-pattern>/Labeledit</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>OperateLabel</servlet-name>
+		<servlet-class>servlet.OperateLabel</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OperateLabel</servlet-name>
+		<url-pattern>/opreatelabel</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LocationManage</servlet-name>
+		<servlet-class>servlet.LocationManage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LocationManage</servlet-name>
+		<url-pattern>/Locationedit</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>OperateLocation</servlet-name>
+		<servlet-class>servlet.OperateLocation</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OperateLocation</servlet-name>
+		<url-pattern>/opreatelocation</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>modifyQuestion</servlet-name>
+		<servlet-class>servlet.modifyQuestion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>modifyQuestion</servlet-name>
+		<url-pattern>/modifyQuestion</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>modifypassword1Servlet</servlet-name>
+		<servlet-class>servlet.modifypassword1Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>modifypassword1Servlet</servlet-name>
+		<url-pattern>/modifypassword1</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>modifypassword2Servlet</servlet-name>
+		<servlet-class>servlet.modifypassword2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>modifypassword2Servlet</servlet-name>
+		<url-pattern>/modifypassword2</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>indexpage</servlet-name>
+		<servlet-class>servlet.indexpage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>indexpage</servlet-name>
+		<url-pattern>/indexpage</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

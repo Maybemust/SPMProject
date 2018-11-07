@@ -56,16 +56,7 @@
 
 					<div class="panel-body" style="">
 
-						<!--div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon1">Book ID</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-	<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-</div>
-			  <div class="input-group">
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-	<span class="glyphicon glyphicon-menu-right" ></span>
-</div-->
+		
 						<script>
 		function borrowbook(){
 			document.getElementById("EnsureBorrowBooks").submit();
@@ -81,12 +72,17 @@
 									ID :</div>
 								<input name="barCode" type="text" class="form-control"
 									placeholder="Input Book Id" aria-describedby="sizing-addon1">
+									
 								<div
-									style="float: left; font-size: 18px; color: #002A5A; width: 10%;">Borrower
+									style="float: left; font-size: 18px; color: #002A5A; width: 12%;">Borrower
 									ID :</div>
+									
 								<input name="useraccount" type="text" class="form-control"
 									placeholder="Input UserAccount"
-									aria-describedby="sizing-addon1"> <br>
+									aria-describedby="sizing-addon1"
+									required
+													oninvalid="setCustomValidity('The input cannot be empty');"
+													oninput="setCustomValidity('');" > <br>
 								<button type="submit" class=" btn btn-success btn-lg"
 									data-toggle="modal" data-target="#myModal">OK</button>
 

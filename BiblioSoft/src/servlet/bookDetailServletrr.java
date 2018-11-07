@@ -47,6 +47,8 @@ public class bookDetailServletrr extends HttpServlet{
 			request.setAttribute("books", books);
 			request.setAttribute("status", book.getStatus());
 			request.setAttribute("imagePath", book.getCover());
+			System.out.println("cover -----    "+book.getCover());
+			
 			request.setAttribute("introduction", book.getIntroduction());
 			int st = book.getStatus();
 			if(st == 0) {

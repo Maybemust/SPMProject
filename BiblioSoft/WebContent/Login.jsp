@@ -30,10 +30,22 @@
 	      		}
 	      		
 	      		function forgetpd(){
+	      			
+	      			
+	      			var AUTHORITY =document.getElementById("AUTHORITY").value ;
+	      		
+	      			if(AUTHORITY == "Reader"){
 	      			var st=prompt("Please input your account to reset password by email");
 	      			var urlsend="sendemail?account="+st;
-	      			window.location.href=urlsend;
+	      			window.location.href=urlsend;}
+	      
+	 
+	      			else{
+		      			var st=prompt("Please input your account to reset password ");
+		      			var urlsend="modifypassword1?account="+st;
+		      			window.location.href=urlsend;}
 	      		}
+	      	
 		  </script>
 
 <style type="text/css">
@@ -119,6 +131,10 @@
 
 <body>
 
+
+
+
+
 	<!-- 登录窗口      -->
 	<div class="mydiv">
 		<img src="images/logo2.png"
@@ -130,6 +146,10 @@
 					<br />
 					<h1 class="myh1">Log in</h1>
 				</div>
+
+
+<div>      <input type="hidden"  value='${AUTHORITY}' id="AUTHORITY"  name="AUTHORITY" > </div>
+
 
 				<div id="container2">
 					<form action="login" method="post" id="log">
@@ -155,9 +175,9 @@
 					<button style="padding: 0.7em 2em;"
 						class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
 						type="button" onClick="login()">Login</button>
-					<a
+					<button  type="button"
 						style="position: relative; left: -10px; top: 15px; font-weight: bold; font-size: 12px;"
-						onclick="forgetpd()">Forget</a>
+						onclick="forgetpd()">Forget</button>
 				</div>
 
 			</div>
@@ -187,4 +207,24 @@
 	</div>
 	<script type="text/javascript">banner()</script>
 </body>
+
+
+
+<script type="text/javascript">
+
+
+var mima='<%=request.getParameter("mima")%>';
+
+if(mima=='no')
+	{
+	alert("your password is wrong");
+	}
+
+
+
+
+
+
+
+</script>
 </html>

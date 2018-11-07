@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -21,8 +22,12 @@ import javax.sql.rowset.serial.SerialBlob;
 import com.mysql.jdbc.Blob;
 
 import updateTo.ToBook;
+import updateTo.ToLabel;
+import updateTo.ToLocation;
 import utils.DBhelper;
 import entity.Book;
+import entity.Label;
+import entity.Location;
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -95,6 +100,10 @@ public class bookeditServlet2 extends HttpServlet {
 	       int status = book.getStatus();
 	       double price = book.getPrice();
 	       Date dateOfStorage = book.getDateOfStorage();
+	       
+	       
+	       
+	       
 	       if(ISBN==null)
 	    	   ISBN="none";
 	       if(author==null)
@@ -119,7 +128,15 @@ public class bookeditServlet2 extends HttpServlet {
 	       request.setAttribute("status", status );
 	       request.setAttribute("price", price );
 	       request.setAttribute("dateOfStorage", dateOfStorage );
+	       
+	       
+	  	 List<Location> locations = ToLocation.list(0, ToLabel.getTotal());
+	  	List<Label> labels = ToLabel.list(0, ToLabel.getTotal());
+	  	 
+	 	request.setAttribute("locations",locations);
+	 	request.setAttribute("labels",labels);
          RequestDispatcher dispatcher = request.getRequestDispatcher("/bookedit.jsp"); 
+         
          dispatcher.forward(request, response); 
        /* response.sendRedirect("bookedit.jsp?error=no");*/
        

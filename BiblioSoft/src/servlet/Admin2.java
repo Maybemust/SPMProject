@@ -15,9 +15,9 @@ public class Admin2 extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		
 		String account = request.getParameter("account");
-		String password = request.getParameter("password");
+		String question = request.getParameter("question");
 		request.setAttribute("account", account);
-		request.setAttribute("password", password);
+		request.setAttribute("question", question);
 		
 		request.getRequestDispatcher("Admin2.jsp").forward(request, response);
 	}

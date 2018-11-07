@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -17,8 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import updateTo.ToBook;
+import updateTo.ToBorrowedRecord;
 import utils.DBhelper;
 import entity.Book;
+import entity.BorrowedRecord;
 import entity.Librarian;
 /**
  * Servlet implementation class RegisterServlet
@@ -57,6 +61,25 @@ public class bookdeleteServlet extends HttpServlet {
 		
         String barCode=request.getParameter("barCode1");
         Book book=ToBook.getByBarCode(barCode);
+        
+        
+        List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+        records=ToBorrowedRecord.getByBarCode1(barCode);
+        for(int i1=0; i1<records.size();i1++)
+        {
+        	if(records.get(i1).getReturnedDate().before(java.sql.Date.valueOf("1949-10-02")))
+        	{
+        		
+        		response.sendRedirect("bookList?isborrow=no");
+        	return;
+        	}	
+        }
+        
+        
+        
+        
+        
+        
         book.setDeleteman(deleteman);
         
         ToBook.update1(book);

@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : sc2
 Source Server Version : 50615
 Source Host           : localhost:3306
 Source Database       : bibliosoft
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2018-10-25 20:39:48
+Date: 2018-11-06 22:13:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,12 +32,15 @@ CREATE TABLE `active` (
 -- Records of active
 -- ----------------------------
 INSERT INTO `active` VALUES ('1', 'diao', '1041405881@qq.com', '2018-10-15 16:34:59', '0');
+INSERT INTO `active` VALUES ('10', 'null', '0', '2018-11-03 09:11:38', '0');
 INSERT INTO `active` VALUES ('2', 'diao', '1041405881@qq.com', '2018-10-15 16:37:06', '0');
 INSERT INTO `active` VALUES ('3', 'diao', '1041405881@qq.com', '2018-10-15 16:39:23', '0');
 INSERT INTO `active` VALUES ('4', 'diao', '1041405881@qq.com', '2018-10-15 16:40:53', '0');
 INSERT INTO `active` VALUES ('5', 'diao', '1041405881@qq.com', '2018-10-15 16:43:02', '0');
 INSERT INTO `active` VALUES ('6', 'diao', '1041405881@qq.com', '2018-10-15 16:45:02', '0');
 INSERT INTO `active` VALUES ('7', 'diao', '1041405881@qq.com', '2018-10-15 23:40:16', '0');
+INSERT INTO `active` VALUES ('8', '18220193519', '985264344@qq.com', '2018-11-03 09:08:43', '0');
+INSERT INTO `active` VALUES ('9', 'null', '0', '2018-11-03 09:11:16', '0');
 
 -- ----------------------------
 -- Table structure for `admin`
@@ -58,7 +61,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', '2', '3', '3', '12', '1', '200');
+INSERT INTO `admin` VALUES ('1', '1', '2', '3', '3', '12', '2', '200');
 
 -- ----------------------------
 -- Table structure for `book`
@@ -71,7 +74,7 @@ CREATE TABLE `book` (
   `author` varchar(40) NOT NULL,
   `publishing` varchar(40) NOT NULL,
   `location` varchar(40) DEFAULT NULL,
-  `cover` varchar(1000) DEFAULT NULL,
+  `cover` varchar(10000) DEFAULT NULL,
   `introduction` varchar(80) DEFAULT NULL,
   `status` int(1) NOT NULL COMMENT '0是可借，1是预约，2是被借出',
   `dateOfStorage` date DEFAULT NULL,
@@ -86,43 +89,27 @@ CREATE TABLE `book` (
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES ('1', 'DS', 'ISBN-1', 'xx', 'xxx', 'xxx', null, 'zzz', '0', '2018-09-24', null, null, '100', '0', null);
-INSERT INTO `book` VALUES ('111111-01', '1111111', '111111', '11', '11', '11', null, null, '2', '2018-10-21', 'Milltary', 'Music', '45', '0', null);
-INSERT INTO `book` VALUES ('111111-03', '1111111', '111111', '11', '11', '11', null, null, '0', '2018-10-21', 'Milltary', 'Music', '45', '0', null);
-INSERT INTO `book` VALUES ('111111-04', '1111111', '111111', '11', '11', '11', null, null, '0', '2018-10-21', 'Milltary', 'Music', '45', '1', '1');
-INSERT INTO `book` VALUES ('111111-05', '1111111', '111111', '11', '11', '11', null, null, '2', '2018-10-21', 'Milltary', 'Music', '45', '1', '1');
-INSERT INTO `book` VALUES ('111111-06', '1111111', '111111', '11', '11', '11', null, null, '2', '2018-10-21', 'Milltary', 'Music', '45', '1', '1');
-INSERT INTO `book` VALUES ('2', 'SO', 'ISBN-2', 'xx', 'xx', 'xx', 'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg', 'zzz', '2', '2018-10-09', null, null, null, '0', null);
-INSERT INTO `book` VALUES ('222222222222222-01', '222222', '222222222222222', '2', '2', '2', null, null, '0', '2018-10-21', 'Milltary', 'Bibliography', '222', '0', null);
-INSERT INTO `book` VALUES ('222222222222222-02', '222222', '222222222222222', '2', '2', '2', null, null, '0', '2018-10-21', 'Milltary', 'Bibliography', '222', '1', '1');
-INSERT INTO `book` VALUES ('222222222222222-03', '222222', '222222222222222', '2', '2', '2', null, null, '0', '2018-10-21', 'Milltary', 'Bibliography', '222', '0', null);
-INSERT INTO `book` VALUES ('222222222222222-04', '222222', '222222222222222', '2', '2', '2', null, null, '0', '2018-10-21', 'Milltary', 'Bibliography', '222', '1', '1');
-INSERT INTO `book` VALUES ('222222222222222-05', '222222', '222222222222222', '2', '2', '2', null, null, '0', '2018-10-21', 'Milltary', 'Bibliography', '222', '1', '1');
-INSERT INTO `book` VALUES ('3', '3', 'ISBN-2', '33', '33', '33', 'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg', '33', '1', '2018-10-18', '3', '33', '33', '1', '1');
-INSERT INTO `book` VALUES ('4', '41', 'ISBN-2', '44', '44', '44', null, '', '0', '2018-10-04', 'Bibliography', 'World History', '12', '0', null);
-INSERT INTO `book` VALUES ('566-01', '55', '566', '55', '55', '55', null, null, '0', '2018-10-21', 'Music', 'Bibliography', '5', '0', null);
-INSERT INTO `book` VALUES ('566-02', '999', '566', '999', '999', '999', null, '999', '0', '2018-10-21', 'World History', 'Milltary', '99', '0', null);
-INSERT INTO `book` VALUES ('566-03', '777', '566', '777', '777', '777', null, '777', '0', '2018-10-21', 'World History', 'Bibliography', '77', '1', '1');
-INSERT INTO `book` VALUES ('566-04', '55', '566', '55', '55', '55', null, '', '0', '2018-10-21', '==none==', '==none==', '0.01', '0', null);
-INSERT INTO `book` VALUES ('9787040055535-01', '工程数学:复变函数(第四版)', '9787040055535', '西安交通大学高等数学教研室', '高等教育出版社', 'location', null, '', '0', '2018-10-21', 'Bibliography', 'Milltary', '21', '0', null);
-INSERT INTO `book` VALUES ('9787040055535-02', '工程数学:复变函数(第四版)', '9787040055535', '西安交通大学高等数学教研室', '高等教育出版社', 'location', null, null, '0', '2018-10-25', 'tag1', 'tag2', '15.3', '0', null);
-INSERT INTO `book` VALUES ('9787040055535-03', '工程数学:复变函数(第四版)', '9787040055535', '西安交通大学高等数学教研室', '高等教育出版社', 'location', null, null, '0', '2018-10-25', 'tag1', 'tag2', '15.3', '0', null);
-INSERT INTO `book` VALUES ('9787121194276-01', '信号与系统', '9787121194276', 'none', '电子工业出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s25507582.jpg', null, '0', '2018-10-24', 'tag1', 'tag2', '69', '0', null);
-INSERT INTO `book` VALUES ('9787121194276-02', '信号与系统', '9787121194276', 'none', '电子工业出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s25507582.jpg', null, '0', '2018-10-25', 'tag1', 'tag2', '69', '0', null);
-INSERT INTO `book` VALUES ('9787121194745-01', '中国电子商务年鉴', '9787121194745', '中国电子商务协会', '电子工业出版社', '2楼东', 'http://img7.doubanio.com/view/subject/s/public/s5827590.jpg', null, '0', '2018-10-25', 'Bibliography', 'Bibliography', '260', '0', null);
-INSERT INTO `book` VALUES ('9787121194745-02', '中国电子商务年鉴', '9787121194745', '中国电子商务协会', '电子工业出版社', '2楼东', null, null, '0', '2018-10-25', 'Bibliography', 'Bibliography', '260', '0', null);
-INSERT INTO `book` VALUES ('9787121194745-03', '中国电子商务年鉴', '9787121194745', '中国电子商务协会', '电子工业出版社', '2楼东', null, null, '0', '2018-10-25', 'Bibliography', 'Bibliography', '260', '0', null);
-INSERT INTO `book` VALUES ('9787121194745-04', '中国电子商务年鉴', '9787121194745', '中国电子商务协会', '电子工业出版社', '2楼东', null, null, '0', '2018-10-25', 'Bibliography', 'Bibliography', '260', '0', null);
-INSERT INTO `book` VALUES ('9787811181043-01', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s5827590.jpg', null, '0', '2018-10-24', 'tag1', 'tag2', '38', '0', null);
-INSERT INTO `book` VALUES ('9787811181043-02', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', null, null, '0', '2018-10-24', 'tag1', 'tag2', '38', '0', null);
-INSERT INTO `book` VALUES ('9787811181043-03', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', null, null, '0', '2018-10-24', 'tag1', 'tag2', '38', '0', null);
-INSERT INTO `book` VALUES ('9787811181043-04', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', null, null, '0', '2018-10-24', 'tag1', 'tag2', '38', '0', null);
-INSERT INTO `book` VALUES ('9787811181043-05', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', null, null, '0', '2018-10-25', 'tag1', 'tag2', '38', '0', null);
-INSERT INTO `book` VALUES ('9787811181043-06', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s5827590.jpg', null, '0', '2018-10-25', 'tag1', 'tag2', '38', '0', null);
-INSERT INTO `book` VALUES ('999-01', '999', '999', '999', '999', '999', null, null, '0', '2018-10-25', 'Music', 'Bibliography', '99', '1', '1');
-INSERT INTO `book` VALUES ('999-02', '999', '999', '999', '999', '999', null, null, '0', '2018-10-25', 'Music', 'Bibliography', '99', '0', null);
-INSERT INTO `book` VALUES ('999-03', '999', '999', '999', '999', '999', null, null, '0', '2018-10-25', 'Music', 'Bibliography', '99', '0', null);
-INSERT INTO `book` VALUES ('999-04', '999', '999', '999', '999', '999', null, null, '0', '2018-10-25', 'Music', 'Bibliography', '99', '0', null);
+INSERT INTO `book` VALUES ('9787040055535-01', '工程数学:复变函数(第四版)', '9787040055535', '西安交通大学高等数学教研室', '高等教育出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s26239395.jpg', null, '0', '2018-11-01', 'tag1', 'tag2', '15.3', '0', null);
+INSERT INTO `book` VALUES ('9787040055535-02', '工程数学:复变函数(第四版)', '9787040055535', '西安交通大学高等数学教研室', '高等教育出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s26239395.jpg', null, '0', '2018-10-25', 'tag1', 'tag2', '15.3', '1', '1');
+INSERT INTO `book` VALUES ('9787040248982-01', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '2', '2018-11-01', 'tag1', 'tag2', '26.6', '1', '1');
+INSERT INTO `book` VALUES ('9787040248982-02', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '0', '2018-11-01', 'tag1', 'tag2', '26.6', '0', null);
+INSERT INTO `book` VALUES ('9787040248982-03', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '26.6', '0', null);
+INSERT INTO `book` VALUES ('9787040248982-04', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '26.6', '0', null);
+INSERT INTO `book` VALUES ('9787040248982-05', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '26.6', '0', null);
+INSERT INTO `book` VALUES ('9787040248982-06', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '26.6', '0', null);
+INSERT INTO `book` VALUES ('9787040248982-07', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '26.6', '0', null);
+INSERT INTO `book` VALUES ('9787040248982-08', '概率论与数理统计', '9787040248982', 'none', 'none', 'location', 'http://img3.doubanio.com/view/subject/s/public/s5961367.jpg', 'the book has been deleted for lost', '2', '2018-11-02', 'tag1', 'tag2', '26.6', '1', '1');
+INSERT INTO `book` VALUES ('9787111453789-01', '计算机网络（第6版）', '9787111453789', '[美]', '机械工业出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s27667093.jpg', null, '0', '2018-11-01', 'tag1', 'tag2', '79', '0', null);
+INSERT INTO `book` VALUES ('9787121194276-01', '信号与系统', '9787121194276', 'none', '电子工业出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s25507582.jpg', null, '2', '2018-11-02', 'tag1', 'tag2', '69', '1', '1');
+INSERT INTO `book` VALUES ('9787302148111-01', '数据结构', '9787302148111', '殷人昆', '清华大学', 'location', 'http://img7.doubanio.com/view/subject/s/public/s22791934.jpg', null, '2', '2018-11-01', 'tag1', 'tag2', '39', '1', '1');
+INSERT INTO `book` VALUES ('9787302148111-02', '数据结构', '9787302148111', '殷人昆', '清华大学', 'location', 'http://img7.doubanio.com/view/subject/s/public/s22791934.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '39', '0', null);
+INSERT INTO `book` VALUES ('9787302148144-01', 'success', '9787302148144', 'mengqiyi', 'npu', 'floor 2 north', '.\\imgs\\15146023143903242.jpg', null, '0', '2018-11-02', 'Milltary', 'Geography', '25', '1', '1');
+INSERT INTO `book` VALUES ('9787302148144-02', 'success', '9787302148144', 'mengqiyi', 'npu', 'floor 2 north', '.\\imgs\\15146023143903242.jpg', null, '0', '2018-11-02', 'Milltary', 'Geography', '25', '0', null);
+INSERT INTO `book` VALUES ('9787560560441-01', '辅导讲义册', '9787560560441', 'sc', 'npu publishing', 'floor 2 east', '.\\imgs\\imgsIMG_20170114_170850.jpg', null, '0', '2018-11-01', 'Music', 'Bibliography', '21', '0', null);
+INSERT INTO `book` VALUES ('9787560560885-01', '辅导讲义', '9787560560885', 'WangNing', 'npu publishing', 'floor 3 north', '.\\imgs\\', null, '0', '2018-11-01', 'Milltary', 'Milltary', '20', '1', '1');
+INSERT INTO `book` VALUES ('9787811181043-01', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s5827590.jpg', null, '2', '2018-11-01', 'tag1', 'tag2', '38', '1', '1');
+INSERT INTO `book` VALUES ('9787811181043-02', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s5827590.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '38', '0', null);
+INSERT INTO `book` VALUES ('9787811181043-03', '数字媒体技术基础', '9787811181043', '张文俊', '上海大学出版社', 'location', 'http://img7.doubanio.com/view/subject/s/public/s5827590.jpg', null, '0', '2018-11-02', 'tag1', 'tag2', '38', '0', null);
 
 -- ----------------------------
 -- Table structure for `borrowedrecord`
@@ -141,17 +128,24 @@ CREATE TABLE `borrowedrecord` (
   KEY `BR_Reader` (`readerAccount`),
   CONSTRAINT `BR_Book` FOREIGN KEY (`barCode`) REFERENCES `book` (`barCode`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `BR_Reader` FOREIGN KEY (`readerAccount`) REFERENCES `reader` (`account`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of borrowedrecord
 -- ----------------------------
-INSERT INTO `borrowedrecord` VALUES ('2', '111111-04', '1111111', '182220193519', '2018-10-11', '2018-10-22', '0');
-INSERT INTO `borrowedrecord` VALUES ('6', '111111-05', '1111111', 'diao', '2018-09-03', '2018-10-22', '38');
-INSERT INTO `borrowedrecord` VALUES ('7', '111111-04', '1111111', 'diao', '2018-09-03', '2018-10-22', '38');
-INSERT INTO `borrowedrecord` VALUES ('10', '111111-04', '1111111', 'diao', '2018-09-04', '2018-10-23', '38');
-INSERT INTO `borrowedrecord` VALUES ('11', '111111-03', '1111111', 'diao', '2018-09-02', '2018-10-23', '42');
-INSERT INTO `borrowedrecord` VALUES ('13', '9787811181043-06', '数字媒体技术基础', 'diao', '2018-10-25', '2018-10-25', '0');
+INSERT INTO `borrowedrecord` VALUES ('26', '9787811181043-01', '数字媒体技术基础', '18220193519', '2018-11-01', '2018-11-02', '0');
+INSERT INTO `borrowedrecord` VALUES ('27', '9787560560441-01', '辅导讲义册', '18220193519', '2018-09-20', '2018-11-02', '26');
+INSERT INTO `borrowedrecord` VALUES ('28', '9787302148111-01', '数据结构', '18220193519', '2018-09-08', '2018-11-02', '50');
+INSERT INTO `borrowedrecord` VALUES ('29', '9787811181043-01', '数字媒体技术基础', '18220193519', '2018-09-03', '2018-11-02', '60');
+INSERT INTO `borrowedrecord` VALUES ('30', '9787811181043-01', '数字媒体技术基础', '15006110287', '2018-09-11', '2018-11-02', '0');
+INSERT INTO `borrowedrecord` VALUES ('31', '9787121194276-01', '信号与系统', '18220193519', '2018-09-03', '2018-11-02', '0');
+INSERT INTO `borrowedrecord` VALUES ('32', '9787302148111-01', '数据结构', '18220193519', '2018-09-04', '2018-11-02', '0');
+INSERT INTO `borrowedrecord` VALUES ('33', '9787040248982-01', '概率论与数理统计', '18220193519', '2018-09-05', '2018-11-02', '0');
+INSERT INTO `borrowedrecord` VALUES ('34', '9787111453789-01', '计算机网络（第6版）', '15006110287', '2018-09-06', '2018-11-02', '54');
+INSERT INTO `borrowedrecord` VALUES ('35', '9787811181043-02', '数字媒体技术基础', '18220193519', '2018-11-02', '2018-11-02', '0');
+INSERT INTO `borrowedrecord` VALUES ('36', '9787811181043-02', '数字媒体技术基础', '18220193519', '2018-09-05', '2018-11-05', '62');
+INSERT INTO `borrowedrecord` VALUES ('37', '9787811181043-02', '数字媒体技术基础', '18220193519', '2018-09-06', '2018-11-05', '60');
+INSERT INTO `borrowedrecord` VALUES ('38', '9787040248982-08', '概率论与数理统计', '15006110287', '2018-11-05', '2018-11-05', '0');
 
 -- ----------------------------
 -- Table structure for `dayilyincome`
@@ -171,6 +165,36 @@ INSERT INTO `dayilyincome` VALUES ('2018-10-09', '100', '200');
 INSERT INTO `dayilyincome` VALUES ('2018-10-16', '150', '300');
 INSERT INTO `dayilyincome` VALUES ('2018-10-23', '400', '146');
 INSERT INTO `dayilyincome` VALUES ('2018-10-25', '200', '0');
+INSERT INTO `dayilyincome` VALUES ('2018-10-30', '400', '20');
+INSERT INTO `dayilyincome` VALUES ('2018-10-31', '0', '319');
+INSERT INTO `dayilyincome` VALUES ('2018-11-01', '800', '217');
+INSERT INTO `dayilyincome` VALUES ('2018-11-02', '400', '362.6');
+INSERT INTO `dayilyincome` VALUES ('2018-11-05', '0', '148.6');
+
+-- ----------------------------
+-- Table structure for `label`
+-- ----------------------------
+DROP TABLE IF EXISTS `label`;
+CREATE TABLE `label` (
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of label
+-- ----------------------------
+INSERT INTO `label` VALUES ('ABC');
+INSERT INTO `label` VALUES ('Bibliography');
+INSERT INTO `label` VALUES ('Fine Arts');
+INSERT INTO `label` VALUES ('Geography');
+INSERT INTO `label` VALUES ('Language');
+INSERT INTO `label` VALUES ('MATHS');
+INSERT INTO `label` VALUES ('Milltary');
+INSERT INTO `label` VALUES ('Music');
+INSERT INTO `label` VALUES ('Philososphy');
+INSERT INTO `label` VALUES ('SCCCC');
+INSERT INTO `label` VALUES ('scccccccc');
+INSERT INTO `label` VALUES ('World History');
 
 -- ----------------------------
 -- Table structure for `librarian`
@@ -180,21 +204,42 @@ CREATE TABLE `librarian` (
   `account` int(15) NOT NULL,
   `password` varchar(20) NOT NULL,
   `tag` int(1) NOT NULL,
+  `question` varchar(200) DEFAULT NULL,
+  `answer` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of librarian
 -- ----------------------------
-INSERT INTO `librarian` VALUES ('1', '1', '1');
-INSERT INTO `librarian` VALUES ('2', '2', '2');
-INSERT INTO `librarian` VALUES ('3', '3', '3');
-INSERT INTO `librarian` VALUES ('4', '1', '0');
-INSERT INTO `librarian` VALUES ('5', '1', '0');
-INSERT INTO `librarian` VALUES ('6', '1', '0');
-INSERT INTO `librarian` VALUES ('10', '123', '0');
-INSERT INTO `librarian` VALUES ('12', '123', '0');
-INSERT INTO `librarian` VALUES ('15', '789', '1');
+INSERT INTO `librarian` VALUES ('1', '999', '1', '12', '12');
+INSERT INTO `librarian` VALUES ('2', '2', '2', '12', '12');
+INSERT INTO `librarian` VALUES ('3', '3', '3', null, null);
+INSERT INTO `librarian` VALUES ('4', '1', '0', null, null);
+INSERT INTO `librarian` VALUES ('5', '1', '0', null, null);
+INSERT INTO `librarian` VALUES ('6', '1', '0', null, null);
+INSERT INTO `librarian` VALUES ('10', '123', '0', null, null);
+INSERT INTO `librarian` VALUES ('12', '123', '0', null, null);
+INSERT INTO `librarian` VALUES ('15', '789', '1', null, null);
+INSERT INTO `librarian` VALUES ('987', '987', '0', 'NO SECURE QUESTION', null);
+
+-- ----------------------------
+-- Table structure for `location`
+-- ----------------------------
+DROP TABLE IF EXISTS `location`;
+CREATE TABLE `location` (
+  `location` varchar(40) NOT NULL DEFAULT '',
+  PRIMARY KEY (`location`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of location
+-- ----------------------------
+INSERT INTO `location` VALUES ('floor dd');
+INSERT INTO `location` VALUES ('floor five');
+INSERT INTO `location` VALUES ('floor four');
+INSERT INTO `location` VALUES ('floor meng qi yi');
+INSERT INTO `location` VALUES ('floor sc');
 
 -- ----------------------------
 -- Table structure for `post`
@@ -208,15 +253,13 @@ CREATE TABLE `post` (
   `postImage` varchar(1000) DEFAULT NULL,
   `postTitle` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`postID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('1', '1', '2018-10-21', '<p><img src=\"/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540101947145069423.jpg\" title=\"1540101947145069423.jpg\" alt=\"IMG_20170114_170850.jpg\"/><br/><br/><br/><span style=\"font-size: 24px;\">宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/>宋昌<br/></span><span style=\"font-size: 36px;\"><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span><span style=\"font-size: 24px;\">宋昌<br/></span></span></p>', '/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540101947145069423.jpg', '8');
-INSERT INTO `post` VALUES ('2', '1', '2018-10-22', '<p><img src=\"/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540102472817025424.jpg\" title=\"1540102472817025424.jpg\" alt=\"sc.jpg.jpg\"/><br/>post</p>', '/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540102472817025424.jpg', '7');
-INSERT INTO `post` VALUES ('3', '1', '2018-10-21', '<p><img src=\"/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540103083558021236.jpg\" title=\"1540103083558021236.jpg\" alt=\"IMG_20170114_170850.jpg\"/><br/><br/><span style=\"font-size: 36px;\"><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span><span style=\"font-size: 36px;\">宋昌<br/></span></span><br/></p>', '/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540103083558021236.jpg', '6');
-INSERT INTO `post` VALUES ('8', '1', '2018-10-22', '<p>111111111111111111111<img src=\"/BiblioSoft//utf8-jsp/jsp/upload/image/20181022/1540139274558042713.png\" title=\"1540139274558042713.png\" alt=\")@YRFJ3L}9WMM}DX`R8$%~M.png\"/></p>', '/BiblioSoft//utf8-jsp/jsp/upload/image/20181021/1540103083558021236.jpg', '<p>111111111111111111111<br/></p>');
+INSERT INTO `post` VALUES ('12', '1', '2018-11-02', '<p>welcome to our library!<br/></p>', null, 'Labrary post demon!');
+INSERT INTO `post` VALUES ('13', '1', '2018-11-02', '<p>WELCOME <img src=\"/BiblioSoft//utf8-jsp/jsp/upload/image/20181102/1541123176547055253.jpg\" title=\"1541123176547055253.jpg\" alt=\"15146023143903242.jpg\"/></p>', null, 'ABC');
 
 -- ----------------------------
 -- Table structure for `reader`
@@ -237,14 +280,11 @@ CREATE TABLE `reader` (
 -- ----------------------------
 -- Records of reader
 -- ----------------------------
-INSERT INTO `reader` VALUES ('13016753873', '12345678', '119@qq.com', '13016753873', '0', '0', '200', '0');
-INSERT INTO `reader` VALUES ('182220193519', '333', '111@qq.com', '182220193519', '1', '2', '100', '0');
-INSERT INTO `reader` VALUES ('189787', '12345678', '777@qq.com', '189787', '0', '0', '200', '0');
-INSERT INTO `reader` VALUES ('2016303152', 'songchang', '252@qq.com', '2016303152', '0', '0', '200', '0');
-INSERT INTO `reader` VALUES ('321311', '12345678', '321@qq.com', '321311', '0', '0', '200', '0');
-INSERT INTO `reader` VALUES ('746446', '12345678', '77@qq.com', '746446', '0', '0', '200', '0');
-INSERT INTO `reader` VALUES ('999988', '12345678', '988@qq.com', '999988', '0', '0', '200', '0');
-INSERT INTO `reader` VALUES ('diao', '222', '985264344@qq.com', '123546', '0', '3', '200', '0');
+INSERT INTO `reader` VALUES ('13016753873', '12345678', 'scnwpu@163.com', '13016753873', '0', '0', '200', '0');
+INSERT INTO `reader` VALUES ('15006110287', '12345678', 'study@npu.com', '15006110287', '0', '0', '200', '0');
+INSERT INTO `reader` VALUES ('18220193519', '123', '985264344@qq.com', '18220193519', '0', '0', '200', '0');
+INSERT INTO `reader` VALUES ('18601378310', '12345678', 'mengqiyi@npu.com', '18601378310', '0', '0', '200', '0');
+INSERT INTO `reader` VALUES ('18710468762', '12345678', '273090615@qq.com', '18710468762', '0', '0', '200', '0');
 
 -- ----------------------------
 -- Table structure for `reservedrecord`
@@ -267,9 +307,36 @@ CREATE TABLE `reservedrecord` (
 -- ----------------------------
 -- Records of reservedrecord
 -- ----------------------------
-INSERT INTO `reservedrecord` VALUES ('1', 'DS', '2018-10-09 00:00:00', 'diao', '1', '1');
-INSERT INTO `reservedrecord` VALUES ('2', 'OS', '2018-10-05 20:59:19', 'diao', '2', '1');
-INSERT INTO `reservedrecord` VALUES ('3', 'DS', '2018-10-14 23:33:36', 'diao', '1', '0');
+
+-- ----------------------------
+-- Procedure structure for `update_borrowed_fine`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `update_borrowed_fine`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_borrowed_fine`()
+BEGIN
+UPDATE borrowedrecord set fine= fine + 1
+
+where time_to_sec(TIMEDIFF(curdate(),borrowedDate))>2592000;
+
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `update_reader_fine`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `update_reader_fine`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_reader_fine`()
+UPDATE reader set fine = (
+SELECT SUM(fine)
+FROM borrowedrecord
+WHERE reader.account = borrowedrecord.readerAccount and time_to_sec(TIMEDIFF(curdate(),borrowedDate))>2592000
+)
+;
+;;
+DELIMITER ;
 
 -- ----------------------------
 -- Procedure structure for `update_reservedrecord`
@@ -278,5 +345,33 @@ DROP PROCEDURE IF EXISTS `update_reservedrecord`;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `update_reservedrecord`()
 UPDATE reservedrecord set flag=1 where TIME_TO_SEC(TIMEDIFF(now(),time))>7200
+;
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `update_borrowed_fine`
+-- ----------------------------
+DROP EVENT IF EXISTS `update_borrowed_fine`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `update_borrowed_fine` ON SCHEDULE EVERY 1 DAY STARTS '2018-11-02 01:05:30' ON COMPLETION NOT PRESERVE ENABLE DO CALL update_borrowed_fine()
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `update_order`
+-- ----------------------------
+DROP EVENT IF EXISTS `update_order`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `update_order` ON SCHEDULE EVERY 1 MINUTE STARTS '2018-10-19 19:56:56' ON COMPLETION NOT PRESERVE ENABLE DO call update_reservedrecord()
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for `update_ReaderFine`
+-- ----------------------------
+DROP EVENT IF EXISTS `update_ReaderFine`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` EVENT `update_ReaderFine` ON SCHEDULE EVERY 1 DAY STARTS '2018-11-02 01:22:01' ON COMPLETION NOT PRESERVE ENABLE DO call update_reader_fine()
 ;;
 DELIMITER ;

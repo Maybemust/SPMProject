@@ -97,6 +97,7 @@ public class ToDayilyIncome {
 				addDayilyIncome(temp);
 			}else{
 				temp.setFine(temp.getFine() + value);
+				temp.setDate(new Date());
 				addDayilyIncome(temp);
 			}
 		}

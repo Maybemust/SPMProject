@@ -126,6 +126,7 @@ function submit2(){
 
 											<input name="searchBRID" type="text" size="12" id="date1" /> <input
 												type="submit" class="right-button02" value="search"   />
+											<a class="right-button02" target="mainFrame" href="borrowedrecordList" style="display:inline-block;text-decoration:none">clear</a>
 										</form>
 
 
@@ -149,15 +150,13 @@ function submit2(){
 											</tr>
 
 											<tr>
-												<td width="6%" align="center" bgcolor="#EEEEEE">select</td>
 												<td width="6%" align="center" bgcolor="#EEEEEE">BRID</td>
-												<td width="9%" height="20" align="center" bgcolor="#EEEEEE">barCode</td>
-												<td width="9%" align="center" bgcolor="#EEEEEE">bookName</td>
-												<td width="8%" align="center" bgcolor="#EEEEEE">readerAccount</td>
-												<td width="9%" align="center" bgcolor="#EEEEEE">borrowedDate</td>
-												<td width="10%" align="center" bgcolor="#EEEEEE">returnedDate</td>
+												<td width="9%" height="20" align="center" bgcolor="#EEEEEE">barcode</td>
+												<td width="9%" align="center" bgcolor="#EEEEEE">book name</td>
+												<td width="8%" align="center" bgcolor="#EEEEEE">reader account</td>
+												<td width="9%" align="center" bgcolor="#EEEEEE">borrowed date</td>
+												<td width="10%" align="center" bgcolor="#EEEEEE">returned date</td>
 												<td width="5%" align="center" bgcolor="#EEEEEE">fine</td>
-												<td width="10%" align="center" bgcolor="#EEEEEE">operating</td>
 											</tr>
 
 
@@ -168,8 +167,6 @@ function submit2(){
 												<c:forEach items="${borrowedRecords}" var="borrowedrecord"
 													varStatus="re">
 													<tr>
-														<td bgcolor="#FFFFFF"><input type="checkbox"
-															name="delid" /></td>
 														<td height="20" bgcolor="#FFFFFF">${borrowedrecord.bRID}</td>
 														<td bgcolor="#FFFFFF">${borrowedrecord.barCode}</td>
 														<td bgcolor="#FFFFFF">${borrowedrecord.bookName}</td>
@@ -177,7 +174,6 @@ function submit2(){
 														<td bgcolor="#FFFFFF">${borrowedrecord.borrowedDate}</td>
 														<td bgcolor="#FFFFFF">${borrowedrecord.returnedDate}</td>
 														<td height="20" bgcolor="#FFFFFF">${borrowedrecord.fine}</td>
-														<td bgcolor="#FFFFFF"> <%-- <a href="finepaymentServlet?account=${borrowedrecord.readerAccount}&bRID=${borrowedrecord.bRID}&fine=${borrowedrecord.fine}"> --%>Confirm payment&nbsp; </td>
 
 														<%-- <input type="hidden" name="barCode1" value="${book.barCode}"  /></input>
 	        <input type="hidden" name="ISBN" value="${book.ISBN}"  /></input>
@@ -233,36 +229,7 @@ function submit2(){
 
 
 
-				<table width="95%" border="0" align="center" cellpadding="0"
-					cellspacing="0">
-					<tr>
-						<td height="6"><img src="../images/spacer.gif" width="1"
-							height="1" /></td>
-					</tr>
-					<tr>
-						<td height="33"><table width="100%" border="0" align="center"
-								cellpadding="0" cellspacing="0" class="right-font08">
-								<tr>
-									<!-- <td width="50%">共<span class="right-text09">5</span> 页 | 第<span class="right-text09">1</span> 页</td> -->
-									<td width="49%" align="right">[<a href="#"
-										class="right-font08">first page</a> | <a href="#"
-										class="right-font08">previous page</a> | <a href="#"
-										class="right-font08">next page</a> | <a href="#"
-										class="right-font08">last page</a>] go to
-									</td>
-									<td width="1%"><table width="20" border="0"
-											cellspacing="0" cellpadding="0">
-											<tr>
-												<td width="1%"><input name="textfield3" type="text"
-													class="right-textfield03" size="1" /></td>
-												<td width="87%"><input name="Submit23222" type="submit"
-													class="right-button06" value=" " /></td>
-											</tr>
-										</table></td>
-								</tr>
-							</table></td>
-					</tr>
-				</table>
+				
 			</td>
 		</tr>
 	</table>

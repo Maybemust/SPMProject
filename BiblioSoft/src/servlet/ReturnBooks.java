@@ -81,11 +81,14 @@ public class ReturnBooks extends HttpServlet {
 		//request.setAttribute("returnBook", book);
 
 		
+		String borrowid=ToBorrowedRecord.getByBarCode(barcode).getReaderAccount();
+		
 		int ifFine =0;
 		if(result<0&&record.getFine()==0)
 		{
 			System.out.println("该书已超出还书日期，请缴纳滞纳金后再进行还书");
 			request.setAttribute("ifFine", 1);
+			request.setAttribute("borrowid", borrowid);
 			request.getRequestDispatcher("LibrarianReturnBook.jsp").forward(request, response);
 
 		}
@@ -94,7 +97,7 @@ public class ReturnBooks extends HttpServlet {
 			new ToBorrowedRecord().update(record);
 			Reader reader = ToReader.getByAccount(record.getReaderAccount());
 			System.out.println("--------------3	333333333333--------------------->"+record.toString());
-			ToReader.setBorrowNumplus1(reader);
+			ToReader.setBorrowNumMinus1(reader);
 			new ToBook().setStatus(barcode, 0);
 			request.getRequestDispatcher("LibrarianReturnBook2.jsp").forward(request, response);
 			return ;
@@ -102,7 +105,7 @@ public class ReturnBooks extends HttpServlet {
 //			BorrowedRecord.setReader(reader,null);
 //			BorrowedRecord.setDate(date,null);
 		}
-		request.getRequestDispatcher("returnbook.jsp").forward(request, response);
+		//request.getRequestDispatcher("returnbook.jsp").forward(request, response);
 	}
 	
 }

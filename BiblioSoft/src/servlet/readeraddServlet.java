@@ -127,7 +127,9 @@ public class readeraddServlet extends HttpServlet {
          Date now = new Date();// new Date()为获取当前系统时间
  		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
  		String today = dateFormat.format(now);
-       
+ 		
+       String barCodeList[] = new String [1];
+       barCodeList[0]=account;
         
          readeraddServlet id1 = new readeraddServlet();
        
@@ -173,9 +175,10 @@ public class readeraddServlet extends HttpServlet {
 			}
         	   
            }
-		
-     
-         response.sendRedirect("readeradd.jsp?error=no");
+           
+           request.setAttribute("barCodeList", barCodeList );
+           RequestDispatcher dispatcher = request.getRequestDispatcher("/Firstp.jsp?"); 
+           dispatcher.forward(request, response); 
         /* RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
          dispatcher.forward(request, response); */
          

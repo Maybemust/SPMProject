@@ -75,7 +75,7 @@
 						<div>
 							<h4 class="panel-title" align="center"
 								style="font-size: 20px; color: #191D30; padpadding-left: 20px">
-								Submmit successfully!</h4>
+								Submit successfully!</h4>
 						</div>
 						<row> <a href="./LibrarianRecieveFine1.jsp"
 							style="color: #EFA445; float: right; font-size: 24; padding-right: 2%">return</a>

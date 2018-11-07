@@ -25,6 +25,10 @@ function check()
 document.getElementById("aa").style.display="";
 }
 
+
+	
+	
+}
 </script>
 <style type="text/css">
 <!--
@@ -77,96 +81,22 @@ document.getElementById("aa").style.display="";
 													oninvalid="setCustomValidity('The input cannot be empty');"
 													oninput="setCustomValidity('');" /> <span class="red">*</span></td>
 
+                                                 <td align="right">number:</td>
 
-
+										<td width="35%"><input type="text" name="number"
+													maxlength="2" style="width: 154px"
+													onkeyup="this.value=this.value.replace(/\D/g,'')"
+													onafterpaste="this.value=this.value.replace(/\D/g,'')"
+													onBlur="this.value=parseInt(this.value);if (isNaN(this.value) || this.value<=0){alert('input moren than 0');this.focus();};"
+													
+													
+													value="" required
+													oninvalid="setCustomValidity('The input cannot be empty');"
+													oninput="setCustomValidity('');" /> <span class="red">*</span></td>
+											
 											</tr>
 
-											<!-- <tr>
-						  
-					     <td nowrap align="right" width="15%">publishing:</td>
-						  
-					    <td width="35%"><input type="text" name="publishing" maxlength="35" style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"/></td> 
-						  
-					    <td width="16%" align="right" nowrap="nowrap">location:</td>
-						  
-					    <td width="34%"><input name="location"  type="text" maxlength="35" style="width:154px"  required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" /></td>
-					    
-						  
-					  </tr>
-					  
-					  
-					  <tr>
-						  
-					     <td nowrap align="right" width="15%">location:</td>
-						  
-					    <td width="35%"><input name="location"  type="text" maxlength="35" style="width:154px" /> 
-						  
-					    <td width="16%" align="right" nowrap="nowrap">Date:</td>
-						  
-					    <td width="34%"><input type="date" name="date" style="width:154px"></td>
-					    
-						  
-					  </tr>
-					  
-		  			  <tr>
-					  <tr>
-						
-					    <td align="right">tag1</td>
-						  
-					    <td><select name="tag1" >
-                            <option selected="selected1">==none==</option>
-                            <option>Music</option>
-                            <option>Milltary</option>
-                            <option>Bibliography</option>
-                            <option>World History</option>
-                            <option>Fine Arts</option>
-                            <option>Philososphy</option>
-                            <option>Technology</option>
-                            <option>Language</option>
-                            <option>Geography</option>
-                        </select></td>
-                        <td align="right">tag2</td>
-						  
-					    <td><select name="tag2" >
-                            <option selected="selected2">==none==</option>
-                          <option>Music</option>
-                            <option>Milltary</option>
-                            <option>Bibliography</option>
-                            <option>World History</option>
-                            <option>Fine Arts</option>
-                            <option>Philososphy</option>
-                            <option>Technology</option>
-                            <option>Language</option>
-                            <option>Geography</option>
-                        </select></td>
-					  </tr>
-					  
-					  <tr>
-					    <td align="right">cover:</td>
-					    <td><input  type="button"  name="cover" style="width:154px" value="upload"/></td>
-                         
-                          
-					    <td width="16%" align="right" nowrap="nowrap">bookName:</td>
-						  
-					    <td width="34%"><input type="text" name="bookName" maxlength="15" style="width:154px" required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');"></td> 
-					  </tr>
-					  
-					  <tr>
-					  <td align="right">number:</td>
-					  
-					  <td><input type="button" class="opt" value="-"/>
-                         <input type="text"    name="number"    id="res" value="1" readonly="readonly"/>
-                      <input type="button" class="opt" value="+"/></td>
-					  </tr>
-					  
-					  
-					  
-					  
-		
-					  <tr>
-					    <td align="right">introduction:</td>
-					    <td colspan="3"><textarea name="introduction" cols="100" rows="8"></textarea></td>
-					    </tr> -->
+							
 										</table>
 										<br />
 									</fieldset>
@@ -181,7 +111,7 @@ document.getElementById("aa").style.display="";
 					<TD colspan="2" align="center" height="50px"><input
 						type="submit" value="save" class="button" /> <input
 						type="button" value="back" class="button"
-						onclick="window.location.href='bookList'" /></TD>
+						onclick="window.location.href='bookaddselect.jsp'" /></TD>
 
 				</TR>
 			</TABLE>

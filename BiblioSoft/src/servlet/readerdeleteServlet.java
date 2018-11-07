@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,9 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import updateTo.ToBorrowedRecord;
 import updateTo.ToReader;
 import utils.DBhelper;
+import entity.BorrowedRecord;
 import entity.Reader;
 /**
  * Servlet implementation class RegisterServlet
@@ -42,33 +45,6 @@ public class readerdeleteServlet extends HttpServlet {
 	 */
     
     
-	/*public boolean candelete(String account ) {
-		boolean returnValue = true;
-		String sql = "SELECT * FROM reader";
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBhelper.getInstance().getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while (rs.next()) {
-				String userNameInDB = rs.getString("account");
-
-				if (userNameInDB.equals(account) ) {
-					returnValue = false;
-					break;
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		return returnValue;
-	}*/
-	
-    
-    
     
     
     
@@ -82,15 +58,27 @@ public class readerdeleteServlet extends HttpServlet {
 		System.out.println(request.getParameter("account1"));
         String account=request.getParameter("account1"); 
         Reader reader=ToReader.getByAccount(account);
+        
+        List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+        records=ToBorrowedRecord.getByReaderAccount(account);
+        for(int i1=0; i1<records.size();i1++)
+        {
+        	if(records.get(i1).getReturnedDate().before(java.sql.Date.valueOf("1949-10-02")));
+        	response.sendRedirect("readerList?borrownumber=no");
+        	return;
+        	
+        }
+        
+        
+        
         if(reader.getFine()>0)
         	response.sendRedirect("readerList?fine=no");
         else{
         if(reader.getBorrowedNum()>0)
         	response.sendRedirect("readerList?borrownum=no");
         
-        
-        
-        
+      
+  
         
         else{
         ToReader.deleteByAccount(account);

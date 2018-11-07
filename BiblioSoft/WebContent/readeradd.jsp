@@ -93,27 +93,6 @@ document.getElementById("aa").style.display="";
 											</tr>
 
 
-
-											<tr>
-												<td align="right">tag:</td>
-												<td><select name="tag">
-														<option selected="selected">==select==</option>
-														<option>0</option>
-														<option>1</option>
-														<option>2</option>
-												</select></td>
-
-
-
-											</tr>
-
-
-
-											<tr>
-												<td align="right">remark:</td>
-												<td colspan="3"><textarea name="textarea" cols="100"
-														rows="8"></textarea></td>
-											</tr>
 										</table>
 										<br />
 									</fieldset>

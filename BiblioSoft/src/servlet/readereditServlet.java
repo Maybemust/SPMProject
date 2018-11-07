@@ -104,9 +104,9 @@ public class readereditServlet extends HttpServlet {
          String email=request.getParameter("email");
          long phone= Long.parseLong(request.getParameter("phone"));
          
-         Double fine =Double.parseDouble(request.getParameter("fine"));
-         int borrowedNum=Integer.parseInt(request.getParameter("borrowedNum"));
-         int tag=Integer.parseInt(request.getParameter("tag"));
+        // Double fine =Double.parseDouble(request.getParameter("fine"));
+        // int borrowedNum=Integer.parseInt(request.getParameter("borrowedNum"));
+       //  int tag=Integer.parseInt(request.getParameter("tag"));
          double cashPledge=Double.parseDouble(request.getParameter("cashPledge"));
       
 
@@ -130,9 +130,9 @@ public class readereditServlet extends HttpServlet {
          reader.setEmail(email);
          reader.setPhone(phone);
          reader.setCashPledge(cashPledge);
-         reader.setBorrowedNum(borrowedNum);
-         reader.setFine(fine);
-         reader.setTag(tag);
+       //  reader.setBorrowedNum(borrowedNum);
+        // reader.setFine(fine);
+        // reader.setTag(tag);
          if(!password.equals(password2))
          {
         	 

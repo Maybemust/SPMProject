@@ -13,8 +13,10 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/ajax.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="css/jquery.fs.tipper.css"/> -->
+<!-- <script src="js/jquery.fs.tipper.js"></script> -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/jquery.min.js"></script>
+ 
 
 <style>
 body {
@@ -27,6 +29,19 @@ body {
 	background-color: #fff;
 }
 
+.tipped { 
+		display: block; 
+		width: 40px;
+	}
+	
+	.tipped :hover{
+		box-shadow: 0 0 4px 1px rgba(255,255,255,0.4) inset;
+	}
+	
+ 	.myimg{ 
+ 		max-height: 40px; 
+ 		max-width: auto; 
+ 	} 
 .wrap {
 	min-width: 100%;
 	position: absolute;
@@ -100,7 +115,9 @@ body {
 }
 </style>
 <title>管理员页面首页</title>
+
 </head>
+
 <body>
 	<div class="wrap">
 		<!-- 左边导航栏-->
@@ -123,7 +140,7 @@ body {
 					id="div3">add librarian</div>
 				<div class="menu-item" href="#three" data-toggle="tab"
 					onmouseover="mouseover('div4');" onmouseout="mouseout('div4')"
-					onClick="location.reload();" id="div4">search, modify and
+					onClick="location.reload();" id="div4">search, view and
 					delete librarian</div>
 			</div>
 
@@ -150,7 +167,8 @@ body {
 
 
 		</div>
-		<a href="LogOutServlet" style="float: right">back to log page</a>
+		<a href="LogOutServlet" style="position: relative;left:200px;top:15px;" class="tipped" ><img src="images/quit_img.png" class="myimg"/></a>
+		
 		<!-- 添加导航栏所链接的内容-->
 		<div id="right" class="tab-content right">
 
@@ -195,7 +213,7 @@ body {
 					<table border="1">
 						<tr>
 							<td style="width: 300px;">account</td>
-							<td style="width: 100px;">modify</td>
+							<td style="width: 100px;">view</td>
 							<td style="width: 100px;">delete</td>
 						</tr>
 						<c:forEach items="${librarians}" var="librarian" varStatus="st">
@@ -205,8 +223,8 @@ body {
 									<form action="admin2" method="post">
 										<input type="hidden" value="${librarian.account}"
 											name="account"> <input type="hidden"
-											value="${librarian.password}" name="password"> <input
-											type="submit" value="modify">
+											value="${librarian.question}" name="question"> <input
+											type="submit" value="view">
 									</form>
 								</td>
 								<td>
@@ -428,6 +446,7 @@ body {
 		color.style.color = "#aab1b7";
 		//}
 	}
+
 
 </script>
 </html>

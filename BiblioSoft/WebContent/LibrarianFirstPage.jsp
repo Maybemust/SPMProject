@@ -36,7 +36,7 @@
 		  <br>
 		  <img src="./imgs/libraianProfile1.JPG"  height="100px" style ="float: inherit">
 	  <hr>
-		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>${PERSON.getAccount()}</a></h3>
+		      <h3 class="panel-title" align="center" style = "font-size: 20px;color:#191D30"><a>account:${PERSON.getAccount()}</a></h3>
 
 	  
 	  <br>
@@ -61,12 +61,12 @@
                     
                     
                     
-					<div class="menu-item" href="#test" data-toggle="tab">
-                         －Modify Book
-                    </div>
                     
                     
-                    
+	<hr>
+					<div class="menu-title"><a href="Labeledit" target="mainFrame" style = "color:#F0F8FF" >Label Management</a></div>
+	<hr>
+	                <div class="menu-title"><a href="Locationedit" target="mainFrame" style = "color:#F0F8FF" >Location Management</a></div>
 	<hr>
                     <div class="menu-title"><a href="readerList" target="mainFrame" style = "color:#F0F8FF" >Reader Management</a></div>
                     
@@ -84,7 +84,7 @@
                     
                     
 	                    <div class="menu-item" href="#four" >
-      <a href="LibrarianRecieveFine1.jsp" target="mainFrame" style = "color:#F0F8FF"> －Reader Pay Fine</a>
+      
                     </div>
                     
                 </div>
@@ -100,9 +100,11 @@
 				<hr>
 				
 				                    <div class="menu-title">                      <a href="postList" target="mainFrame" style = "color:#F0F8FF"> －Post Management</a>
+				                    
+				                    
 </div>
-				<br>
-
+			<hr>
+   <div class="menu-title"><a href="modifypassword1" target="mainFrame" style = "color:#F0F8FF" > － Modify Password</a></div>
 				<br>
 
 </div>
@@ -110,9 +112,8 @@
 		  
     <div class="text-center col-md-10" style= "background-color: aliceblue">
 		<nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: #002A5A;height: 10%">
-       <a class="navbar-brand" href="#">BiblioSoft</a>
 		     <ul class="nav navba+-*r-nav">
-		  <img src="./images/logo.png" style="padding-top:2px;padding-left: 5px; height:50px">
+		  <img src="./images/logo1.png" style="padding-top:2px;padding-left: 5px; height:50px">
         <span class="sr-only">(current)</span>
       </ul>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,9 +121,7 @@
        </button>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ">
-             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-             </li>
+             
             
 
 
@@ -130,9 +129,9 @@
 		   <ul class="navbar-nav mr-auto">
 			  <form class="form-inline my-2 my-lg-0" action="booksearch" method="post"  style = "float :left;">
 			  
-             <input class="form-control mr-sm-2" name="searchbarCode" type="search" placeholder="Grimms Fairytales" aria-label="Search">
+             <input class="form-control mr-sm-2" name="searchbarCode" style="position:relative;top:10px" type="search" placeholder="Grimms Fairytales" aria-label="Search">
              
-             <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+             <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="position:relative;top:12px">Search for book</button>
              
           </form>
           
@@ -146,9 +145,8 @@
 		    <ul class="nav navbar-nav navbar-right">
 		    
 		    <li><a class="nav-link" target="mainFrame"  href="income.jsp">Income</a></li>
-				<li><a class="nav-link" href="fin.jsp">Back </a></li>
+				<li><a class="nav-link" target="mainFrame" href="LibrarianFirstPage">Home </a></li>
 				
-				<li> <a class="nav-link" href="admin1">Admin </a></li>
  
  
 		<li><a href="logout" style="color:#C8C8C8" >Log out</a></li>

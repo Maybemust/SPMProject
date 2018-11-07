@@ -110,11 +110,12 @@ function unselectAll(){
                     </tr>
 					
                     <tr>				   
-					 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">barCode</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">bRID</td>
-					<td width="12" align="center" bgcolor="#EEEEEE">readerAccount</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">borrowedDate</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">returnedDate</td>
+					 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">barcode</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">borrow record ID</td>
+					<td width="12" align="center" bgcolor="#EEEEEE">reader account</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">borrowed date</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">returned date</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">operation</td>
 					
                   </tr>
                   
@@ -130,26 +131,13 @@ function unselectAll(){
             <td bgcolor="#FFFFFF">${record.readerAccount}</td>
             <td bgcolor="#FFFFFF">${record.borrowedDate}</td>
             <td bgcolor="#FFFFFF">${record.returnedDate}</td>
+            <td bgcolor="#FFFFFF"><a href="lostfine?barCode=${record.barCode}&bRID=${record.bRID}&readerAccount=${record.readerAccount}&type=1" >lost fine</a>&nbsp;
+															|&nbsp;<a href="lostfine?barCode=${record.barCode}&bRID=${record.bRID}&readerAccount=${record.readerAccount}&type=0" >damage fine</a>   </td>
             		 		   			
 		    </tr>
 	        </c:forEach>
 					
-		<%-- 	 <tr>
-		  	    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF">${book1.barCode}</td>
-            <td bgcolor="#FFFFFF">${book1.ISBN}</td>
-            <td bgcolor="#FFFFFF">${book1.author}</td>
-            <td bgcolor="#FFFFFF">${book1.publishing}</td>
-            <td bgcolor="#FFFFFF">${book.bookName}</td>
-            <td bgcolor="#FFFFFF">${book1.location}</td>
-		    <td height="20" bgcolor="#FFFFFF">${book1.status}</td>
-		    <td height="20" bgcolor="#FFFFFF">${book.price}</td>
-		    <td height="20" bgcolor="#FFFFFF">${book1.tag1}</td>
-			<td height="20" bgcolor="#FFFFFF">${book1.tag2}</td>
-			<td height="20" bgcolor="#FFFFFF">${book1.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF"><a href="bookedit.jsp?barCode1=${book1.barCode}&ISBN=${book1.ISBN}&author=${book1.author}&publishing=${book1.publishing}&bookName=${book1.bookName}&location=${book1.location}&status=${book1.status}&price=${book1.price}&dateOfStorage=${book1.dateOfStorage}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book1.barCode}" >delete</a>&nbsp;</td>
-	
-		    </tr> --%>			
+			
 						
 		</form>
 					
@@ -166,26 +154,7 @@ function unselectAll(){
 	
 	
 	
-      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
-        </tr>
-        <tr>
-          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
-              <tr>
-                <!-- <td width="50%">共<span class="right-text09">5</span> 页 | 第<span class="right-text09">1</span> 页</td> -->
-                <td width="49%" align="right">[<a href="#" class="right-font08">first page</a> | <a href="#" class="right-font08">previous page</a> | <a href="#" class="right-font08">next page</a> | <a href="#" class="right-font08">last page</a>] go to</td>
-                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
-                      </td>
-                    </tr>
-                </table></td>
-              </tr>
-          </table></td>
-        </tr>
-      </table>          </td>
+              </td>
   </tr>
 </table>
  <script> 

@@ -66,8 +66,7 @@
 					    
 </form>
 
-					       					    <button  class=" btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" 
-					    style = "float:left"onclick="setContent()">Click here to see what you wrote last time </button> 
+					       					    
 		<script>
 		function EditNews3(){
 			document.getElementById("editor").submit();

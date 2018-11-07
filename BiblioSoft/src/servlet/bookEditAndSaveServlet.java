@@ -79,8 +79,14 @@ public class bookEditAndSaveServlet extends HttpServlet {
         String tag1=request.getParameter("saveTag1");
         String tag2=request.getParameter("saveTag2");
         String imagePath=request.getParameter("saveCover");
-        System.out.print("picture-------------------->"+imagePath);
-        double price=0;
+        int number = Integer.parseInt(request.getParameter("saveNumber"));
+        String [] barCodeList = new String [number];
+        
+        System.out.println("picture-------------------->"+imagePath);
+    
+        
+        
+ double price=0;
         
         
         StringTokenizer st = new StringTokenizer(request.getParameter("savePrice"),"Ԫ");
@@ -89,14 +95,6 @@ public class bookEditAndSaveServlet extends HttpServlet {
         
     
 	     
-	     
-	     
-      
-	
-        
-		
-  
-      
 		
          Book book=new Book();
          book.setBarCode(barCode);
@@ -110,9 +108,45 @@ public class bookEditAndSaveServlet extends HttpServlet {
          book.setTag2(tag2);
          book.setPrice(price);
          book.setCover(imagePath);
-         
+        
+ 		if(number>0)
+ 		{	
+ 			
+ 	for(int cont=0; cont<number; cont++)
+       { String num2,num3,barCode1;
+ 		
+ 		int num1=0;
+ 		num3=String.valueOf(num1);
+ 		for(num1=1;;num1++)
+ 		{
+ 			num3=String.valueOf(num1);
+ 			if(num1<10)
+ 			{
+ 				num2=ISBN+"-0"+num3;
+ 				
+ 			}
+ 			else
+ 			{
+ 				num2=ISBN+"-"+num3;
+ 			}
+ 			Book book1=ToBook.getByBarCode(num2);
+ 			
+ 			
+ 			if(book1.getISBN()==null)
+ 				break;	
+ 		}
+ 		barCode1=num2;	
+ 		barCodeList[cont]=barCode1;
+ 		 book.setBarCode(barCode1);
          ToBook.add(book);
-         request.setAttribute("barCode1", barCode );
+   }
+ 		}
+        
+        
+      
+         
+       
+         request.setAttribute("barCodeList", barCodeList );
          RequestDispatcher dispatcher = request.getRequestDispatcher("/Firstp.jsp?"); 
          dispatcher.forward(request, response); 
        

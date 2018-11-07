@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -53,6 +54,12 @@ public class ShowBookBorrowedRecord extends HttpServlet {
 		request.setAttribute("last", last);
 		
 		List<BorrowedRecord> records = ToBorrowedRecord.listByBarCode(start, count,barCode);
+		
+		
+		
+	
+		
+	        
 		request.setAttribute("records", records);
         
 		request.getRequestDispatcher("bookborrowedrecord.jsp").forward(request, response);

@@ -130,6 +130,9 @@ public class bookaddServlet extends HttpServlet {
 		private String tag2;
 		private double price;*/
 		
+		
+		
+		
 		java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
 		String ISBN=request.getParameter("ISBN"); 
 		String bookName=request.getParameter("bookName");  
@@ -138,6 +141,45 @@ public class bookaddServlet extends HttpServlet {
         String location=request.getParameter("location"); 
         String tag1=request.getParameter("tag1");
         String tag2=request.getParameter("tag2");
+        String cover = request.getParameter("fj");
+       String cover1=".\\imgs\\";
+       
+       String cover2 = bookaddServlet.class.getResource("").toString();
+       for(int i = 0; i < 9; i++){
+    	   cover2 += "../";
+       }
+       cover2= cover2+"SPMProject/BiblioSoft/WebContent/imgs/";
+       cover2=cover2.substring(6);
+       System.out.println(cover2);
+        
+        try {
+
+            File afile = new File(cover);
+           System.out.println(afile.getName()); 
+           
+           
+          
+            if (afile.renameTo(new File(cover2 + afile.getName()))) {
+             cover1=cover1+ afile.getName();
+            	System.out.println("File is moved successful!");
+            } else {
+                System.out.println("File is failed to move!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+     
+        System.out.println(cover);
+       
         double price=Double.parseDouble(request.getParameter("price"));
 		int number=Integer.parseInt(request.getParameter("number"));
 		
@@ -154,6 +196,7 @@ public class bookaddServlet extends HttpServlet {
          book.setTag1(tag1);
          book.setTag2(tag2);
          book.setPrice(price);
+         book.setCover(cover1);
       
        
 
@@ -187,13 +230,12 @@ public class bookaddServlet extends HttpServlet {
  		barCodeList[cont]=barCode;
  		 book.setBarCode(barCode);
          ToBook.add(book);
-
-         
-         
+     
 
     
 }
- 	String barCode1=barCodeList[0];
+ 	
+ 	
  	BarcodeServlet b=new BarcodeServlet();
  	String format = b.determineFormat(request);
     int orientation = 0;
@@ -238,11 +280,13 @@ public class bookaddServlet extends HttpServlet {
          */
         response.setContentType(format);
         response.setContentLength(bout.size());
-        response.getOutputStream().write(bout.toByteArray());
-        response.getOutputStream().flush();
+       // response.getOutputStream().write(bout.toByteArray());
+       // response.getOutputStream().flush();
  		
  	}
- 	request.setAttribute("barCode1", barCode1 );
+ 	request.setAttribute("barCodeList", barCodeList );
+ 
+ 	
     RequestDispatcher dispatcher = request.getRequestDispatcher("/Firstp.jsp?"); 
     dispatcher.forward(request, response); 
 		}		

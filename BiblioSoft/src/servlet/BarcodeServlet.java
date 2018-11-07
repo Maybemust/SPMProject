@@ -152,6 +152,7 @@ public class BarcodeServlet extends HttpServlet {
              * 
              */
             try{
+            	File out = new File("D://BarcodeStore//"+msg+".png");//by reader 用于创建barcode的文件 防止不存在无法读取报错
             	String path="D://BarcodeStore//"+msg+".png";
                 FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));//打开输入流
                 imageOutput.write(bout.toByteArray(), 0, bout.toByteArray().length);//将byte写入硬盘

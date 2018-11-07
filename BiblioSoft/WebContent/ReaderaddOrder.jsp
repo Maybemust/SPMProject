@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.text.*" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -100,9 +101,9 @@
         #searchcontainer{
         	float:left;
         	width: 300px;
-        	margin-top: 100px;
+        	margin-top: 30px;
         	margin-left:400px;
-        	height: 150px;
+        	height: 100px;
         }
         #addorderinput{
         	float:left;
@@ -113,10 +114,12 @@
         }
         #searchBook{
           	float: left;
-          	width: 300px;
+          	width: 229px;
+          	height: 35px;
         }
         #searchbutton{
         	float: right;
+        	height: 35px;	
         }
     </style>
 
@@ -153,14 +156,12 @@
         	   location.reload();
            }
        </script>
+       <div style="height:30px"></div>
        
        <div id="all">
-			<div id="addorderinput">
-				<p>barCode</p><input class="form-control" id="barCode_order" placeholder="please input barCode" style="width:300px;"></input>
-                <p>bookName</p><input class="form-control" id="bookName_order" placeholder="please input bookName" style="width:300px;"><br/>
-                <button id="saveorder" class="btn btn-primary btn_search" onclick="saveorder()">save</button>
-                <button id="cleanorder" class="btn btn-primary btn-info" onclick="cleanorder()">clean</button>
-			</div>
+       <div>
+            <font style="margin-left:300px;color: gray;" size="6">Welcome to the page of Search !</font>
+       </div>
 			<form method="POST" action="searchBook">
            		<div id="searchcontainer">
 					<div id="searchiuput">
@@ -171,18 +172,20 @@
 			</form>
 			<br/>
 			<div  style="text-align:center;postion:relative;">
+			<c:choose>
+			<c:when test="${fn:length(bookList)!=0 }">		
 				<table id="ordertab" border="1" width=100% cellpadding="5" style="margin-left:5px;margin-right:30px;width:1000px;margin-left:50px;">
 					<thead>
 						<tr>
 						<th style="text-align:center;"><font size="4">No</font></th>
-				  		<th style="text-align:center;"><font size="4">BookName</font></th>
+				  		<th style="text-align:center;"><font size="4">Book Name</font></th>
 				  		<th style="text-align:center;"><font size="4">ISBN</font></th>
 				  		<th style="text-align:center;"><font size="4">Author</font></th>
 				  		<th style="text-align:center;"><font size="4">Publishing</font></th>
 				  		<th style="text-align:center;"><font size="4">Location</font></th>
 				  		<th style="text-align:center;"><font size="4">Introduction</font></th>
 				  		<th style="text-align:center;"><font size="4">Status</font></th>
-				  		<th style="text-align:center;"><font size="4">DateOfStorage</font></th>
+				  		<th style="text-align:center;"><font size="4">Date Of Storage</font></th>
 				  		<th style="text-align:center;"><font size="4">Operation</font></th>
 						</tr>
 					</thead>
@@ -197,10 +200,14 @@
 						<td><font size="4">${bookList.introduction}</font></td>	
 						<td><font size="4">${bookList.status}</font></td>	
 						<td><font size="4">${bookList.dateOfStorage}</font></td>
-						<td><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}" onclick="top.location.replace('http://localhost:8080/BiblioSoft/getreader')">Add</a></td>
+						<td><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}" onclick="top.location.replace('http://localhost:8080/BiblioSoft/getreader')">Reserve</a></td>
 						</tr>
 					</c:forEach>
 				</table>
+			</c:when>
+			<c:otherwise>	
+			</c:otherwise>
+			</c:choose>
 			</div>
         </div>
 	</body>

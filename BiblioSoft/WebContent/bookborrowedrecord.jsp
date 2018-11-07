@@ -111,11 +111,11 @@ function unselectAll(){
                     </tr>
 					
                   <tr>				   
-					 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">barCode</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">bRID</td>
-					<td width="20" align="center" bgcolor="#EEEEEE">readerAccount</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">borrowedDate</td>
-					<td width="12%" align="center" bgcolor="#EEEEEE">returnedDate</td>
+					 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">barcode</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">borrowed record ID</td>
+					<td width="20" align="center" bgcolor="#EEEEEE">reader account</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">borrowed date</td>
+					<td width="12%" align="center" bgcolor="#EEEEEE">returned date</td>
 					
                   
                <form name="fom" id="fom" method="post">   

@@ -40,7 +40,7 @@ import updateTo.ToBook;
 				String account="";
 				String barcode="";
 				try{
-					account = request.getParameter("useraccount");
+					account = request.getParameter("borrowid");
 				}catch(NumberFormatException e){
 					
 				}

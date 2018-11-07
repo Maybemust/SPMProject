@@ -22,6 +22,7 @@ public class changePassword extends HttpServlet{
 		String newPassword = "";
 		String pdagain="";
 		int status=0;
+		String sta ="";
 		try{
 			oldPassword = request.getParameter("OldPassword");
 			newPassword = request.getParameter("NewPassword");
@@ -33,14 +34,16 @@ public class changePassword extends HttpServlet{
             	  reader.setPassword(newPassword);
             	  ToReader.update(reader);
             	  System.out.println("modify successfully!");
+            	  sta="Modify successfully!";
             	  status=1;
               }
               else{
             	  System.out.println("old password is error!");
+            	  sta="Old password is error!";
             	  status=-1;
               }
           }
-          request.setAttribute("status", status);
+          request.setAttribute("status", sta);
           String account=reader.getAccount();     
           int start=0;
           int count=0;
@@ -98,8 +101,29 @@ public class changePassword extends HttpServlet{
       	  request.setAttribute("nowrecord", nowrecord);
       	  request.setAttribute("borrowedRecord", borrowedRecord);
       	  request.setAttribute("date", date);
+      	  
+  		List<java.sql.Date>   houborrow=new ArrayList<java.sql.Date>();
+  		i=0;
+  		size=nowrecord.size();
+  		while(i < size){
+  			houborrow.add(nowrecord.get(i).getBorrowedDate());;
+  			i++;
+  		}
+  		int ih2=0;
+  		while(ih2 < houborrow.size()) {
+  			java.sql.Date datehh2=houborrow.get(ih2);
+  			Calendar c2 = Calendar.getInstance();
+  			c2.setTime(datehh2);
+  			c2.add(Calendar.DATE, 2);
+  			java.util.Date hhDate2 = (java.util.Date)c2.getTime();
+  			//java.util.Date日期转换成转成java.sql.Date格式
+  			java.sql.Date newDate =new java.sql.Date(hhDate2.getTime());
+  			houborrow.set(ih2, newDate);
+  			ih2++;
+  		}
+  		request.setAttribute("houborrow", houborrow);
       	
-      	//hou
+      	
 			List<ReservedRecord> houorders =ToReservedRecord.listByAccountFlag(start, count, account);
 			int ih=0;
 			while(ih < myorders.size()) {
@@ -111,9 +135,11 @@ public class changePassword extends HttpServlet{
 				houorders.get(ih).setTime(hhDate);
 				ih++;
 			}
-			request.setAttribute("houorders", houorders);
-			//hou
-      	  request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
+		request.setAttribute("houorders", houorders);
+		List<String> barCodeList=new ArrayList<String>(1);
+		barCodeList.add(account);
+		request.setAttribute("barCodeList", barCodeList);
+      	request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
 	}
 }
 

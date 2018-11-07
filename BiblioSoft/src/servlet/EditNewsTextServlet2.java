@@ -82,7 +82,7 @@ import entity.Post;
 //						// 当浏览器没有传参数start时
 //					}
 					
-					request.getRequestDispatcher("postFirst.jsp?start=0").forward(request, response);
+					request.getRequestDispatcher("LibrarianFirstPage").forward(request, response);
 
 					return;
 //			if(reader.getEmail()==null){

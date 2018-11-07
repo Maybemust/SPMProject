@@ -88,34 +88,47 @@ public class bookaddServlet2 extends HttpServlet {
 		
 		String ISBN=request.getParameter("ISBN"); 
 		
+		int number = Integer.parseInt(request.getParameter("number"));
+		
+		String [] barCodeList = new String [number];
+		String barCode1="";
+		
+ 		if(number>0)
+ 		{	
+ 			
+ 	for(int cont=0; cont<number; cont++)
+       { String num2,num3,barCode;
+ 		
+ 		int num1=0;
+ 		num3=String.valueOf(num1);
+ 		for(num1=1;;num1++)
+ 		{
+ 			num3=String.valueOf(num1);
+ 			if(num1<10)
+ 			{
+ 				num2=ISBN+"-0"+num3;
+ 				
+ 			}
+ 			else
+ 			{
+ 				num2=ISBN+"-"+num3;
+ 			}
+ 			Book book1=ToBook.getByBarCode(num2);
+ 			
+ 			
+ 			if(book1.getISBN()==null)
+ 				break;	
+ 		}
+ 		barCode=num2;	
+ 		barCodeList[cont]=barCode;
+ 		/* book.setBarCode(barCode);
+         ToBook.add(book);*/
+   }
+ 		}	
 		
 		
- String num2,num3,barCode;
 		
-		int num1=0;
-		num3=String.valueOf(num1);
-		for(num1=1;;num1++)
-		{
-			num3=String.valueOf(num1);
-			if(num1<10)
-			{
-				num2=ISBN+"-0"+num3;
-				
-			}
-			else
-			{
-				num2=ISBN+"-"+num3;
-			}
-			Book book=ToBook.getByBarCode(num2);
-			
-			
-			if(book.getISBN()==null)
-				break;
-			
-		}
-			
-
-		barCode=num2;	
+		barCode1=barCodeList[0];	
 		
 		String url="http://api.douban.com/book/subject/isbn/";
 		  url=url+ISBN;
@@ -175,7 +188,7 @@ public class bookaddServlet2 extends HttpServlet {
          book.setPrice(price);
          */
   
-         request.setAttribute("barCode", barCode);
+         request.setAttribute("barCode", barCode1);
          request.setAttribute("ISBN", ISBN );
          request.setAttribute("author", author );
          request.setAttribute("publishing", publishing );
@@ -186,7 +199,9 @@ public class bookaddServlet2 extends HttpServlet {
          request.setAttribute("date", date );
          request.setAttribute("price", price1 );
          request.setAttribute("imagePath", imagePath );
+         request.setAttribute("number", number );
          System.out.println(imagePath);
+         
          RequestDispatcher dispatcher = request.getRequestDispatcher("/bookDetailPage.jsp?"); 
          dispatcher.forward(request, response); 
          

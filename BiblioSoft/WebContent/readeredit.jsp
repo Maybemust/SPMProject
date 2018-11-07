@@ -103,21 +103,21 @@
 												<td align="right">phone:</td>
 												<td><input class="text" name="phone" maxlength="11"
 													style="width: 154px" value="<%=phone %>"
-													readonly="readonly" /></td>
-												<%-- onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  value="<%=phone %>"   required oninvalid="setCustomValidity('The input cannot be empty');" oninput="setCustomValidity('');" --%>
+													onkeyup="this.value=this.value.replace(/\D/g,'')"
+													onafterpaste="this.value=this.value.replace(/\D/g,'')"
+												
+													
+													
+													 /></td>
+												
 											</tr>
 
 
 
 											<tr>
-												<td align="right">tag:</td>
-												<td><select name="tag">
-														<option selected="selected">0</option>
-														<option>1</option>
-														<option>2</option>
-												</select></td>
+												
 
-												<td align="right">cashPledge:</td>
+												<td align="right">cash pledge:</td>
 												<td><input type="number" name="cashPledge"
 													style="width: 154px" value="<%=cashPledge %>" step="0.1"
 													required
@@ -128,30 +128,10 @@
 
 											</tr>
 
-											<tr>
-												<td align="right">fine:</td>
-												<td><input class="text" type="number" name="fine"
-													style="width: 154px" value="<%=fine %>" step="0.1" required
-													oninvalid="setCustomValidity('please input correctlly');"
-													oninput="setCustomValidity('');"
-													onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}" /></td>
-												<td align="right">borrowedNum:</td>
-												<td><input class="text" type="number"
-													name="borrowedNum" maxlength="11"
-													onkeyup="this.value=this.value.replace(/\D/g,'')"
-													onafterpaste="this.value=this.value.replace(/\D/g,'')"
-													style="width: 154px" value="<%=borrowedNum %>" required
-													oninvalid="setCustomValidity('The input cannot be empty');"
-													oninput="setCustomValidity('');" /></td>
-											</tr>
+										
 
 
 
-											<tr>
-												<td align="right">remark:</td>
-												<td colspan="3"><textarea name="textarea" cols="100"
-														rows="8"></textarea></td>
-											</tr>
 										</table>
 										<br />
 									</fieldset>

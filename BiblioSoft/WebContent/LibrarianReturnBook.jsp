@@ -72,6 +72,7 @@
 			document.getElementById("ReturnBookss").submit();
 		}
 	</script>
+	
 						<div>
 							<row>
 							<form method="post" action="ReturnBooks" id="ReturnBookss">
@@ -131,6 +132,8 @@
 							 <c:if test="${ifFine == 1}">
 								<div class="modal-body">
 									<h4 style="color: #002A5A">Please pay for the fine first!</h4>
+									<button type="button" class=" btn btn-success btn-lg"
+									onclick="window.location.href='RecieveFines?borrowid=${borrowid}'" >Reader Pay Fine</button>
 
 								</div>
 							</c:if> 

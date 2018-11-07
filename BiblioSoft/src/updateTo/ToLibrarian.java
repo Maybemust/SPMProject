@@ -65,12 +65,14 @@ public class ToLibrarian {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "insert into librarian(account,password,tag) values(?,?,?)";
+			String sql = "insert into librarian(account,password,tag,question,answer) values(?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
 			
 			ps.setLong(1, librarian.getAccount());
 			ps.setString(2, librarian.getPassword());
 			ps.setInt(3, librarian.getTag());
+			ps.setString(4, librarian.getQuestion());
+			ps.setString(5, librarian.getAnswer());
 			
 			ps.execute();
 
@@ -91,13 +93,16 @@ public class ToLibrarian {
 
 			Connection c = DBhelper.getInstance().getConnection();
 
-			String sql = "update librarian set password = ? , tag = ?  where account = ?";
+			String sql = "update librarian set password = ? , tag = ? , question = ? , answer = ?  where account = ?";
 			
 			PreparedStatement ps = c.prepareStatement(sql);
+			System.out.println(librarian.getQuestion()+librarian.getAnswer());
 			
-			ps.setLong(3, librarian.getAccount());
+			ps.setLong(5, librarian.getAccount());
 			ps.setString(1, librarian.getPassword());
 			ps.setInt(2,librarian.getTag());
+			ps.setString(3, librarian.getQuestion());
+			ps.setString(4, librarian.getAnswer());
 
 			ps.execute();
 
@@ -147,6 +152,8 @@ public class ToLibrarian {
 				librarian.setAccount(rs.getLong("account"));
 				librarian.setPassword(rs.getString("password"));
 				librarian.setTag(rs.getInt("tag"));
+				librarian.setQuestion(rs.getString("question"));
+				librarian.setAnswer(rs.getString("answer"));
 			}else{
 				return null;
 			}
@@ -187,6 +194,8 @@ public class ToLibrarian {
 				librarian.setAccount(rs.getLong("account"));
 				librarian.setPassword(rs.getString("password"));
 				librarian.setTag(rs.getInt("tag"));
+				librarian.setQuestion(rs.getString("question"));
+				librarian.setAnswer(rs.getString("answer"));
 				librarians.add(librarian);
 			}
 			DBhelper.closeConnection(c, ps, rs);

@@ -125,6 +125,9 @@ public class searchBook extends HttpServlet {
 		}
 		request.setAttribute("houorders", houorders);
 		//hou
+		List<String> barCodeList=new ArrayList<String>(1);
+		barCodeList.add(account);
+		request.setAttribute("barCodeList", barCodeList);
 		RequestDispatcher view = request.getRequestDispatcher("ReaderaddOrder.jsp");
 	    view.forward(request, response);
 	}

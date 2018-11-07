@@ -23,6 +23,6 @@ public class LogOutServlet extends HttpServlet{
 		request.getSession().setAttribute("AUTHORITY", null);
 		request.getSession().setAttribute("PERSON", null);
 		 
-		request.getRequestDispatcher("fin.jsp").forward(request, response);
+		request.getRequestDispatcher("indexpage").forward(request, response);
 	}
 }

@@ -244,7 +244,7 @@ public class ToReader {
 	
 	public static void setBorrowNumplus1(Reader reader) {
 		String account = reader.getAccount();
-		int bn = reader.getBorrowedNum()+1;
+		int bn = reader.getBorrowedNum() + 1;
 		try {
 			
 			Connection c = DBhelper.getInstance().getConnection();

@@ -69,11 +69,11 @@ document.getElementById("aa").style.display="";
 
 
 										<input type="button" value="Internet input" class="button"
-											style="position: relative; top: 150px; left: 500px; height: 50px; width: 150px; font-size: 20px"
+											style="position: relative; top: 150px; left: 500px; height: 50px; width: 200px; font-size: 20px"
 											onclick="window.location.href='bookadd2.jsp'" /> <input
 											type="button" value="No Internet input" class="button"
-											style="position: relative; top: 150px; left: 500px; height: 50px; width: 150px; font-size: 20px"
-											onclick="window.location.href='bookadd.jsp'" /> <br />
+											style="position: relative; top: 150px; left: 500px; height: 50px; width: 200px; font-size: 20px"
+											onclick="window.location.href='Labeledit?no=1'" /> <br />
 									</fieldset>
 
 								</TD>

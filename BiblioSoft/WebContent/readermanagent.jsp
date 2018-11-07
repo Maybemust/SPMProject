@@ -108,20 +108,14 @@ function unselectAll(){
 							<table width="95%" border="0" align="center" cellpadding="0"
 								cellspacing="0">
 								<tr>
-									<td height="20"><span class="newfont07"> select： <a
-											href="#" class="right-font08" onclick="selectAll();">select
-												all</a> -<a href="#" class="right-font08"
-											onclick="unselectAll();">Inverse selection</a></span> <input
-										name="Submit" type="button" class="right-button08"
-										value="Delete reader " /> <input name="Submit" type="button"
-										class="right-button08" value="Add reader"
-										onclick="window.location.href='readeradd.jsp'" />
+									<td height="20">
 
 
 										<form action="readersearch" method="post">
 
 											<input name="searchaccount" type="text" size="12" /> <input
 												type="submit" class="right-button02" value="search" />
+												<a class="right-button02" target="mainFrame" href="readerList" style="display:inline-block;text-decoration:none">clear</a>
 										</form>
 
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -145,15 +139,15 @@ function unselectAll(){
 
 
 											<tr>
-												<td width="6%" align="center" bgcolor="#EEEEEE">select</td>
+												
 												<td width="9%" height="20" align="center" bgcolor="#EEEEEE">account</td>
 												<td width="9%" align="center" bgcolor="#EEEEEE">password</td>
 												<td width="9%" align="center" bgcolor="#EEEEEE">phone</td>
 												<td width="14%" align="center" bgcolor="#EEEEEE">email</td>
 												<td width="10%" align="center" bgcolor="#EEEEEE">fine</td>
-												<td width="9%" align="center" bgcolor="#EEEEEE">borrowedNum</td>
-												<td width="4%" align="center" bgcolor="#EEEEEE">cashPledge</td>
-												<td width="11%" align="center" bgcolor="#EEEEEE">tag</td>
+												<td width="9%" align="center" bgcolor="#EEEEEE">borrowed number</td>
+												<td width="4%" align="center" bgcolor="#EEEEEE">cash pledge</td>
+											
 												<td width="19%" align="center" bgcolor="#EEEEEE">operating</td>
 											</tr>
 
@@ -165,16 +159,15 @@ function unselectAll(){
 
 												<c:forEach items="${readers}" var="reader" varStatus="re">
 													<tr>
-														<td bgcolor="#FFFFFF"><input type="checkbox"
-															name="delid" /></td>
+														
 														<td height="20" bgcolor="#FFFFFF">${reader.account}</td>
-														<td bgcolor="#FFFFFF">${reader.password}</td>
+														<td bgcolor="#FFFFFF">***********</td>
 														<td bgcolor="#FFFFFF">${reader.phone}</td>
 														<td bgcolor="#FFFFFF">${reader.email}</td>
 														<td bgcolor="#FFFFFF">${reader.fine}</td>
 														<td height="20" bgcolor="#FFFFFF">${reader.borrowedNum}</td>
 														<td height="20" bgcolor="#FFFFFF">${reader.cashPledge}</td>
-														<td height="20" bgcolor="#FFFFFF">${reader.tag}</td>
+
 														<td bgcolor="#FFFFFF"><a
 															href="readeredit.jsp?account1=${reader.account}&password=${reader.password}&phone=${reader.phone}&email=${reader.email}&fine=${reader.fine}&borrowedNum=${reader.borrowedNum}&cashPledge=${reader.cashPledge}&tag=${reader.tag}">edit</a>&nbsp;
 															|&nbsp;<a
@@ -185,19 +178,7 @@ function unselectAll(){
 													</tr>
 												</c:forEach>
 
-												<%-- 	 <tr>
-		   <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
-		    <td height="20" bgcolor="#FFFFFF">${reader1.account}</td>  
-            <td bgcolor="#FFFFFF">${reader1.password}</td>
-            <td bgcolor="#FFFFFF">${reader1.phone}</td>
-            <td bgcolor="#FFFFFF">${reader1.email}</td>
-            <td bgcolor="#FFFFFF">${reader1.fine}</td>
-		    <td height="20" bgcolor="#FFFFFF">${reader1.borrowedNum}</td>
-		    <td height="20" bgcolor="#FFFFFF">${reader1.cashPledge}</td>
-			<td height="20" bgcolor="#FFFFFF">${reader1.tag}</td>               
-			<td bgcolor="#FFFFFF"><a href="readeredit.jsp?account1=${reader1.account}&password=${reader1.password}&phone=${reader1.phone}&email=${reader1.email}&fine=${reader1.fine}&borrowedNum=${reader1.borrowedNum}&cashPledge=${reader1.cashPledge}&tag=${reader1.tag}">edit</a>&nbsp; |&nbsp;<a href="readerdeleteServlet?account1=${reader1.account}" >delete</a>&nbsp;</td>
-			
-		           </tr> --%>
+				
 
 
 											</form>
@@ -215,36 +196,7 @@ function unselectAll(){
 
 
 
-				<table width="95%" border="0" align="center" cellpadding="0"
-					cellspacing="0">
-					<tr>
-						<td height="6"><img src="../images/spacer.gif" width="1"
-							height="1" /></td>
-					</tr>
-					<tr>
-						<td height="33"><table width="100%" border="0" align="center"
-								cellpadding="0" cellspacing="0" class="right-font08">
-								<tr>
-									<!-- <td width="50%">共<span class="right-text09">5</span> 页 | 第<span class="right-text09">1</span> 页</td> -->
-									<td width="49%" align="right">[<a href="#"
-										class="right-font08">first page</a> | <a href="#"
-										class="right-font08">previous page</a> | <a href="#"
-										class="right-font08">next page</a> | <a href="#"
-										class="right-font08">last page</a>] go to
-									</td>
-									<td width="1%"><table width="20" border="0"
-											cellspacing="0" cellpadding="0">
-											<tr>
-												<td width="1%"><input name="textfield3" type="text"
-													class="right-textfield03" size="1" /></td>
-												<td width="87%"><input name="Submit23222" type="submit"
-													class="right-button06" value=" " /></td>
-											</tr>
-										</table></td>
-								</tr>
-							</table></td>
-					</tr>
-				</table>
+				
 			</td>
 		</tr>
 	</table>
@@ -275,6 +227,13 @@ function unselectAll(){
     	alert("Please delete after returning the book");
     	}
  
+    var borrownumber='<%=request.getParameter("borrownumber")%>';
+    if(borrownumber=='no')
+    	{
+    	alert("Please return the book and delete");
+    	}
+    
+    
     </script>
 
 

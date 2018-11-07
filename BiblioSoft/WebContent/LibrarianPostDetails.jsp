@@ -57,22 +57,23 @@ ${post.getText()}
 
 <div>
 
-					    <button type="submit" class=" btn btn-warning btn-lg" onclick = "returnskip(${AUTHORITY})" >Return</button>
+ <c:if test="${AUTHORITY == 'Librarian'}">
+								<div class="modal-body">
+									
+									<button type="button" class=" btn btn-success btn-lg"
+									onclick = "history.go(-1)" >return</button>
+
+								</div>
+							</c:if> 
+
+
+
+<!--  <button type="button" class=" btn btn-warning btn-lg" onclick = "history.go(-1)" >Return</button> -->
 </div>
 <script>
-function returnskip(str)
+function returnskip()
 {
-	alert("123");
-	alert(str);
-	if(str=="Librarian")
-		{
-		window.location.href="./LibrarianFirstPage.jsp";
-		}
-	if(str=="Reader")
-	{
-		urlreader="getreader";
-		location.href=urlreader;
-	}
+	window.location.href="LibrarianFirstPage";
 }
 </script>
 </div>

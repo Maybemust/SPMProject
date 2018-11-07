@@ -8,6 +8,7 @@
 <link rel="stylesheet" rev="stylesheet" href="./css/style.css"
 	type="text/css" media="all" />
 
+<script type="text/JavaScript" src="../check.js"></script>
 <script type="text/javascript"
 	src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
 
@@ -15,7 +16,7 @@
 <script language="JavaScript" type="text/javascript">
 function tishi()
 {
-  var a=confirm('数据库中保存有图书的基本信息，您可以修改或保留该信息。');
+  var a=confirm('the database has stored the information of the book, you can change or remain the information!');
   if(a!=true)return false;
   window.open("冲突页.htm","","depended=0,alwaysRaised=1,width=800,height=400,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 }
@@ -25,7 +26,10 @@ function check()
 document.getElementById("aa").style.display="";
 }
 
+
+
 </script>
+
 <style type="text/css">
 <!--
 .atten {
@@ -98,68 +102,55 @@ document.getElementById("aa").style.display="";
 
 												<td width="16%" align="right" nowrap="nowrap">location:</td>
 
-												<td width="34%"><input name="location" type="text"
-													maxlength="35" style="width: 154px" required
-													oninvalid="setCustomValidity('The input cannot be empty');"
-													oninput="setCustomValidity('');" /></td>
+												<td><select name="location">
+														<option selected="selected1">==none==</option>
+														<c:forEach items="${locations }" var="location" varStatus="count">
+														<option>${location.location }</option>
+													</c:forEach>
+														
+												</select></td>
 
 
 											</tr>
 
 
-											<!--   <tr>
-						  
-					     <td nowrap align="right" width="15%">location:</td>
-						  
-					    <td width="35%"><input name="location"  type="text" maxlength="35" style="width:154px" /> 
-						  
-					    <td width="16%" align="right" nowrap="nowrap">Date:</td>
-						  
-					    <td width="34%"><input type="date" name="date" style="width:154px"></td>
-					    
-						  
-					  </tr> -->
-
-											<tr>
+							
 											<tr>
 
 												<td align="right">tag1</td>
 
 												<td><select name="tag1">
 														<option selected="selected1">==none==</option>
-														<option>Music</option>
-														<option>Milltary</option>
-														<option>Bibliography</option>
-														<option>World History</option>
-														<option>Fine Arts</option>
-														<option>Philososphy</option>
-														<option>Technology</option>
-														<option>Language</option>
-														<option>Geography</option>
+														<c:forEach items="${labels }" var="label" varStatus="count">
+														<option>${label.name }</option>
+													</c:forEach>
+														
 												</select></td>
 												<td align="right">tag2</td>
 
 												<td><select name="tag2">
-														<option selected="selected2">==none==</option>
-														<option>Music</option>
-														<option>Milltary</option>
-														<option>Bibliography</option>
-														<option>World History</option>
-														<option>Fine Arts</option>
-														<option>Philososphy</option>
-														<option>Technology</option>
-														<option>Language</option>
-														<option>Geography</option>
+													<option selected="selected1">==none==</option>
+													<c:forEach items="${labels }" var="label" varStatus="count">
+														<option>${label.name }</option>
+													</c:forEach>																		
 												</select></td>
-											</tr>
+											</tr> 
 
 											<tr>
 												<td align="right">cover:</td>
-												<td><input type="button" name="cover"
-													style="width: 154px" value="upload" /></td>
+												<td><!-- <input type="button" name="cover"
+													style="width: 154px" value="upload" /> -->
+													
+													  <!-- <input type="file" name="fj" id="fj" />  --> 
+													  
+                    					<input type="file" id="file_input" name="fj" >
+						
+                
+                    
+                    
+         
 
-
-												<td width="16%" align="right" nowrap="nowrap">bookName:</td>
+												<td width="16%" align="right" nowrap="nowrap">book name:</td>
 
 												<td width="34%"><input type="text" name="bookName"
 													maxlength="15" style="width: 154px" required
@@ -168,21 +159,30 @@ document.getElementById("aa").style.display="";
 											</tr>
 
 											<tr>
-												<td align="right">number:</td>
+												            <td align="right">number:</td>
 
-												<td><input type="button" class="opt" value="-" /> <input
-													type="text" name="number" id="res" value="1"
-													readonly="readonly" /> <input type="button" class="opt"
-													value="+" /></td>
-
+										<td width="35%"><input type="text" name="number"
+													maxlength="2" style="width: 154px"
+													onkeyup="this.value=this.value.replace(/\D/g,'')"
+													onafterpaste="this.value=this.value.replace(/\D/g,'')"
+													onBlur="this.value=parseInt(this.value);if (isNaN(this.value) || this.value<=0){alert('input moren than 0');this.focus();};"
+													
+													
+													value="" required
+													oninvalid="setCustomValidity('The input cannot be empty');"
+													oninput="setCustomValidity('');" /> <span class="red">*</span></td>
+											
+											</tr>
 
 												<td width="16%" align="right" nowrap="nowrap">price:</td>
 
 												<td width="34%"><input type="number" name="price"
-													maxlength="10" step="0.01" required
+													maxlength="10" step="1.0" required
 													oninvalid="setCustomValidity('please input correctlly');"
 													oninput="setCustomValidity('');"
-													onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}" />
+													onblur="if (!/^\d+(\.\d+)?$/.test(this.value)){this.value='';}" 
+													onBlur="this.value=parseInt(this.value);if (isNaN(this.value) || this.value<=0){alert('input moren than 0');this.focus();};"
+													/>
 												</td>
 
 											</tr>
@@ -210,7 +210,7 @@ document.getElementById("aa").style.display="";
 					<TD colspan="2" align="center" height="50px"><input
 						type="submit" value="save" class="button" /> <input
 						type="button" value="back" class="button"
-						onclick="window.location.href='bookList'" /></TD>
+						onclick="window.location.href='bookaddselect.jsp'" /></TD>
 
 				</TR>
 			</TABLE>
@@ -223,6 +223,7 @@ document.getElementById("aa").style.display="";
 
 	<script> 
     var errory='<%=request.getParameter("error")%>';
+    
     var number='<%=request.getParameter("number")%>';
     if(errory=='yes')
     	{
@@ -238,12 +239,11 @@ document.getElementById("aa").style.display="";
     	}
     
     
-    
-    $(function(){
-        $(':button').click(function(){
-            $('#res').val(eval($('#res').val() + $(this).val() + "1"));
-        });
-    })
+ 
+   
+  
+
+
     </script>
 
 

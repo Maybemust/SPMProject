@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -50,7 +51,20 @@ public class ShowReaderBorrowRecord extends HttpServlet {
 		request.setAttribute("pre", pre);
 		request.setAttribute("last", last);
 		
-		List<BorrowedRecord> records = ToBorrowedRecord.listByReaderAccount(start, count,account);
+		List<BorrowedRecord> records1 = ToBorrowedRecord.listByReaderAccount(start, count,account);
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+		
+		  for(int i1=0; i1<records1.size();i1++)
+	        {
+	        	if(records1.get(i1).getReturnedDate().before(java.sql.Date.valueOf("1949-10-02")))
+	        	{	
+	        		
+	        
+	        			records1.get(i1).setReturnedDate(null);
+				  
+	        		records.add(records1.get(i1));
+	        	}	
+	        }
 		request.setAttribute("records", records);
       
 		request.getRequestDispatcher("borrowedbookrecord.jsp").forward(request, response);

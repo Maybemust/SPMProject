@@ -216,7 +216,8 @@
 									ID :</div>
 								<input name="useraccount" type="text" class="form-control"
 									placeholder="Input UserAccount"
-									aria-describedby="sizing-addon1"> <br>
+									aria-describedby="sizing-addon1" required="required" 
+													> <br>
 								<button type="button" class=" btn btn-success btn-lg"
 									data-toggle="modal" data-target="#myModal">OK</button>
 

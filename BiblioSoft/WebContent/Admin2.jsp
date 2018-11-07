@@ -32,45 +32,15 @@
 					style="position: relative; top: -15px; left: 90px">
 			</div>
 			<div>
-				<p style="position: relative; left: 20px; top: 10px"">password:  </p>
-				<input type="text" value="${password}" id="modifiedpassword"
-					name="modifiedpassword"
-					style="position: relative; top: -25px; left: 100px" maxlength="20">
+				<p style="position: relative; left: 20px; top: 10px"">question: ${question}</p>
+				<input type="hidden" value="${question}" name= "checkquestion"
+					style="position:relative; top:-15px;left:90px">
+				
 			</div>
-			<input type="submit" value="save"
-				style="position: relative; left: 75px" onclick="check()"> <input
+			<input
 				type="button" onclick="history.go(-1)" value="back"
 				style="position: relative; left: 125px">
 		</form>
 	</div>
-	<script>
-function check(){
-	var password=document.getElementById("modifiedpassword").value;
-	if(password==""){
-    				alert("Password can not be blank!");
-    				 document.getElementById("modifiedpassword").focus();
-    				 return false;
-    			}
-}
-
-// function checkLength(){
-//  var str = document.getElementById("modifiedpassword").value;
-//  var i,sum;
-//   sum=0;
-//   for(i=0;i<str.length;i++)
-//   {
-//        if ((str.charCodeAt(i)>=0) && (str.charCodeAt(i)<=255))
-//             sum=sum+1;
-//        else
-//             sum=sum+2;
-//   }
-//   if(sum<=20){
-//  	 return true;
-//   } else{
-//  	 alert("Your input is too long");
-//  	 return false;
-//   }
-// }
-</script>
 </body>
 </html>

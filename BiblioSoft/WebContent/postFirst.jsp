@@ -9,13 +9,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome</title>
+<script type="text/javascript">
+// 	window.onload=function(){
+// 		window.location.replace("LibrarianFirstPage");
+// 	}
+</script>
 </head>
 
 <body>
 	<div>
 		<c:forEach items="${posts}" var="postItem" varStatus="st">
 	  	  
-  	  	<a href="PostDetails?postID=${postItem.getPostID()}"><h2>${postItem.getPostTitle()}</h2></a>
+  	  	<a href="PostDetails?postID=${postItem.getPostID()}" style="display:block;font-size:20px;font-weight:bold"><h2>Post Title:${postItem.getPostTitle()}</h2></a>
   	  	</c:forEach>
 
   <ul class="pagination">

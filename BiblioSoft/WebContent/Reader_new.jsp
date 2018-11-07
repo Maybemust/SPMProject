@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.text.*" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+
 <!doctype html>
 <html>
 <head>
@@ -136,10 +138,22 @@
 			margin-left: 200px;
 			margin-top: 40px;
 		}
+		#pb-head{
+			width: auto;
+			height: 50px;
+			margin-left: 175px;
+			margin-top: 40px;
+		}
+		#pb-information{
+			width:800px;
+			margin-left: 200px;
+			margin-top: 40px;
+		}
 		#accountInput{
 			width: 300px;
 			height: 30px;
 			border-radius: 7px;
+			border: none;
 		}
 		#emailInput{
 			width: 300px;
@@ -155,16 +169,19 @@
 			width: 300px;
 			height: 30px;
 			border-radius: 7px;
+			border: none;
 		}
 		#borrowedNumInput{
 			width: 300px;
 			height: 30px;
 			border-radius: 7px;
+			border: none;
 		}
 		#cashPledgeInput{
 			width: 300px;
 			height: 30px;
 			border-radius: 7px;
+			border: none;
 		}
 	</style>
 	<!--hou style-->
@@ -299,9 +316,36 @@
 	  	    width: 1000px;
 	  	    
 	  	}
+	  	#searchBook{
+          	float: left;
+          	width: 300px;
+        }
+        #searchbutton{
+        	float: right;
+        }
+        #searchcontainer{
+        	float:left;
+        	width: 300px;
+        	margin-top: 100px;
+        	margin-left:400px;
+        	height: 150px;
+        }
+        #addorderinput{
+        	float:left;
+        	margin-left:50px;
+        	width: 300px;
+        	height: 150px;
+        	margin-top:20px;
+        }
 	</style>
 </head>
-<body>
+<script>
+	function load(sta){
+		if(sta != "")
+			alert(sta);
+	}
+</script>
+<body onload="load('${status}')">
 	<div class="wrap">
     <!-- 左边导航栏-->
        <div id="left" class="left">
@@ -312,27 +356,30 @@
                </p>
             </div>
                     <!-- hou -->
-                    <div class="menu-item" data-toggle="collapse" data-target="#borrowcoll" onmouseover="mouseover('borrow')" onmouseout="mouseout('borrow')" id="borrow" style="font-weight: bold;color:#707983;">- Borrow And Order</div>
+                    <div class="menu-item" data-toggle="collapse" data-target="#borrowcoll" onmouseover="mouseover('borrow')" onmouseout="mouseout('borrow')" id="borrow" style="font-weight: bold;color:#707983;">- Borrowing And History</div>
 	                <div id="borrowcoll" class="collapse" style="background-color:#666666">
 	                    <div class="menu-item" href="#jieyue" data-toggle="tab" onmouseover="mouseover('myborrowlist')" onmouseout="mouseout('myborrowlist')" id="myborrowlist"> 
-	                         &nbsp;&nbsp;MyBorrowList
+	                         &nbsp;&nbsp;My Borrow List
 	                    </div>
 	                    <div class="menu-item" href="#lishi" data-toggle="tab" onmouseover="mouseover('historylist');" onmouseout="mouseout('historylist')" id="historylist">
-	                         &nbsp;&nbsp;HistoryList
+	                         &nbsp;&nbsp;History List
 	                    </div>
                     </div>
                  	<!-- diao -->
-                    <div class="menu-item" data-toggle="collapse" data-target="#ordercoll" onmouseover="mouseover('my_order')" onmouseout="mouseout('my_order')" id="my_order" style="font-weight: bold;color:#707983;">- MyOrder</div>
+                    <div class="menu-item" data-toggle="collapse" data-target="#ordercoll" onmouseover="mouseover('my_order')" onmouseout="mouseout('my_order')" id="my_order" style="font-weight: bold;color:#707983;">- Search And Reservetion</div>
 	                <div id="ordercoll" class="collapse" style="background-color:#666666">
 	                    <div class="menu-item" href="#myorder" data-toggle="tab" onmouseover="mouseover('orderlist')" onmouseout="mouseout('orderlist')" id="orderlist"> 
-	                         &nbsp;&nbsp;OrderList
-	                    </div>
+	                         &nbsp;&nbsp;Reservetion List
+	                    </div>                    
 	                    <div class="menu-item" href="#addorder" data-toggle="tab" onmouseover="mouseover('add_order');" onmouseout="mouseout('add_order')" id="add_order">
-	                         &nbsp;&nbsp;AddOrder
+	                    	 &nbsp;&nbsp;Add Reservtion
+	                    </div>
+	                    <div class="menu-item" href="#searchbook" data-toggle="tab" onmouseover="mouseover('search_book');" onmouseout="mouseout('search_book')" id="search_book">
+	                         &nbsp;&nbsp;Search Book
 	                    </div>
                     </div>              
                     <!-- xiang -->
-                    <div class="menu-item" data-toggle="collapse" data-target="#informationcoll" onmouseover="mouseover('information')" onmouseout="mouseout('information')" id="information" style="font-weight: bold;color:#707983;">- PersonalInformation</div>
+                    <div class="menu-item" data-toggle="collapse" data-target="#informationcoll" onmouseover="mouseover('information')" onmouseout="mouseout('information')" id="information" style="font-weight: bold;color:#707983;">- Personal Information</div>
 	                <div id="informationcoll" class="collapse" style="background-color:#666666">
 	                    <div class="menu-item" href="#pm-container" data-toggle="tab" onmouseover="mouseover('baseinformation')" onmouseout="mouseout('baseinformation')" id="baseinformation"> 
 	                         &nbsp;&nbsp;Modiy PersonalInformation
@@ -340,8 +387,11 @@
 	                    <div class="menu-item" href="#ps-container" data-toggle="tab" onmouseover="mouseover('safeinformation');" onmouseout="mouseout('safeinformation')" id="safeinformation">
 	                         &nbsp;&nbsp;Change Password&Safe
 	                    </div>
+	                    <div class="menu-item" href="#person_barcode" data-toggle="tab" onmouseover="mouseover('barcodeinformation');" onmouseout="mouseout('barcodeinformation')" id="barcodeinformation">
+	                         &nbsp;&nbsp;My Barcode
+	                    </div>
                     </div> 
-					
+					<div class="menu-item"   onmouseover="mouseover('logout')" onmouseout="mouseout('logout')" id="logout" style="font-weight: bold;color:#707983;" ><a onclick="href='LogOutServlet'">LogOut</a></div>
                 </div>
 				
 				<!-- 添加导航栏所链接的内容-->
@@ -372,6 +422,56 @@
                             </div>   
                         </div>
                          <!-- xiang -->
+                         <script type="text/javascript">
+           					function cleanorder(){
+            				 	document.getElementById("barCode_order").value ="";
+              					document.getElementById("bookName_order").value ="";
+
+           					}
+           					function saveorder(){
+              					var barcode_order = document.getElementById("barCode_order").value;
+              					var bookName_order = document.getElementById("bookName_order").value;
+              					if (barcode_order != ""){
+              						if (bookName_order != ""){
+                    					if(confirm("Are you sure about the appointment?")){
+                        					adurl="addOrder?barCode="+barcode_order+"&bookName="+bookName_order;   
+                        					parent.location.href=adurl;  
+                        					top.location.href.reload();
+                    				}
+                				}
+                				else{
+                    				alert("please input Book Name");
+                				}
+              				}
+              				else{
+                   				alert("please input Bar Code");
+              					}
+            				}
+           					function temp(bar_Code,book_Name){
+        	   					urlord="addOrder?barCode="+barcode_order+"&bookName="+bookName_order;   
+        	   					location.href=urlord;   
+        	   					location.reload();
+           					}
+       					</script>
+       
+                         <div id="addorder" class="tab-pane" style="text-align:center;postion:relative;">
+                         <div>
+            				<font style="margin-left:-300px;color: gray;text-align:left;" size="5">Pleas make sure that the Name And the Bar Code of book is correct,thank you! </font>
+       					</div>
+       					 <div>
+            				<font style="margin-left:-250px;color: gray;text-align:left;" size="5">If you don't Remember the Bar Code,you can go to the Search Page, and Reserve it.</font>
+       					</div>
+         					<div id="addorderinput" style="text-align:left;">
+         						
+								<p>The Code of Book</p>
+								<input class="form-control" id="barCode_order" placeholder="please input barCode" style="width:300px;" maxlength="35"></input>
+              					<br/>
+              					<p>The Name of Book</p>
+              					<input class="form-control" id="bookName_order" placeholder="please input bookName" style="width:300px;" maxlength="35"><br/>
+                				<button id="saveorder" class="btn btn-primary btn_search" onclick="saveorder()">save</button>
+                				<button id="cleanorder" class="btn btn-primary btn-info" onclick="cleanorder()">clean</button>
+							</div>				
+                        </div>
                          <script type="text/javascript">
         					function modifyImformation(){
         						var email = document.getElementById("emailInput").value;
@@ -404,80 +504,49 @@
 									<p>Eamil:<input id="emailInput" class="form-control" value="${reader.email}"></p>
 									<p>Phone:<input id="phoneInput" class="form-control" value="${reader.phone}"></p>
 									<p>Fine:<input id="fineInput" class="form-control" value="${reader.fine}" readonly></p>
-									<p>BorrowedNum:<input id="borrowedNumInput" class="form-control" value="${reader.borrowedNum}" readonly></p>
-									<p>CashPledge:<input id="cashPledgeInput" class="form-control" value="${reader.cashPledge}" readonly></p>
+									<p>Borrowed Num:<input id="borrowedNumInput" class="form-control" value="${reader.borrowedNum}" readonly></p>
+									<p>Cash Pledge:<input id="cashPledgeInput" class="form-control" value="${reader.cashPledge}" readonly></p>
 									<br/>
 									<button id="modify" class="btn btn-primary btn_search" onclick="modifyImformation()">modify</button>
            							
 								</div>
+								
+								
 						</div>
-						<script type="text/javascript">
-                            function changePassword(){
-                            	var oldPassword = document.getElementById("oldPasswordInput").value;
-                            	var newPassword = document.getElementById("newPasswordInput").value;
-                            	var newPasswordAgain = document.getElementById("newPasswordInputAgain").value;
-                            	if(oldPassword == "")
-                            		alert("old password can't be null");
-                            	else
-                            		if(newPassword == "")
-                            			alert("new password can't be null");
-                            		else
-                            		{
-                            			if(newPasswordAgain == "")
-                            				alert("please input new password again");
-                            			else
-                            				{
-                            				   if(newPassword == newPasswordAgain){
-                            					   if(confirm("Are you sure to cahnge the password?")){
-                          					  		 document.getElementById("changepd").submit();
-                          				
-                          					       }   
-                            				   }
-                            				   else
-                            					   alert("the two input password is inconsistent.");
-                            				}
-                            		}
-                            }
-                        </script>
+						<div id="person_barcode" class="tab-pane">
+						<div style="width: auto;height: 8px"></div>
+							<div id="pb-head">
+									<h3 style="text-indent: 5%">My Barcode</h3>
+							</div>
+							<div id="pb-information">
+									<c:forEach items = "${barCodeList}" var = "account" varStatus = "st">
+										<img src="barcode?msg=${account}" style=""/>	
+									</c:forEach> 
+							</div>
+						</div>
+					
 							<div id="ps-container" class="tab-pane">
-								<div style="width: auto;height: 8px"></div>
-									<div id="pm-head">
-  										<h3 style="text-indent: 5%">Personal Security</h3>
-									</div>
-									<hr style="color: black">
-								<form method="post" action="changePassword" id="changepd">
-								<div id="ps-security">
-									<p>OldPassword:
-									<input id="oldPasswordInput" name="OldPassword" class="form-control" placeholder="please input your old password" type="password" maxlength="16">
-									</p>
-									<br/>
-									<p>NewPassword:
-									<input id="newPasswordInput" name="NewPassword" class="form-control" placeholder="please input your new password" type="password" maxlength="16">
-									</p>
-									<br/>
-									<p>
-									NewPasswordInputAgain:<input id="newPasswordInputAgain" name="NewPasswordAgain" placeholder="please input your new password again" class="form-control" type="password" maxlength="16">
-									</p>
-									<br/>
-									<button id="cleanImformation" style="margin-left:100px;" class="btn btn-primary btn-info" onclick="changePassword()">sumbit</button>
-								</div>
-								</form>
-								<from id="tem123"></from>
+								<iframe src="ChangePassword.jsp" style="width:1400px;height:730px;margin-top:0px;">
+							</iframe>
 							</div>
                         <!-- xiang -->
                         <!-- hou -->
                 		<div class="tab-pane" id="jieyue" style="position: relative">
             			<div id="wodejieyue"  style="text-align:center;display:block">
             			<h2  style="text-align:center;">Welcome to BorrowList page,${reader.getAccount()}!</h2>
+            			<c:choose>
+						<c:when test="${fn:length(nowrecord)!=0 }">						
 						<table id="ordertab" border="1" width=100% cellpadding="5" style="margin-left:5px;margin-right:30px;">
 						<thead>
 						<tr>
 				  			<th style="text-align:center;"><font size="4">No</font></th>				
-				  			<th style="text-align:center;"><font size="4">BookID</font></th>
-				  			<th style="text-align:center;"><font size="4">BookName</font></th>
-				  			<th style="text-align:center;"><font size="4">ReaderAccount</font></th>
-				  			<th style="text-align:center;"><font size="4">BorrowDate</font></th>
+				  			<th style="text-align:center;"><font size="4">Bar Code</font></th>
+				  			<th style="text-align:center;"><font size="4">Book Name</font></th>
+				  			<th style="text-align:center;"><font size="4">Reader Account</font></th>
+				  			<th style="text-align:center;"><font size="4">Borrow Date</font></th>
+				  			<th style="text-align:center;"><font size="4">Return Date Expected</font></th>
 				  			<th style="text-align:center;"><font size="4">Fine</font></th>
+				  			
 						</tr>
 						</thead>
 						<c:set var="userSum" value="0"/>
@@ -489,7 +558,9 @@
 									<td><font size="4">${nowrecord.bookName}</font></td>
 									<td><font size="4">${nowrecord.readerAccount}</font></td>
 									<td><font size="4">${nowrecord.borrowedDate}</font></td>
+									<td><font size="4">${houborrow[loop.count-1] }</td>
 									<td><font size="4">${nowrecord.fine}</font></td>
+									
 									<c:set var="userSum" value="${userSum+nowrecord.fine }"/>		
 								</tr>
 						</c:forEach>
@@ -497,20 +568,27 @@
 						<div id=123 style="text-align:right;display:block">
 							<h3>FineSum：￥ ${userSum }</h3>
 						</div>
+						</c:when>
+			    			<c:otherwise>
+			    			<h3 style="text-align:center">You don't Borrow any Books!</h3>
+			    			</c:otherwise>
+			    			</c:choose>
 						</div>
 						</div>
 						<div class="tab-pane" id="lishi" style="position: relative">
             				<div id="lishijieyue" style="text-align:center;display:block">
             				<h2  style="text-align:center;">Welcome to HistoryList page,${reader.getAccount()}!</h2>
+            				<c:choose>
+							<c:when test="${fn:length(borrowedRecord)!=0 }">
 								<table id="ordertab" border="1"  style="margin-left:5px;margin-right:30px;width:100%">
 									<thead>
 										<tr>
 				  							<th style="text-align:center;"><font size="4">No</font></th>				
-				  							<th style="text-align:center;"><font size="4">BookID</font></th>
-				  							<th style="text-align:center;"><font size="4">BookName</font></th>
-				  							<th style="text-align:center;"><font size="4">ReaderAccount</font></th>
-				  							<th style="text-align:center;"><font size="4">BorrowDate</font></th>
-				  							<th style="text-align:center;"><font size="4">ReturnDate</font></th>
+				  							<th style="text-align:center;"><font size="4">Bar Code</font></th>
+				  							<th style="text-align:center;"><font size="4">Book Name</font></th>
+				  							<th style="text-align:center;"><font size="4">Account</font></th>
+				  							<th style="text-align:center;"><font size="4">Borrow Date</font></th>
+				  							<th style="text-align:center;"><font size="4">Return Date</font></th>
 				  							
 										</tr>
 										</thead>
@@ -527,6 +605,11 @@
 										</tr>
 									</c:forEach>
 								</table>
+							</c:when>
+			    			<c:otherwise>
+			    			<h3 style="text-align:center">You haven't borrowed a book yet!</h3>
+			    			</c:otherwise>
+			    			</c:choose>
 							</div>
 						</div>
                         <!-- hou -->
@@ -539,14 +622,16 @@
                         </script>
 						<div id="myorder" class="tab-pane" style="text-align:center;postion:relative;">
 						<h2  style="text-align:center;">Welcome to Reserve page,${reader.getAccount()}!</h2>
+						<c:choose>
+						<c:when test="${fn:length(myorders)!=0 }">					
 						<div style="display:block" >
                              <table id="ordertab" border="1" width=100% cellpadding="5" style="margin-left:5px;margin-right:30px;">
 								<thead>
 									<tr>
 										<th style="text-align:center;"><font size="4">No</th>
-										<th style="text-align:center;"><font size="4">BookName</th>
-										<th style="text-align:center;"><font size="4">ReserveTime</th>
-										<th style="text-align:center;"><font size="4">AffectTime</th>
+										<th style="text-align:center;"><font size="4">Book Name</th>
+										<th style="text-align:center;"><font size="4">Reserve Time</th>
+										<th style="text-align:center;"><font size="4">Affect Time</th>
 										<th style="text-align:center;"><font size="4">Status</th>
 										<th style="text-align:center;"><font size="4">Behavior</th>
 							   		</tr>
@@ -557,25 +642,31 @@
 									<tr>
 										<td><font size="4">${mo.index + 1}</td>
 										<td><font size="4">${myorder.bookName }</td>
-										<td><font size="4"><fmt:formatDate value="${myorder.time }" type="both" dateStyle="medium" timeStyle="medium"/></td>
+										<td><font size="4"><fmt:formatDate value="${myorder.time }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										<td><font size="4"><fmt:formatDate value="${houorders[mo.count-1].time }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<c:set var="jugg" value="${myorder.flag}"/>
 										<c:choose>
 										    <c:when test="${jugg > 0}">
-										    	<td>Invalid</td>
+										    	<td><font size="4">Lose effectiveness</td>
 										    </c:when>
 										    <c:otherwise>
-										    	<td>Valid</td>
+										    	<td><font size="4">Effectiveness</td>
 										    </c:otherwise>
 										</c:choose>
 										<td><font size="4"><a onclick="deletOrder(${myorder.rRID})" style="color:black;">Cancel</a></td>
 									</tr>
 								</c:forEach>
 			    			</table></div>
+			    			</c:when>
+			    			<c:otherwise>
+			    			<h3 style="text-align:center">You don't have any Reservation!</h3>
+			    			</c:otherwise>
+			    			</c:choose>
                         </div>
+
 					
                        
-                        <div id="addorder" class="tab-pane"style="width:100%;margin-top:0px;margin-left:0px;">
+                        <div id="searchbook" class="tab-pane"style="width:100%;margin-top:0px;margin-left:0px;">
 							<iframe src="ReaderaddOrder.jsp" style="width:100%;height:730px;margin-top:0px;">
 							</iframe>
 

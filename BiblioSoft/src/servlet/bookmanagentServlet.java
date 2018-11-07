@@ -20,11 +20,17 @@ public  class bookmanagentServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 
-		
+		 String cover2 = bookaddServlet.class.getResource("").toString();
+	       for(int i = 0; i < 9; i++){
+	    	   cover2 += "..\\";
+	       }
+	       cover2= cover2+"SPMProject\\BiblioSoft\\WebContent\\imgs\\";
+	       cover2=cover2.substring(6);
+	       System.out.println(cover2);
 		
 	
 		int start = 0;
-		int count = 100;
+		int count = 10000;
 
 		try {
 			start = Integer.parseInt(request.getParameter("start"));
@@ -54,7 +60,6 @@ public  class bookmanagentServlet extends HttpServlet {
 		request.setAttribute("pre", pre);
 		request.setAttribute("last", last);
 
-	
 		List<Book> books = ToBook.list(start, count);
 		request.setAttribute("books", books);
       

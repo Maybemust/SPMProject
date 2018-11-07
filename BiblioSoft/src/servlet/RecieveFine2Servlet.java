@@ -65,20 +65,7 @@ import utils.DBhelper;
 					return returnValue;
 				}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			
 				protected void service(HttpServletRequest request, HttpServletResponse response)
 						throws ServletException, IOException {
@@ -92,6 +79,7 @@ import utils.DBhelper;
 					String barcode="";
 					try{
 						account = request.getParameter("useraccount");
+						
 					}catch(NumberFormatException e){
 						
 					}
@@ -235,7 +223,21 @@ import utils.DBhelper;
 						request.setAttribute("fine", fineall);
 						request.setAttribute("bookList", booklist);
 						request.setAttribute("borrower", reader);
+						java.sql.Date now1 = new java.sql.Date(System.currentTimeMillis());
 						
+						List <BorrowedRecord> record2 = ToBorrowedRecord.getListByAccount(account);
+						for(int i2=0 ; i2<record2.size();i2++){
+							ToBook.setStatus(record2.get(i2).getBarCode(), 0);
+							record2.get(i2).setReturnedDate(now1);
+							ToBorrowedRecord.update(record2.get(i2));
+						}
+						
+						
+						
+						 Reader reader1 = ToReader.getByAccount(account);
+						 reader1.setFine(reader1.getFine()-fineall);
+						 ToReader.update(reader1);
+						 ToReader.setBorrowNumMinus1(reader1);
 						
 						request.getRequestDispatcher("LibrarianRecieveFine3.jsp").forward(request, response);
 						return ;

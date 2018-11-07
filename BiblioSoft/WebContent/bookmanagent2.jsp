@@ -108,20 +108,15 @@ function unselectAll(){
 							<table width="95%" border="0" align="center" cellpadding="0"
 								cellspacing="0">
 								<tr>
-									<td height="20"><span class="newfont07"> select： <a
-											href="#" class="right-font08" onclick="selectAll();">select
-												all</a> -<a href="#" class="right-font08"
-											onclick="unselectAll();">Inverse selection</a></span> <input
-										name="Submit" type="button" class="right-button08"
-										value="Delete book " /> <input name="Submit" type="button"
-										class="right-button08" value="Add book"
-										onclick="window.location.href='bookaddselect.jsp'" />
+									<td height="20">
 
 
 										<form action="booksearch" method="post">
 
 											<input name="searchbarCode" type="text" size="12" /> <input
 												type="submit" class="right-button02" value="search" />
+											<a class="right-button02" target="mainFrame" href="bookList" style="display:inline-block;text-decoration:none">clear</a>
+												
 										</form>
 
 
@@ -145,12 +140,11 @@ function unselectAll(){
 											</tr>
 
 											<tr>
-												<td width="6%" align="center" bgcolor="#EEEEEE">select</td>
-												<td width="9%" height="20" align="center" bgcolor="#EEEEEE">barCode</td>
+												<td width="9%" height="20" align="center" bgcolor="#EEEEEE">barcode</td>
 												<td width="9%" align="center" bgcolor="#EEEEEE">ISBN</td>
 												<td width="8%" align="center" bgcolor="#EEEEEE">author</td>
 												<td width="9%" align="center" bgcolor="#EEEEEE">publishing</td>
-												<td width="10%" align="center" bgcolor="#EEEEEE">bookName</td>
+												<td width="10%" align="center" bgcolor="#EEEEEE">book name</td>
 												<td width="10%" align="center" bgcolor="#EEEEEE">location</td>
 												<td width="5%" align="center" bgcolor="#EEEEEE">status</td>
 												<td width="5%" align="center" bgcolor="#EEEEEE">price</td>
@@ -167,7 +161,6 @@ function unselectAll(){
                   
 		    <c:forEach items="${BookLists}" var="book" varStatus="re">
 		    <tr>
-		    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td> 
 		    <td height="20" bgcolor="#FFFFFF">${book.barCode}</td>
             <td bgcolor="#FFFFFF">${book.ISBN}</td>
             <td bgcolor="#FFFFFF">${book.author}</td>
@@ -179,7 +172,8 @@ function unselectAll(){
 		    <td height="20" bgcolor="#FFFFFF">${book.tag1}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.tag2}</td>
 			<td height="20" bgcolor="#FFFFFF">${book.dateOfStorage}</td>
-			<td bgcolor="#FFFFFF">  <a href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;</td>
+			<td bgcolor="#FFFFFF">  <a href="bookeditServlet2?barCode1=${book.barCode}">edit</a>&nbsp; |&nbsp;<a href="bookdeleteServlet?barCode1=${book.barCode}" >delete</a>&nbsp;<a href="ShowBookBorrowedRecord?barCode1=${book.barCode}" >borrowed record list</a>&nbsp; &nbsp;
+															<a href="ShowBookReturnedRecord?barCode1=${book.barCode}" >returned record list</a>&nbsp;</td>
 		    </tr>
 	        </c:forEach> 
 
@@ -219,36 +213,7 @@ function unselectAll(){
 
 
 
-				<table width="95%" border="0" align="center" cellpadding="0"
-					cellspacing="0">
-					<tr>
-						<td height="6"><img src="../images/spacer.gif" width="1"
-							height="1" /></td>
-					</tr>
-					<tr>
-						<td height="33"><table width="100%" border="0" align="center"
-								cellpadding="0" cellspacing="0" class="right-font08">
-								<tr>
-									<!-- <td width="50%">共<span class="right-text09">5</span> 页 | 第<span class="right-text09">1</span> 页</td> -->
-									<td width="49%" align="right">[<a href="#"
-										class="right-font08">first page</a> | <a href="#"
-										class="right-font08">previous page</a> | <a href="#"
-										class="right-font08">next page</a> | <a href="#"
-										class="right-font08">last page</a>] go to
-									</td>
-									<td width="1%"><table width="20" border="0"
-											cellspacing="0" cellpadding="0">
-											<tr>
-												<td width="1%"><input name="textfield3" type="text"
-													class="right-textfield03" size="1" /></td>
-												<td width="87%"><input name="Submit23222" type="submit"
-													class="right-button06" value=" " /></td>
-											</tr>
-										</table></td>
-								</tr>
-							</table></td>
-					</tr>
-				</table>
+				
 			</td>
 		</tr>
 	</table>

@@ -80,11 +80,11 @@ document.getElementById("aa").style.display="";
 
 											<tr>
 
-												<td nowrap align="right" width="15%">barCode:</td>
+												<td nowrap align="right" width="15%">barcode:</td>
 
 												<td width="35%"><input name="barCode" type="text"
 													maxlength="15" style="width: 154px" value="<%=barCode %>"
-													required
+													required  readonly="readonly"
 													oninvalid="setCustomValidity('The input cannot be empty');"
 													oninput="setCustomValidity('');" /> <span class="red">*</span></td>
 
@@ -119,13 +119,17 @@ document.getElementById("aa").style.display="";
 
 											<tr>
 
-												<td nowrap align="right" width="15%">location:</td>
+														<td width="16%" align="right" nowrap="nowrap">location:</td>
 
-												<td width="35%"><input name="location" maxlength="35"
-													type="text" style="width: 154px" value="<%=location %>"
-													required
-													oninvalid="setCustomValidity('The input cannot be empty');"
-													oninput="setCustomValidity('');" />
+												<td><select name="location">
+														<option selected="selected1">==none==</option>
+														<c:forEach items="${locations }" var="location" varStatus="count">
+														<option>${location.location }</option>
+													</c:forEach>
+														
+												</select></td>
+												
+												
 												<td width="16%" align="right" nowrap="nowrap">Date:</td>
 
 												<td width="34%"><input type="date" name="date"
@@ -134,38 +138,29 @@ document.getElementById("aa").style.display="";
 
 											</tr>
 
-											<tr>
-											<tr>
+									
+										<tr>
 
 												<td align="right">tag1</td>
 
 												<td><select name="tag1">
 														<option selected="selected1">==none==</option>
-														<option>Music</option>
-														<option>Milltary</option>
-														<option>Bibliography</option>
-														<option>World History</option>
-														<option>Fine Arts</option>
-														<option>Philososphy</option>
-														<option>Technology</option>
-														<option>Language</option>
-														<option>Geography</option>
+														<c:forEach items="${labels }" var="label" varStatus="count">
+														<option>${label.name }</option>
+													</c:forEach>
+														
 												</select></td>
 												<td align="right">tag2</td>
 
 												<td><select name="tag2">
-														<option selected="selected2">==none==</option>
-														<option>Music</option>
-														<option>Milltary</option>
-														<option>Bibliography</option>
-														<option>World History</option>
-														<option>Fine Arts</option>
-														<option>Philososphy</option>
-														<option>Technology</option>
-														<option>Language</option>
-														<option>Geography</option>
+													<option selected="selected1">==none==</option>
+													<c:forEach items="${labels }" var="label" varStatus="count">
+														<option>${label.name }</option>
+													</c:forEach>																		
 												</select></td>
 											</tr>
+											
+											
 											<tr>
 												<td align="right">cover:</td>
 												<td><input type="button" name="cover"
@@ -183,7 +178,7 @@ document.getElementById("aa").style.display="";
 											</tr>
 
 											<tr>
-												<td width="16%" align="right" nowrap="nowrap">bookName:</td>
+												<td width="16%" align="right" nowrap="nowrap">book name:</td>
 
 												<td width="34%"><input type="text" name="bookName"
 													maxlength="15" style="width: 154px" value="<%=bookName %>"
@@ -194,6 +189,7 @@ document.getElementById("aa").style.display="";
 												<td width="16%" align="right" nowrap="nowrap">price:</td>
 
 												<td width="34%"><input type="number" name="price"
+												value="<%=price %>"
 													maxlength="10" step="0.01" required
 													oninvalid="setCustomValidity('please input correctlly');"
 													oninput="setCustomValidity('');"

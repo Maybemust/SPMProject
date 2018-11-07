@@ -91,7 +91,7 @@
 							<br>
 							<br>
 							<p
-								style="font-size: 20px; color: #191D30; padding-left: 20px; float: left">Borrower
+								style="font-size: 20px; color: #191D30; padding-left: 20px; float: left">Borrowed
 								Account :${borrower.getAccount()}</p>
 
 

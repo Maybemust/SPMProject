@@ -19,14 +19,13 @@ public class addOrder  extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
-		
 		String barcode="";
 		String bookname="";
 		String account="";
 		String sta="";
 		
 		try{
-			System.out.println("why");
+
 			barcode = request.getParameter("barCode");
 			bookname = request.getParameter("bookName");
 		}catch(NumberFormatException e){
@@ -56,8 +55,19 @@ public class addOrder  extends HttpServlet{
 					break;
 				}
 			}
-			System.out.println("flag="+flag);
-			if(flag){
+			
+		if(book.getBookName() == null)
+		{
+			flag = false;
+			sta="Please check your BarCode If it is correct";
+			request.setAttribute("status",sta);
+			System.out.println("null");
+		}
+		else{
+			System.out.println("book.getBookName()"+book.getBookName());
+		}
+		System.out.println("flag="+flag);
+		if(flag){
 				if(book.getStatus() == 0 && book.getBookName().equals(bookname)){
 					sta="Add successfully";
 					ToReservedRecord.add(record);
@@ -145,7 +155,33 @@ public class addOrder  extends HttpServlet{
 					ih++;
 				}
 				request.setAttribute("houorders", houorders);
-				//hou
+				
+				List<java.sql.Date>   houborrow=new ArrayList<java.sql.Date>();
+				i=0;
+				size=nowrecord.size();
+				while(i < size){
+					houborrow.add(nowrecord.get(i).getBorrowedDate());;
+					i++;
+				}
+				int ih2=0;
+				while(ih2 < houborrow.size()) {
+					java.sql.Date datehh2=houborrow.get(ih2);
+					Calendar c2 = Calendar.getInstance();
+					c2.setTime(datehh2);
+					c2.add(Calendar.DATE, 2);
+					java.util.Date hhDate2 = (java.util.Date)c2.getTime();
+					//java.util.Date日期转换成转成java.sql.Date格式
+					java.sql.Date newDate =new java.sql.Date(hhDate2.getTime());
+					houborrow.set(ih2, newDate);
+					ih2++;
+				}
+				request.setAttribute("houborrow", houborrow);
+		//hou
+
+		List<String> barCodeList=new ArrayList<String>(1);
+		barCodeList.add(account);
+		request.setAttribute("barCodeList", barCodeList);
+		//hou
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
 }

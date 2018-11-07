@@ -138,9 +138,9 @@ public class ToBorrowedRecord {
 			
 			ps.execute();
 
-			ResultSet rs = ps.getGeneratedKeys();
+			//ResultSet rs = ps.getGeneratedKeys();
 
-			DBhelper.closeConnection(c, ps, rs);
+			DBhelper.closeConnection(c, ps, null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -275,6 +275,39 @@ public class ToBorrowedRecord {
 	 */
 	public List<BorrowedRecord> list() {
 		return list(0, Short.MAX_VALUE);
+	}
+	public static List<BorrowedRecord> listByDiao(int start, int count) {
+		List<BorrowedRecord> records = new ArrayList<BorrowedRecord>();
+
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			String sql = "select * from borrowedrecord order by barCode desc limit ?,? ";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, count);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				BorrowedRecord record = new BorrowedRecord();
+				record.setBarCode(rs.getString("barCode"));
+				record.setbRID(rs.getInt("bRID"));
+				record.setBookName(rs.getString("bookName"));
+				record.setReaderAccount(rs.getString("readerAccount"));
+				record.setBorrowedDate(rs.getDate("borrowedDate"));
+				record.setReturnedDate(rs.getDate("returnedDate"));			
+				//record.setReduceDate((rs.getDate("returnedDate").getTime()-rs.getDate("borrowedDate").getTime())/(24*60*60*1000));
+				record.setFine(rs.getDouble("fine"));
+				records.add(record);
+			}
+			DBhelper.closeConnection(c, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return records;
 	}
 	/*
 	 * 去掉了ReduceDate

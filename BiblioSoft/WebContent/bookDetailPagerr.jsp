@@ -98,9 +98,6 @@
 <body>
 
 
-	<%-- <% String ISBN=request.getParameter("ISBN");   --%>
-
-	<%-- %> --%>
 	<div style="margin: 0 auto; width: 800px; height: 140px; position: relative; top: 60px;">
 		<img src="images/book_info_r.png"
 			style="position: relative; left: 310px;">
@@ -110,11 +107,12 @@
 	</div>
 	<div style="margin: 0 auto; width: 620px; height: 500px; position: relative; top: 80px;">
 		<img src="${imagePath }" class="bookimg"
+		         
 			style="position: relative; top: 50px;">
 		<div class="mydiv">
 		<div class="mydiv1">
 			<form action="">
-				<label class="mylabel">Bar Code: </label>
+				<label class="mylabel">Barcode: </label>
 				<select id="barCode" name="barCode" class="myselect" onchange="changeBookInfo(this.value, 'location', 'status');">
 					<c:forEach items="${books }" var="book" varStatus="st">
 						<option value="${book.barCode }">${book.barCode }</option>
@@ -124,7 +122,7 @@
 		</div>
 			<input type="text" value="ISBN:  ${ISBN }" class="myinput"
 				style="background-color: #eff3f7;" readonly />
-			<input type="text" value="Book Name:  ${bookName }" class="myinput"
+			<input type="text" value="Book name:  ${bookName }" class="myinput"
 				style="background-color: #c2c8cc;" readonly />
 			<input type="hidden" id="bookName" type="text" value="${bookName }" class="myinput"
 				style="background-color: #c2c8cc;" readonly />

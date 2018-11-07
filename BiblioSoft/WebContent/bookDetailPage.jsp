@@ -93,6 +93,7 @@
 <% String tag2 = request.getAttribute("tag2").toString(); %>
 <% String imagePath = request.getAttribute("imagePath").toString(); %>
 
+<% String number = request.getAttribute("number").toString(); %>
 
 
 
@@ -113,7 +114,7 @@
 	
 				
 				<input type="hidden" value=<%=imagePath %>  class="myposition myinput" name="saveCover"/>
-		
+		        <input type="hidden" value=<%=number %>  class="myposition myinput" name="saveNumber"/>
 		
 		
 			<div class="mydiv1">
@@ -121,11 +122,11 @@
 				<input type="text" value=<%=ISBN %> class="myposition myinput" name="saveISBN"/>
 			</div>
 			<div class="mydiv2">
-				<label class="myposition mylabel">barCode: </label>
+				<label class="myposition mylabel">barcode: </label>
 				<input type="text" value=<%=barCode %> class="myposition myinput" name="savebarCode"/>
 			</div>
 			<div class="mydiv1">
-				<label class="myposition mylabel">Book Name: </label>
+				<label class="myposition mylabel">Book name: </label>
 				<input type="text" value=<%=bookName %> class="myposition myinput" name="saveBookName"/>
 			</div>
 			<div class="mydiv2">

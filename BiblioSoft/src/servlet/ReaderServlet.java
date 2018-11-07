@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import java.lang.String;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,15 +18,17 @@ public class ReaderServlet  extends HttpServlet{
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		
+		System.out.println("????????????????????????");
 		Reader reader = (Reader)(request.getSession().getAttribute("PERSON"));
+		String sta="";
+		request.setAttribute("status", sta);
 		try {
-			Thread.sleep(1500);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(reader+"----------");
+		System.out.println(reader+"+++++++++++++");
 		String account="";
 		
 		try{
@@ -103,6 +106,32 @@ public class ReaderServlet  extends HttpServlet{
 			ih++;
 		}
 		request.setAttribute("houorders", houorders);
+		//hou
+
+		List<String> barCodeList=new ArrayList<String>(1);
+		barCodeList.add(account);
+		request.setAttribute("barCodeList", barCodeList);
+		
+		List<java.sql.Date>   houborrow=new ArrayList<java.sql.Date>();
+		i=0;
+		size=nowrecord.size();
+		while(i < size){
+			houborrow.add(nowrecord.get(i).getBorrowedDate());;
+			i++;
+		}
+		int ih2=0;
+		while(ih2 < houborrow.size()) {
+			java.sql.Date datehh2=houborrow.get(ih2);
+			Calendar c2 = Calendar.getInstance();
+			c2.setTime(datehh2);
+			c2.add(Calendar.DATE, 2);
+			java.util.Date hhDate2 = (java.util.Date)c2.getTime();
+			//java.util.Date日期转换成转成java.sql.Date格式
+			java.sql.Date newDate =new java.sql.Date(hhDate2.getTime());
+			houborrow.set(ih2, newDate);
+			ih2++;
+		}
+		request.setAttribute("houborrow", houborrow);
 		//hou
 		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
 	}
