@@ -42,7 +42,7 @@
             margin-left:0px;
             position: absolute;
             box-sizing: border-box;
-            width: 250px;
+            width: 300px;
             height: 100%;
             background: #4D4D4D bottom;
          }
@@ -72,6 +72,7 @@
                 line-height: 40px;
                 height: 40px;
                 color: #aab1b7;
+                font-size: 18px;
                 cursor: pointer;
           }
           .menu-item-active {
@@ -107,7 +108,7 @@
 			height: 50px;
 		}
 		#ps-security{
-			margin-left: 200px;
+			margin-left: 400px;
 			margin-top: 100px;
 		}
 		#oldPasswordInput{
@@ -126,6 +127,7 @@
 			border-radius: 7px;
 		}
 		#pm-head{
+			margin-left: 400px;
 			width: auto;
 			height: 50px;
 		}
@@ -135,7 +137,7 @@
 		}
 		#pm-imformation{
 		    width:800px;
-			margin-left: 200px;
+			margin-left: 400px;
 			margin-top: 40px;
 		}
 		#pb-head{
@@ -189,7 +191,7 @@
 		#lishijieyue{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 20px;
+			margin-left: 200px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -197,7 +199,7 @@
 		#wodejieyue{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 20px;
+			margin-left: 200px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -212,7 +214,7 @@
 		#wodeyuyue{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 20px;
+			margin-left: 200px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -223,7 +225,7 @@
 		#myorder{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 20px;
+			margin-left: 200px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -231,7 +233,7 @@
 		#addorder{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 20px;
+			margin-left: 200px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -351,7 +353,7 @@
        <div id="left" class="left">
            <div id="logoDiv" class="logoDiv">
                <p id="logoTitle" class="logoTitle">
-               		<img id="logo" alt="picture-log" src="./imgs/logo.JPG" style="height: 28px; padding-right: 5px;vertical-align: middle;">
+               		<img id="logo" alt="picture-log" src="./images/logo1.png" style="height: 28px; padding-right: 5px;vertical-align: middle;">
                     <span style="font-size:18px;"><a onclick="location.reload()">${reader.account}</a></span>
                </p>
             </div>
@@ -362,7 +364,7 @@
 	                         &nbsp;&nbsp;My Borrow List
 	                    </div>
 	                    <div class="menu-item" href="#lishi" data-toggle="tab" onmouseover="mouseover('historylist');" onmouseout="mouseout('historylist')" id="historylist">
-	                         &nbsp;&nbsp;History List
+	                         &nbsp;&nbsp;My Return List
 	                    </div>
                     </div>
                  	<!-- diao -->
@@ -456,10 +458,13 @@
        
                          <div id="addorder" class="tab-pane" style="text-align:center;postion:relative;">
                          <div>
-            				<font style="margin-left:-300px;color: gray;text-align:left;" size="5">Pleas make sure that the Name And the Bar Code of book is correct,thank you! </font>
+            				<font style="margin-left:-350px;color: gray;text-align:left;" size="5">Pleas make sure that the Name And the Bar Code of book is correct,thank you! </font>
        					</div>
        					 <div>
-            				<font style="margin-left:-250px;color: gray;text-align:left;" size="5">If you don't Remember the Bar Code,you can go to the Search Page, and Reserve it.</font>
+            				<font style="margin-left:-300px;color: gray;text-align:left;" size="5">If you don't Remember the Bar Code,you can go to the Search Page, and Reserve it.</font>
+       					</div>
+       					 <div>
+            				<font style="margin-left:-750px;color: gray;text-align:left;" size="5">Please input bar code and name together! </font>
        					</div>
          					<div id="addorderinput" style="text-align:left;">
          						
@@ -496,12 +501,12 @@
                        <div id="pm-container" class="tab-pane">
                             <div style="width: auto;height: 8px"></div>
 								<div id="pm-head">
-									<h3 style="text-indent: 5%">Personal Imformation</h3>
+									<h3 style="text-indent: 5%">Personal Information</h3>
 								</div>
 								<hr style="color: black">
 								<div id="pm-imformation" >
 									<p>Account:<input id="accountInput" class="form-control" value="${reader.account}" readonly></p>
-									<p>Eamil:<input id="emailInput" class="form-control" value="${reader.email}"></p>
+									<p>Email:<input id="emailInput" class="form-control" value="${reader.email}"></p>
 									<p>Phone:<input id="phoneInput" class="form-control" value="${reader.phone}"></p>
 									<p>Fine:<input id="fineInput" class="form-control" value="${reader.fine}" readonly></p>
 									<p>Borrowed Num:<input id="borrowedNumInput" class="form-control" value="${reader.borrowedNum}" readonly></p>
@@ -526,7 +531,7 @@
 						</div>
 					
 							<div id="ps-container" class="tab-pane">
-								<iframe src="ChangePassword.jsp" style="width:1400px;height:730px;margin-top:0px;">
+								<iframe src="ChangePassword.jsp" style="width:1600px;height:1300px;margin-top:0px;">
 							</iframe>
 							</div>
                         <!-- xiang -->
@@ -577,7 +582,7 @@
 						</div>
 						<div class="tab-pane" id="lishi" style="position: relative">
             				<div id="lishijieyue" style="text-align:center;display:block">
-            				<h2  style="text-align:center;">Welcome to HistoryList page,${reader.getAccount()}!</h2>
+            				<h2  style="text-align:center;">Welcome to ReturnHistory page,${reader.getAccount()}!</h2>
             				<c:choose>
 							<c:when test="${fn:length(borrowedRecord)!=0 }">
 								<table id="ordertab" border="1"  style="margin-left:5px;margin-right:30px;width:100%">
@@ -667,7 +672,7 @@
 					
                        
                         <div id="searchbook" class="tab-pane"style="width:100%;margin-top:0px;margin-left:0px;">
-							<iframe src="ReaderaddOrder.jsp" style="width:100%;height:730px;margin-top:0px;">
+							<iframe src="searchBook?searchou=" style="width:100%;height:1000px;;margin-top:0px;">
 							</iframe>
 
                        </div>

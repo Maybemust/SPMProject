@@ -125,44 +125,44 @@ body {
 		<div id="left" class="left">
 			<div id="logoDiv" class="logoDiv">
 				<p id="logoTitle" class="logoTitle">
-					<img id="logo" alt="picture-log" src="./images/logo1.png"
+					<img id="logo" alt="picture-log" src="./imgs/logo.JPG"
 						style="height: 28px; padding-right: 5px; vertical-align: middle;">
-					<span style="font-size: 18px; position: relative; top: 3px;">Admin</span>
+					<span style="font-size: 18px;">Admin</span>
 				</p>
 			</div>
 
 			<div class="menu-item" data-toggle="collapse" data-target="#demo1"
 				onmouseover="mouseover('div2')" onmouseout="mouseout('div2')"
-				id="div2" style="font-size: 18px;">operate for librarian</div>
+				id="div2">operate for librarian</div>
 			<div id="demo1" class="collapse" style="background-color: #666666">
 				<div class="menu-item" href="#two" data-toggle="tab"
 					onmouseover="mouseover('div3')" onmouseout="mouseout('div3')"
-					id="div3" style="font-size: 16px;">add librarian</div>
+					id="div3">add librarian</div>
 				<div class="menu-item" href="#three" data-toggle="tab"
 					onmouseover="mouseover('div4');" onmouseout="mouseout('div4')"
-					onClick="location.reload();" id="div4" style="font-size: 16px;">search, view and
+					onClick="location.reload();" id="div4">search, view and
 					delete librarian</div>
 			</div>
 
 			<div class="menu-item" data-toggle="collapse" data-target="#demo2"
 				onmouseover="mouseover('div5')" onmouseout="mouseout('div5')"
-				id="div5" style="font-size: 18px;">change system parameters</div>
+				id="div5">change system parameters</div>
 			<div id="demo2" class="collapse" style="background-color: #666666">
 				<div class="menu-item" href="#four" data-toggle="tab"
 					onmouseover="mouseover('div6')" onmouseout="mouseout('div6')"
-					id="div6" style="font-size: 16px;">maximum borrowing volume</div>
+					id="div6">maximum borrowing volume</div>
 				<div class="menu-item" href="#five" data-toggle="tab"
 					onmouseover="mouseover('div7')" onmouseout="mouseout('div7')"
-					id="div7" style="font-size: 16px;">fine strategy</div>
+					id="div7">fine strategy</div>
 				<div class="menu-item" href="#six" data-toggle="tab"
 					onmouseover="mouseover('div8')" onmouseout="mouseout('div8')"
-					id="div8" style="font-size: 16px;">cash pledge</div>
+					id="div8">cash pledge</div>
 				<div class="menu-item" href="#seven" data-toggle="tab"
 					onmouseover="mouseover('div9')" onmouseout="mouseout('div9')"
-					id="div9" style="font-size: 16px;">reservation</div>
+					id="div9">reservation</div>
 				<div class="menu-item" href="#eight" data-toggle="tab"
 					onmouseover="mouseover('div10')" onmouseout="mouseout('div10')"
-					id="div10" style="font-size: 16px;">modify Admin's password</div>
+					id="div10">modify Admin's password</div>
 			</div>
 
 

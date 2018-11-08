@@ -66,13 +66,12 @@ function myshow(str1, account, label, button) {
 function addLibrarian(account) {
 	var xmlhttp;
 	var url = "";
-
 	if (document.getElementById(account).value == "") {
 		alert("Account is empty!");
 		return;
 	}
 
-	alert(account);
+	
 
 	url = "adminop?account=" + document.getElementById(account).value;
 
@@ -87,7 +86,6 @@ function addLibrarian(account) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var check = xmlhttp.responseText;
-			alert(check);
 			display(check, account);
 		}
 	};
@@ -198,6 +196,7 @@ function sendtext(textId, labelId) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var check = xmlhttp.responseText;
+			
 			show(check, textId, labelId);
 		}
 	};

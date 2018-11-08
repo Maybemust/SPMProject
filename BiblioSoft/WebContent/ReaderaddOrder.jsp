@@ -23,7 +23,7 @@
 		#myorder{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 20px;
+			margin-left: 200px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -171,7 +171,7 @@
 				</div>
 			</form>
 			<br/>
-			<div  style="text-align:center;postion:relative;">
+			<div  style="text-align:center;postion:relative;margin-left:100px;">
 			<c:choose>
 			<c:when test="${fn:length(bookList)!=0 }">		
 				<table id="ordertab" border="1" width=100% cellpadding="5" style="margin-left:5px;margin-right:30px;width:1000px;margin-left:50px;">
@@ -200,7 +200,7 @@
 						<td><font size="4">${bookList.introduction}</font></td>	
 						<td><font size="4">${bookList.status}</font></td>	
 						<td><font size="4">${bookList.dateOfStorage}</font></td>
-						<td><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}" onclick="top.location.replace('http://localhost:8080/BiblioSoft/getreader')">Reserve</a></td>
+						<td><a href="addOrder?barCode=${bookList.barCode}&bookName=${bookList.bookName}&no=1" onclick="top.location.replace('http://localhost:8080/BiblioSoft/getreader')">Reserve</a></td>
 						</tr>
 					</c:forEach>
 				</table>

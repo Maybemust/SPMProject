@@ -23,11 +23,12 @@ public class addOrder  extends HttpServlet{
 		String bookname="";
 		String account="";
 		String sta="";
-		
+		int no = 0;
 		try{
 
 			barcode = request.getParameter("barCode");
 			bookname = request.getParameter("bookName");
+			no = Integer.parseInt(request.getParameter("no"));
 		}catch(NumberFormatException e){
 			
 		}
@@ -182,6 +183,11 @@ public class addOrder  extends HttpServlet{
 		barCodeList.add(account);
 		request.setAttribute("barCodeList", barCodeList);
 		//hou
-		request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
+		if(no == 1 ){
+			request.getRequestDispatcher("ReaderaddOrder.jsp").forward(request, response);
+		}
+		else{
+			request.getRequestDispatcher("Reader_new.jsp").forward(request, response);
+		}
 	}
 }

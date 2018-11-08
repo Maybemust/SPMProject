@@ -18,12 +18,13 @@
 <title>ChangePassword</title>
 <style>
 		#pm-head{
+			margin-left: 400px;
 			width: auto;
 			height: 50px;
 		}
 		#ps-container{
-			width: 1000px;
-			height: 700px;
+			width: 1400px;
+			height: 900px;
 		}
 		#ps-security{
 			margin-left: 200px;

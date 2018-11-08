@@ -80,7 +80,7 @@ public class AdminOp extends HttpServlet {
 
 			// Ìí¼ÓLibrarian
 			if (a == null || a == ""){
-				out.write("no");
+				//out.write("no");
 			}else if(a != null && a != "") {
 				if (a.length() > 15 || !isNumeric(a)) {
 					out.write("no");
@@ -92,7 +92,7 @@ public class AdminOp extends HttpServlet {
 						out.write("same");
 					} else {
 							Librarian lbr = new Librarian(account, password, 0);
-							tolbr.add(lbr);
+							ToLibrarian.add(lbr);
 							out.write("ok");
 							
 					}
