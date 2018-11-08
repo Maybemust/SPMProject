@@ -79,23 +79,22 @@ public class AdminOp extends HttpServlet {
 			String rm = request.getParameter("reservedMaxinum");
 
 			// Ìí¼ÓLibrarian
-			String password = request.getParameter("password");
-			if (a != null && a != "") {
+			if (a == null || a == ""){
+				out.write("no");
+			}else if(a != null && a != "") {
 				if (a.length() > 15 || !isNumeric(a)) {
 					out.write("no");
 				} else {
+					String password = "001001";
 					long account = Long.parseLong(a);
 					ToLibrarian tolbr = new ToLibrarian();
 					if (tolbr.get(a) != null) {
 						out.write("same");
-					} else if (tolbr.get(a) == null && password != null && password != "") {
-						if (password.length() > 20) {
-							out.write("no");
-						} else {
+					} else {
 							Librarian lbr = new Librarian(account, password, 0);
 							tolbr.add(lbr);
 							out.write("ok");
-						}
+							
 					}
 				}
 			}

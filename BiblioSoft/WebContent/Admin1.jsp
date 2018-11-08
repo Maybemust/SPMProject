@@ -180,20 +180,14 @@ body {
 							string of no more than 15 digits*</p>
 
 						<input type="text" id="account" name="account"
-							onkeyup="this.value=this.value.replace(/\D/g,'')"
-							onblur="smaeLibrarian('account', 'accountsame', 'register')"
+							onkeyup="this.value=this.value.replace(/\D/g,'');"
 							onafterpaste="this.value=this.value.replace(/\D/g,'')"
 							maxlength="15"> <label style="color: red;"
 							name="accountsame" id="accountsame"></label>
-						<p>password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a string of
-							no more than 20 characters*</p>
-						<input type="password" id="password" name="password"
-							maxlength="20">
-						<p>repeat password</p>
-						<input type="password" id="repeatPassword" name="repeatPassword"
-							maxlength="20"> <br> <br>
+						<p>The default password is 001001</p>
+						
 						<button type="button" name="register" id="register"
-							onClick="addLibrarian('account', 'password', 'repeatPassword')">Register</button>
+							onClick="addLibrarian('account')">Register</button>
 					</form>
 				</div>
 			</div>
