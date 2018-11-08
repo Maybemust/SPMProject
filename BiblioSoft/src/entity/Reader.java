@@ -59,7 +59,7 @@ public class Reader {
 	public Reader(String account2) {
 		super();
 		this.account = account2;
-		this.password = "0";
+		this.password = "-1*254*jk^&*";
 		this.email = "0";
 		this.phone = 0;
 		this.fine = 0.0;

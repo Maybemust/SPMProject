@@ -63,10 +63,14 @@ public class Login  extends HttpServlet{
 		}
 		
 		
-		
+		/*
+		 * 
+		 */
+
 		if(authority.equals("Admin")){
 			Admin admin=ToAdmin.getByAccount(account);
-			if(admin.getPassword().equals(pd))
+
+			if(admin.getAccount()!=0&&admin.getPassword().equals(pd))
 			{
 				request.getSession().setAttribute("PERSON", admin);
 				url="admin1";
@@ -79,12 +83,13 @@ public class Login  extends HttpServlet{
 		}
 		else if(authority.equals("Librarian"))
 		{
-			System.out.println("===============");
-			Librarian librarian=ToLibrarian.get(account);
+			System.out.println("===============1");
+			Librarian librarian=ToLibrarian.get2(account);
 			System.out.println(librarian.toString());
+			System.out.println("===============2");
 			if(librarian.getAccount()==0)
 			{
-				url="Login.jsp";
+				url="Login.jsp?mima=no";
 			}
 			else if(librarian.getPassword().equals(pd))
 			{

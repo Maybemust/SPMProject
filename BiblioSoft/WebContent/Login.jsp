@@ -175,9 +175,9 @@
 					<button style="padding: 0.7em 2em;"
 						class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
 						type="button" onClick="login()">Login</button>
-					<button  type="button"
+					<a
 						style="position: relative; left: -10px; top: 15px; font-weight: bold; font-size: 12px;"
-						onclick="forgetpd()">Forget</button>
+						onclick="forgetpd()">Forget</a>
 				</div>
 
 			</div>

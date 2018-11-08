@@ -205,4 +205,32 @@ public class ToLibrarian {
 		return librarians;
 	}
 	
+	public static Librarian get2(String account) {
+		Librarian librarian = new Librarian();
+		try {
+
+			Connection c = DBhelper.getInstance().getConnection();
+
+			Statement s = c.createStatement();
+
+			String sql = "select * from librarian where account = " + "'"+account+"';";
+
+			ResultSet rs = s.executeQuery(sql);
+
+			if (rs.next()) {
+				librarian.setAccount(rs.getLong("account"));
+				librarian.setPassword(rs.getString("password"));
+				librarian.setTag(rs.getInt("tag"));
+				librarian.setQuestion(rs.getString("question"));
+				librarian.setAnswer(rs.getString("answer"));
+			}
+
+			DBhelper.closeConnection(c, s, rs);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return librarian;
+	}
+	
 }
