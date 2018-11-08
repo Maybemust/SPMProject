@@ -35,6 +35,6 @@ public class EmailChangePd  extends HttpServlet{
 		}
 		ToReader.update(reader);
 
-		request.getRequestDispatcher("fin.jsp").forward(request, response);
+		request.getRequestDispatcher("indexpage").forward(request, response);
 	}
 }

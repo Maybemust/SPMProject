@@ -191,7 +191,7 @@
 		#lishijieyue{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 200px;
+			margin-left: 50px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -199,7 +199,7 @@
 		#wodejieyue{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 200px;
+			margin-left: 50px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -214,7 +214,7 @@
 		#wodeyuyue{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 200px;
+			margin-left: 50px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -225,7 +225,7 @@
 		#myorder{
 			margin-top:50px;
 			width:1200px;
-			margin-left: 200px;
+			margin-left: 50px;
 			margin-right: 100px;
 			position: relative;
 			text-align:center;
@@ -669,7 +669,7 @@
 					
                        
                         <div id="searchbook" class="tab-pane"style="width:100%;margin-top:0px;margin-left:0px;">
-							<iframe src="ReaderaddOrder.jsp" style="width:100%;height:1000px;;margin-top:0px;">
+							<iframe src="searchBook?searchou=" style="width:100%;height:1000px;;margin-top:0px;">
 							</iframe>
 
                        </div>

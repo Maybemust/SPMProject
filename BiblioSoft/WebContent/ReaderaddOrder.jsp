@@ -192,7 +192,7 @@
 					<c:forEach items="${bookList}" var="bookList" varStatus="loop">
 						<tr>
 						<td><font size="4">${bookList.barCode}</font></td>
-						<td><font size="4"><a style="color:black;" href="bookDetailServletrr?ISBN=${booklist.ISBN }">${bookList.bookName}</a></font></td>
+						<td><font size="4"><a style="color:black;" href="bookDetailServletrr?ISBN=${bookList.ISBN}">${bookList.bookName}</a></font></td>
 						<td ><font size="4">${bookList.ISBN}</font></td>
 						<td><font size="4">${bookList.author}</font></td>
 						<td><font size="4">${bookList.publishing}</font></td>

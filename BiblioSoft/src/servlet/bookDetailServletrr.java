@@ -72,7 +72,6 @@ public class bookDetailServletrr extends HttpServlet{
 		} catch (NumberFormatException e){
 			
 		}
-		
 		request.getRequestDispatcher("bookDetailPagerr.jsp").forward(request, response);
 
 	}

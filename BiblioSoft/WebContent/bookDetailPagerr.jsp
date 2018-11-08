@@ -153,7 +153,7 @@
 				location.reload(); 	
 			}
 		</script>
-		<button onclick="addorder()">reserve</button>
+<!-- 		<button onclick="addorder()">reserve</button> -->
 <!-- 		<form action="addOrder"> -->
 <!-- 			<input type="submit" value="reserve" -->
 <!-- 				name="reserveBookInBookDetailPage" id="reserveBookInBookDetailPage" -->
