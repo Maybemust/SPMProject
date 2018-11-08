@@ -63,25 +63,18 @@ function myshow(str1, account, label, button) {
 	}
 }
 /** ********************添加Librarian************************** */
-function addLibrarian(account, password, repeatPassword) {
+function addLibrarian(account) {
 	var xmlhttp;
 	var url = "";
 
-	if (document.getElementById(account).value == ""
-			|| document.getElementById(password).value == ""
-			|| document.getElementById(repeatPassword).value == "") {
-		alert("Account or password is empty!");
+	if (document.getElementById(account).value == "") {
+		alert("Account is empty!");
 		return;
 	}
 
-	if (document.getElementById(password).value != document
-			.getElementById(repeatPassword).value) {
-		alert("Entered passwords differ!");
-		return;
-	}
+	alert(account);
 
-	url = "adminop?account=" + document.getElementById(account).value
-			+ "&password=" + document.getElementById(password).value;
+	url = "adminop?account=" + document.getElementById(account).value;
 
 	if (window.XMLHttpRequest) {
 		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -94,25 +87,26 @@ function addLibrarian(account, password, repeatPassword) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var check = xmlhttp.responseText;
-			display(check, account, password, repeatPassword);
+			alert(check);
+			display(check, account);
 		}
 	};
 	xmlhttp.send(null);
 
 }
 
-function display(str1, account, password, repeatPassword) {
+function display(str1, account) {
 	if (str1 == "ok") {
 		alert("This operation succeeds!");
 		document.getElementById(account).value = "";
-		document.getElementById(password).value = "";
-		document.getElementById(repeatPassword).value = "";
 	}
 	if (str1 == "no") {
 		alert("This operation fails!");
 		document.getElementById(account).value = "";
-		document.getElementById(password).value = "";
-		document.getElementById(repeatPassword).value = "";
+	}
+	if (str1 == "same") {
+		alert("Account has been existed!");
+		document.getElementById(account).value = "";
 	}
 }
 /** ********************修改Admin密码************************** */
