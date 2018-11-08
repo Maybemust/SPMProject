@@ -463,9 +463,6 @@
        					 <div>
             				<font style="margin-left:-300px;color: gray;text-align:left;" size="5">If you don't Remember the Bar Code,you can go to the Search Page, and Reserve it.</font>
        					</div>
-       					 <div>
-            				<font style="margin-left:-750px;color: gray;text-align:left;" size="5">Please input bar code and name together! </font>
-       					</div>
          					<div id="addorderinput" style="text-align:left;">
          						
 								<p>The Code of Book</p>
@@ -672,7 +669,7 @@
 					
                        
                         <div id="searchbook" class="tab-pane"style="width:100%;margin-top:0px;margin-left:0px;">
-							<iframe src="searchBook?searchou=" style="width:100%;height:1000px;;margin-top:0px;">
+							<iframe src="ReaderaddOrder.jsp" style="width:100%;height:1000px;;margin-top:0px;">
 							</iframe>
 
                        </div>
