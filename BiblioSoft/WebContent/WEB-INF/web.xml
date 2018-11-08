@@ -601,5 +601,15 @@
 		<servlet-name>indexpage</servlet-name>
 		<url-pattern>/indexpage</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>finPostServlet</servlet-name>
+		<servlet-class>servlet.finPostServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>finPostServlet</servlet-name>
+		<url-pattern>/finPost</url-pattern>
+	</servlet-mapping>
+
 	
 </web-app>

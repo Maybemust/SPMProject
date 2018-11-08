@@ -23,6 +23,6 @@ public class indexpage  extends HttpServlet{
 				List<Post> posts=ToPost.list(0, total);
 				request.setAttribute("posts", posts);
 				System.out.println("title:"+posts.get(0).getPostTitle());
-		request.getRequestDispatcher("fin.jsp").forward(request, response);
+		request.getRequestDispatcher("finPost").forward(request, response);
 	}
 }

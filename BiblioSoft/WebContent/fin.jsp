@@ -81,28 +81,28 @@ body {
 			<div style="position: relative; left: 100px; top: 80px;">
 				<c:forEach items="${posts}" var="postItem" varStatus="st">
 
-					<a href="PostDetails?postID=${postItem.getPostID()}"
+					<a href="PostDetails?postID=${postItem.getPostID()}" target="_blank"
 						style="display: block; font-size: 20px; font-weight: bold;"><h2
 							style="color: white;">Title:${postItem.getPostTitle()}</h2></a>
 				</c:forEach>
 
 				<ul class="pagination" style="position: relative; left: 150px; top: 100px;">
 
-					<li><a href="LibrarianFirstPage?start=0" aria-label="First">
+					<li><a href="finPost?start=0" aria-label="First">
 							First Page <span aria-hidden="true"></span>
 					</a></li>
 
-					<li><a href="LibrarianFirstPage?start=${pre}"
+					<li><a href="finPost?start=${pre}"
 						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 
 							Previous
 					</a></li>
 
-					<li><a href="LibrarianFirstPage?start=${next}"
+					<li><a href="finPost?start=${next}"
 						aria-label="Next"> Next <span aria-hidden="true">&raquo;</span>
 					</a></li>
 
-					<li><a href="LibrarianFirstPage?start=${last}"
+					<li><a href="finPost?start=${last}"
 						aria-label="Last"> Last Page </a></li>
 
 
