@@ -21,7 +21,7 @@ public class modifypassword1Servlet extends HttpServlet{
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 	
-		
+		String account = null;
 		
 		Librarian librarian=(Librarian)request.getSession().getAttribute("PERSON");
 		int flag = 0;
@@ -30,12 +30,13 @@ public class modifypassword1Servlet extends HttpServlet{
 			try{
 				if(request.getParameter("account").equals("null"))
 					flag = 1;
-				String account = request.getParameter("account");
+				account = request.getParameter("account");
 				System.out.println("account="+account);
 				
 				librarian = ToLibrarian.get(account);
 			}
 			catch(Exception e){
+				request.setAttribute("account", account);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("indexpage"); 
 				dispatcher.forward(request, response); 
 			}
@@ -48,7 +49,11 @@ public class modifypassword1Servlet extends HttpServlet{
 			
 		}	
 		
+		if(librarian != null){
+			account = String.valueOf(librarian.getAccount());
+		}
 		
+		request.setAttribute("account", account);
 		request.setAttribute("question", question);
 		request.setAttribute("sc", "yes");
 		
@@ -59,6 +64,7 @@ public class modifypassword1Servlet extends HttpServlet{
 			dispatcher.forward(request, response); 
 		}
 		else{
+			request.setAttribute("account", account);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/modifypassword.jsp"); 
 			dispatcher.forward(request, response); 
 		}

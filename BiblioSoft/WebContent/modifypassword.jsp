@@ -47,6 +47,7 @@ document.getElementById("aa").style.display="";
 
 
 <% String question = request.getAttribute("question").toString(); %>
+<% String account = request.getAttribute("account").toString(); %>
 
 
 	<form action="modifypassword2" method="post" name="form">
@@ -118,6 +119,7 @@ document.getElementById("aa").style.display="";
                                             
                                             </tr>
                                             
+                                            <input type = "hidden" name = "account" value = "<%=account %>">
 							
 										</table>
 										<br />

@@ -127,7 +127,7 @@
 
           </ul>
 		   <ul class="navbar-nav mr-auto">
-			  <form class="form-inline my-2 my-lg-0" action="booksearch" method="post"  style = "float :left;">
+			  <form class="form-inline my-2 my-lg-0" action="booksearch" method="post"  style = "float :left;" target="_blank">
 			  
              <input class="form-control mr-sm-2" name="searchbarCode" style="position:relative;top:10px" type="search" placeholder="Grimms Fairytales" aria-label="Search">
              
@@ -226,8 +226,14 @@
 
 
 <script src="js/bootstrap.js"></script>
+
+
+
+
+
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="js/popper.min.js"></script>
+    <script src="js/popper.min.js">
+    </script>
   <script src="js/bootstrap-4.0.0.js"></script>
   </body>
 </html>

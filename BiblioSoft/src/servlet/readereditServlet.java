@@ -144,7 +144,7 @@ public class readereditServlet extends HttpServlet {
      
          /*RequestDispatcher dispatcher = request.getRequestDispatcher("/readerList"); 
          dispatcher.forward(request, response); */
-         response.sendRedirect("readeredit.jsp?error=no");
+         response.sendRedirect("readerList");
          }
        }
         else {

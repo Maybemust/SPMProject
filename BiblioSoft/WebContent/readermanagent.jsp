@@ -236,7 +236,15 @@ function unselectAll(){
     
     </script>
 
+<script>
 
+var readeredit='<%=request.getParameter("readeredit")%>';
+if(readeredit=='yes')
+	{
+	alert(" modify reader successfully");
+	}
+	
+</script>
 
 
 </body>
